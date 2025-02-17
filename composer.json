@@ -25,7 +25,7 @@
     "autoload": {
         "psr-4": {
             "Illuminate\\Events\\": "src/event/illuminate/",
-            "SwooleTW\\Hyperf\\": "src/framework/src/",
+            "SwooleTW\\Hyperf\\": "src/core/src/",
             "SwooleTW\\Hyperf\\Auth\\": "src/auth/src/",
             "SwooleTW\\Hyperf\\Bus\\": "src/bus/src/",
             "SwooleTW\\Hyperf\\Cache\\": "src/cache/src/",
@@ -117,13 +117,13 @@
         "swooletw/hyperf-cache": "self.version",
         "swooletw/hyperf-config": "self.version",
         "swooletw/hyperf-container": "self.version",
+        "swooletw/hyperf-core": "self.version",
         "swooletw/hyperf-cookie": "self.version",
         "swooletw/hyperf-devtool": "self.version",
         "swooletw/hyperf-dispatcher": "self.version",
         "swooletw/hyperf-encryption": "self.version",
         "swooletw/hyperf-event": "self.version",
         "swooletw/hyperf-filesystem": "self.version",
-        "swooletw/hyperf-framework": "self.version",
         "swooletw/hyperf-foundation": "self.version",
         "swooletw/hyperf-hashing": "self.version",
         "swooletw/hyperf-http": "self.version",
