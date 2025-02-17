@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Http;
+namespace LaravelHyperf\Foundation\Testing\Http;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Context\Context;
@@ -18,13 +18,13 @@ use Hyperf\HttpServer\Event\RequestReceived;
 use Hyperf\HttpServer\ResponseEmitter;
 use Hyperf\Support\Filesystem\Filesystem;
 use Hyperf\Testing\HttpMessage\Upload\UploadedFile;
+use LaravelHyperf\Foundation\Http\Kernel as HttpKernel;
+use LaravelHyperf\Foundation\Testing\Coroutine\Waiter;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
-use SwooleTW\Hyperf\Foundation\Http\Kernel as HttpKernel;
-use SwooleTW\Hyperf\Foundation\Testing\Coroutine\Waiter;
 use Throwable;
 
 use function Hyperf\Collection\data_get;

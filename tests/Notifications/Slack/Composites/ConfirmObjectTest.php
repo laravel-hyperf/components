@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications\Slack\Composites;
+namespace LaravelHyperf\Tests\Notifications\Slack\Composites;
 
+use LaravelHyperf\Notifications\Slack\BlockKit\Composites\ConfirmObject;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Composites\ConfirmObject;
 
 /**
  * @internal

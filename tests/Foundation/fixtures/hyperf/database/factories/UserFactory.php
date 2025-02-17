@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Carbon\Carbon;
 use Faker\Generator as Faker;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\Concerns\User;
+use LaravelHyperf\Tests\Foundation\Testing\Concerns\User;
 
 $factory->define(User::class, function (Faker $faker) {
     return [

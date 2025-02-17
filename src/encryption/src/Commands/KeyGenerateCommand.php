@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Encryption\Commands;
+namespace LaravelHyperf\Encryption\Commands;
 
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Command\Concerns\Confirmable as ConfirmableTrait;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Encryption\Encrypter;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Encryption\Encrypter;
 use Symfony\Component\Console\Input\InputOption;
 
 class KeyGenerateCommand extends HyperfCommand

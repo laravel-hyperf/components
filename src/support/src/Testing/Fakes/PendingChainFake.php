@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
 use Closure;
-use SwooleTW\Hyperf\Bus\PendingChain;
-use SwooleTW\Hyperf\Bus\PendingDispatch;
-use SwooleTW\Hyperf\Queue\CallQueuedClosure;
+use LaravelHyperf\Bus\PendingChain;
+use LaravelHyperf\Bus\PendingDispatch;
+use LaravelHyperf\Queue\CallQueuedClosure;
 
 class PendingChainFake extends PendingChain
 {

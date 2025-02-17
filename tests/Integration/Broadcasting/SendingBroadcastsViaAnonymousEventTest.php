@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Integration\Broadcasting;
+namespace LaravelHyperf\Tests\Integration\Broadcasting;
 
 use Hyperf\HttpServer\Contract\RequestInterface;
+use LaravelHyperf\Broadcasting\AnonymousEvent;
+use LaravelHyperf\Broadcasting\BroadcastManager;
+use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastingFactoryContract;
+use LaravelHyperf\Broadcasting\PresenceChannel;
+use LaravelHyperf\Broadcasting\PrivateChannel;
+use LaravelHyperf\Container\DefinitionSource;
+use LaravelHyperf\Foundation\Application;
+use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Support\Facades\Broadcast;
+use LaravelHyperf\Support\Facades\Event;
+use LaravelHyperf\Support\Facades\Facade;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use ReflectionClass;
-use SwooleTW\Hyperf\Broadcasting\AnonymousEvent;
-use SwooleTW\Hyperf\Broadcasting\BroadcastManager;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory as BroadcastingFactoryContract;
-use SwooleTW\Hyperf\Broadcasting\PresenceChannel;
-use SwooleTW\Hyperf\Broadcasting\PrivateChannel;
-use SwooleTW\Hyperf\Container\DefinitionSource;
-use SwooleTW\Hyperf\Foundation\Application;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
-use SwooleTW\Hyperf\Support\Facades\Broadcast;
-use SwooleTW\Hyperf\Support\Facades\Event;
-use SwooleTW\Hyperf\Support\Facades\Facade;
 
 /**
  * @internal

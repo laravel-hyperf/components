@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\Spinner;
+use LaravelHyperf\Prompts\Spinner;
 
 class SpinnerRenderer extends Renderer
 {

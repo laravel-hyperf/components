@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Hashing;
+namespace LaravelHyperf\Tests\Hashing;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\ContainerInterface;
+use LaravelHyperf\Hashing\Argon2IdHasher;
+use LaravelHyperf\Hashing\ArgonHasher;
+use LaravelHyperf\Hashing\BcryptHasher;
+use LaravelHyperf\Hashing\HashManager;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use RuntimeException;
-use SwooleTW\Hyperf\Hashing\Argon2IdHasher;
-use SwooleTW\Hyperf\Hashing\ArgonHasher;
-use SwooleTW\Hyperf\Hashing\BcryptHasher;
-use SwooleTW\Hyperf\Hashing\HashManager;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

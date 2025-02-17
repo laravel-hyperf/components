@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
-use SwooleTW\Hyperf\Http\Request;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\Storage\EntryQueryOptions;
+use LaravelHyperf\Http\Request;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\Storage\EntryQueryOptions;
 
-use function SwooleTW\Hyperf\Cache\cache;
-use function SwooleTW\Hyperf\Config\config;
+use function LaravelHyperf\Cache\cache;
+use function LaravelHyperf\Config\config;
 
 abstract class EntryController
 {

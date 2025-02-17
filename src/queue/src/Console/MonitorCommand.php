@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Console;
+namespace LaravelHyperf\Queue\Console;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Command\Command;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Queue\Contracts\Factory;
+use LaravelHyperf\Queue\Events\QueueBusy;
+use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Queue\Contracts\Factory;
-use SwooleTW\Hyperf\Queue\Events\QueueBusy;
-use SwooleTW\Hyperf\Support\Traits\HasLaravelStyleCommand;
 
 class MonitorCommand extends Command
 {

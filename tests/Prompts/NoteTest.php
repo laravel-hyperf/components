@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Prompts;
+namespace LaravelHyperf\Tests\Prompts;
 
+use LaravelHyperf\Prompts\Prompt;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Prompts\Prompt;
 
-use function SwooleTW\Hyperf\Prompts\note;
+use function LaravelHyperf\Prompts\note;
 
 /**
  * @backupStaticProperties enabled

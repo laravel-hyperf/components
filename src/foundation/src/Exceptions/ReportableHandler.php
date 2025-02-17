@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Exceptions;
+namespace LaravelHyperf\Foundation\Exceptions;
 
-use SwooleTW\Hyperf\Support\Traits\ReflectsClosures;
+use LaravelHyperf\Support\Traits\ReflectsClosures;
 use Throwable;
 
 class ReportableHandler

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Events;
+namespace LaravelHyperf\Notifications\Events;
 
-use SwooleTW\Hyperf\Notifications\Notification;
+use LaravelHyperf\Notifications\Notification;
 
 class NotificationSent
 {

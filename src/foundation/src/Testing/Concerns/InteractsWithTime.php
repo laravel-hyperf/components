@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Concerns;
+namespace LaravelHyperf\Foundation\Testing\Concerns;
 
 use Carbon\Carbon;
 use Closure;
 use DateTimeInterface;
-use SwooleTW\Hyperf\Foundation\Testing\Wormhole;
+use LaravelHyperf\Foundation\Testing\Wormhole;
 
 trait InteractsWithTime
 {

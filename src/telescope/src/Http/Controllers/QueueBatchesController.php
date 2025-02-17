@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
 use Hyperf\Collection\Collection;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\EntryUpdate;
-use SwooleTW\Hyperf\Telescope\Storage\EntryQueryOptions;
-use SwooleTW\Hyperf\Telescope\Watchers\BatchWatcher;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\EntryUpdate;
+use LaravelHyperf\Telescope\Storage\EntryQueryOptions;
+use LaravelHyperf\Telescope\Watchers\BatchWatcher;
 
 class QueueBatchesController extends EntryController
 {

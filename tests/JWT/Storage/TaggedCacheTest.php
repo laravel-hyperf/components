@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Storage;
+namespace LaravelHyperf\Tests\JWT\Storage;
 
+use LaravelHyperf\Cache\Contracts\Repository as CacheRepository;
+use LaravelHyperf\JWT\Storage\TaggedCache;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Repository as CacheRepository;
-use SwooleTW\Hyperf\JWT\Storage\TaggedCache;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

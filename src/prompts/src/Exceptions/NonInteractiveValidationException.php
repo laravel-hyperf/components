@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Exceptions;
+namespace LaravelHyperf\Prompts\Exceptions;
 
 use RuntimeException;
 

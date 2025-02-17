@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Support;
+namespace LaravelHyperf\Foundation\Support;
 
 use Composer\Autoload\ClassLoader;
 use Hyperf\Collection\Collection;

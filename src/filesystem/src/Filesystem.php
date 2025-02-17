@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
 use Hyperf\Support\Filesystem\Filesystem as HyperfFilesystem;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT\Contracts;
+namespace LaravelHyperf\JWT\Contracts;
 
 interface BlacklistContract
 {

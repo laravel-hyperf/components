@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Config;
+namespace LaravelHyperf\Config;
 
 use Hyperf\Contract\ConfigInterface;
-use SwooleTW\Hyperf\Config\Contracts\Repository as ConfigContract;
+use LaravelHyperf\Config\Contracts\Repository as ConfigContract;
 
 class ConfigProvider
 {

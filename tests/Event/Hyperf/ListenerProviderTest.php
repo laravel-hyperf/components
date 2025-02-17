@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Event\Hyperf;
+namespace LaravelHyperf\Tests\Event\Hyperf;
 
-use SwooleTW\Hyperf\Event\ListenerProvider;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Event\Alpha;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Event\Beta;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Listener\AlphaListener;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\Event\ListenerProvider;
+use LaravelHyperf\Tests\Event\Hyperf\Event\Alpha;
+use LaravelHyperf\Tests\Event\Hyperf\Event\Beta;
+use LaravelHyperf\Tests\Event\Hyperf\Listener\AlphaListener;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

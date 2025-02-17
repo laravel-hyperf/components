@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope;
+namespace LaravelHyperf\Telescope;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Model;
 use Illuminate\Events\CallQueuedListener as IlluminateCallQueuedListener;
+use LaravelHyperf\Broadcasting\BroadcastEvent;
+use LaravelHyperf\Event\CallQueuedListener;
+use LaravelHyperf\Mail\SendQueuedMailable;
+use LaravelHyperf\Notifications\SendQueuedNotifications;
 use ReflectionClass;
 use ReflectionException;
 use stdClass;
-use SwooleTW\Hyperf\Broadcasting\BroadcastEvent;
-use SwooleTW\Hyperf\Event\CallQueuedListener;
-use SwooleTW\Hyperf\Mail\SendQueuedMailable;
-use SwooleTW\Hyperf\Notifications\SendQueuedNotifications;
 
 class ExtractTags
 {

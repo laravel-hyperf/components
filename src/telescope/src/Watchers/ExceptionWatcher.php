@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
+use LaravelHyperf\Log\Events\MessageLogged;
+use LaravelHyperf\Telescope\ExceptionContext;
+use LaravelHyperf\Telescope\ExtractTags;
+use LaravelHyperf\Telescope\IncomingExceptionEntry;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Log\Events\MessageLogged;
-use SwooleTW\Hyperf\Telescope\ExceptionContext;
-use SwooleTW\Hyperf\Telescope\ExtractTags;
-use SwooleTW\Hyperf\Telescope\IncomingExceptionEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
 use Throwable;
 
 class ExceptionWatcher extends Watcher

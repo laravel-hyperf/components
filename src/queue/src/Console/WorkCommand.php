@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Console;
+namespace LaravelHyperf\Queue\Console;
 
 use Hyperf\Command\Command;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Events\JobFailed;
+use LaravelHyperf\Queue\Events\JobProcessed;
+use LaravelHyperf\Queue\Events\JobProcessing;
+use LaravelHyperf\Queue\Events\JobReleasedAfterException;
+use LaravelHyperf\Queue\Failed\FailedJobProviderInterface;
+use LaravelHyperf\Queue\Worker;
+use LaravelHyperf\Queue\WorkerOptions;
+use LaravelHyperf\Support\Carbon;
+use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
+use LaravelHyperf\Support\Traits\InteractsWithTime;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
-use SwooleTW\Hyperf\Queue\Events\JobFailed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessing;
-use SwooleTW\Hyperf\Queue\Events\JobReleasedAfterException;
-use SwooleTW\Hyperf\Queue\Failed\FailedJobProviderInterface;
-use SwooleTW\Hyperf\Queue\Worker;
-use SwooleTW\Hyperf\Queue\WorkerOptions;
-use SwooleTW\Hyperf\Support\Carbon;
-use SwooleTW\Hyperf\Support\Traits\HasLaravelStyleCommand;
-use SwooleTW\Hyperf\Support\Traits\InteractsWithTime;
 use Throwable;
 
 class WorkCommand extends Command

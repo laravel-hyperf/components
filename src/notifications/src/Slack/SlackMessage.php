@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Slack;
+namespace LaravelHyperf\Notifications\Slack;
 
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Conditionable\Conditionable;
 use Hyperf\Contract\Arrayable;
 use JsonException;
+use LaravelHyperf\Notifications\Contracts\Slack\BlockContract;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\ActionsBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\ContextBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\DividerBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\HeaderBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\ImageBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\SectionBlock;
 use LogicException;
-use SwooleTW\Hyperf\Notifications\Contracts\Slack\BlockContract;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\ActionsBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\ContextBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\DividerBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\HeaderBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\ImageBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\SectionBlock;
 
 class SlackMessage implements Arrayable
 {

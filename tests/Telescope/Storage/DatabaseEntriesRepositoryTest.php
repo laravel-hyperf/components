@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Storage;
+namespace LaravelHyperf\Tests\Telescope\Storage;
 
-use SwooleTW\Hyperf\Telescope\EntryUpdate;
-use SwooleTW\Hyperf\Telescope\Storage\DatabaseEntriesRepository;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
+use LaravelHyperf\Telescope\EntryUpdate;
+use LaravelHyperf\Telescope\Storage\DatabaseEntriesRepository;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

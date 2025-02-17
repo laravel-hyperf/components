@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Storage;
+namespace LaravelHyperf\Telescope\Storage;
 
-use SwooleTW\Hyperf\Http\Request;
+use LaravelHyperf\Http\Request;
 
 class EntryQueryOptions
 {

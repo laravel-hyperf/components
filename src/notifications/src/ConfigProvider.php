@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications;
+namespace LaravelHyperf\Notifications;
 
-use SwooleTW\Hyperf\Notifications\Contracts\Dispatcher as NotificationDispatcher;
+use LaravelHyperf\Notifications\Contracts\Dispatcher as NotificationDispatcher;
 
 class ConfigProvider
 {

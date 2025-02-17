@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Dispatcher;
+namespace LaravelHyperf\Tests\Dispatcher;
 
 use Hyperf\Context\Context;
+use LaravelHyperf\Dispatcher\AdaptedRequestHandler;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use SwooleTW\Hyperf\Dispatcher\AdaptedRequestHandler;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

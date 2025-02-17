@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Config\Contracts;
+namespace LaravelHyperf\Config\Contracts;
 
 use Closure;
 use Hyperf\Contract\ConfigInterface;

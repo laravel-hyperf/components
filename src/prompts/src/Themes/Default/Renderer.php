@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\Concerns\Colors;
-use SwooleTW\Hyperf\Prompts\Concerns\Truncation;
-use SwooleTW\Hyperf\Prompts\Prompt;
+use LaravelHyperf\Prompts\Concerns\Colors;
+use LaravelHyperf\Prompts\Concerns\Truncation;
+use LaravelHyperf\Prompts\Prompt;
 
 abstract class Renderer
 {

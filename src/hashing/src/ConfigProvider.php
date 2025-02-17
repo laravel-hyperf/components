@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Hashing;
+namespace LaravelHyperf\Hashing;
 
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher;
+use LaravelHyperf\Hashing\Contracts\Hasher;
 
 class ConfigProvider
 {

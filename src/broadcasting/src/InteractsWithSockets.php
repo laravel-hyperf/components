@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
-use SwooleTW\Hyperf\Support\Facades\Broadcast;
+use LaravelHyperf\Support\Facades\Broadcast;
 
 trait InteractsWithSockets
 {

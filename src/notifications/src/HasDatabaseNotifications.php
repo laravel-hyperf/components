@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications;
+namespace LaravelHyperf\Notifications;
 
 use Hyperf\Database\Model\Relations\MorphMany;
 use Hyperf\Database\Query\Builder;

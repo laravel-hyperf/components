@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Connectors;
+namespace LaravelHyperf\Queue\Connectors;
 
+use LaravelHyperf\Queue\BeanstalkdQueue;
+use LaravelHyperf\Queue\Contracts\Queue;
 use Pheanstalk\Contract\SocketFactoryInterface;
 use Pheanstalk\Pheanstalk;
 use Pheanstalk\Values\Timeout;
-use SwooleTW\Hyperf\Queue\BeanstalkdQueue;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
 
 class BeanstalkdConnector implements ConnectorInterface
 {

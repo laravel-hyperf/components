@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT;
+namespace LaravelHyperf\JWT;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\JWT\Contracts\BlacklistContract;
+use LaravelHyperf\JWT\Contracts\ManagerContract;
+use LaravelHyperf\JWT\Contracts\ValidationContract;
+use LaravelHyperf\JWT\Exceptions\JWTException;
+use LaravelHyperf\JWT\Exceptions\TokenBlacklistedException;
+use LaravelHyperf\JWT\Providers\Lcobucci;
+use LaravelHyperf\Support\Manager;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\JWT\Contracts\BlacklistContract;
-use SwooleTW\Hyperf\JWT\Contracts\ManagerContract;
-use SwooleTW\Hyperf\JWT\Contracts\ValidationContract;
-use SwooleTW\Hyperf\JWT\Exceptions\JWTException;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenBlacklistedException;
-use SwooleTW\Hyperf\JWT\Providers\Lcobucci;
-use SwooleTW\Hyperf\Support\Manager;
 
 class JWTManager extends Manager implements ManagerContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Router;
+namespace LaravelHyperf\Router;
 
 use Hyperf\Context\ApplicationContext;
 use InvalidArgumentException;

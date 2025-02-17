@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting\Broadcasters;
+namespace LaravelHyperf\Broadcasting\Broadcasters;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use LaravelHyperf\Broadcasting\BroadcastException;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 use Psr\Container\ContainerInterface;
 use Pusher\ApiErrorException;
 use Pusher\Pusher;
-use SwooleTW\Hyperf\Broadcasting\BroadcastException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 
 class PusherBroadcaster extends Broadcaster
 {

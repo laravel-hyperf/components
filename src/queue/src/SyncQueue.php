@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use DateInterval;
 use DateTimeInterface;
+use LaravelHyperf\Database\TransactionManager;
+use LaravelHyperf\Queue\Contracts\Job as JobContract;
+use LaravelHyperf\Queue\Contracts\Queue as QueueContract;
+use LaravelHyperf\Queue\Events\JobExceptionOccurred;
+use LaravelHyperf\Queue\Events\JobProcessed;
+use LaravelHyperf\Queue\Events\JobProcessing;
+use LaravelHyperf\Queue\Jobs\SyncJob;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Database\TransactionManager;
-use SwooleTW\Hyperf\Queue\Contracts\Job as JobContract;
-use SwooleTW\Hyperf\Queue\Contracts\Queue as QueueContract;
-use SwooleTW\Hyperf\Queue\Events\JobExceptionOccurred;
-use SwooleTW\Hyperf\Queue\Events\JobProcessed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessing;
-use SwooleTW\Hyperf\Queue\Jobs\SyncJob;
 use Throwable;
 
 class SyncQueue extends Queue implements QueueContract

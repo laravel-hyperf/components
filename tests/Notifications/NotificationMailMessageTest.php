@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
+use LaravelHyperf\Mail\Attachment;
+use LaravelHyperf\Mail\Contracts\Attachable;
+use LaravelHyperf\Notifications\Messages\MailMessage;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Mail\Attachment;
-use SwooleTW\Hyperf\Mail\Contracts\Attachable;
-use SwooleTW\Hyperf\Notifications\Messages\MailMessage;
 
 /**
  * @internal

@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Exception;
+use LaravelHyperf\Queue\Events\JobFailed;
+use LaravelHyperf\Queue\Jobs\BeanstalkdJob;
 use Mockery as m;
 use Pheanstalk\Contract\JobIdInterface;
 use Pheanstalk\Contract\PheanstalkManagerInterface;
@@ -15,8 +17,6 @@ use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use stdClass;
-use SwooleTW\Hyperf\Queue\Events\JobFailed;
-use SwooleTW\Hyperf\Queue\Jobs\BeanstalkdJob;
 
 /**
  * @internal

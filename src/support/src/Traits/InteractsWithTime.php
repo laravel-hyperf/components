@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Traits;
+namespace LaravelHyperf\Support\Traits;
 
 use Carbon\CarbonInterval;
 use DateInterval;
 use DateTimeInterface;
-use SwooleTW\Hyperf\Support\Carbon;
+use LaravelHyperf\Support\Carbon;
 
 trait InteractsWithTime
 {

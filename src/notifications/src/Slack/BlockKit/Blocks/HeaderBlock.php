@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks;
+namespace LaravelHyperf\Notifications\Slack\BlockKit\Blocks;
 
 use Closure;
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Notifications\Contracts\Slack\BlockContract;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Composites\PlainTextOnlyTextObject;
+use LaravelHyperf\Notifications\Contracts\Slack\BlockContract;
+use LaravelHyperf\Notifications\Slack\BlockKit\Composites\PlainTextOnlyTextObject;
 
 class HeaderBlock implements BlockContract
 {

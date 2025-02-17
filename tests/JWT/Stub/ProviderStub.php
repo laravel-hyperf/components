@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Stub;
+namespace LaravelHyperf\Tests\JWT\Stub;
 
-use SwooleTW\Hyperf\JWT\Providers\Provider;
+use LaravelHyperf\JWT\Providers\Provider;
 
 class ProviderStub extends Provider
 {

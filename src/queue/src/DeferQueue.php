@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use Hyperf\Engine\Coroutine;
-use SwooleTW\Hyperf\Database\TransactionManager;
+use LaravelHyperf\Database\TransactionManager;
 use Throwable;
 
 class DeferQueue extends SyncQueue

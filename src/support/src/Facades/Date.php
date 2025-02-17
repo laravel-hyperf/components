@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Support\DateFactory;
+use LaravelHyperf\Support\DateFactory;
 
 /**
  * @see https://carbon.nesbot.com/docs/
@@ -15,20 +15,20 @@ use SwooleTW\Hyperf\Support\DateFactory;
  * @method static void useCallable(callable $callable)
  * @method static void useClass(string $dateClass)
  * @method static void useFactory(object $factory)
- * @method static \SwooleTW\Hyperf\Support\Carbon create($year = 0, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon createFromDate($year = null, $month = null, $day = null, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon|false createFromFormat($format, $time, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon createFromTime($hour = 0, $minute = 0, $second = 0, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon createFromTimeString($time, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon createFromTimestamp($timestamp, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon createFromTimestampMs($timestamp, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon createFromTimestampUTC($timestamp)
- * @method static \SwooleTW\Hyperf\Support\Carbon createMidnightDate($year = null, $month = null, $day = null, $tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon|false createSafe($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon create($year = 0, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon createFromDate($year = null, $month = null, $day = null, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon|false createFromFormat($format, $time, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon createFromTime($hour = 0, $minute = 0, $second = 0, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon createFromTimeString($time, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon createFromTimestamp($timestamp, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon createFromTimestampMs($timestamp, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon createFromTimestampUTC($timestamp)
+ * @method static \LaravelHyperf\Support\Carbon createMidnightDate($year = null, $month = null, $day = null, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon|false createSafe($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
  * @method static void disableHumanDiffOption($humanDiffOption)
  * @method static void enableHumanDiffOption($humanDiffOption)
  * @method static mixed executeWithLocale($locale, $func)
- * @method static \SwooleTW\Hyperf\Support\Carbon fromSerialized($value)
+ * @method static \LaravelHyperf\Support\Carbon fromSerialized($value)
  * @method static array getAvailableLocales()
  * @method static array getDays()
  * @method static int getHumanDiffOptions()
@@ -36,7 +36,7 @@ use SwooleTW\Hyperf\Support\DateFactory;
  * @method static array getLastErrors()
  * @method static string getLocale()
  * @method static int getMidDayAt()
- * @method static \SwooleTW\Hyperf\Support\Carbon|null getTestNow()
+ * @method static \LaravelHyperf\Support\Carbon|null getTestNow()
  * @method static \Symfony\Component\Translation\TranslatorInterface getTranslator()
  * @method static int getWeekEndsAt()
  * @method static int getWeekStartsAt()
@@ -45,7 +45,7 @@ use SwooleTW\Hyperf\Support\DateFactory;
  * @method static bool hasMacro($name)
  * @method static bool hasRelativeKeywords($time)
  * @method static bool hasTestNow()
- * @method static \SwooleTW\Hyperf\Support\Carbon instance($date)
+ * @method static \LaravelHyperf\Support\Carbon instance($date)
  * @method static bool isImmutable()
  * @method static bool isModifiableUnit($unit)
  * @method static bool isMutable()
@@ -56,12 +56,12 @@ use SwooleTW\Hyperf\Support\DateFactory;
  * @method static bool localeHasPeriodSyntax($locale)
  * @method static bool localeHasShortUnits($locale)
  * @method static void macro($name, $macro)
- * @method static \SwooleTW\Hyperf\Support\Carbon|null make($var)
- * @method static \SwooleTW\Hyperf\Support\Carbon maxValue()
- * @method static \SwooleTW\Hyperf\Support\Carbon minValue()
+ * @method static \LaravelHyperf\Support\Carbon|null make($var)
+ * @method static \LaravelHyperf\Support\Carbon maxValue()
+ * @method static \LaravelHyperf\Support\Carbon minValue()
  * @method static void mixin($mixin)
- * @method static \SwooleTW\Hyperf\Support\Carbon now($tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon parse($time = null, $tz = null)
+ * @method static \LaravelHyperf\Support\Carbon now($tz = null)
+ * @method static \LaravelHyperf\Support\Carbon parse($time = null, $tz = null)
  * @method static string pluralUnit(string $unit)
  * @method static void resetMonthsOverflow()
  * @method static void resetToStringFormat()
@@ -80,14 +80,14 @@ use SwooleTW\Hyperf\Support\DateFactory;
  * @method static bool shouldOverflowMonths()
  * @method static bool shouldOverflowYears()
  * @method static string singularUnit(string $unit)
- * @method static \SwooleTW\Hyperf\Support\Carbon today($tz = null)
- * @method static \SwooleTW\Hyperf\Support\Carbon tomorrow($tz = null)
+ * @method static \LaravelHyperf\Support\Carbon today($tz = null)
+ * @method static \LaravelHyperf\Support\Carbon tomorrow($tz = null)
  * @method static void useMonthsOverflow($monthsOverflow = true)
  * @method static void useStrictMode($strictModeEnabled = true)
  * @method static void useYearsOverflow($yearsOverflow = true)
- * @method static \SwooleTW\Hyperf\Support\Carbon yesterday($tz = null)
+ * @method static \LaravelHyperf\Support\Carbon yesterday($tz = null)
  *
- * @see \SwooleTW\Hyperf\Support\DateFactory
+ * @see \LaravelHyperf\Support\DateFactory
  */
 class Date extends Facade
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Session;
+namespace LaravelHyperf\Tests\Session;
 
 use Carbon\Carbon;
+use LaravelHyperf\Session\ArraySessionHandler;
+use LaravelHyperf\Tests\TestCase;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Session\ArraySessionHandler;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

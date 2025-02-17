@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus\Contracts;
+namespace LaravelHyperf\Bus\Contracts;
 
 use Closure;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\PendingBatch;
-use SwooleTW\Hyperf\Bus\UpdatedBatchJobCounts;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\PendingBatch;
+use LaravelHyperf\Bus\UpdatedBatchJobCounts;
 
 interface BatchRepository
 {

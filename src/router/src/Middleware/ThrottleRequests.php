@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Router\Middleware;
+namespace LaravelHyperf\Router\Middleware;
 
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Support\Traits\InteractsWithTime;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Cache\Exceptions\InvalidArgumentException;
+use LaravelHyperf\Cache\RateLimiter;
+use LaravelHyperf\Cache\RateLimiting\Unlimited;
+use LaravelHyperf\HttpMessage\Exceptions\HttpResponseException;
+use LaravelHyperf\HttpMessage\Exceptions\ThrottleRequestsException;
+use LaravelHyperf\Support\Facades\Auth;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Cache\Exceptions\InvalidArgumentException;
-use SwooleTW\Hyperf\Cache\RateLimiter;
-use SwooleTW\Hyperf\Cache\RateLimiting\Unlimited;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpResponseException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\ThrottleRequestsException;
-use SwooleTW\Hyperf\Support\Facades\Auth;
 
 class ThrottleRequests implements MiddlewareInterface
 {

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
 use BadMethodCallException;
 use Closure;
 use DateInterval;
 use DateTimeInterface;
 use Hyperf\Collection\Collection;
+use LaravelHyperf\Queue\CallQueuedClosure;
+use LaravelHyperf\Queue\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\QueueManager;
+use LaravelHyperf\Support\Traits\ReflectsClosures;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Queue\CallQueuedClosure;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\QueueManager;
-use SwooleTW\Hyperf\Support\Traits\ReflectsClosures;
 
 class QueueFake extends QueueManager implements Fake, Queue
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use BackedEnum;
 use Closure;
@@ -11,11 +11,11 @@ use DateTimeInterface;
 use Hyperf\Conditionable\Conditionable;
 use Hyperf\Context\ApplicationContext;
 use Laravel\SerializableClosure\SerializableClosure;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Queue\CallQueuedClosure;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Queue\CallQueuedClosure;
 
 use function Hyperf\Support\value;
-use function SwooleTW\Hyperf\Support\enum_value;
+use function LaravelHyperf\Support\enum_value;
 
 class PendingChain
 {

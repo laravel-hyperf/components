@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\JWT\Contracts\ManagerContract;
-use SwooleTW\Hyperf\JWT\JWTManager;
-use SwooleTW\Hyperf\JWT\Providers\Lcobucci;
+use LaravelHyperf\JWT\Contracts\ManagerContract;
+use LaravelHyperf\JWT\JWTManager;
+use LaravelHyperf\JWT\Providers\Lcobucci;
 
 /**
  * @method static string encode(array $payload)

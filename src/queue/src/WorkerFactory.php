@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
+use LaravelHyperf\Queue\Contracts\Factory as QueueManager;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueManager;
 
 class WorkerFactory
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Builder;
@@ -10,9 +10,9 @@ use Hyperf\Database\Model\Collection as EloquentCollection;
 use Hyperf\Database\Model\Model;
 use Hyperf\Database\Model\Relations\Concerns\AsPivot;
 use Hyperf\Database\Model\Relations\Pivot;
-use SwooleTW\Hyperf\Database\ModelIdentifier;
-use SwooleTW\Hyperf\Queue\Contracts\QueueableCollection;
-use SwooleTW\Hyperf\Queue\Contracts\QueueableEntity;
+use LaravelHyperf\Database\ModelIdentifier;
+use LaravelHyperf\Queue\Contracts\QueueableCollection;
+use LaravelHyperf\Queue\Contracts\QueueableEntity;
 
 trait SerializesAndRestoresModelIdentifiers
 {

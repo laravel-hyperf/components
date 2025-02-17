@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
+use LaravelHyperf\Encryption\Contracts\Encrypter as EncrypterContract;
+use LaravelHyperf\Encryption\Exceptions\DecryptException;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter as EncrypterContract;
-use SwooleTW\Hyperf\Encryption\Exceptions\DecryptException;
 
 class EncryptedStore extends Store
 {

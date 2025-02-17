@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Bootstrap;
+namespace LaravelHyperf\Tests\Foundation\Bootstrap;
 
 use Exception;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Crontab\Crontab;
 use Hyperf\Crontab\CrontabManager;
 use Hyperf\Crontab\Parser;
+use LaravelHyperf\Foundation\Bootstrap\LoadScheduling;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
+use LaravelHyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
+use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Foundation\Bootstrap\LoadScheduling;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
-use SwooleTW\Hyperf\Foundation\Console\Scheduling\Schedule;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

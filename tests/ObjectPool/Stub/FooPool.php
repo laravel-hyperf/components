@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\ObjectPool\Stub;
+namespace LaravelHyperf\Tests\ObjectPool\Stub;
 
+use LaravelHyperf\ObjectPool\ObjectPool;
 use stdClass;
-use SwooleTW\Hyperf\ObjectPool\ObjectPool;
 
 class FooPool extends ObjectPool
 {

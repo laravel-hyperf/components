@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session\Middleware;
+namespace LaravelHyperf\Session\Middleware;
 
 use Carbon\Carbon;
 use DateTimeInterface;
@@ -10,14 +10,14 @@ use Hyperf\Context\Context;
 use Hyperf\Contract\SessionInterface;
 use Hyperf\HttpServer\Request;
 use Hyperf\HttpServer\Router\Dispatched;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactoryContract;
+use LaravelHyperf\Cookie\Cookie;
+use LaravelHyperf\Session\Contracts\Session;
+use LaravelHyperf\Session\SessionManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactoryContract;
-use SwooleTW\Hyperf\Cookie\Cookie;
-use SwooleTW\Hyperf\Session\Contracts\Session;
-use SwooleTW\Hyperf\Session\SessionManager;
 
 class StartSession implements MiddlewareInterface
 {

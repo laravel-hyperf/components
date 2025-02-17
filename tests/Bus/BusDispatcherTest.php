@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Bus;
+namespace LaravelHyperf\Tests\Bus;
 
+use LaravelHyperf\Bus\Dispatcher;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Container\Contracts\Container;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\InteractsWithQueue;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Bus\Dispatcher;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Container\Contracts\Container;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\InteractsWithQueue;
 
 /**
  * @internal

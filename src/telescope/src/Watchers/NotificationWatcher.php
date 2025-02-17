@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Database\Model\Model;
+use LaravelHyperf\Notifications\AnonymousNotifiable;
+use LaravelHyperf\Notifications\Events\NotificationSent;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Telescope\ExtractTags;
+use LaravelHyperf\Telescope\FormatModel;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Notifications\AnonymousNotifiable;
-use SwooleTW\Hyperf\Notifications\Events\NotificationSent;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Telescope\ExtractTags;
-use SwooleTW\Hyperf\Telescope\FormatModel;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
 
 class NotificationWatcher extends Watcher
 {

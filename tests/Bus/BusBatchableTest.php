@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Bus;
+namespace LaravelHyperf\Tests\Bus;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\Batchable;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\Batchable;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
 
 /**
  * @internal

@@ -39,7 +39,7 @@ width: 100% !important;
 <!-- Body content -->
 <tr>
 <td class="content-cell">
-{{ SwooleTW\Hyperf\Mail\Markdown::parse($slot) }}
+{{ LaravelHyperf\Mail\Markdown::parse($slot) }}
 
 {{ $subcopy ?? '' }}
 </td>

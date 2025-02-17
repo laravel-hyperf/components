@@ -2,40 +2,40 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Auth\Access;
+namespace LaravelHyperf\Tests\Auth\Access;
 
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use InvalidArgumentException;
+use LaravelHyperf\Auth\Access\AuthorizationException;
+use LaravelHyperf\Auth\Access\Gate;
+use LaravelHyperf\Auth\Access\Response;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestAuthenticatable;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestBeforeCallback;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestClass;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestClassForGuest;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestCustomResource;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestDummy;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestDummyInterface;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestGuestInvokableClass;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestGuestNullableInvokable;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestInvokableClass;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicy;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyThatAllowsGuests;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyThrowingAuthorizationException;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyWithAllPermissions;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyWithBefore;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyWithCode;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyWithDeniedResponseObject;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyWithMixedPermissions;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyWithNonGuestBefore;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestPolicyWithNoPermissions;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestResource;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestStaticClass;
+use LaravelHyperf\Tests\Auth\Stub\AccessGateTestSubDummy;
+use LaravelHyperf\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
-use SwooleTW\Hyperf\Auth\Access\AuthorizationException;
-use SwooleTW\Hyperf\Auth\Access\Gate;
-use SwooleTW\Hyperf\Auth\Access\Response;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestAuthenticatable;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestBeforeCallback;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestClass;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestClassForGuest;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestCustomResource;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestDummy;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestDummyInterface;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestGuestInvokableClass;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestGuestNullableInvokable;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestInvokableClass;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicy;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyThatAllowsGuests;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyThrowingAuthorizationException;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyWithAllPermissions;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyWithBefore;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyWithCode;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyWithDeniedResponseObject;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyWithMixedPermissions;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyWithNonGuestBefore;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestPolicyWithNoPermissions;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestResource;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestStaticClass;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AccessGateTestSubDummy;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

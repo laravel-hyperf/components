@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\ObjectPool;
+namespace LaravelHyperf\Tests\ObjectPool;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Coroutine\Coroutine;
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
+use LaravelHyperf\Tests\ObjectPool\Stub\FooPool;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 use stdClass;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
-use SwooleTW\Hyperf\Tests\ObjectPool\Stub\FooPool;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

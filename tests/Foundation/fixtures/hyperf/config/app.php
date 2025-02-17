@@ -131,8 +131,8 @@ return [
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     'providers' => [
-        SwooleTW\Hyperf\Foundation\Providers\FoundationServiceProvider::class,
-        SwooleTW\Hyperf\Foundation\Providers\FormRequestServiceProvider::class,
+        LaravelHyperf\Foundation\Providers\FoundationServiceProvider::class,
+        LaravelHyperf\Foundation\Providers\FormRequestServiceProvider::class,
     ],
 
     'aliases' => [],

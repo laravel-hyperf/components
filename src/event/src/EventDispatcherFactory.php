@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Event;
+namespace LaravelHyperf\Event;
 
 use Hyperf\Contract\StdoutLoggerInterface;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactoryContract;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactoryContract;
 
 class EventDispatcherFactory
 {

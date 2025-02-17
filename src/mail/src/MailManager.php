@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
 use Aws\Ses\SesClient;
 use Aws\SesV2\SesV2Client;
@@ -12,19 +12,19 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Stringable\Str;
 use Hyperf\ViewEngine\Contract\FactoryInterface;
 use InvalidArgumentException;
+use LaravelHyperf\Log\LogManager;
+use LaravelHyperf\Mail\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Mail\Contracts\Mailer as MailerContract;
+use LaravelHyperf\Mail\Transport\ArrayTransport;
+use LaravelHyperf\Mail\Transport\LogTransport;
+use LaravelHyperf\Mail\Transport\SesTransport;
+use LaravelHyperf\Mail\Transport\SesV2Transport;
+use LaravelHyperf\ObjectPool\Traits\HasPoolProxy;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactory;
+use LaravelHyperf\Support\ConfigurationUrlParser;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
-use SwooleTW\Hyperf\Log\LogManager;
-use SwooleTW\Hyperf\Mail\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Mail\Contracts\Mailer as MailerContract;
-use SwooleTW\Hyperf\Mail\Transport\ArrayTransport;
-use SwooleTW\Hyperf\Mail\Transport\LogTransport;
-use SwooleTW\Hyperf\Mail\Transport\SesTransport;
-use SwooleTW\Hyperf\Mail\Transport\SesV2Transport;
-use SwooleTW\Hyperf\ObjectPool\Traits\HasPoolProxy;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactory;
-use SwooleTW\Hyperf\Support\ConfigurationUrlParser;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Mailer\Bridge\Mailgun\Transport\MailgunTransportFactory;
 use Symfony\Component\Mailer\Bridge\Postmark\Transport\PostmarkTransportFactory;

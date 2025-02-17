@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Database\Query\Builder;
 use Hyperf\Di\Container;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Queue\DatabaseQueue;
+use LaravelHyperf\Queue\Queue;
 use Mockery as m;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -18,8 +20,6 @@ use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidFactoryInterface;
 use ReflectionClass;
 use stdClass;
-use SwooleTW\Hyperf\Queue\DatabaseQueue;
-use SwooleTW\Hyperf\Queue\Queue;
 
 /**
  * @internal

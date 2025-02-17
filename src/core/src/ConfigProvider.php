@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf;
+namespace LaravelHyperf;
 
 use Hyperf\Command\Concerns\Confirmable;
 use Hyperf\Database\Commands\Migrations\BaseCommand as MigrationBaseCommand;
@@ -18,9 +18,9 @@ use Hyperf\Database\Commands\Seeders\SeedCommand;
 use Hyperf\Database\Migrations\Migration;
 use Hyperf\Database\Migrations\MigrationCreator as HyperfMigrationCreator;
 use Hyperf\Database\Model\Factory as HyperfDatabaseFactory;
-use SwooleTW\Hyperf\Database\Eloquent\Factories\FactoryInvoker as DatabaseFactoryInvoker;
-use SwooleTW\Hyperf\Database\Migrations\MigrationCreator;
-use SwooleTW\Hyperf\Database\TransactionListener;
+use LaravelHyperf\Database\Eloquent\Factories\FactoryInvoker as DatabaseFactoryInvoker;
+use LaravelHyperf\Database\Migrations\MigrationCreator;
+use LaravelHyperf\Database\TransactionListener;
 
 class ConfigProvider
 {

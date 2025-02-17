@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-use SwooleTW\Hyperf\Router\Router;
+use LaravelHyperf\Router\Router;
 
 Router::get('/bar', 'Handler::Bar');

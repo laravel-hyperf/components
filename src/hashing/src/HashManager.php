@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Hashing;
+namespace LaravelHyperf\Hashing;
 
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher;
-use SwooleTW\Hyperf\Support\Manager;
+use LaravelHyperf\Hashing\Contracts\Hasher;
+use LaravelHyperf\Support\Manager;
 
 /**
- * @mixin \SwooleTW\Hyperf\Hashing\Contracts\Hasher
+ * @mixin \LaravelHyperf\Hashing\Contracts\Hasher
  */
 class HashManager extends Manager implements Hasher
 {

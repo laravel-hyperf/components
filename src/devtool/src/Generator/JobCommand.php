@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Devtool\Generator;
+namespace LaravelHyperf\Devtool\Generator;
 
 use Hyperf\Devtool\Generator\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;

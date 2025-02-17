@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Support\HtmlString;
 use RuntimeException;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
-use SwooleTW\Hyperf\Support\HtmlString;
 
 /**
  * Get / set the specified session value.

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Closure;
+use LaravelHyperf\Auth\AuthManager;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Auth\Contracts\StatefulGuard;
+use LaravelHyperf\Auth\Contracts\UserProvider;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Auth\AuthManager;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
-use SwooleTW\Hyperf\Auth\Contracts\StatefulGuard;
-use SwooleTW\Hyperf\Auth\Contracts\UserProvider;
 
 /**
  * @method static Guard|StatefulGuard guard(string $name = null)

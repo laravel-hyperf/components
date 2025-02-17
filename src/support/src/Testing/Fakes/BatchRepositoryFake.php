@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
 use Carbon\CarbonImmutable;
 use Closure;
 use Hyperf\Stringable\Str;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Bus\PendingBatch;
-use SwooleTW\Hyperf\Bus\UpdatedBatchJobCounts;
-use SwooleTW\Hyperf\Support\Carbon;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Bus\PendingBatch;
+use LaravelHyperf\Bus\UpdatedBatchJobCounts;
+use LaravelHyperf\Support\Carbon;
 
 class BatchRepositoryFake implements BatchRepository
 {
     /**
      * The batches stored in the repository.
      *
-     * @var \SwooleTW\Hyperf\Bus\Batch[]
+     * @var \LaravelHyperf\Bus\Batch[]
      */
     protected array $batches = [];
 
     /**
      * Retrieve a list of batches.
      *
-     * @return \SwooleTW\Hyperf\Bus\Batch[]
+     * @return \LaravelHyperf\Bus\Batch[]
      */
     public function get(int $limit, mixed $before): array
     {

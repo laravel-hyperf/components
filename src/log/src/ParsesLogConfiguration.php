@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Log;
+namespace LaravelHyperf\Log;
 
 use InvalidArgumentException;
 use Monolog\Logger as Monolog;

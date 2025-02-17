@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Broadcasting;
+namespace LaravelHyperf\Tests\Broadcasting;
 
 use Ably\AblyRest;
 use Hyperf\HttpServer\Request;
+use LaravelHyperf\Auth\AuthManager;
+use LaravelHyperf\Broadcasting\Broadcasters\AblyBroadcaster;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Auth\AuthManager;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\AblyBroadcaster;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 
 /**
  * @internal

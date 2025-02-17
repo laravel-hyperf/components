@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Concerns;
+namespace LaravelHyperf\Foundation\Testing\Concerns;
 
 use Exception;
 use Hyperf\Database\Model\Register;
+use LaravelHyperf\Support\Facades\Event;
 use Mockery;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Support\Facades\Event;
 
 trait MocksApplicationServices
 {

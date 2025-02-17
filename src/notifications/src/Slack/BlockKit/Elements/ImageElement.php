@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Slack\BlockKit\Elements;
+namespace LaravelHyperf\Notifications\Slack\BlockKit\Elements;
 
+use LaravelHyperf\Notifications\Contracts\Slack\ElementContract;
 use LogicException;
-use SwooleTW\Hyperf\Notifications\Contracts\Slack\ElementContract;
 
 class ImageElement implements ElementContract
 {

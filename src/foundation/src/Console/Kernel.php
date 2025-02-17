@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console;
+namespace LaravelHyperf\Foundation\Console;
 
 use Closure;
 use Exception;
@@ -15,12 +15,12 @@ use Hyperf\Di\Annotation\AnnotationCollector;
 use Hyperf\Di\ReflectionManager;
 use Hyperf\Framework\Event\BootApplication;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Foundation\Console\Application as ConsoleApplication;
+use LaravelHyperf\Foundation\Console\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
+use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
+use LaravelHyperf\Foundation\Contracts\Application as ContainerContract;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Foundation\Console\Application as ConsoleApplication;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use SwooleTW\Hyperf\Foundation\Console\Scheduling\Schedule;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ContainerContract;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -65,16 +65,16 @@ class Kernel implements KernelContract
      * The console application bootstrappers.
      */
     protected array $bootstrappers = [
-        \SwooleTW\Hyperf\Foundation\Bootstrap\RegisterFacades::class,
-        \SwooleTW\Hyperf\Foundation\Bootstrap\RegisterProviders::class,
-        \SwooleTW\Hyperf\Foundation\Bootstrap\BootProviders::class,
+        \LaravelHyperf\Foundation\Bootstrap\RegisterFacades::class,
+        \LaravelHyperf\Foundation\Bootstrap\RegisterProviders::class,
+        \LaravelHyperf\Foundation\Bootstrap\BootProviders::class,
     ];
 
     /**
      * Bootstrappers that being bootstrapped after commands being loaded.
      */
     protected array $afterBootstrappers = [
-        \SwooleTW\Hyperf\Foundation\Bootstrap\LoadScheduling::class,
+        \LaravelHyperf\Foundation\Bootstrap\LoadScheduling::class,
     ];
 
     public function __construct(

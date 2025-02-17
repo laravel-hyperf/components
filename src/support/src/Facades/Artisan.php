@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Closure;
 use Hyperf\Command\ClosureCommand;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use SwooleTW\Hyperf\Foundation\Console\Scheduling\Schedule;
+use LaravelHyperf\Foundation\Console\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
+use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Database\Schema;
+namespace LaravelHyperf\Database\Schema;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Database\ConnectionResolverInterface;

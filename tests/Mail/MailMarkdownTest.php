@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Mail;
+namespace LaravelHyperf\Tests\Mail;
 
 use Hyperf\ViewEngine\Contract\FactoryInterface as ViewFactory;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\Mail\Markdown;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Mail\Markdown;
 
 /**
  * @internal

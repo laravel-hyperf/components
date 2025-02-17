@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Log\Adapter;
+namespace LaravelHyperf\Log\Adapter;
 
 use Hyperf\Logger\LoggerFactory;
 use Psr\Log\LoggerInterface;

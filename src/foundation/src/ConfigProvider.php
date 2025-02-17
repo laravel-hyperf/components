@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation;
+namespace LaravelHyperf\Foundation;
 
 use Hyperf\Contract\ApplicationInterface;
 use Hyperf\Coordinator\Listener\ResumeExitCoordinatorListener;
 use Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler;
-use SwooleTW\Hyperf\Foundation\Console\ApplicationFactory;
-use SwooleTW\Hyperf\Foundation\Console\Commands\ServerReloadCommand;
-use SwooleTW\Hyperf\Foundation\Console\Commands\VendorPublishCommand;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
-use SwooleTW\Hyperf\Foundation\Console\Scheduling\Schedule;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
-use SwooleTW\Hyperf\Foundation\Exceptions\Handler as ExceptionHandler;
-use SwooleTW\Hyperf\Foundation\Listeners\ReloadDotenvAndConfig;
+use LaravelHyperf\Foundation\Console\ApplicationFactory;
+use LaravelHyperf\Foundation\Console\Commands\ServerReloadCommand;
+use LaravelHyperf\Foundation\Console\Commands\VendorPublishCommand;
+use LaravelHyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
+use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
+use LaravelHyperf\Foundation\Exceptions\Handler as ExceptionHandler;
+use LaravelHyperf\Foundation\Listeners\ReloadDotenvAndConfig;
 
 class ConfigProvider
 {

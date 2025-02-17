@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
 use Hyperf\Stringable\Str;
 use Hyperf\ViewEngine\Contract\FactoryInterface;
+use LaravelHyperf\Support\HtmlString;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\MarkdownConverter;
-use SwooleTW\Hyperf\Support\HtmlString;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class Markdown

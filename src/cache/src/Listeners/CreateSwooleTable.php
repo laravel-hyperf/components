@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache\Listeners;
+namespace LaravelHyperf\Cache\Listeners;
 
 use Hyperf\Framework\Event\BeforeServerStart;
-use SwooleTW\Hyperf\Cache\SwooleTableManager;
+use LaravelHyperf\Cache\SwooleTableManager;
 
 class CreateSwooleTable extends BaseListener
 {

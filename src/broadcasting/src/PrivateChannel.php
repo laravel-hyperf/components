@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
-use SwooleTW\Hyperf\Broadcasting\Contracts\HasBroadcastChannel;
+use LaravelHyperf\Broadcasting\Contracts\HasBroadcastChannel;
 
 class PrivateChannel extends Channel
 {

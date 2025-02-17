@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use Closure;
 use Hyperf\Collection\Collection;
 use Hyperf\Coroutine\Coroutine;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Bus\Contracts\QueueingDispatcher;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\InteractsWithQueue;
+use LaravelHyperf\Queue\Jobs\SyncJob;
+use LaravelHyperf\Support\Pipeline;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Bus\Contracts\QueueingDispatcher;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\InteractsWithQueue;
-use SwooleTW\Hyperf\Queue\Jobs\SyncJob;
-use SwooleTW\Hyperf\Support\Pipeline;
 
 class Dispatcher implements QueueingDispatcher
 {

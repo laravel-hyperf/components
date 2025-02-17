@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use DateInterval;
 use DateTimeInterface;
@@ -10,26 +10,26 @@ use Exception;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
+use LaravelHyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Contracts\Job as QueueJobContract;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\Events\JobExceptionOccurred;
+use LaravelHyperf\Queue\Events\JobPopped;
+use LaravelHyperf\Queue\Events\JobPopping;
+use LaravelHyperf\Queue\Events\JobProcessed;
+use LaravelHyperf\Queue\Events\JobProcessing;
+use LaravelHyperf\Queue\Exceptions\MaxAttemptsExceededException;
+use LaravelHyperf\Queue\QueueManager;
+use LaravelHyperf\Queue\Worker;
+use LaravelHyperf\Queue\WorkerOptions;
+use LaravelHyperf\Support\Carbon;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
-use SwooleTW\Hyperf\Queue\Contracts\Job as QueueJobContract;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\Events\JobExceptionOccurred;
-use SwooleTW\Hyperf\Queue\Events\JobPopped;
-use SwooleTW\Hyperf\Queue\Events\JobPopping;
-use SwooleTW\Hyperf\Queue\Events\JobProcessed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessing;
-use SwooleTW\Hyperf\Queue\Exceptions\MaxAttemptsExceededException;
-use SwooleTW\Hyperf\Queue\QueueManager;
-use SwooleTW\Hyperf\Queue\Worker;
-use SwooleTW\Hyperf\Queue\WorkerOptions;
-use SwooleTW\Hyperf\Support\Carbon;
 use Throwable;
 
 /**

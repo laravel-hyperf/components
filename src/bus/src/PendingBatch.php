@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use BackedEnum;
 use Closure;
@@ -11,15 +11,15 @@ use Hyperf\Collection\Collection;
 use Hyperf\Conditionable\Conditionable;
 use Hyperf\Coroutine\Coroutine;
 use Laravel\SerializableClosure\SerializableClosure;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Bus\Events\BatchDispatched;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Bus\Events\BatchDispatched;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
 use Throwable;
 
 use function Hyperf\Support\value;
-use function SwooleTW\Hyperf\Support\enum_value;
+use function LaravelHyperf\Support\enum_value;
 
 class PendingBatch
 {

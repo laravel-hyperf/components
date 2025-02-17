@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
 use Exception;
 use Hyperf\Support\Filesystem\Filesystem;
 use Hyperf\Support\Traits\InteractsWithTime;
-use SwooleTW\Hyperf\Cache\Contracts\LockProvider;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
-use SwooleTW\Hyperf\Cache\Exceptions\LockTimeoutException;
-use SwooleTW\Hyperf\Filesystem\LockableFile;
+use LaravelHyperf\Cache\Contracts\LockProvider;
+use LaravelHyperf\Cache\Contracts\Store;
+use LaravelHyperf\Cache\Exceptions\LockTimeoutException;
+use LaravelHyperf\Filesystem\LockableFile;
 
 class FileStore implements Store, LockProvider
 {

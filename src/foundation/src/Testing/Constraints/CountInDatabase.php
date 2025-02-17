@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Constraints;
+namespace LaravelHyperf\Foundation\Testing\Constraints;
 
 use Hyperf\DbConnection\Connection;
 use PHPUnit\Framework\Constraint\Constraint;

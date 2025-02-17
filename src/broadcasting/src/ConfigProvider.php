@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory;
+use LaravelHyperf\Broadcasting\Contracts\Factory;
 
 class ConfigProvider
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console;
+namespace LaravelHyperf\Foundation\Console;
 
 use FriendsOfHyperf\CommandSignals\Traits\InteractsWithSignals;
 use Hyperf\Command\Command as HyperfCommand;
@@ -11,9 +11,9 @@ use Hyperf\Command\Event\AfterHandle;
 use Hyperf\Command\Event\BeforeHandle;
 use Hyperf\Command\Event\FailToHandle;
 use Hyperf\Coroutine\Coroutine;
+use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 use Swoole\ExitException;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
-use SwooleTW\Hyperf\Support\Traits\HasLaravelStyleCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;

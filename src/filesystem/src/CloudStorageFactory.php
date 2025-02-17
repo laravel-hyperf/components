@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
+use LaravelHyperf\Filesystem\Contracts\Cloud as CloudContract;
+use LaravelHyperf\Filesystem\Contracts\Factory as FactoryContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Filesystem\Contracts\Cloud as CloudContract;
-use SwooleTW\Hyperf\Filesystem\Contracts\Factory as FactoryContract;
 
 class CloudStorageFactory
 {

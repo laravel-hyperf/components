@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http;
+namespace LaravelHyperf\Http;
 
 use Hyperf\HttpServer\CoreMiddleware as HyperfCoreMiddleware;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Http\Contracts\ResponseContract;
 use Psr\Http\Message\ServerRequestInterface;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
 
 class ConfigProvider
 {

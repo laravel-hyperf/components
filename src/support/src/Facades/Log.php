@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
+use LaravelHyperf\Log\LogManager;
 use Psr\Log\LoggerInterface;
-use SwooleTW\Hyperf\Log\LogManager;
 
 /**
  * @method static LoggerInterface build(array $config)

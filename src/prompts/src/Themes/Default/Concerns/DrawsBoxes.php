@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default\Concerns;
+namespace LaravelHyperf\Prompts\Themes\Default\Concerns;
 
-use SwooleTW\Hyperf\Prompts\Prompt;
+use LaravelHyperf\Prompts\Prompt;
 
 trait DrawsBoxes
 {

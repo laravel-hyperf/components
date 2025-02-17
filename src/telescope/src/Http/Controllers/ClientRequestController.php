@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\ClientRequestWatcher;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\ClientRequestWatcher;
 
 class ClientRequestController extends EntryController
 {

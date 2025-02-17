@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\Output\BufferedConsoleOutput;
-use SwooleTW\Hyperf\Prompts\Table;
+use LaravelHyperf\Prompts\Output\BufferedConsoleOutput;
+use LaravelHyperf\Prompts\Table;
 use Symfony\Component\Console\Helper\Table as SymfonyTable;
 use Symfony\Component\Console\Helper\TableStyle;
 

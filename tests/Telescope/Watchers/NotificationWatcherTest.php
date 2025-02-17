@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Notifications\AnonymousNotifiable;
+use LaravelHyperf\Notifications\Events\NotificationSent;
+use LaravelHyperf\Notifications\Notification;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\NotificationWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Notifications\AnonymousNotifiable;
-use SwooleTW\Hyperf\Notifications\Events\NotificationSent;
-use SwooleTW\Hyperf\Notifications\Notification;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\NotificationWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

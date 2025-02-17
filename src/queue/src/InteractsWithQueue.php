@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use DateInterval;
 use DateTimeInterface;
 use Hyperf\Support\Traits\InteractsWithTime;
 use InvalidArgumentException;
+use LaravelHyperf\Queue\Contracts\Job as JobContract;
+use LaravelHyperf\Queue\Exceptions\ManuallyFailedException;
+use LaravelHyperf\Queue\Jobs\FakeJob;
 use PHPUnit\Framework\Assert as PHPUnit;
 use RuntimeException;
-use SwooleTW\Hyperf\Queue\Contracts\Job as JobContract;
-use SwooleTW\Hyperf\Queue\Exceptions\ManuallyFailedException;
-use SwooleTW\Hyperf\Queue\Jobs\FakeJob;
 use Throwable;
 
 trait InteractsWithQueue

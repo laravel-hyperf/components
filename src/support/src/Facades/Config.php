@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Config\Contracts\Repository as ConfigContract;
-use SwooleTW\Hyperf\Config\Repository;
+use LaravelHyperf\Config\Contracts\Repository as ConfigContract;
+use LaravelHyperf\Config\Repository;
 
 /**
  * @method static bool has(string $key)

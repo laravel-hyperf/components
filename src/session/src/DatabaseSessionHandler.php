@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
 use Carbon\Carbon;
 use Hyperf\Collection\Arr;
@@ -13,10 +13,10 @@ use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Database\Exception\QueryException;
 use Hyperf\Database\Query\Builder;
 use Hyperf\HttpServer\Request;
+use LaravelHyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Support\Traits\InteractsWithTime;
 use Psr\Container\ContainerInterface;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
-use SwooleTW\Hyperf\Support\Traits\InteractsWithTime;
 
 use function Hyperf\Tappable\tap;
 

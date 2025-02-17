@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope;
+namespace LaravelHyperf\Telescope;
 
 use Closure;
 use Hyperf\Context\ApplicationContext;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Support\Environment;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Support\Environment;
 
 trait AuthorizesRequests
 {

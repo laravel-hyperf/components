@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Http\Middleware;
+namespace LaravelHyperf\Foundation\Http\Middleware;
 
 class ConvertEmptyStringsToNull extends TransformsRequest
 {

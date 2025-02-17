@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Event\Contracts;
+namespace LaravelHyperf\Event\Contracts;
 
 use Closure;
+use LaravelHyperf\Event\ListenerData;
+use LaravelHyperf\Event\QueuedClosure;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Event\ListenerData;
-use SwooleTW\Hyperf\Event\QueuedClosure;
 
 interface EventDispatcherContract extends EventDispatcherInterface
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Exceptions;
+namespace LaravelHyperf\Queue\Exceptions;
 
 use RuntimeException;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
-use SwooleTW\Hyperf\Mail\Contracts\Factory;
-use SwooleTW\Hyperf\Mail\Contracts\Mailer as MailerContract;
+use LaravelHyperf\Mail\Contracts\Factory;
+use LaravelHyperf\Mail\Contracts\Mailer as MailerContract;
 
 class MailerFactory
 {

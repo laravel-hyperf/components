@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Prompts;
+namespace LaravelHyperf\Tests\Prompts;
 
+use LaravelHyperf\Prompts\Key;
+use LaravelHyperf\Prompts\Prompt;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Prompts\Key;
-use SwooleTW\Hyperf\Prompts\Prompt;
 
-use function SwooleTW\Hyperf\Prompts\confirm;
-use function SwooleTW\Hyperf\Prompts\form;
-use function SwooleTW\Hyperf\Prompts\outro;
-use function SwooleTW\Hyperf\Prompts\text;
+use function LaravelHyperf\Prompts\confirm;
+use function LaravelHyperf\Prompts\form;
+use function LaravelHyperf\Prompts\outro;
+use function LaravelHyperf\Prompts\text;
 
 /**
  * @backupStaticProperties enabled

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache\Events;
+namespace LaravelHyperf\Cache\Events;
 
 class CacheMissed extends CacheEvent
 {

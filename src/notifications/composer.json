@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-notifications",
+    "name": "laravel-hyperf/notifications",
     "type": "library",
     "description": "The notifications package for Laravel Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Notifications\\": "src/"
+            "LaravelHyperf\\Notifications\\": "src/"
         }
     },
     "require": {
@@ -36,19 +36,19 @@
         "hyperf/contract": "~3.1.0",
         "hyperf/database": "~3.1.0",
         "hyperf/di": "~3.1.0",
-        "swooletw/hyperf-support": "~0.1.0",
-        "swooletw/hyperf-mail": "~0.1.0",
-        "swooletw/hyperf-queue": "~0.1.0",
-        "swooletw/hyperf-object-pool": "~0.1.0"
+        "laravel-hyperf/support": "~0.1.0",
+        "laravel-hyperf/mail": "~0.1.0",
+        "laravel-hyperf/queue": "~0.1.0",
+        "laravel-hyperf/object-pool": "~0.1.0"
     },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Notifications\\ConfigProvider",
+            "config": "LaravelHyperf\\Notifications\\ConfigProvider",
             "providers": [
-                "SwooleTW\\Hyperf\\Notifications\\NotificationServiceProvider"
+                "LaravelHyperf\\Notifications\\NotificationServiceProvider"
             ]
         },
         "branch-alias": {

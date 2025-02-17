@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Slack\BlockKit\Composites;
+namespace LaravelHyperf\Notifications\Slack\BlockKit\Composites;
 
 use Hyperf\Collection\Arr;
 

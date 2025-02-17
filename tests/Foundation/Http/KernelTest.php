@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Http;
+namespace LaravelHyperf\Tests\Foundation\Http;
 
 use Hyperf\Dispatcher\HttpDispatcher;
 use Hyperf\ExceptionHandler\ExceptionHandlerDispatcher;
 use Hyperf\HttpMessage\Server\Request;
 use Hyperf\HttpServer\ResponseEmitter;
 use Hyperf\HttpServer\Router\Dispatched;
+use LaravelHyperf\Dispatcher\ParsedMiddleware;
+use LaravelHyperf\Foundation\Http\Kernel;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Dispatcher\ParsedMiddleware;
-use SwooleTW\Hyperf\Foundation\Http\Kernel;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

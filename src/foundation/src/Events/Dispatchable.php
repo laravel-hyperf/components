@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Events;
+namespace LaravelHyperf\Foundation\Events;
 
-use SwooleTW\Hyperf\Broadcasting\PendingBroadcast;
+use LaravelHyperf\Broadcasting\PendingBroadcast;
 
 trait Dispatchable
 {

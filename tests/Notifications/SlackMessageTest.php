@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
 use Closure;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Psr7\Response;
 use Hyperf\Config\Config;
+use LaravelHyperf\Notifications\Channels\SlackWebApiChannel;
+use LaravelHyperf\Notifications\Notifiable;
+use LaravelHyperf\Notifications\Notification;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\ActionsBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\ContextBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\ImageBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\SectionBlock;
+use LaravelHyperf\Notifications\Slack\SlackMessage;
+use LaravelHyperf\Notifications\Slack\SlackRoute;
 use LogicException;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
-use SwooleTW\Hyperf\Notifications\Channels\SlackWebApiChannel;
-use SwooleTW\Hyperf\Notifications\Notifiable;
-use SwooleTW\Hyperf\Notifications\Notification;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\ActionsBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\ContextBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\ImageBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\SectionBlock;
-use SwooleTW\Hyperf\Notifications\Slack\SlackMessage;
-use SwooleTW\Hyperf\Notifications\Slack\SlackRoute;
 
 use function Hyperf\Tappable\tap;
 

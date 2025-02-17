@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus\Events;
+namespace LaravelHyperf\Bus\Events;
 
-use SwooleTW\Hyperf\Bus\Batch;
+use LaravelHyperf\Bus\Batch;
 
 class BatchDispatched
 {

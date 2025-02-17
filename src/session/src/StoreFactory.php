@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
+use LaravelHyperf\Session\Contracts\Factory;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Session\Contracts\Factory;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
 
 class StoreFactory
 {

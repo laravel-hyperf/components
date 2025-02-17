@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-foundation",
+    "name": "laravel-hyperf/foundation",
     "description": "The Support package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -10,8 +10,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -23,8 +23,8 @@
     "require": {
         "php": "^8.2",
         "nesbot/carbon": "^2.16",
-        "swooletw/hyperf-filesystem": "dev-master",
-        "swooletw/hyperf-support": "dev-master",
+        "laravel-hyperf/filesystem": "dev-master",
+        "laravel-hyperf/support": "dev-master",
         "hyperf/config": "~3.1.0",
         "hyperf/di": "~3.1.0",
         "hyperf/support": "~3.1.0",
@@ -44,7 +44,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Foundation\\": "src/"
+            "LaravelHyperf\\Foundation\\": "src/"
         },
         "files": [
             "src/helpers.php"
@@ -52,9 +52,9 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Foundation\\ConfigProvider",
+            "config": "LaravelHyperf\\Foundation\\ConfigProvider",
             "providers": [
-                "SwooleTW\\Hyperf\\Foundation\\Providers\\FoundationServiceProvider"
+                "LaravelHyperf\\Foundation\\Providers\\FoundationServiceProvider"
             ]
         },
         "branch-alias": {

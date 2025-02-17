@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Console;
+namespace LaravelHyperf\Telescope\Console;
 
-use SwooleTW\Hyperf\Foundation\Console\Command;
-use SwooleTW\Hyperf\Telescope\Contracts\ClearableRepository;
+use LaravelHyperf\Foundation\Console\Command;
+use LaravelHyperf\Telescope\Contracts\ClearableRepository;
 
 class ClearCommand extends Command
 {

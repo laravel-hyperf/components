@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-http",
+    "name": "laravel-hyperf/http",
     "type": "library",
     "description": "The http package for Laravel Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Http": "src/"
+            "LaravelHyperf\\Http": "src/"
         }
     },
     "require": {
@@ -45,7 +45,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Http\\ConfigProvider"
+            "config": "LaravelHyperf\\Http\\ConfigProvider"
         },
         "branch-alias": {
             "dev-main": "0.1-dev"

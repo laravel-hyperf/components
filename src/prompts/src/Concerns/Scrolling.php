@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Concerns;
+namespace LaravelHyperf\Prompts\Concerns;
 
-use SwooleTW\Hyperf\Prompts\Themes\Contracts\Scrolling as ScrollingRenderer;
+use LaravelHyperf\Prompts\Themes\Contracts\Scrolling as ScrollingRenderer;
 
 trait Scrolling
 {

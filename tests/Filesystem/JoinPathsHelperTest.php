@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Filesystem;
+namespace LaravelHyperf\Tests\Filesystem;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\RequiresOperatingSystem;
 use PHPUnit\Framework\TestCase;
 
-use function SwooleTW\Hyperf\Filesystem\join_paths;
+use function LaravelHyperf\Filesystem\join_paths;
 
 /**
  * @internal

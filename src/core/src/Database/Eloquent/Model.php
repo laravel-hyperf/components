@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Database\Eloquent;
+namespace LaravelHyperf\Database\Eloquent;
 
 use Hyperf\DbConnection\Model\Model as BaseModel;
-use SwooleTW\Hyperf\Router\Contracts\UrlRoutable;
+use LaravelHyperf\Router\Contracts\UrlRoutable;
 
 abstract class Model extends BaseModel implements UrlRoutable
 {

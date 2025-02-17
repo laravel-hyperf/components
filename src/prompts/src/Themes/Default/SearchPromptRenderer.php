@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\SearchPrompt;
-use SwooleTW\Hyperf\Prompts\Themes\Contracts\Scrolling;
+use LaravelHyperf\Prompts\SearchPrompt;
+use LaravelHyperf\Prompts\Themes\Contracts\Scrolling;
 
 class SearchPromptRenderer extends Renderer implements Scrolling
 {

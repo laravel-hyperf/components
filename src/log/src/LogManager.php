@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Log;
+namespace LaravelHyperf\Log;
 
 use Closure;
 use Hyperf\Collection\Collection;
@@ -10,6 +10,7 @@ use Hyperf\Context\Context;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Stringable\Str;
 use InvalidArgumentException;
+use LaravelHyperf\Support\Environment;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\ErrorLogHandler;
 use Monolog\Handler\FingersCrossedHandler;
@@ -27,11 +28,10 @@ use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Stringable;
-use SwooleTW\Hyperf\Support\Environment;
 use Throwable;
 
 /**
- * @mixin \SwooleTW\Hyperf\Log\Logger
+ * @mixin \LaravelHyperf\Log\Logger
  */
 class LogManager implements LoggerInterface
 {

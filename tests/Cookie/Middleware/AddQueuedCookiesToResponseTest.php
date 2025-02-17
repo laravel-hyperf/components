@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cookie\Middleware;
+namespace LaravelHyperf\Tests\Cookie\Middleware;
 
+use LaravelHyperf\Cookie\Contracts\Cookie as ContractsCookie;
+use LaravelHyperf\Cookie\Middleware\AddQueuedCookiesToResponse;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Cookie\Contracts\Cookie as ContractsCookie;
-use SwooleTW\Hyperf\Cookie\Middleware\AddQueuedCookiesToResponse;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Bus\DatabaseBatchRepository;
+use LaravelHyperf\Queue\Console\PruneBatchesCommand;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Bus\DatabaseBatchRepository;
-use SwooleTW\Hyperf\Queue\Console\PruneBatchesCommand;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 

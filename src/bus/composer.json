@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-bus",
+    "name": "laravel-hyperf/bus",
     "description": "The bus package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -11,8 +11,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -32,13 +32,13 @@
         "hyperf/support": "~3.1.0",
         "nesbot/carbon": "^3.0",
         "laravel/serializable-closure": "^1.3",
-        "swooletw/hyperf-support": "~0.1.0",
-        "swooletw/hyperf-cache": "~0.1.0"
+        "laravel-hyperf/support": "~0.1.0",
+        "laravel-hyperf/cache": "~0.1.0"
 
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Bus\\": "src/"
+            "LaravelHyperf\\Bus\\": "src/"
         },
         "files": [
             "src/Functions.php"
@@ -46,14 +46,14 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Bus\\ConfigProvider"
+            "config": "LaravelHyperf\\Bus\\ConfigProvider"
         },
         "branch-alias": {
             "dev-master": "0.1-dev"
         }
     },
     "suggest": {
-        "swooletw/hyperf-queue": "Required to use closures when chaining jobs."
+        "laravel-hyperf/queue": "Required to use closures when chaining jobs."
     },
     "config": {
         "sort-packages": true

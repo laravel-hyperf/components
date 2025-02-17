@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Console;
+namespace LaravelHyperf\Telescope\Console;
 
-use SwooleTW\Hyperf\Foundation\Console\Command;
-use SwooleTW\Hyperf\Support\Carbon;
-use SwooleTW\Hyperf\Telescope\Contracts\PrunableRepository;
+use LaravelHyperf\Foundation\Console\Command;
+use LaravelHyperf\Support\Carbon;
+use LaravelHyperf\Telescope\Contracts\PrunableRepository;
 
 class PruneCommand extends Command
 {

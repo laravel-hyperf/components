@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Support\Providers;
+namespace LaravelHyperf\Foundation\Support\Providers;
 
-use SwooleTW\Hyperf\Router\RouteFileCollector;
-use SwooleTW\Hyperf\Support\ServiceProvider;
+use LaravelHyperf\Router\RouteFileCollector;
+use LaravelHyperf\Support\ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {

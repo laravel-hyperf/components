@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace %NAMESPACE%;
 
-use SwooleTW\Hyperf\Bus\Dispatchable;
+use LaravelHyperf\Bus\Dispatchable;
 
 class %CLASS%
 {

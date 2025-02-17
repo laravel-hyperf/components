@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Bus;
+namespace LaravelHyperf\Tests\Bus;
 
+use LaravelHyperf\Bus\Queueable;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Bus\Queueable;
 
 /**
  * @internal

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Console;
+namespace LaravelHyperf\Telescope\Console;
 
-use SwooleTW\Hyperf\Foundation\Console\Command;
+use LaravelHyperf\Foundation\Console\Command;
 
 class PublishCommand extends Command
 {

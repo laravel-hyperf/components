@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Prompts;
+namespace LaravelHyperf\Tests\Prompts;
 
+use LaravelHyperf\Prompts\Key;
+use LaravelHyperf\Prompts\PausePrompt;
+use LaravelHyperf\Prompts\Prompt;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Prompts\Key;
-use SwooleTW\Hyperf\Prompts\PausePrompt;
-use SwooleTW\Hyperf\Prompts\Prompt;
 
-use function SwooleTW\Hyperf\Prompts\pause;
+use function LaravelHyperf\Prompts\pause;
 
 /**
  * @backupStaticProperties enabled

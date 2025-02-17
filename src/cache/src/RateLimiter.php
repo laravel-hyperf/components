@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
 use Closure;
 use Hyperf\Support\Traits\InteractsWithTime;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as Cache;
+use LaravelHyperf\Cache\Contracts\Factory as Cache;
 
 class RateLimiter
 {

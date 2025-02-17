@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Providers;
+namespace LaravelHyperf\Foundation\Providers;
 
 use Hyperf\Command\Event\FailToHandle;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\HttpServer\MiddlewareManager;
+use LaravelHyperf\Auth\Contracts\FactoryContract as AuthFactoryContract;
+use LaravelHyperf\Foundation\Console\Kernel as ConsoleKernel;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Http\Contracts\MiddlewareContract;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Support\ServiceProvider;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Auth\Contracts\FactoryContract as AuthFactoryContract;
-use SwooleTW\Hyperf\Foundation\Console\Kernel as ConsoleKernel;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Http\Contracts\MiddlewareContract;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Support\ServiceProvider;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Throwable;

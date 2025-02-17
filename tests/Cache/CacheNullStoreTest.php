@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
-use SwooleTW\Hyperf\Cache\NullStore;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\Cache\NullStore;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

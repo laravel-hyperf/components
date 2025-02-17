@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Middleware;
+namespace LaravelHyperf\Queue\Middleware;
 
 class SkipIfBatchCancelled
 {

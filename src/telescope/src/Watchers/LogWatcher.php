@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Collection\Arr;
+use LaravelHyperf\Log\Events\MessageLogged;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LogLevel;
-use SwooleTW\Hyperf\Log\Events\MessageLogged;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
 use Throwable;
 
 class LogWatcher extends Watcher

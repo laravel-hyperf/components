@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support;
+namespace LaravelHyperf\Support;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
 use RuntimeException;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
 
 use function Hyperf\Config\config;
 

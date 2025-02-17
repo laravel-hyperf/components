@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use InvalidArgumentException;
+use LaravelHyperf\Notifications\AnonymousNotifiable;
+use LaravelHyperf\Notifications\Contracts\Dispatcher;
+use LaravelHyperf\Notifications\RoutesNotifications;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use stdClass;
-use SwooleTW\Hyperf\Notifications\AnonymousNotifiable;
-use SwooleTW\Hyperf\Notifications\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Notifications\RoutesNotifications;
 
 /**
  * @internal

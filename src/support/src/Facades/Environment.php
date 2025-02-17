@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Support\Environment as Accessor;
+use LaravelHyperf\Support\Environment as Accessor;
 
 /**
  * @method static string|null get()

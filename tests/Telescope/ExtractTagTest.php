@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope;
+namespace LaravelHyperf\Tests\Telescope;
 
-use SwooleTW\Hyperf\Mail\Mailable;
-use SwooleTW\Hyperf\Telescope\ExtractTags;
-use SwooleTW\Hyperf\Telescope\FormatModel;
+use LaravelHyperf\Mail\Mailable;
+use LaravelHyperf\Telescope\ExtractTags;
+use LaravelHyperf\Telescope\FormatModel;
 
 /**
  * @internal

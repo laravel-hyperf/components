@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing;
+namespace LaravelHyperf\Tests\Foundation\Testing;
 
 class BootstrapConfigProvider
 {
@@ -31,25 +31,25 @@ class BootstrapConfigProvider
         \Hyperf\Signal\ConfigProvider::class,
         \Hyperf\Translation\ConfigProvider::class,
         \Hyperf\Validation\ConfigProvider::class,
-        \SwooleTW\Hyperf\ConfigProvider::class,
-        \SwooleTW\Hyperf\Auth\ConfigProvider::class,
-        \SwooleTW\Hyperf\Bus\ConfigProvider::class,
-        \SwooleTW\Hyperf\Cache\ConfigProvider::class,
-        \SwooleTW\Hyperf\Cookie\ConfigProvider::class,
-        \SwooleTW\Hyperf\Config\ConfigProvider::class,
-        \SwooleTW\Hyperf\Dispatcher\ConfigProvider::class,
-        \SwooleTW\Hyperf\Encryption\ConfigProvider::class,
-        \SwooleTW\Hyperf\Event\ConfigProvider::class,
-        \SwooleTW\Hyperf\Foundation\ConfigProvider::class,
-        \SwooleTW\Hyperf\Hashing\ConfigProvider::class,
-        \SwooleTW\Hyperf\Http\ConfigProvider::class,
-        \SwooleTW\Hyperf\JWT\ConfigProvider::class,
-        \SwooleTW\Hyperf\Log\ConfigProvider::class,
-        \SwooleTW\Hyperf\Mail\ConfigProvider::class,
-        \SwooleTW\Hyperf\Notifications\ConfigProvider::class,
-        \SwooleTW\Hyperf\Queue\ConfigProvider::class,
-        \SwooleTW\Hyperf\Router\ConfigProvider::class,
-        \SwooleTW\Hyperf\Session\ConfigProvider::class,
+        \LaravelHyperf\ConfigProvider::class,
+        \LaravelHyperf\Auth\ConfigProvider::class,
+        \LaravelHyperf\Bus\ConfigProvider::class,
+        \LaravelHyperf\Cache\ConfigProvider::class,
+        \LaravelHyperf\Cookie\ConfigProvider::class,
+        \LaravelHyperf\Config\ConfigProvider::class,
+        \LaravelHyperf\Dispatcher\ConfigProvider::class,
+        \LaravelHyperf\Encryption\ConfigProvider::class,
+        \LaravelHyperf\Event\ConfigProvider::class,
+        \LaravelHyperf\Foundation\ConfigProvider::class,
+        \LaravelHyperf\Hashing\ConfigProvider::class,
+        \LaravelHyperf\Http\ConfigProvider::class,
+        \LaravelHyperf\JWT\ConfigProvider::class,
+        \LaravelHyperf\Log\ConfigProvider::class,
+        \LaravelHyperf\Mail\ConfigProvider::class,
+        \LaravelHyperf\Notifications\ConfigProvider::class,
+        \LaravelHyperf\Queue\ConfigProvider::class,
+        \LaravelHyperf\Router\ConfigProvider::class,
+        \LaravelHyperf\Session\ConfigProvider::class,
     ];
 
     public static function get(): array

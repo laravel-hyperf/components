@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT;
+namespace LaravelHyperf\JWT;
 
 use Carbon\Carbon;
-use SwooleTW\Hyperf\JWT\Contracts\BlacklistContract;
-use SwooleTW\Hyperf\JWT\Contracts\StorageContract;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenInvalidException;
+use LaravelHyperf\JWT\Contracts\BlacklistContract;
+use LaravelHyperf\JWT\Contracts\StorageContract;
+use LaravelHyperf\JWT\Exceptions\TokenInvalidException;
 
 class Blacklist implements BlacklistContract
 {

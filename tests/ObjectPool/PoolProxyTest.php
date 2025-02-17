@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\ObjectPool;
+namespace LaravelHyperf\Tests\ObjectPool;
 
 use Closure;
 use Hyperf\Context\ApplicationContext;
+use LaravelHyperf\ObjectPool\ObjectPool;
+use LaravelHyperf\ObjectPool\PoolFactory;
+use LaravelHyperf\ObjectPool\PoolProxy;
 use Mockery as m;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\ObjectPool\ObjectPool;
-use SwooleTW\Hyperf\ObjectPool\PoolFactory;
-use SwooleTW\Hyperf\ObjectPool\PoolProxy;
 
 /**
  * @internal

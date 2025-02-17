@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
 use Carbon\Carbon;
 use Closure;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
+use LaravelHyperf\Cache\Contracts\Store;
 
 class StackStore implements Store
 {

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications;
+namespace LaravelHyperf\Notifications;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Collection as ModelCollection;
 use Hyperf\Database\Model\Model;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
+use LaravelHyperf\Notifications\Events\NotificationSending;
+use LaravelHyperf\Notifications\Events\NotificationSent;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Support\Traits\Localizable;
+use LaravelHyperf\Translation\Contracts\HasLocalePreference;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
-use SwooleTW\Hyperf\Notifications\Events\NotificationSending;
-use SwooleTW\Hyperf\Notifications\Events\NotificationSent;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Support\Traits\Localizable;
-use SwooleTW\Hyperf\Translation\Contracts\HasLocalePreference;
 
 use function Hyperf\Support\value;
 use function Hyperf\Tappable\tap;

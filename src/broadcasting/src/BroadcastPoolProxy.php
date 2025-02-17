@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
 use Hyperf\HttpServer\Contract\RequestInterface;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Broadcaster;
-use SwooleTW\Hyperf\ObjectPool\PoolProxy;
+use LaravelHyperf\Broadcasting\Contracts\Broadcaster;
+use LaravelHyperf\ObjectPool\PoolProxy;
 
 class BroadcastPoolProxy extends PoolProxy implements Broadcaster
 {

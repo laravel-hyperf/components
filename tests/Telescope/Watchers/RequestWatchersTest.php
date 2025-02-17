@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\HttpServer\Server as HttpServer;
 use Hyperf\Server\Event;
+use LaravelHyperf\Http\UploadedFile;
+use LaravelHyperf\Support\Facades\Response;
+use LaravelHyperf\Support\Facades\Route;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\RequestWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use Mockery as m;
 use PHPUnit\Framework\Attributes\RequiresPhpExtension;
-use SwooleTW\Hyperf\Http\UploadedFile;
-use SwooleTW\Hyperf\Support\Facades\Response;
-use SwooleTW\Hyperf\Support\Facades\Route;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\RequestWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

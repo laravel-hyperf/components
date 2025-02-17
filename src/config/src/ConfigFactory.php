@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Config;
+namespace LaravelHyperf\Config;
 
 use Hyperf\Collection\Arr;
 use Psr\Container\ContainerInterface;

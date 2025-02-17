@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Carbon\Carbon;
 use Hyperf\Collection\Collection;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Http\Request as HttpRequest;
 use Psr\Http\Message\ServerRequestInterface;
 use Stringable;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Http\Request as HttpRequest;
 
 /**
  * @method static array allFiles()
@@ -87,7 +87,7 @@ use SwooleTW\Hyperf\Http\Request as HttpRequest;
  * @method static string getQueryString()
  * @method static SessionInterface session()
  *
- * @see \SwooleTW\Hyperf\Http\Request
+ * @see \LaravelHyperf\Http\Request
  * @see \Hyperf\HttpServer\Request
  */
 class Request extends Facade

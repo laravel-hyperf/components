@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console;
+namespace LaravelHyperf\Foundation\Console;
 
 use Hyperf\Command\Annotation\Command as AnnotationCommand;
 use Hyperf\Command\Parser;

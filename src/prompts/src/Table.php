@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts;
+namespace LaravelHyperf\Prompts;
 
 use Hyperf\Collection\Collection;
 

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting\Broadcasters;
+namespace LaravelHyperf\Broadcasting\Broadcasters;
 
 use Ably\AblyRest;
 use Ably\Exceptions\AblyException;
 use Ably\Models\Message as AblyMessage;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Broadcasting\BroadcastException;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Broadcasting\BroadcastException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 
 use function Hyperf\Tappable\tap;
 

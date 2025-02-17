@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
 use Hyperf\HttpMessage\Upload\UploadedFile;
+use LaravelHyperf\Filesystem\Contracts\Cloud;
+use LaravelHyperf\ObjectPool\PoolProxy;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Filesystem\Contracts\Cloud;
-use SwooleTW\Hyperf\ObjectPool\PoolProxy;
 
 class FilesystemPoolProxy extends PoolProxy implements Cloud
 {

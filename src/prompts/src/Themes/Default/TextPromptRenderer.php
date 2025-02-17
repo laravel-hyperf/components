@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\TextPrompt;
+use LaravelHyperf\Prompts\TextPrompt;
 
 class TextPromptRenderer extends Renderer
 {

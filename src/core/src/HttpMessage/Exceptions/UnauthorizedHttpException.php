@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\HttpMessage\Exceptions;
+namespace LaravelHyperf\HttpMessage\Exceptions;
 
 use Throwable;
 

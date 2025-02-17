@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Error;
 use ErrorException;
 use Exception;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\ExceptionWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use ParseError;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\ExceptionWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

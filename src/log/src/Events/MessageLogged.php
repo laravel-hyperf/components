@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Log\Events;
+namespace LaravelHyperf\Log\Events;
 
 class MessageLogged
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks;
+namespace LaravelHyperf\Notifications\Slack\BlockKit\Blocks;
 
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Notifications\Contracts\Slack\BlockContract;
+use LaravelHyperf\Notifications\Contracts\Slack\BlockContract;
 
 class DividerBlock implements BlockContract
 {

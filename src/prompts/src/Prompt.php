@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts;
+namespace LaravelHyperf\Prompts;
 
 use Closure;
+use LaravelHyperf\Prompts\Exceptions\FormRevertedException;
+use LaravelHyperf\Prompts\Output\ConsoleOutput;
+use LaravelHyperf\Prompts\Support\Result;
 use RuntimeException;
-use SwooleTW\Hyperf\Prompts\Exceptions\FormRevertedException;
-use SwooleTW\Hyperf\Prompts\Output\ConsoleOutput;
-use SwooleTW\Hyperf\Prompts\Support\Result;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 

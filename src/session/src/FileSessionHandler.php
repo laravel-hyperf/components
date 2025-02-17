@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
 use Carbon\Carbon;
 use Hyperf\Support\Filesystem\Filesystem;

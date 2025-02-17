@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing;
+namespace LaravelHyperf\Foundation\Testing;
 
-use SwooleTW\Hyperf\Foundation\Testing\Traits\CanConfigureMigrationCommands;
+use LaravelHyperf\Foundation\Testing\Traits\CanConfigureMigrationCommands;
 
 trait DatabaseMigrations
 {

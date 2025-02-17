@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Channels;
+namespace LaravelHyperf\Notifications\Channels;
 
 use GuzzleHttp\Client as HttpClient;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Notifications\Notification;
+use LaravelHyperf\Notifications\Slack\SlackMessage;
+use LaravelHyperf\Notifications\Slack\SlackRoute;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Notifications\Notification;
-use SwooleTW\Hyperf\Notifications\Slack\SlackMessage;
-use SwooleTW\Hyperf\Notifications\Slack\SlackRoute;
 
 class SlackWebApiChannel
 {

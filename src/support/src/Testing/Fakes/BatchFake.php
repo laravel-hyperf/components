@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
 use Carbon\CarbonInterface;
 use Hyperf\Collection\Collection;
 use Hyperf\Collection\Enumerable;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\UpdatedBatchJobCounts;
-use SwooleTW\Hyperf\Support\Carbon;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\UpdatedBatchJobCounts;
+use LaravelHyperf\Support\Carbon;
 use Throwable;
 
 class BatchFake extends Batch

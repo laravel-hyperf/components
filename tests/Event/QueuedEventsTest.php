@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Event;
+namespace LaravelHyperf\Tests\Event;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\ApplicationContext;
@@ -10,20 +10,20 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Di\Definition\DefinitionSource;
 use Illuminate\Events\CallQueuedListener;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Container\Container;
+use LaravelHyperf\Event\EventDispatcher;
+use LaravelHyperf\Event\ListenerProvider;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactoryContract;
+use LaravelHyperf\Queue\Contracts\Queue as QueueContract;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Support\Testing\Fakes\QueueFake;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Mockery\MockInterface;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Container\Container;
-use SwooleTW\Hyperf\Event\EventDispatcher;
-use SwooleTW\Hyperf\Event\ListenerProvider;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactoryContract;
-use SwooleTW\Hyperf\Queue\Contracts\Queue as QueueContract;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Support\Testing\Fakes\QueueFake;
-use SwooleTW\Hyperf\Tests\TestCase;
 
-use function SwooleTW\Hyperf\Event\queueable;
+use function LaravelHyperf\Event\queueable;
 
 /**
  * @internal

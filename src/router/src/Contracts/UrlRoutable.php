@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Router\Contracts;
+namespace LaravelHyperf\Router\Contracts;
 
 use Hyperf\Database\Model\Model;
 

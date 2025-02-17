@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Psr\Container\ContainerInterface;
 

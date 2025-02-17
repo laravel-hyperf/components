@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support;
+namespace LaravelHyperf\Support;
 
 use Carbon\Carbon as BaseCarbon;
 use Carbon\CarbonImmutable as BaseCarbonImmutable;
 use Hyperf\Conditionable\Conditionable;
-use SwooleTW\Hyperf\Support\Traits\Dumpable;
+use LaravelHyperf\Support\Traits\Dumpable;
 
 class Carbon extends BaseCarbon
 {

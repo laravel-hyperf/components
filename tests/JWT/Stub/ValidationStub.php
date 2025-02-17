@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Stub;
+namespace LaravelHyperf\Tests\JWT\Stub;
 
-use SwooleTW\Hyperf\JWT\Validations\AbstractValidation;
+use LaravelHyperf\JWT\Validations\AbstractValidation;
 
 class ValidationStub extends AbstractValidation
 {

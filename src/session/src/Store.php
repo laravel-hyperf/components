@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
 use Closure;
 use Hyperf\Collection\Arr;
@@ -12,9 +12,9 @@ use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\MessageBag;
 use Hyperf\ViewEngine\ViewErrorBag;
+use LaravelHyperf\Session\Contracts\Session;
 use SessionHandlerInterface;
 use stdClass;
-use SwooleTW\Hyperf\Session\Contracts\Session;
 
 class Store implements Session
 {

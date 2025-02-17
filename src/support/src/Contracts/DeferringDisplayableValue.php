@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Contracts;
+namespace LaravelHyperf\Support\Contracts;
 
 interface DeferringDisplayableValue
 {

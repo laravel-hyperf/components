@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Router;
+namespace LaravelHyperf\Tests\Router;
 
-use SwooleTW\Hyperf\Router\RouteFileCollector;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\Router\RouteFileCollector;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

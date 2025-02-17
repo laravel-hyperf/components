@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console\Commands;
+namespace LaravelHyperf\Foundation\Console\Commands;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Support\Filesystem\FileNotFoundException;
 use Hyperf\Support\Filesystem\Filesystem;
+use LaravelHyperf\Foundation\Console\Command;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Foundation\Console\Command;
 use Throwable;
 
 class ServerReloadCommand extends Command

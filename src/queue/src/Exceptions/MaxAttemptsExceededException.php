@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Exceptions;
+namespace LaravelHyperf\Queue\Exceptions;
 
+use LaravelHyperf\Queue\Contracts\Job;
 use RuntimeException;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
 
 use function Hyperf\Tappable\tap;
 

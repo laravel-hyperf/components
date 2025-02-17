@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Exception;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Queue\Failed\FileFailedJobProvider;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Queue\Failed\FileFailedJobProvider;
 
 /**
  * @internal

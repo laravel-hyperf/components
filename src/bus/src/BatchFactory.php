@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use Carbon\CarbonImmutable;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactory;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactory;
 
 class BatchFactory
 {

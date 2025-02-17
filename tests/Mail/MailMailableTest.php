@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Mail;
+namespace LaravelHyperf\Tests\Mail;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ConfigInterface;
@@ -10,20 +10,20 @@ use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use Hyperf\ViewEngine\Contract\FactoryInterface as ViewFactory;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\Mail\Attachment;
+use LaravelHyperf\Mail\Contracts\Attachable;
+use LaravelHyperf\Mail\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Mail\Contracts\Mailer as MailerContract;
+use LaravelHyperf\Mail\Mailable;
+use LaravelHyperf\Mail\Mailables\Envelope;
+use LaravelHyperf\Mail\Mailables\Headers;
+use LaravelHyperf\Mail\Mailer;
+use LaravelHyperf\Mail\MailManager;
+use LaravelHyperf\Mail\Transport\ArrayTransport;
 use Mockery as m;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Mail\Attachment;
-use SwooleTW\Hyperf\Mail\Contracts\Attachable;
-use SwooleTW\Hyperf\Mail\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Mail\Contracts\Mailer as MailerContract;
-use SwooleTW\Hyperf\Mail\Mailable;
-use SwooleTW\Hyperf\Mail\Mailables\Envelope;
-use SwooleTW\Hyperf\Mail\Mailables\Headers;
-use SwooleTW\Hyperf\Mail\Mailer;
-use SwooleTW\Hyperf\Mail\MailManager;
-use SwooleTW\Hyperf\Mail\Transport\ArrayTransport;
 
 /**
  * @internal

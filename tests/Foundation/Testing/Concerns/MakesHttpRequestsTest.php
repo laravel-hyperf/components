@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing\Concerns;
+namespace LaravelHyperf\Tests\Foundation\Testing\Concerns;
 
 use Hyperf\HttpMessage\Server\Response;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
-use SwooleTW\Hyperf\Foundation\Testing\Http\TestResponse;
-use SwooleTW\Hyperf\Foundation\Testing\Stubs\FakeMiddleware;
-use SwooleTW\Hyperf\Router\RouteFileCollector;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
+use LaravelHyperf\Foundation\Testing\Http\TestResponse;
+use LaravelHyperf\Foundation\Testing\Stubs\FakeMiddleware;
+use LaravelHyperf\Router\RouteFileCollector;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

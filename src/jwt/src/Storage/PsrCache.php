@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT\Storage;
+namespace LaravelHyperf\JWT\Storage;
 
+use LaravelHyperf\JWT\Contracts\StorageContract;
 use Psr\SimpleCache\CacheInterface;
-use SwooleTW\Hyperf\JWT\Contracts\StorageContract;
 
 class PsrCache implements StorageContract
 {

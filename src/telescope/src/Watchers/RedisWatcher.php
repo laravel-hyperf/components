@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Redis\Event\CommandExecuted;
 use Hyperf\Redis\Redis;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
 
 class RedisWatcher extends Watcher
 {

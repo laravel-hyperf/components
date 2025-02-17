@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support;
+namespace LaravelHyperf\Support;
 
 use Carbon\CarbonInterval;
 use Closure;

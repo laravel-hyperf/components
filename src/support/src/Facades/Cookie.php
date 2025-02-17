@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Cookie\Contracts\Cookie as CookieContract;
-use SwooleTW\Hyperf\Cookie\Cookie as CookieInstance;
-use SwooleTW\Hyperf\Cookie\CookieManager;
+use LaravelHyperf\Cookie\Contracts\Cookie as CookieContract;
+use LaravelHyperf\Cookie\Cookie as CookieInstance;
+use LaravelHyperf\Cookie\CookieManager;
 
 /**
  * @method static bool has(string $key)

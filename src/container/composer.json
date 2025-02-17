@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-container",
+    "name": "laravel-hyperf/container",
     "description": "The Container package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -10,8 +10,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Container\\": "src/"
+            "LaravelHyperf\\Container\\": "src/"
         }
     },
     "extra": {

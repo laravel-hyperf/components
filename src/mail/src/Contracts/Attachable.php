@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail\Contracts;
+namespace LaravelHyperf\Mail\Contracts;
 
-use SwooleTW\Hyperf\Mail\Attachment;
+use LaravelHyperf\Mail\Attachment;
 
 interface Attachable
 {

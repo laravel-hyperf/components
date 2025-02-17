@@ -2,39 +2,39 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Concerns;
+namespace LaravelHyperf\Prompts\Concerns;
 
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Prompts\Clear;
-use SwooleTW\Hyperf\Prompts\ConfirmPrompt;
-use SwooleTW\Hyperf\Prompts\MultiSearchPrompt;
-use SwooleTW\Hyperf\Prompts\MultiSelectPrompt;
-use SwooleTW\Hyperf\Prompts\Note;
-use SwooleTW\Hyperf\Prompts\PasswordPrompt;
-use SwooleTW\Hyperf\Prompts\PausePrompt;
-use SwooleTW\Hyperf\Prompts\Progress;
-use SwooleTW\Hyperf\Prompts\SearchPrompt;
-use SwooleTW\Hyperf\Prompts\SelectPrompt;
-use SwooleTW\Hyperf\Prompts\Spinner;
-use SwooleTW\Hyperf\Prompts\SuggestPrompt;
-use SwooleTW\Hyperf\Prompts\Table;
-use SwooleTW\Hyperf\Prompts\TextareaPrompt;
-use SwooleTW\Hyperf\Prompts\TextPrompt;
-use SwooleTW\Hyperf\Prompts\Themes\Default\ClearRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\ConfirmPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\MultiSearchPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\MultiSelectPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\NoteRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\PasswordPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\PausePromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\ProgressRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\SearchPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\SelectPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\SpinnerRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\SuggestPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\TableRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\TextareaPromptRenderer;
-use SwooleTW\Hyperf\Prompts\Themes\Default\TextPromptRenderer;
+use LaravelHyperf\Prompts\Clear;
+use LaravelHyperf\Prompts\ConfirmPrompt;
+use LaravelHyperf\Prompts\MultiSearchPrompt;
+use LaravelHyperf\Prompts\MultiSelectPrompt;
+use LaravelHyperf\Prompts\Note;
+use LaravelHyperf\Prompts\PasswordPrompt;
+use LaravelHyperf\Prompts\PausePrompt;
+use LaravelHyperf\Prompts\Progress;
+use LaravelHyperf\Prompts\SearchPrompt;
+use LaravelHyperf\Prompts\SelectPrompt;
+use LaravelHyperf\Prompts\Spinner;
+use LaravelHyperf\Prompts\SuggestPrompt;
+use LaravelHyperf\Prompts\Table;
+use LaravelHyperf\Prompts\TextareaPrompt;
+use LaravelHyperf\Prompts\TextPrompt;
+use LaravelHyperf\Prompts\Themes\Default\ClearRenderer;
+use LaravelHyperf\Prompts\Themes\Default\ConfirmPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\MultiSearchPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\MultiSelectPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\NoteRenderer;
+use LaravelHyperf\Prompts\Themes\Default\PasswordPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\PausePromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\ProgressRenderer;
+use LaravelHyperf\Prompts\Themes\Default\SearchPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\SelectPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\SpinnerRenderer;
+use LaravelHyperf\Prompts\Themes\Default\SuggestPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\TableRenderer;
+use LaravelHyperf\Prompts\Themes\Default\TextareaPromptRenderer;
+use LaravelHyperf\Prompts\Themes\Default\TextPromptRenderer;
 
 trait Themes
 {
@@ -46,7 +46,7 @@ trait Themes
     /**
      * The available themes.
      *
-     * @var array<string, array<class-string<\SwooleTW\Hyperf\Prompts\Prompt>, class-string<callable&object>>>
+     * @var array<string, array<class-string<\LaravelHyperf\Prompts\Prompt>, class-string<callable&object>>>
      */
     protected static array $themes = [
         'default' => [
@@ -89,7 +89,7 @@ trait Themes
     /**
      * Add a new theme.
      *
-     * @param array<class-string<\SwooleTW\Hyperf\Prompts\Prompt>, class-string<callable&object>> $renderers
+     * @param array<class-string<\LaravelHyperf\Prompts\Prompt>, class-string<callable&object>> $renderers
      */
     public static function addTheme(string $name, array $renderers): void
     {

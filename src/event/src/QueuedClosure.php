@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Event;
+namespace LaravelHyperf\Event;
 
 use Closure;
 use DateInterval;
@@ -10,7 +10,7 @@ use DateTimeInterface;
 use Illuminate\Events\CallQueuedListener;
 use Laravel\SerializableClosure\SerializableClosure;
 
-use function SwooleTW\Hyperf\Bus\dispatch;
+use function LaravelHyperf\Bus\dispatch;
 
 class QueuedClosure
 {

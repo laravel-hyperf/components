@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
+use LaravelHyperf\Queue\Jobs\RedisJob;
+use LaravelHyperf\Queue\RedisQueue;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use stdClass;
-use SwooleTW\Hyperf\Queue\Jobs\RedisJob;
-use SwooleTW\Hyperf\Queue\RedisQueue;
 
 /**
  * @internal

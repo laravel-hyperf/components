@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use Hyperf\Coordinator\Timer;
 use Hyperf\Coroutine\Concurrent;
 use Hyperf\Database\DetectsLostConnections;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
+use LaravelHyperf\Queue\Contracts\Factory as QueueManager;
+use LaravelHyperf\Queue\Contracts\Job as JobContract;
+use LaravelHyperf\Queue\Contracts\Queue as QueueContract;
+use LaravelHyperf\Queue\Events\JobAttempted;
+use LaravelHyperf\Queue\Events\JobExceptionOccurred;
+use LaravelHyperf\Queue\Events\JobPopped;
+use LaravelHyperf\Queue\Events\JobPopping;
+use LaravelHyperf\Queue\Events\JobProcessed;
+use LaravelHyperf\Queue\Events\JobProcessing;
+use LaravelHyperf\Queue\Events\JobReleasedAfterException;
+use LaravelHyperf\Queue\Events\JobTimedOut;
+use LaravelHyperf\Queue\Events\Looping;
+use LaravelHyperf\Queue\Events\WorkerStopping;
+use LaravelHyperf\Queue\Exceptions\MaxAttemptsExceededException;
+use LaravelHyperf\Queue\Exceptions\TimeoutExceededException;
+use LaravelHyperf\Support\Carbon;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueManager;
-use SwooleTW\Hyperf\Queue\Contracts\Job as JobContract;
-use SwooleTW\Hyperf\Queue\Contracts\Queue as QueueContract;
-use SwooleTW\Hyperf\Queue\Events\JobAttempted;
-use SwooleTW\Hyperf\Queue\Events\JobExceptionOccurred;
-use SwooleTW\Hyperf\Queue\Events\JobPopped;
-use SwooleTW\Hyperf\Queue\Events\JobPopping;
-use SwooleTW\Hyperf\Queue\Events\JobProcessed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessing;
-use SwooleTW\Hyperf\Queue\Events\JobReleasedAfterException;
-use SwooleTW\Hyperf\Queue\Events\JobTimedOut;
-use SwooleTW\Hyperf\Queue\Events\Looping;
-use SwooleTW\Hyperf\Queue\Events\WorkerStopping;
-use SwooleTW\Hyperf\Queue\Exceptions\MaxAttemptsExceededException;
-use SwooleTW\Hyperf\Queue\Exceptions\TimeoutExceededException;
-use SwooleTW\Hyperf\Support\Carbon;
 use Throwable;
 
 class Worker

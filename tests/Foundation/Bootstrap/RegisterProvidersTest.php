@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Bootstrap;
+namespace LaravelHyperf\Tests\Foundation\Bootstrap;
 
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Foundation\Bootstrap\RegisterProviders;
+use LaravelHyperf\Foundation\Support\Composer;
+use LaravelHyperf\Support\ServiceProvider;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Foundation\Bootstrap\RegisterProviders;
-use SwooleTW\Hyperf\Foundation\Support\Composer;
-use SwooleTW\Hyperf\Support\ServiceProvider;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

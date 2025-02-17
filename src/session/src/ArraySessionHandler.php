@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
+use LaravelHyperf\Support\Traits\InteractsWithTime;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Support\Traits\InteractsWithTime;
 
 class ArraySessionHandler implements SessionHandlerInterface
 {

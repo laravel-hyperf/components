@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Guards;
+namespace LaravelHyperf\Auth\Guards;
 
 use Carbon\Carbon;
 use Hyperf\Context\Context;
@@ -10,10 +10,10 @@ use Hyperf\Context\RequestContext;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
-use SwooleTW\Hyperf\Auth\Contracts\UserProvider;
-use SwooleTW\Hyperf\JWT\Contracts\ManagerContract;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Auth\Contracts\UserProvider;
+use LaravelHyperf\JWT\Contracts\ManagerContract;
 use Throwable;
 
 class JwtGuard implements Guard

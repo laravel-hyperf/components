@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Support\Providers;
+namespace LaravelHyperf\Foundation\Support\Providers;
 
+use LaravelHyperf\Support\ServiceProvider;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
-use SwooleTW\Hyperf\Support\ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {

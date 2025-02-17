@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
 use ArrayAccess;
 use BadMethodCallException;
@@ -12,16 +12,16 @@ use DateInterval;
 use DateTimeInterface;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Support\Traits\InteractsWithTime;
+use LaravelHyperf\Cache\Contracts\Repository as CacheContract;
+use LaravelHyperf\Cache\Contracts\Store;
+use LaravelHyperf\Cache\Events\CacheHit;
+use LaravelHyperf\Cache\Events\CacheMissed;
+use LaravelHyperf\Cache\Events\KeyForgotten;
+use LaravelHyperf\Cache\Events\KeyWritten;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Repository as CacheContract;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
-use SwooleTW\Hyperf\Cache\Events\CacheHit;
-use SwooleTW\Hyperf\Cache\Events\CacheMissed;
-use SwooleTW\Hyperf\Cache\Events\KeyForgotten;
-use SwooleTW\Hyperf\Cache\Events\KeyWritten;
 
 /**
- * @mixin \SwooleTW\Hyperf\Cache\Contracts\Store
+ * @mixin \LaravelHyperf\Cache\Contracts\Store
  */
 class Repository implements ArrayAccess, CacheContract
 {

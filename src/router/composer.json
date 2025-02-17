@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-router",
+    "name": "laravel-hyperf/router",
     "type": "library",
     "description": "The router package for Laravel Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Router\\": "src/"
+            "LaravelHyperf\\Router\\": "src/"
         },
         "files": [
             "src/Functions.php"
@@ -36,8 +36,8 @@
         "nikic/fast-route": "^1.3.0"
     },
     "suggest": {
-        "swooletw/hyperf-cache": "Required to use throttle requests middleware.",
-        "swooletw/hyperf-http-message": "Required to use throttle requests middleware.",
+        "laravel-hyperf/cache": "Required to use throttle requests middleware.",
+        "laravel-hyperf/http-message": "Required to use throttle requests middleware.",
         "hyperf/session": "Required to use session based `previous` function in UrlGenerator."
     },
     "config": {
@@ -45,7 +45,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Router\\ConfigProvider"
+            "config": "LaravelHyperf\\Router\\ConfigProvider"
         },
         "branch-alias": {
             "dev-main": "0.1-dev"

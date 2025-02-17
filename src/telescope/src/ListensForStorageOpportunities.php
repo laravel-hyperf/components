@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope;
+namespace LaravelHyperf\Telescope;
 
 use Hyperf\Command\Event\AfterExecute as AfterExecuteCommand;
 use Hyperf\Command\Event\BeforeHandle as BeforeHandleCommand;
 use Hyperf\Context\Context;
 use Hyperf\HttpServer\Event\RequestReceived;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Queue\Events\JobExceptionOccurred;
+use LaravelHyperf\Queue\Events\JobFailed;
+use LaravelHyperf\Queue\Events\JobProcessed;
+use LaravelHyperf\Queue\Events\JobProcessing;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Queue\Events\JobExceptionOccurred;
-use SwooleTW\Hyperf\Queue\Events\JobFailed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessing;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
 
 trait ListensForStorageOpportunities
 {

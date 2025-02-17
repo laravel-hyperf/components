@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
+use LaravelHyperf\Queue\Attributes\WithoutRelations;
 use ReflectionClass;
 use ReflectionProperty;
-use SwooleTW\Hyperf\Queue\Attributes\WithoutRelations;
 
 trait SerializesModels
 {

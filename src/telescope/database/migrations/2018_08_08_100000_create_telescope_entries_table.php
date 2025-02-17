@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Hyperf\Database\Migrations\Migration;
 use Hyperf\Database\Schema\Blueprint;
-use SwooleTW\Hyperf\Support\Facades\Schema;
+use LaravelHyperf\Support\Facades\Schema;
 
-use function SwooleTW\Hyperf\Config\config;
+use function LaravelHyperf\Config\config;
 
 return new class extends Migration {
     /**

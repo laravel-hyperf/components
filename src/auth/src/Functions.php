@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth;
+namespace LaravelHyperf\Auth;
 
 use Hyperf\Context\ApplicationContext;
-use SwooleTW\Hyperf\Auth\Contracts\FactoryContract;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Auth\Contracts\FactoryContract;
+use LaravelHyperf\Auth\Contracts\Guard;
 
 /**
  * Get auth guard or auth manager.

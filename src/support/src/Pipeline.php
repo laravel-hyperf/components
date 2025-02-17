@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support;
+namespace LaravelHyperf\Support;
 
 use Hyperf\Conditionable\Conditionable;
 use Hyperf\Pipeline\Pipeline as BasePipeline;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Foundation\ApplicationContext;
 
 class Pipeline extends BasePipeline
 {

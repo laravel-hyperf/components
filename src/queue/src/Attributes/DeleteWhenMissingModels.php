@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Attributes;
+namespace LaravelHyperf\Queue\Attributes;
 
 use Attribute;
 

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Session;
+namespace LaravelHyperf\Tests\Session;
 
 use Hyperf\Context\Context;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\MessageBag;
 use Hyperf\ViewEngine\ViewErrorBag;
+use LaravelHyperf\Session\Store;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Session\Store;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

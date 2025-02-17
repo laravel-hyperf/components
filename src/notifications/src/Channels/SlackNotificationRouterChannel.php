@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Channels;
+namespace LaravelHyperf\Notifications\Channels;
 
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Notifications\Notification;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
-use SwooleTW\Hyperf\Notifications\Notification;
 
 class SlackNotificationRouterChannel
 {

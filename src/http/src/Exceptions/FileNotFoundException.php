@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http\Exceptions;
+namespace LaravelHyperf\Http\Exceptions;
 
 class FileNotFoundException extends FileException
 {

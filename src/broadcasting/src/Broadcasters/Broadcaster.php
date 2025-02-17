@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting\Broadcasters;
+namespace LaravelHyperf\Broadcasting\Broadcasters;
 
 use Closure;
 use Exception;
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use LaravelHyperf\Auth\AuthManager;
+use LaravelHyperf\Broadcasting\Contracts\Broadcaster as BroadcasterContract;
+use LaravelHyperf\Broadcasting\Contracts\HasBroadcastChannel;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
+use LaravelHyperf\Router\Contracts\UrlRoutable;
+use LaravelHyperf\Support\Reflector;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionFunction;
 use ReflectionParameter;
-use SwooleTW\Hyperf\Auth\AuthManager;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Broadcaster as BroadcasterContract;
-use SwooleTW\Hyperf\Broadcasting\Contracts\HasBroadcastChannel;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
-use SwooleTW\Hyperf\Router\Contracts\UrlRoutable;
-use SwooleTW\Hyperf\Support\Reflector;
 
 abstract class Broadcaster implements BroadcasterContract
 {

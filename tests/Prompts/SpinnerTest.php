@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Prompts;
+namespace LaravelHyperf\Tests\Prompts;
 
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
+use LaravelHyperf\Prompts\Prompt;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
-use SwooleTW\Hyperf\Prompts\Prompt;
 
-use function SwooleTW\Hyperf\Prompts\spin;
+use function LaravelHyperf\Prompts\spin;
 
 /**
  * @backupStaticProperties enabled

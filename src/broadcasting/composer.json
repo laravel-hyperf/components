@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-broadcasting",
+    "name": "laravel-hyperf/broadcasting",
     "type": "library",
     "description": "The filesystem package for Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Broadcasting": "src/"
+            "LaravelHyperf\\Broadcasting": "src/"
         }
     },
     "require": {
@@ -34,15 +34,15 @@
         "hyperf/pool": "~3.1.0",
         "hyperf/redis": "~3.1.0",
         "hyperf/stringable": "~3.1.0",
-        "swooletw/hyperf-auth": "dev-master",
-        "swooletw/hyperf-bus": "dev-master",
-        "swooletw/hyperf-cache": "dev-master",
-        "swooletw/hyperf-foundation": "dev-master",
-        "swooletw/hyperf-framework": "dev-master",
-        "swooletw/hyperf-queue": "dev-master",
-        "swooletw/hyperf-router": "dev-master",
-        "swooletw/hyperf-support": "dev-master",
-        "swooletw/object-pool": "dev-master"
+        "laravel-hyperf/auth": "dev-master",
+        "laravel-hyperf/bus": "dev-master",
+        "laravel-hyperf/cache": "dev-master",
+        "laravel-hyperf/foundation": "dev-master",
+        "laravel-hyperf/framework": "dev-master",
+        "laravel-hyperf/queue": "dev-master",
+        "laravel-hyperf/router": "dev-master",
+        "laravel-hyperf/support": "dev-master",
+        "laravel-hyperf/object-pool": "dev-master"
     },
     "suggest": {
         "ext-hash": "Required to use the Ably and Pusher broadcast drivers.",
@@ -55,7 +55,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Broadcasting\\ConfigProvider"
+            "config": "LaravelHyperf\\Broadcasting\\ConfigProvider"
         },
         "branch-alias": {
             "dev-main": "3.1-dev"

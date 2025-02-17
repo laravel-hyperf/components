@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
 use Hyperf\ViewEngine\Contract\ViewInterface;
-use SwooleTW\Hyperf\Telescope\Telescope;
+use LaravelHyperf\Telescope\Telescope;
 
 class HomeController
 {

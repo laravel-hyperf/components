@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\ObjectPool\Traits;
+namespace LaravelHyperf\ObjectPool\Traits;
 
 use Closure;
 use InvalidArgumentException;
-use SwooleTW\Hyperf\ObjectPool\PoolProxy;
+use LaravelHyperf\ObjectPool\PoolProxy;
 
 trait HasPoolProxy
 {

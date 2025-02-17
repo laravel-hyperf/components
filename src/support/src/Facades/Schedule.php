@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Hyperf\Crontab\Crontab;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
+use LaravelHyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
 
 /**
  * @method static Crontab command(string $command, array $arguments = [])

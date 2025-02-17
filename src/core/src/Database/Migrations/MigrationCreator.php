@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Database\Migrations;
+namespace LaravelHyperf\Database\Migrations;
 
 use Hyperf\Database\Migrations\MigrationCreator as HyperfMigrationCreator;
 

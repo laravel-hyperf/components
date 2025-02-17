@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Session;
+namespace LaravelHyperf\Tests\Session;
 
+use LaravelHyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Session\EncryptedStore;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
-use SwooleTW\Hyperf\Session\EncryptedStore;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

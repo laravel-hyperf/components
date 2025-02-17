@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope;
+namespace LaravelHyperf\Tests\Telescope;
 
 use Faker\Factory as FakerFactory;
 use Faker\Generator;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Database\Model\Collection;
 use Hyperf\Database\Schema\Blueprint;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactoryContract;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
-use SwooleTW\Hyperf\Foundation\Testing\RefreshDatabase;
-use SwooleTW\Hyperf\Queue\Queue;
-use SwooleTW\Hyperf\Support\Environment;
-use SwooleTW\Hyperf\Support\Facades\Schema;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Http\Middleware\Authorize;
-use SwooleTW\Hyperf\Telescope\Storage\DatabaseEntriesRepository;
-use SwooleTW\Hyperf\Telescope\Storage\EntryModel;
-use SwooleTW\Hyperf\Telescope\Telescope;
-use SwooleTW\Hyperf\Telescope\TelescopeApplicationServiceProvider;
-use SwooleTW\Hyperf\Telescope\TelescopeServiceProvider;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactoryContract;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
+use LaravelHyperf\Foundation\Testing\RefreshDatabase;
+use LaravelHyperf\Queue\Queue;
+use LaravelHyperf\Support\Environment;
+use LaravelHyperf\Support\Facades\Schema;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Http\Middleware\Authorize;
+use LaravelHyperf\Telescope\Storage\DatabaseEntriesRepository;
+use LaravelHyperf\Telescope\Storage\EntryModel;
+use LaravelHyperf\Telescope\Telescope;
+use LaravelHyperf\Telescope\TelescopeApplicationServiceProvider;
+use LaravelHyperf\Telescope\TelescopeServiceProvider;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

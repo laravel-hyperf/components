@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Foundation\Testing\RefreshDatabase;
+use LaravelHyperf\Queue\DatabaseQueue;
+use LaravelHyperf\Queue\Events\JobQueued;
+use LaravelHyperf\Queue\Events\JobQueueing;
+use LaravelHyperf\Support\Carbon;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 use Mockery as m;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidFactoryInterface;
-use SwooleTW\Hyperf\Foundation\Testing\RefreshDatabase;
-use SwooleTW\Hyperf\Queue\DatabaseQueue;
-use SwooleTW\Hyperf\Queue\Events\JobQueued;
-use SwooleTW\Hyperf\Queue\Events\JobQueueing;
-use SwooleTW\Hyperf\Support\Carbon;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

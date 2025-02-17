@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Exception;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Telescope\IncomingDumpEntry;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
-use SwooleTW\Hyperf\Telescope\IncomingDumpEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 use Symfony\Component\VarDumper\VarDumper;

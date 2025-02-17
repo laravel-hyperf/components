@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
 use Aws\S3\S3Client;
 use Closure;
@@ -11,6 +11,10 @@ use Hyperf\Collection\Arr;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Stringable\Str;
 use InvalidArgumentException;
+use LaravelHyperf\Filesystem\Contracts\Cloud;
+use LaravelHyperf\Filesystem\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Filesystem\Contracts\Filesystem;
+use LaravelHyperf\ObjectPool\Traits\HasPoolProxy;
 use League\Flysystem\AwsS3V3\AwsS3V3Adapter as S3Adapter;
 use League\Flysystem\AwsS3V3\PortableVisibilityConverter as AwsS3PortableVisibilityConverter;
 use League\Flysystem\Filesystem as Flysystem;
@@ -27,14 +31,10 @@ use League\Flysystem\ReadOnly\ReadOnlyFilesystemAdapter;
 use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
 use League\Flysystem\Visibility;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Filesystem\Contracts\Cloud;
-use SwooleTW\Hyperf\Filesystem\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Filesystem\Contracts\Filesystem;
-use SwooleTW\Hyperf\ObjectPool\Traits\HasPoolProxy;
 
 /**
- * @mixin \SwooleTW\Hyperf\Filesystem\Filesystem
- * @mixin \SwooleTW\Hyperf\Filesystem\FilesystemAdapter
+ * @mixin \LaravelHyperf\Filesystem\Filesystem
+ * @mixin \LaravelHyperf\Filesystem\FilesystemAdapter
  */
 class FilesystemManager implements FactoryContract
 {

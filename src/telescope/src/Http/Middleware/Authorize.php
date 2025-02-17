@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Middleware;
+namespace LaravelHyperf\Telescope\Http\Middleware;
 
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\HttpMessage\Exceptions\HttpException;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpException;
-use SwooleTW\Hyperf\Telescope\Telescope;
 
 class Authorize implements MiddlewareInterface
 {

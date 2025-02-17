@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cookie;
+namespace LaravelHyperf\Tests\Cookie;
 
 use Hyperf\Context\RequestContext;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use LaravelHyperf\Cookie\Cookie;
+use LaravelHyperf\Cookie\CookieManager;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Cookie\Cookie;
-use SwooleTW\Hyperf\Cookie\CookieManager;
-use SwooleTW\Hyperf\Tests\TestCase;
 use Swow\Psr7\Message\ServerRequestPlusInterface;
 
 /**

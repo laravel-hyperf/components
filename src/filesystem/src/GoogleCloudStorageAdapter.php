@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
 use DateTimeInterface;
 use Google\Cloud\Storage\Bucket;

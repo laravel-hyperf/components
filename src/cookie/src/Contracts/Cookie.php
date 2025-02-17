@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cookie\Contracts;
+namespace LaravelHyperf\Cookie\Contracts;
 
 use Hyperf\HttpMessage\Cookie\Cookie as HyperfCookie;
 

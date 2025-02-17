@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Dispatcher;
+namespace LaravelHyperf\Tests\Dispatcher;
 
+use LaravelHyperf\Dispatcher\AdaptedRequestHandler;
+use LaravelHyperf\Dispatcher\Psr15AdapterMiddleware;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
-use SwooleTW\Hyperf\Dispatcher\AdaptedRequestHandler;
-use SwooleTW\Hyperf\Dispatcher\Psr15AdapterMiddleware;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

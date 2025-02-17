@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Queue\Connectors\ConnectorInterface;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\QueueManager;
+use LaravelHyperf\Queue\QueuePoolProxy;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
-use SwooleTW\Hyperf\Queue\Connectors\ConnectorInterface;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\QueueManager;
-use SwooleTW\Hyperf\Queue\QueuePoolProxy;
 
 /**
  * @internal

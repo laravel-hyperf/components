@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Hyperf\HttpMessage\Cookie\Cookie;
+use LaravelHyperf\Http\Contracts\ResponseContract;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
 
 /**
  * @method static ResponseInterface json($data, int $status = 200, array $headers = [])
@@ -43,7 +43,7 @@ use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
  * @method static ResponseInterface stream(callable $callback, array $headers = [])
  * @method static ResponseInterface streamDownload(callable $callback, ?string $filename = null, array $headers = [], string $disposition = 'attachment')
  *
- * @see \SwooleTW\Hyperf\Http\Response
+ * @see \LaravelHyperf\Http\Response
  */
 class Response extends Facade
 {

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Model;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Auth\Access\Events\GateEvaluated;
+use LaravelHyperf\Auth\Access\Response;
+use LaravelHyperf\Telescope\FormatModel;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Telescope;
+use LaravelHyperf\Telescope\Watchers\Traits\FetchesStackTrace;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Auth\Access\Events\GateEvaluated;
-use SwooleTW\Hyperf\Auth\Access\Response;
-use SwooleTW\Hyperf\Telescope\FormatModel;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
-use SwooleTW\Hyperf\Telescope\Watchers\Traits\FetchesStackTrace;
 
 class GateWatcher extends Watcher
 {

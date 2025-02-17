@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Psr\Container\ContainerInterface;
 
@@ -14,6 +14,6 @@ class ClientRequestWatcher extends Watcher
     public function register(ContainerInterface $app): void
     {
         // The real class of handling client request is
-        // `SwooleTW\Hyperf\Telescope\Aspects\GuzzleHttpClientAspect::class`
+        // `LaravelHyperf\Telescope\Aspects\GuzzleHttpClientAspect::class`
     }
 }

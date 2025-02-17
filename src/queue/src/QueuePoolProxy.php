@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use DateInterval;
 use DateTimeInterface;
-use SwooleTW\Hyperf\ObjectPool\PoolProxy;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
+use LaravelHyperf\ObjectPool\PoolProxy;
+use LaravelHyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Contracts\Queue;
 
 class QueuePoolProxy extends PoolProxy implements Queue
 {

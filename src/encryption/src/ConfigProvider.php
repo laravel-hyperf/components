@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Encryption;
+namespace LaravelHyperf\Encryption;
 
-use SwooleTW\Hyperf\Encryption\Commands\KeyGenerateCommand;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Encryption\Commands\KeyGenerateCommand;
+use LaravelHyperf\Encryption\Contracts\Encrypter;
 
 class ConfigProvider
 {

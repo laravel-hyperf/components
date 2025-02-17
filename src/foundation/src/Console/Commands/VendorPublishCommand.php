@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console\Commands;
+namespace LaravelHyperf\Foundation\Console\Commands;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
@@ -10,8 +10,8 @@ use Hyperf\Contract\ContainerInterface;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Composer;
 use Hyperf\Support\Filesystem\Filesystem;
-use SwooleTW\Hyperf\Foundation\Console\Command;
-use SwooleTW\Hyperf\Support\ServiceProvider;
+use LaravelHyperf\Foundation\Console\Command;
+use LaravelHyperf\Support\ServiceProvider;
 
 class VendorPublishCommand extends Command
 {

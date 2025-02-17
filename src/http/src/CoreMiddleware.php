@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http;
+namespace LaravelHyperf\Http;
 
 use Closure;
 use FastRoute\Dispatcher;
@@ -16,12 +16,12 @@ use Hyperf\HttpServer\Router\Dispatched;
 use Hyperf\Server\Exception\ServerException;
 use Hyperf\View\RenderInterface;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\HttpMessage\Exceptions\ServerErrorHttpException;
+use LaravelHyperf\View\Events\ViewRendered;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\ServerErrorHttpException;
-use SwooleTW\Hyperf\View\Events\ViewRendered;
 use Swow\Psr7\Message\ResponsePlusInterface;
 
 class CoreMiddleware extends HyperfCoreMiddleware

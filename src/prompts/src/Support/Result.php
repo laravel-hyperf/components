@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Support;
+namespace LaravelHyperf\Prompts\Support;
 
 /**
  * Result.

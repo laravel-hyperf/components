@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
+use LaravelHyperf\Cache\Contracts\Store;
 use RuntimeException;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
 
 class StackStoreProxy implements Store
 {

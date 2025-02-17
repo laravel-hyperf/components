@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Middleware;
+namespace LaravelHyperf\Auth\Middleware;
 
+use LaravelHyperf\Auth\AuthenticationException;
+use LaravelHyperf\Auth\AuthManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Auth\AuthenticationException;
-use SwooleTW\Hyperf\Auth\AuthManager;
 
 class Authenticate implements MiddlewareInterface
 {
@@ -35,7 +35,7 @@ class Authenticate implements MiddlewareInterface
      *
      * @param \Psr\Http\Server\RequestHandlerInterface $request
      *
-     * @throws \SwooleTW\Hyperf\Auth\AuthenticationException
+     * @throws \LaravelHyperf\Auth\AuthenticationException
      */
     protected function authenticate($request, array $guards): void
     {
@@ -58,7 +58,7 @@ class Authenticate implements MiddlewareInterface
      *
      * @param \Psr\Http\Server\RequestHandlerInterface $request
      *
-     * @throws \SwooleTW\Hyperf\Auth\AuthenticationException
+     * @throws \LaravelHyperf\Auth\AuthenticationException
      */
     protected function unauthenticated($request, array $guards): void
     {

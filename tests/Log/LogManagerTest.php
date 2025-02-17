@@ -2,13 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Log;
+namespace LaravelHyperf\Tests\Log;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\Context;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Log\Logger;
+use LaravelHyperf\Log\LogManager;
+use LaravelHyperf\Support\Environment;
+use LaravelHyperf\Tests\TestCase;
 use Monolog\Formatter\HtmlFormatter;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Formatter\NormalizerFormatter;
@@ -27,10 +31,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionProperty;
 use RuntimeException;
-use SwooleTW\Hyperf\Log\Logger;
-use SwooleTW\Hyperf\Log\LogManager;
-use SwooleTW\Hyperf\Support\Environment;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

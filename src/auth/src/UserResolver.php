@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth;
+namespace LaravelHyperf\Auth;
 
+use LaravelHyperf\Auth\Contracts\FactoryContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Auth\Contracts\FactoryContract;
 
 class UserResolver
 {

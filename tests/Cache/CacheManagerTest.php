@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
 use InvalidArgumentException;
+use LaravelHyperf\Cache\CacheManager;
+use LaravelHyperf\Cache\Contracts\Repository;
+use LaravelHyperf\Cache\NullStore;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Mockery\MockInterface;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Cache\CacheManager;
-use SwooleTW\Hyperf\Cache\Contracts\Repository;
-use SwooleTW\Hyperf\Cache\NullStore;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

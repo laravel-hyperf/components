@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http;
+namespace LaravelHyperf\Http;
 
 use InvalidArgumentException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\RangeNotSatisfiableHttpException;
+use LaravelHyperf\HttpMessage\Exceptions\RangeNotSatisfiableHttpException;
 
 use const PREG_SET_ORDER;
 

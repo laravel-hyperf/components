@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Translation\Contracts;
+namespace LaravelHyperf\Translation\Contracts;
 
 interface HasLocalePreference
 {

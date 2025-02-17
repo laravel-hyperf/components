@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT\Providers;
+namespace LaravelHyperf\JWT\Providers;
 
 use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
 use Hyperf\Collection\Collection;
+use LaravelHyperf\JWT\Contracts\ProviderContract;
+use LaravelHyperf\JWT\Exceptions\JWTException;
+use LaravelHyperf\JWT\Exceptions\TokenInvalidException;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer;
@@ -17,9 +20,6 @@ use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Signer\Rsa;
 use Lcobucci\JWT\Token\RegisteredClaims;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;
-use SwooleTW\Hyperf\JWT\Contracts\ProviderContract;
-use SwooleTW\Hyperf\JWT\Exceptions\JWTException;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenInvalidException;
 
 class Lcobucci extends Provider implements ProviderContract
 {
@@ -62,7 +62,7 @@ class Lcobucci extends Provider implements ProviderContract
     /**
      * Create a JSON Web Token.
      *
-     * @throws \SwooleTW\Hyperf\JWT\Exceptions\JWTException
+     * @throws \LaravelHyperf\JWT\Exceptions\JWTException
      */
     public function encode(array $payload): string
     {
@@ -80,7 +80,7 @@ class Lcobucci extends Provider implements ProviderContract
     /**
      * Decode a JSON Web Token.
      *
-     * @throws \SwooleTW\Hyperf\JWT\Exceptions\JWTException
+     * @throws \LaravelHyperf\JWT\Exceptions\JWTException
      */
     public function decode(string $token): array
     {
@@ -169,7 +169,7 @@ class Lcobucci extends Provider implements ProviderContract
     /**
      * Get the signer instance.
      *
-     * @throws \SwooleTW\Hyperf\JWT\Exceptions\JWTException
+     * @throws \LaravelHyperf\JWT\Exceptions\JWTException
      */
     protected function getSigner(): Signer
     {
@@ -194,7 +194,7 @@ class Lcobucci extends Provider implements ProviderContract
     }
 
     /**
-     * @throws \SwooleTW\Hyperf\JWT\Exceptions\JWTException
+     * @throws \LaravelHyperf\JWT\Exceptions\JWTException
      */
     protected function getSigningKey(): mixed
     {
@@ -214,7 +214,7 @@ class Lcobucci extends Provider implements ProviderContract
     }
 
     /**
-     * @throws \SwooleTW\Hyperf\JWT\Exceptions\JWTException
+     * @throws \LaravelHyperf\JWT\Exceptions\JWTException
      */
     protected function getVerificationKey(): mixed
     {

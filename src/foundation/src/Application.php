@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation;
+namespace LaravelHyperf\Foundation;
 
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Di\Definition\DefinitionSourceInterface;
 use Hyperf\Macroable\Macroable;
+use LaravelHyperf\Container\Container;
+use LaravelHyperf\Container\DefinitionSourceFactory;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Events\LocaleUpdated;
+use LaravelHyperf\HttpMessage\Exceptions\HttpException;
+use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
+use LaravelHyperf\Support\Environment;
+use LaravelHyperf\Support\ServiceProvider;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Container\Container;
-use SwooleTW\Hyperf\Container\DefinitionSourceFactory;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Events\LocaleUpdated;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\NotFoundHttpException;
-use SwooleTW\Hyperf\Support\Environment;
-use SwooleTW\Hyperf\Support\ServiceProvider;
 
 use function Hyperf\Collection\data_get;
-use function SwooleTW\Hyperf\Filesystem\join_paths;
+use function LaravelHyperf\Filesystem\join_paths;
 
 class Application extends Container implements ApplicationContract
 {
@@ -447,35 +447,35 @@ class Application extends Container implements ApplicationContract
                 'app',
                 \Hyperf\Di\Container::class,
                 \Hyperf\Contract\ContainerInterface::class,
-                \SwooleTW\Hyperf\Container\Contracts\Container::class,
-                \SwooleTW\Hyperf\Container\Container::class,
-                \SwooleTW\Hyperf\Foundation\Contracts\Application::class,
-                \SwooleTW\Hyperf\Foundation\Application::class,
+                \LaravelHyperf\Container\Contracts\Container::class,
+                \LaravelHyperf\Container\Container::class,
+                \LaravelHyperf\Foundation\Contracts\Application::class,
+                \LaravelHyperf\Foundation\Application::class,
             ],
-            \SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel::class => ['artisan'],
+            \LaravelHyperf\Foundation\Console\Contracts\Kernel::class => ['artisan'],
             \Hyperf\Contract\ConfigInterface::class => ['config'],
             \Psr\EventDispatcher\EventDispatcherInterface::class => [
                 'events',
-                \SwooleTW\Hyperf\Event\Contracts\EventDispatcherContract::class,
+                \LaravelHyperf\Event\Contracts\EventDispatcherContract::class,
             ],
             \Hyperf\HttpServer\Router\DispatcherFactory::class => ['router'],
             \Psr\Log\LoggerInterface::class => ['log'],
-            \SwooleTW\Hyperf\Encryption\Contracts\Encrypter::class => [
+            \LaravelHyperf\Encryption\Contracts\Encrypter::class => [
                 'encrypter',
-                \SwooleTW\Hyperf\Encryption\Encrypter::class,
+                \LaravelHyperf\Encryption\Encrypter::class,
             ],
-            \SwooleTW\Hyperf\Cache\Contracts\Factory::class => [
+            \LaravelHyperf\Cache\Contracts\Factory::class => [
                 'cache',
-                \SwooleTW\Hyperf\Cache\CacheManager::class,
+                \LaravelHyperf\Cache\CacheManager::class,
             ],
-            \SwooleTW\Hyperf\Cache\Contracts\Store::class => [
+            \LaravelHyperf\Cache\Contracts\Store::class => [
                 'cache.store',
-                \SwooleTW\Hyperf\Cache\Repository::class,
+                \LaravelHyperf\Cache\Repository::class,
             ],
-            \SwooleTW\Hyperf\Filesystem\Filesystem::class => ['files'],
-            \SwooleTW\Hyperf\Filesystem\Contracts\Factory::class => [
+            \LaravelHyperf\Filesystem\Filesystem::class => ['files'],
+            \LaravelHyperf\Filesystem\Contracts\Factory::class => [
                 'filesystem',
-                \SwooleTW\Hyperf\Filesystem\FilesystemManager::class,
+                \LaravelHyperf\Filesystem\FilesystemManager::class,
             ],
             \Hyperf\Contract\TranslatorInterface::class => ['translator'],
             \Hyperf\Validation\Contract\ValidatorFactoryInterface::class => ['validator'],
@@ -489,49 +489,49 @@ class Application extends Container implements ApplicationContract
                 \Hyperf\HttpServer\Response::class,
             ],
             \Hyperf\DbConnection\Db::class => ['db'],
-            \SwooleTW\Hyperf\Database\Schema\SchemaProxy::class => ['db.schema'],
-            \SwooleTW\Hyperf\Auth\Contracts\FactoryContract::class => [
+            \LaravelHyperf\Database\Schema\SchemaProxy::class => ['db.schema'],
+            \LaravelHyperf\Auth\Contracts\FactoryContract::class => [
                 'auth',
-                \SwooleTW\Hyperf\Auth\AuthManager::class,
+                \LaravelHyperf\Auth\AuthManager::class,
             ],
-            \SwooleTW\Hyperf\Auth\Contracts\Guard::class => [
+            \LaravelHyperf\Auth\Contracts\Guard::class => [
                 'auth.driver',
             ],
-            \SwooleTW\Hyperf\Hashing\Contracts\Hasher::class => ['hash'],
-            \SwooleTW\Hyperf\Cookie\CookieManager::class => ['cookie'],
-            \SwooleTW\Hyperf\JWT\Contracts\ManagerContract::class => [
+            \LaravelHyperf\Hashing\Contracts\Hasher::class => ['hash'],
+            \LaravelHyperf\Cookie\CookieManager::class => ['cookie'],
+            \LaravelHyperf\JWT\Contracts\ManagerContract::class => [
                 'jwt',
-                \SwooleTW\Hyperf\JWT\JWTManager::class,
+                \LaravelHyperf\JWT\JWTManager::class,
             ],
             \Hyperf\Redis\Redis::class => ['redis'],
-            \SwooleTW\Hyperf\Router\Router::class => ['router'],
-            \SwooleTW\Hyperf\Router\UrlGenerator::class => ['url'],
+            \LaravelHyperf\Router\Router::class => ['router'],
+            \LaravelHyperf\Router\UrlGenerator::class => ['url'],
             \Hyperf\ViewEngine\Contract\FactoryInterface::class => ['view'],
             \Hyperf\ViewEngine\Compiler\CompilerInterface::class => ['blade.compiler'],
-            \SwooleTW\Hyperf\Session\Contracts\Factory::class => ['session'],
-            \SwooleTW\Hyperf\Session\Contracts\Session::class => ['session.store'],
-            \SwooleTW\Hyperf\Foundation\Console\Contracts\Schedule::class => ['schedule'],
-            \SwooleTW\Hyperf\Mail\Contracts\Factory::class => [
+            \LaravelHyperf\Session\Contracts\Factory::class => ['session'],
+            \LaravelHyperf\Session\Contracts\Session::class => ['session.store'],
+            \LaravelHyperf\Foundation\Console\Contracts\Schedule::class => ['schedule'],
+            \LaravelHyperf\Mail\Contracts\Factory::class => [
                 'mail.manager',
-                \SwooleTW\Hyperf\Mail\MailManager::class,
+                \LaravelHyperf\Mail\MailManager::class,
             ],
-            \SwooleTW\Hyperf\Mail\Contracts\Mailer::class => ['mailer'],
-            \SwooleTW\Hyperf\Notifications\Contracts\Dispatcher::class => [
-                \SwooleTW\Hyperf\Notifications\Contracts\Factory::class,
+            \LaravelHyperf\Mail\Contracts\Mailer::class => ['mailer'],
+            \LaravelHyperf\Notifications\Contracts\Dispatcher::class => [
+                \LaravelHyperf\Notifications\Contracts\Factory::class,
             ],
-            \SwooleTW\Hyperf\Bus\Contracts\Dispatcher::class => [
-                \SwooleTW\Hyperf\Bus\Contracts\QueueingDispatcher::class,
-                \SwooleTW\Hyperf\Bus\Dispatcher::class,
+            \LaravelHyperf\Bus\Contracts\Dispatcher::class => [
+                \LaravelHyperf\Bus\Contracts\QueueingDispatcher::class,
+                \LaravelHyperf\Bus\Dispatcher::class,
             ],
-            \SwooleTW\Hyperf\Queue\Contracts\Factory::class => [
+            \LaravelHyperf\Queue\Contracts\Factory::class => [
                 'queue',
-                \SwooleTW\Hyperf\Queue\Contracts\Monitor::class,
-                \SwooleTW\Hyperf\Queue\QueueManager::class,
+                \LaravelHyperf\Queue\Contracts\Monitor::class,
+                \LaravelHyperf\Queue\QueueManager::class,
             ],
-            \SwooleTW\Hyperf\Queue\Contracts\Queue::class => ['queue.connection'],
-            \SwooleTW\Hyperf\Queue\Worker::class => ['queue.worker'],
-            \SwooleTW\Hyperf\Queue\Listener::class => ['queue.listener'],
-            \SwooleTW\Hyperf\Queue\Failed\FailedJobProviderInterface::class => ['queue.failer'],
+            \LaravelHyperf\Queue\Contracts\Queue::class => ['queue.connection'],
+            \LaravelHyperf\Queue\Worker::class => ['queue.worker'],
+            \LaravelHyperf\Queue\Listener::class => ['queue.listener'],
+            \LaravelHyperf\Queue\Failed\FailedJobProviderInterface::class => ['queue.failer'],
         ] as $key => $aliases) {
             foreach ($aliases as $alias) {
                 $this->alias($key, $alias);

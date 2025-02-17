@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-filesystem",
+    "name": "laravel-hyperf/filesystem",
     "type": "library",
     "description": "The filesystem package for Laravel Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Filesystem": "src/"
+            "LaravelHyperf\\Filesystem": "src/"
         },
         "files": [
             "src/Functions.php"
@@ -35,7 +35,7 @@
         "hyperf/macroable": "~3.1.0",
         "hyperf/support": "~3.1.0",
         "hyperf/conditionable": "~3.1.0",
-        "swooletw/object-pool": "dev-master"
+        "laravel-hyperf/object-pool": "dev-master"
     },
     "suggest": {
         "ext-fileinfo": "Required to use the Filesystem class.",
@@ -48,14 +48,14 @@
         "flysystem-google-cloud-storage": "Required to use the Flysystem Google Cloud Storage driver (^3.0).",
         "league/flysystem-ftp": "Required to use the Flysystem FTP driver (^3.0).",
         "league/flysystem-sftp-v3": "Required to use the Flysystem SFTP driver (^3.0).",
-        "swooletw/hyperf-http": "Required to allow Storage::put to accept a StreamInterface."
+        "laravel-hyperf/http": "Required to allow Storage::put to accept a StreamInterface."
     },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Filesystem\\ConfigProvider"
+            "config": "LaravelHyperf\\Filesystem\\ConfigProvider"
         },
         "branch-alias": {
             "dev-main": "0.1-dev"

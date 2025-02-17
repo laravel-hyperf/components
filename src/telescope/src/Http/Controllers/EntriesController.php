@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
-use SwooleTW\Hyperf\Telescope\Contracts\ClearableRepository;
+use LaravelHyperf\Telescope\Contracts\ClearableRepository;
 
 class EntriesController
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Database\Schema\SchemaProxy;
+use LaravelHyperf\Database\Schema\SchemaProxy;
 
 /**
  * @method static bool hasTable(string $table)

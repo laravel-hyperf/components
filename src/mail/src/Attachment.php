@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
 use Closure;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Macroable\Macroable;
+use LaravelHyperf\Filesystem\Contracts\Factory as FilesystemFactory;
+use LaravelHyperf\Filesystem\Contracts\Filesystem;
+use LaravelHyperf\Notifications\Messages\MailMessage;
 use RuntimeException;
-use SwooleTW\Hyperf\Filesystem\Contracts\Factory as FilesystemFactory;
-use SwooleTW\Hyperf\Filesystem\Contracts\Filesystem;
-use SwooleTW\Hyperf\Notifications\Messages\MailMessage;
 
 use function Hyperf\Support\with;
 

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
 use Closure;
 use Exception;
 use Hyperf\Collection\Collection;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Notifications\AnonymousNotifiable;
+use LaravelHyperf\Notifications\Contracts\Dispatcher as NotificationDispatcher;
+use LaravelHyperf\Notifications\Contracts\Factory as NotificationFactory;
+use LaravelHyperf\Support\Traits\ReflectsClosures;
+use LaravelHyperf\Translation\Contracts\HasLocalePreference;
 use PHPUnit\Framework\Assert as PHPUnit;
-use SwooleTW\Hyperf\Notifications\AnonymousNotifiable;
-use SwooleTW\Hyperf\Notifications\Contracts\Dispatcher as NotificationDispatcher;
-use SwooleTW\Hyperf\Notifications\Contracts\Factory as NotificationFactory;
-use SwooleTW\Hyperf\Support\Traits\ReflectsClosures;
-use SwooleTW\Hyperf\Translation\Contracts\HasLocalePreference;
 
 class NotificationFake implements Fake, NotificationDispatcher, NotificationFactory
 {

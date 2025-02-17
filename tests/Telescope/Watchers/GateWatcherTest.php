@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Exception;
 use Hyperf\Contract\ConfigInterface;
-use SwooleTW\Hyperf\Auth\Access\AuthorizesRequests;
-use SwooleTW\Hyperf\Auth\Access\Gate;
-use SwooleTW\Hyperf\Auth\Access\Response;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\Gate as GateContract;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\GateWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
+use LaravelHyperf\Auth\Access\AuthorizesRequests;
+use LaravelHyperf\Auth\Access\Gate;
+use LaravelHyperf\Auth\Access\Response;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Gate as GateContract;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\GateWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

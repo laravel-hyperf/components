@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Mail;
+namespace LaravelHyperf\Tests\Mail;
 
 use Aws\Command;
 use Aws\Exception\AwsException;
@@ -13,11 +13,11 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use Hyperf\ViewEngine\Contract\FactoryInterface as ViewFactory;
+use LaravelHyperf\Mail\MailManager;
+use LaravelHyperf\Mail\Transport\SesTransport;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Mail\MailManager;
-use SwooleTW\Hyperf\Mail\Transport\SesTransport;
 use Symfony\Component\Mailer\Exception\TransportException;
 use Symfony\Component\Mailer\Header\MetadataHeader;
 use Symfony\Component\Mime\Address;
@@ -47,7 +47,7 @@ class MailSesTransportTest extends TestCase
 
         $manager = new MailManager($container);
 
-        /** @var \SwooleTW\Hyperf\Mail\Transport\SesTransport $transport */
+        /** @var \LaravelHyperf\Mail\Transport\SesTransport $transport */
         $transport = $manager->createSymfonyTransport(['transport' => 'ses']);
 
         $ses = $transport->ses();
@@ -128,10 +128,10 @@ class MailSesTransportTest extends TestCase
 
         $manager = new MailManager($container);
 
-        /** @var \SwooleTw\Hyperf\Mail\Mailer $mailer */
+        /** @var \LaravelHyperf\Mail\Mailer $mailer */
         $mailer = $manager->mailer('ses');
 
-        /** @var \SwooleTw\Hyperf\Mail\Transport\SesTransport $transport */
+        /** @var \LaravelHyperf\Mail\Transport\SesTransport $transport */
         $transport = $mailer->getSymfonyTransport();
 
         $this->assertSame('eu-west-1', $transport->ses()->getRegion());

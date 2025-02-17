@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Container;
+namespace LaravelHyperf\Container;
 
 use Hyperf\Di\Definition\DefinitionSource as HyperfDefinitionSource;
 

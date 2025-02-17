@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Mail;
+namespace LaravelHyperf\Tests\Mail;
 
+use LaravelHyperf\Mail\Mailable;
+use LaravelHyperf\Mail\Mailables\Address;
+use LaravelHyperf\Mail\Mailables\Content;
+use LaravelHyperf\Mail\Mailables\Envelope;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
-use SwooleTW\Hyperf\Mail\Mailable;
-use SwooleTW\Hyperf\Mail\Mailables\Address;
-use SwooleTW\Hyperf\Mail\Mailables\Content;
-use SwooleTW\Hyperf\Mail\Mailables\Envelope;
 
 /**
  * @internal

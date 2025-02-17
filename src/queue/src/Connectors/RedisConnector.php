@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Connectors;
+namespace LaravelHyperf\Queue\Connectors;
 
 use Hyperf\Redis\RedisFactory;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\RedisQueue;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\RedisQueue;
 
 class RedisConnector implements ConnectorInterface
 {

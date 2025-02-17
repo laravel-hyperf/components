@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Event;
+namespace LaravelHyperf\Event;
 
 use Closure;
 use Hyperf\Context\ApplicationContext;

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Jobs;
+namespace LaravelHyperf\Queue\Jobs;
 
+use LaravelHyperf\Queue\DatabaseQueue;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Queue\DatabaseQueue;
 
 class DatabaseJob extends Job
 {

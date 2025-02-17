@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console;
+namespace LaravelHyperf\Foundation\Console;
 
 use Closure;
 use Hyperf\Command\Command;
 use Hyperf\Context\Context;
+use LaravelHyperf\Container\Contracts\Container as ContainerContract;
+use LaravelHyperf\Foundation\Console\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Support\ProcessUtils;
 use Override;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Container\Contracts\Container as ContainerContract;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Support\ProcessUtils;
 use Symfony\Component\Console\Application as SymfonyApplication;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Exception\CommandNotFoundException;

@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-encryption",
+    "name": "laravel-hyperf/encryption",
     "type": "library",
     "description": "The encryption package for Laravel Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Encryption\\": "src/"
+            "LaravelHyperf\\Encryption\\": "src/"
         }
     },
     "require": {
@@ -40,7 +40,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Encryption\\ConfigProvider"
+            "config": "LaravelHyperf\\Encryption\\ConfigProvider"
         },
         "branch-alias": {
             "dev-main": "0.1-dev"

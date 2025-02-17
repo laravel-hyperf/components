@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
-use SwooleTW\Hyperf\Cache\ArrayStore;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
-use SwooleTW\Hyperf\Http\Request;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Storage\EntryQueryOptions;
-use SwooleTW\Hyperf\Telescope\Watchers\DumpWatcher;
+use LaravelHyperf\Cache\ArrayStore;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Http\Request;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Storage\EntryQueryOptions;
+use LaravelHyperf\Telescope\Watchers\DumpWatcher;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 

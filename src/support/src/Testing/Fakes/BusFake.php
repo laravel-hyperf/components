@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\ChainedBatch;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Bus\Contracts\QueueingDispatcher;
+use LaravelHyperf\Bus\PendingBatch;
+use LaravelHyperf\Bus\PendingChain;
+use LaravelHyperf\Support\Traits\ReflectsClosures;
 use PHPUnit\Framework\Assert as PHPUnit;
 use RuntimeException;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\ChainedBatch;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Bus\Contracts\QueueingDispatcher;
-use SwooleTW\Hyperf\Bus\PendingBatch;
-use SwooleTW\Hyperf\Bus\PendingChain;
-use SwooleTW\Hyperf\Support\Traits\ReflectsClosures;
 
 class BusFake implements Fake, QueueingDispatcher
 {

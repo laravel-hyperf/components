@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
-use SwooleTW\Hyperf\Filesystem\Contracts\Cloud as CloudContract;
-use SwooleTW\Hyperf\Filesystem\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Filesystem\Contracts\Filesystem as FilesystemContract;
+use LaravelHyperf\Filesystem\Contracts\Cloud as CloudContract;
+use LaravelHyperf\Filesystem\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Filesystem\Contracts\Filesystem as FilesystemContract;
 
 class ConfigProvider
 {

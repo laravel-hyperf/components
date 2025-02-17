@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT\Validations;
+namespace LaravelHyperf\JWT\Validations;
 
 use Carbon\Carbon;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenInvalidException;
+use LaravelHyperf\JWT\Exceptions\TokenInvalidException;
 
 class IssuedAtClaim extends AbstractValidation
 {

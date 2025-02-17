@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\TextareaPrompt;
-use SwooleTW\Hyperf\Prompts\Themes\Contracts\Scrolling;
+use LaravelHyperf\Prompts\TextareaPrompt;
+use LaravelHyperf\Prompts\Themes\Contracts\Scrolling;
 
 class TextareaPromptRenderer extends Renderer implements Scrolling
 {

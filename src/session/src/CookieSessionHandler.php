@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
 use Hyperf\HttpServer\Request;
+use LaravelHyperf\Cookie\Contracts\Cookie as CookieContract;
+use LaravelHyperf\Support\Traits\InteractsWithTime;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Cookie\Contracts\Cookie as CookieContract;
-use SwooleTW\Hyperf\Support\Traits\InteractsWithTime;
 
 class CookieSessionHandler implements SessionHandlerInterface
 {

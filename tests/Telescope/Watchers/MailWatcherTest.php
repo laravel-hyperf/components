@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Mail\Events\MessageSent;
+use LaravelHyperf\Mail\SentMessage;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\MailWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use Mockery as m;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Mail\Events\MessageSent;
-use SwooleTW\Hyperf\Mail\SentMessage;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\MailWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

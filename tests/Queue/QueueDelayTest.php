@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Bus\PendingDispatch;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Bus\PendingDispatch;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
 
 /**
  * @internal

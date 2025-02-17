@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
 use Hyperf\Database\Model\Model;
+use LaravelHyperf\Notifications\Channels\DatabaseChannel;
+use LaravelHyperf\Notifications\Messages\DatabaseMessage;
+use LaravelHyperf\Notifications\Notification;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Notifications\Channels\DatabaseChannel;
-use SwooleTW\Hyperf\Notifications\Messages\DatabaseMessage;
-use SwooleTW\Hyperf\Notifications\Notification;
 
 /**
  * @internal

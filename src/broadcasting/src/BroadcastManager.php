@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
 use Ably\AblyRest;
 use Closure;
@@ -12,25 +12,25 @@ use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Router\DispatcherFactory as RouterDispatcherFactory;
 use Hyperf\Redis\RedisFactory;
 use InvalidArgumentException;
+use LaravelHyperf\Broadcasting\Broadcasters\AblyBroadcaster;
+use LaravelHyperf\Broadcasting\Broadcasters\LogBroadcaster;
+use LaravelHyperf\Broadcasting\Broadcasters\NullBroadcaster;
+use LaravelHyperf\Broadcasting\Broadcasters\PusherBroadcaster;
+use LaravelHyperf\Broadcasting\Broadcasters\RedisBroadcaster;
+use LaravelHyperf\Broadcasting\Contracts\Broadcaster;
+use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastingFactoryContract;
+use LaravelHyperf\Broadcasting\Contracts\ShouldBeUnique;
+use LaravelHyperf\Broadcasting\Contracts\ShouldBroadcastNow;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Bus\UniqueLock;
+use LaravelHyperf\Cache\Contracts\Factory as Cache;
+use LaravelHyperf\Foundation\Http\Kernel;
+use LaravelHyperf\ObjectPool\Traits\HasPoolProxy;
+use LaravelHyperf\Queue\Contracts\Factory as Queue;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Pusher\Pusher;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\AblyBroadcaster;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\LogBroadcaster;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\NullBroadcaster;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\PusherBroadcaster;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\RedisBroadcaster;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Broadcaster;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory as BroadcastingFactoryContract;
-use SwooleTW\Hyperf\Broadcasting\Contracts\ShouldBeUnique;
-use SwooleTW\Hyperf\Broadcasting\Contracts\ShouldBroadcastNow;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Bus\UniqueLock;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as Cache;
-use SwooleTW\Hyperf\Foundation\Http\Kernel;
-use SwooleTW\Hyperf\ObjectPool\Traits\HasPoolProxy;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as Queue;
 
 /**
  * @mixin Broadcaster

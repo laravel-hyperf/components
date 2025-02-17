@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Prompts;
+namespace LaravelHyperf\Tests\Prompts;
 
+use LaravelHyperf\Prompts\Exceptions\NonInteractiveValidationException;
+use LaravelHyperf\Prompts\Key;
+use LaravelHyperf\Prompts\Prompt;
+use LaravelHyperf\Prompts\TextareaPrompt;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Prompts\Exceptions\NonInteractiveValidationException;
-use SwooleTW\Hyperf\Prompts\Key;
-use SwooleTW\Hyperf\Prompts\Prompt;
-use SwooleTW\Hyperf\Prompts\TextareaPrompt;
 
-use function SwooleTW\Hyperf\Prompts\textarea;
+use function LaravelHyperf\Prompts\textarea;
 
 /**
  * @backupStaticProperties enabled

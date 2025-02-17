@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Notifications\ChannelManager;
+use LaravelHyperf\Notifications\Channels\MailChannel;
+use LaravelHyperf\Notifications\Events\NotificationSending;
+use LaravelHyperf\Notifications\Events\NotificationSent;
+use LaravelHyperf\Notifications\Notifiable;
+use LaravelHyperf\Notifications\Notification;
+use LaravelHyperf\Notifications\NotificationPoolProxy;
+use LaravelHyperf\Notifications\SendQueuedNotifications;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
-use SwooleTW\Hyperf\Notifications\ChannelManager;
-use SwooleTW\Hyperf\Notifications\Channels\MailChannel;
-use SwooleTW\Hyperf\Notifications\Events\NotificationSending;
-use SwooleTW\Hyperf\Notifications\Events\NotificationSent;
-use SwooleTW\Hyperf\Notifications\Notifiable;
-use SwooleTW\Hyperf\Notifications\Notification;
-use SwooleTW\Hyperf\Notifications\NotificationPoolProxy;
-use SwooleTW\Hyperf\Notifications\SendQueuedNotifications;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
 
 /**
  * @internal

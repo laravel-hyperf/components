@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications\Slack\Elements;
+namespace LaravelHyperf\Tests\Notifications\Slack\Elements;
 
 use InvalidArgumentException;
+use LaravelHyperf\Notifications\Slack\BlockKit\Composites\ConfirmObject;
+use LaravelHyperf\Notifications\Slack\BlockKit\Composites\PlainTextOnlyTextObject;
+use LaravelHyperf\Notifications\Slack\BlockKit\Elements\ButtonElement;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Composites\ConfirmObject;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Composites\PlainTextOnlyTextObject;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Elements\ButtonElement;
 
 /**
  * @internal

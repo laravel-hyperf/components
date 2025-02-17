@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT\Exceptions;
+namespace LaravelHyperf\JWT\Exceptions;
 
 class UserNotDefinedException extends JWTException
 {

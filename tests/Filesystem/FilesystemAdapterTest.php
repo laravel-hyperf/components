@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Filesystem;
+namespace LaravelHyperf\Tests\Filesystem;
 
 use Carbon\Carbon;
 use GuzzleHttp\Psr7\Stream;
@@ -11,6 +11,11 @@ use Hyperf\Context\Context;
 use Hyperf\Coroutine\Coroutine;
 use Hyperf\HttpMessage\Upload\UploadedFile;
 use InvalidArgumentException;
+use LaravelHyperf\Filesystem\FilesystemAdapter;
+use LaravelHyperf\Filesystem\FilesystemManager;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Http\Contracts\ResponseContract;
+use LaravelHyperf\Http\Response;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Ftp\FtpAdapter;
 use League\Flysystem\Local\LocalFilesystemAdapter;
@@ -23,11 +28,6 @@ use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Swoole\Runtime;
-use SwooleTW\Hyperf\Filesystem\FilesystemAdapter;
-use SwooleTW\Hyperf\Filesystem\FilesystemManager;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
-use SwooleTW\Hyperf\Http\Response;
 
 /**
  * @internal

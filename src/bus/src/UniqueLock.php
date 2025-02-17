@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
 
 class UniqueLock
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem\Contracts;
+namespace LaravelHyperf\Filesystem\Contracts;
 
 interface Factory
 {

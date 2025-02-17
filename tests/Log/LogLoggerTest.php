@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Log;
+namespace LaravelHyperf\Tests\Log;
 
 use Hyperf\Context\Context;
+use LaravelHyperf\Log\Events\MessageLogged;
+use LaravelHyperf\Log\Logger;
 use Mockery as m;
 use Monolog\Logger as Monolog;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
-use SwooleTW\Hyperf\Log\Events\MessageLogged;
-use SwooleTW\Hyperf\Log\Logger;
 
 /**
  * @internal

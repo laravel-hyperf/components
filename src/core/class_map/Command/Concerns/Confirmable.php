@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Hyperf\Command\Concerns;
 
 use Closure;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
 
 use function Hyperf\Support\value;
 

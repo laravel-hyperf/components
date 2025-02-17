@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers\Traits;
+namespace LaravelHyperf\Telescope\Watchers\Traits;
 
 use Closure;
 use ReflectionException;

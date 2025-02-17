@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Traits;
+namespace LaravelHyperf\Support\Traits;
 
 use Closure;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Foundation\ApplicationContext;
 
 trait Localizable
 {
@@ -18,7 +18,7 @@ trait Localizable
             return $callback();
         }
 
-        /** @var \SwooleTW\Hyperf\Foundation\Application $app */
+        /** @var \LaravelHyperf\Foundation\Application $app */
         $app = ApplicationContext::getContainer();
 
         $original = $app->getLocale();

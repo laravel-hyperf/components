@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
+use LaravelHyperf\Cache\Contracts\Factory as Cache;
+use LaravelHyperf\Queue\Contracts\ShouldBeUnique;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as Cache;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldBeUnique;
 
 class UniqueBroadcastEvent extends BroadcastEvent implements ShouldBeUnique
 {

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Event;
+namespace LaravelHyperf\Tests\Event;
 
 use Error;
 use Exception;
+use LaravelHyperf\Database\TransactionManager;
+use LaravelHyperf\Event\Contracts\ShouldDispatchAfterCommit;
+use LaravelHyperf\Event\EventDispatcher;
+use LaravelHyperf\Event\ListenerProvider;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Database\TransactionManager;
-use SwooleTW\Hyperf\Event\Contracts\ShouldDispatchAfterCommit;
-use SwooleTW\Hyperf\Event\EventDispatcher;
-use SwooleTW\Hyperf\Event\ListenerProvider;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

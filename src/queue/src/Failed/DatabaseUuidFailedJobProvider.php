@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Failed;
+namespace LaravelHyperf\Queue\Failed;
 
 use DateTimeInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Database\Query\Builder;
-use SwooleTW\Hyperf\Support\Carbon;
+use LaravelHyperf\Support\Carbon;
 use Throwable;
 
 class DatabaseUuidFailedJobProvider implements CountableFailedJobProvider, FailedJobProviderInterface, PrunableFailedJobProvider

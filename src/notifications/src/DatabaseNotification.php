@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications;
+namespace LaravelHyperf\Notifications;
 
 use Hyperf\Database\Model\Builder;
 use Hyperf\Database\Model\Relations\MorphTo;
-use SwooleTW\Hyperf\Database\Eloquent\Model;
+use LaravelHyperf\Database\Eloquent\Model;
 
 class DatabaseNotification extends Model
 {

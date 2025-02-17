@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Router;
+namespace LaravelHyperf\Router;
 
 use BackedEnum;
 use Carbon\Carbon;
@@ -22,7 +22,7 @@ use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Traits\InteractsWithTime;
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Router\Contracts\UrlRoutable;
+use LaravelHyperf\Router\Contracts\UrlRoutable;
 
 class UrlGenerator
 {

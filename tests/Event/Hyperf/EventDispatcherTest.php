@@ -2,12 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Event\Hyperf;
+namespace LaravelHyperf\Tests\Event\Hyperf;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Framework\Logger\StdoutLogger;
+use LaravelHyperf\Event\Contracts\ListenerProviderContract;
+use LaravelHyperf\Event\EventDispatcher;
+use LaravelHyperf\Event\EventDispatcherFactory;
+use LaravelHyperf\Event\ListenerProvider;
+use LaravelHyperf\Tests\Event\Hyperf\Event\Alpha;
+use LaravelHyperf\Tests\Event\Hyperf\Event\PriorityEvent;
+use LaravelHyperf\Tests\Event\Hyperf\Listener\AlphaListener;
+use LaravelHyperf\Tests\Event\Hyperf\Listener\BetaListener;
+use LaravelHyperf\Tests\Event\Hyperf\Listener\PriorityListener;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -15,15 +24,6 @@ use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\EventDispatcher\ListenerProviderInterface as PsrListenerProviderInterface;
 use ReflectionClass;
-use SwooleTW\Hyperf\Event\Contracts\ListenerProviderContract;
-use SwooleTW\Hyperf\Event\EventDispatcher;
-use SwooleTW\Hyperf\Event\EventDispatcherFactory;
-use SwooleTW\Hyperf\Event\ListenerProvider;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Event\Alpha;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Event\PriorityEvent;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Listener\AlphaListener;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Listener\BetaListener;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Listener\PriorityListener;
 
 /**
  * @internal

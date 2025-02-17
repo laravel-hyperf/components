@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\ObjectPool;
+namespace LaravelHyperf\ObjectPool;
 
 use Closure;
 use Hyperf\Contract\FrequencyInterface;

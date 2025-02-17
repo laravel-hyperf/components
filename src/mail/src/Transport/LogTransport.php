@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail\Transport;
+namespace LaravelHyperf\Mail\Transport;
 
 use Hyperf\Stringable\Str;
 use Psr\Log\LoggerInterface;

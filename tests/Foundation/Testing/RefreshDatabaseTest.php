@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing;
+namespace LaravelHyperf\Tests\Foundation\Testing;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\ConnectionInterface;
 use Hyperf\DbConnection\Db;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithConsole;
+use LaravelHyperf\Foundation\Testing\RefreshDatabase;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
 use Mockery as m;
 use PDO;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithConsole;
-use SwooleTW\Hyperf\Foundation\Testing\RefreshDatabase;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
 
 /**
  * @internal

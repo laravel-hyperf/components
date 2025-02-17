@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Faker\Generator as Faker;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Storage\EntryModel;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Storage\EntryModel;
 
 /* @phpstan-ignore-next-line */
 $factory->define(EntryModel::class, function (Faker $faker) {

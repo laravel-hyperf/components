@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support;
+namespace LaravelHyperf\Support;
 
 use Hyperf\Context\Context as HyperfContext;
 use Hyperf\Engine\Coroutine;

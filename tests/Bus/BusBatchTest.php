@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Bus;
+namespace LaravelHyperf\Tests\Bus;
 
 use Carbon\CarbonImmutable;
 use Hyperf\Collection\Collection;
 use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Database\Query\Builder;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\Batchable;
+use LaravelHyperf\Bus\BatchFactory;
+use LaravelHyperf\Bus\DatabaseBatchRepository;
+use LaravelHyperf\Bus\Dispatchable;
+use LaravelHyperf\Bus\PendingBatch;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Foundation\Testing\RefreshDatabase;
+use LaravelHyperf\Queue\CallQueuedClosure;
+use LaravelHyperf\Queue\Contracts\Factory;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 use Mockery as m;
 use PHPUnit\Framework\Attributes\DataProvider;
 use RuntimeException;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\Batchable;
-use SwooleTW\Hyperf\Bus\BatchFactory;
-use SwooleTW\Hyperf\Bus\DatabaseBatchRepository;
-use SwooleTW\Hyperf\Bus\Dispatchable;
-use SwooleTW\Hyperf\Bus\PendingBatch;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Foundation\Testing\RefreshDatabase;
-use SwooleTW\Hyperf\Queue\CallQueuedClosure;
-use SwooleTW\Hyperf\Queue\Contracts\Factory;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\View\Middleware;
+namespace LaravelHyperf\View\Middleware;
 
 use Hyperf\Contract\MessageBag as MessageBagContract;
 use Hyperf\Contract\MessageProvider;
@@ -10,12 +10,12 @@ use Hyperf\Support\MessageBag;
 use Hyperf\Validation\ValidationException;
 use Hyperf\ViewEngine\Contract\FactoryInterface;
 use Hyperf\ViewEngine\ViewErrorBag;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
 use Throwable;
 
 class ValidationExceptionHandle implements MiddlewareInterface

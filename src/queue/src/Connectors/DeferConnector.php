@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Connectors;
+namespace LaravelHyperf\Queue\Connectors;
 
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\DeferQueue;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\DeferQueue;
 
 class DeferConnector implements ConnectorInterface
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\SuggestPrompt;
-use SwooleTW\Hyperf\Prompts\Themes\Contracts\Scrolling;
+use LaravelHyperf\Prompts\SuggestPrompt;
+use LaravelHyperf\Prompts\Themes\Contracts\Scrolling;
 
 class SuggestPromptRenderer extends Renderer implements Scrolling
 {

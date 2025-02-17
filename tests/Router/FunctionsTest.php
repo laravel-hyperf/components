@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Router;
+namespace LaravelHyperf\Tests\Router;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ContainerInterface;
+use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
-use SwooleTW\Hyperf\Router\UrlGenerator;
-use SwooleTW\Hyperf\Tests\TestCase;
 
-use function SwooleTW\Hyperf\Router\route;
-use function SwooleTW\Hyperf\Router\secure_url;
-use function SwooleTW\Hyperf\Router\url;
+use function LaravelHyperf\Router\route;
+use function LaravelHyperf\Router\secure_url;
+use function LaravelHyperf\Router\url;
 
 /**
  * @internal

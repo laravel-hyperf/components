@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
+use LaravelHyperf\Notifications\Action;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Notifications\Action;
 
 /**
  * @internal

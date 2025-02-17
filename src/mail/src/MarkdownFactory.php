@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\ViewEngine\Contract\FactoryInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Http;
+namespace LaravelHyperf\Foundation\Http;
 
 use Hyperf\Context\Context;
 use Hyperf\Contract\ConfigInterface;
@@ -20,11 +20,11 @@ use Hyperf\WebSocketServer\Exception\Handler\WebSocketExceptionHandler;
 use Hyperf\WebSocketServer\Exception\WebSocketHandShakeException;
 use Hyperf\WebSocketServer\Security;
 use Hyperf\WebSocketServer\Server as WebSocketServer;
+use LaravelHyperf\Foundation\Http\Contracts\MiddlewareContract;
+use LaravelHyperf\Foundation\Http\Traits\HasMiddleware;
 use Psr\Http\Message\ResponseInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response as SwooleResponse;
-use SwooleTW\Hyperf\Foundation\Http\Contracts\MiddlewareContract;
-use SwooleTW\Hyperf\Foundation\Http\Traits\HasMiddleware;
 use Swow\Psr7\Server\ServerConnection as SwowServerConnection;
 use Throwable;
 

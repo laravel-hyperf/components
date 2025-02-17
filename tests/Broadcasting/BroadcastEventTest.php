@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Broadcasting;
+namespace LaravelHyperf\Tests\Broadcasting;
 
+use LaravelHyperf\Broadcasting\BroadcastEvent;
+use LaravelHyperf\Broadcasting\Contracts\Broadcaster;
+use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastingFactory;
+use LaravelHyperf\Broadcasting\InteractsWithBroadcasting;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Broadcasting\BroadcastEvent;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Broadcaster;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory as BroadcastingFactory;
-use SwooleTW\Hyperf\Broadcasting\InteractsWithBroadcasting;
 
 /**
  * @internal

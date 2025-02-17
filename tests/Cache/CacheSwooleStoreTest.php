@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
 use Carbon\Carbon;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Cache\SwooleStore;
+use LaravelHyperf\Cache\SwooleTableManager;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\Container\ContainerInterface;
 use Swoole\Table;
-use SwooleTW\Hyperf\Cache\SwooleStore;
-use SwooleTW\Hyperf\Cache\SwooleTableManager;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

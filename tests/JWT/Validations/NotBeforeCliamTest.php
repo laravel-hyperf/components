@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Validations;
+namespace LaravelHyperf\Tests\JWT\Validations;
 
 use Carbon\Carbon;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenInvalidException;
-use SwooleTW\Hyperf\JWT\Validations\NotBeforeCliam;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\JWT\Exceptions\TokenInvalidException;
+use LaravelHyperf\JWT\Validations\NotBeforeCliam;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

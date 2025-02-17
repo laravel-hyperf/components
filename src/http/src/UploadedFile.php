@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http;
+namespace LaravelHyperf\Http;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Context\ApplicationContext;
@@ -10,20 +10,20 @@ use Hyperf\HttpMessage\Stream\StandardStream;
 use Hyperf\HttpMessage\Upload\UploadedFile as HyperfUploadedFile;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Filesystem\FilesystemManager;
+use LaravelHyperf\Http\Exceptions\CannotWriteFileException;
+use LaravelHyperf\Http\Exceptions\ExtensionFileException;
+use LaravelHyperf\Http\Exceptions\FileException;
+use LaravelHyperf\Http\Exceptions\FileNotFoundException;
+use LaravelHyperf\Http\Exceptions\FormSizeFileException;
+use LaravelHyperf\Http\Exceptions\IniSizeFileException;
+use LaravelHyperf\Http\Exceptions\NoFileException;
+use LaravelHyperf\Http\Exceptions\NoTmpDirFileException;
+use LaravelHyperf\Http\Exceptions\PartialFileException;
+use LaravelHyperf\Http\Testing\FileFactory;
+use LaravelHyperf\Support\FileinfoMimeTypeGuesser;
+use LaravelHyperf\Support\MimeTypeExtensionGuesser;
 use Psr\Http\Message\StreamInterface;
-use SwooleTW\Hyperf\Filesystem\FilesystemManager;
-use SwooleTW\Hyperf\Http\Exceptions\CannotWriteFileException;
-use SwooleTW\Hyperf\Http\Exceptions\ExtensionFileException;
-use SwooleTW\Hyperf\Http\Exceptions\FileException;
-use SwooleTW\Hyperf\Http\Exceptions\FileNotFoundException;
-use SwooleTW\Hyperf\Http\Exceptions\FormSizeFileException;
-use SwooleTW\Hyperf\Http\Exceptions\IniSizeFileException;
-use SwooleTW\Hyperf\Http\Exceptions\NoFileException;
-use SwooleTW\Hyperf\Http\Exceptions\NoTmpDirFileException;
-use SwooleTW\Hyperf\Http\Exceptions\PartialFileException;
-use SwooleTW\Hyperf\Http\Testing\FileFactory;
-use SwooleTW\Hyperf\Support\FileinfoMimeTypeGuesser;
-use SwooleTW\Hyperf\Support\MimeTypeExtensionGuesser;
 
 class UploadedFile extends HyperfUploadedFile
 {

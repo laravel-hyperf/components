@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-object-pool",
+    "name": "laravel-hyperf/object-pool",
     "description": "The object pool package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -11,8 +11,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\ObjectPool\\": "src/"
+            "LaravelHyperf\\ObjectPool\\": "src/"
         }
     },
     "extra": {

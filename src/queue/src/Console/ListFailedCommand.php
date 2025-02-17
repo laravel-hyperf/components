@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Console;
+namespace LaravelHyperf\Queue\Console;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\Command\Command;
-use SwooleTW\Hyperf\Queue\Failed\FailedJobProviderInterface;
-use SwooleTW\Hyperf\Support\Traits\HasLaravelStyleCommand;
+use LaravelHyperf\Queue\Failed\FailedJobProviderInterface;
+use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 
 class ListFailedCommand extends Command
 {

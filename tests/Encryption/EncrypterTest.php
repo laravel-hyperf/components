@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Encryption;
+namespace LaravelHyperf\Tests\Encryption;
 
+use LaravelHyperf\Encryption\Encrypter;
+use LaravelHyperf\Encryption\Exceptions\DecryptException;
+use LaravelHyperf\Tests\TestCase;
 use RuntimeException;
-use SwooleTW\Hyperf\Encryption\Encrypter;
-use SwooleTW\Hyperf\Encryption\Exceptions\DecryptException;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

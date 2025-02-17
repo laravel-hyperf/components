@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing;
+namespace LaravelHyperf\Foundation\Testing;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Database\Connection as DatabaseConnection;
 use Hyperf\DbConnection\Db;
+use LaravelHyperf\Foundation\Testing\Traits\CanConfigureMigrationCommands;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Foundation\Testing\Traits\CanConfigureMigrationCommands;
 
 trait RefreshDatabase
 {

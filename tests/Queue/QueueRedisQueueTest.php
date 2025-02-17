@@ -2,12 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Hyperf\Di\Container;
 use Hyperf\Redis\RedisFactory;
 use Hyperf\Redis\RedisProxy;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Queue\LuaScripts;
+use LaravelHyperf\Queue\Queue;
+use LaravelHyperf\Queue\RedisQueue;
+use LaravelHyperf\Support\Carbon;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -15,10 +19,6 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidFactoryInterface;
 use Ramsey\Uuid\UuidInterface;
-use SwooleTW\Hyperf\Queue\LuaScripts;
-use SwooleTW\Hyperf\Queue\Queue;
-use SwooleTW\Hyperf\Queue\RedisQueue;
-use SwooleTW\Hyperf\Support\Carbon;
 
 /**
  * @internal

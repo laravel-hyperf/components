@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail\Contracts;
+namespace LaravelHyperf\Mail\Contracts;
 
 interface Factory
 {

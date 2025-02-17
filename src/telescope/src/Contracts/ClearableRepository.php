@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Contracts;
+namespace LaravelHyperf\Telescope\Contracts;
 
 interface ClearableRepository
 {

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting\Broadcasters;
+namespace LaravelHyperf\Broadcasting\Broadcasters;
 
 use Hyperf\Collection\Arr;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\Pool\Exception\ConnectionException;
 use Hyperf\Redis\RedisFactory;
+use LaravelHyperf\Broadcasting\BroadcastException;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 use Psr\Container\ContainerInterface;
 use RedisException;
-use SwooleTW\Hyperf\Broadcasting\BroadcastException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 
 class RedisBroadcaster extends Broadcaster
 {

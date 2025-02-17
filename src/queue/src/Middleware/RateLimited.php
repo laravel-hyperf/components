@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Middleware;
+namespace LaravelHyperf\Queue\Middleware;
 
 use BackedEnum;
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
-use SwooleTW\Hyperf\Cache\RateLimiter;
-use SwooleTW\Hyperf\Cache\RateLimiting\Unlimited;
+use LaravelHyperf\Cache\RateLimiter;
+use LaravelHyperf\Cache\RateLimiting\Unlimited;
 use UnitEnum;
 
-use function SwooleTW\Hyperf\Support\enum_value;
+use function LaravelHyperf\Support\enum_value;
 
 class RateLimited
 {

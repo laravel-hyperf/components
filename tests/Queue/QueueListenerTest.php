@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
+use LaravelHyperf\Queue\Listener;
+use LaravelHyperf\Queue\ListenerOptions;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Queue\Listener;
-use SwooleTW\Hyperf\Queue\ListenerOptions;
 use Symfony\Component\Process\Process;
 
 /**

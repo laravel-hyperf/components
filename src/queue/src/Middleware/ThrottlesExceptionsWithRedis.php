@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Middleware;
+namespace LaravelHyperf\Queue\Middleware;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Redis\RedisFactory;
-use SwooleTW\Hyperf\Redis\Limiters\DurationLimiter;
-use SwooleTW\Hyperf\Support\Traits\InteractsWithTime;
+use LaravelHyperf\Redis\Limiters\DurationLimiter;
+use LaravelHyperf\Support\Traits\InteractsWithTime;
 use Throwable;
 
 class ThrottlesExceptionsWithRedis extends ThrottlesExceptions

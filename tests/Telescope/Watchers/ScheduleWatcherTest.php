@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Exception;
 use Hyperf\Contract\ConfigInterface;
@@ -10,11 +10,11 @@ use Hyperf\Crontab\Crontab;
 use Hyperf\Crontab\Event\AfterExecute;
 use Hyperf\Crontab\Event\BeforeExecute;
 use Hyperf\Crontab\Event\FailToExecute;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\ScheduleWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use Mockery as m;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\ScheduleWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

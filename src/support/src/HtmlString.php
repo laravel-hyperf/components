@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support;
+namespace LaravelHyperf\Support;
 
+use LaravelHyperf\Support\Contracts\Htmlable;
 use Stringable;
-use SwooleTW\Hyperf\Support\Contracts\Htmlable;
 
 class HtmlString implements Htmlable, Stringable
 {

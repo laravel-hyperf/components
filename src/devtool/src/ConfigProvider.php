@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Devtool;
+namespace LaravelHyperf\Devtool;
 
 use Hyperf\Devtool\Generator\GeneratorCommand;
-use SwooleTW\Hyperf\Devtool\Commands\EventListCommand;
-use SwooleTW\Hyperf\Devtool\Generator\BatchesTableCommand;
-use SwooleTW\Hyperf\Devtool\Generator\ComponentCommand;
-use SwooleTW\Hyperf\Devtool\Generator\ConsoleCommand;
-use SwooleTW\Hyperf\Devtool\Generator\EventCommand;
-use SwooleTW\Hyperf\Devtool\Generator\FactoryCommand;
-use SwooleTW\Hyperf\Devtool\Generator\JobCommand;
-use SwooleTW\Hyperf\Devtool\Generator\ListenerCommand;
-use SwooleTW\Hyperf\Devtool\Generator\ModelCommand;
-use SwooleTW\Hyperf\Devtool\Generator\NotificationTableCommand;
-use SwooleTW\Hyperf\Devtool\Generator\ProviderCommand;
-use SwooleTW\Hyperf\Devtool\Generator\QueueFailedTableCommand;
-use SwooleTW\Hyperf\Devtool\Generator\QueueTableCommand;
-use SwooleTW\Hyperf\Devtool\Generator\RequestCommand;
-use SwooleTW\Hyperf\Devtool\Generator\RuleCommand;
-use SwooleTW\Hyperf\Devtool\Generator\SeederCommand;
-use SwooleTW\Hyperf\Devtool\Generator\SessionTableCommand;
-use SwooleTW\Hyperf\Devtool\Generator\TestCommand;
+use LaravelHyperf\Devtool\Commands\EventListCommand;
+use LaravelHyperf\Devtool\Generator\BatchesTableCommand;
+use LaravelHyperf\Devtool\Generator\ComponentCommand;
+use LaravelHyperf\Devtool\Generator\ConsoleCommand;
+use LaravelHyperf\Devtool\Generator\EventCommand;
+use LaravelHyperf\Devtool\Generator\FactoryCommand;
+use LaravelHyperf\Devtool\Generator\JobCommand;
+use LaravelHyperf\Devtool\Generator\ListenerCommand;
+use LaravelHyperf\Devtool\Generator\ModelCommand;
+use LaravelHyperf\Devtool\Generator\NotificationTableCommand;
+use LaravelHyperf\Devtool\Generator\ProviderCommand;
+use LaravelHyperf\Devtool\Generator\QueueFailedTableCommand;
+use LaravelHyperf\Devtool\Generator\QueueTableCommand;
+use LaravelHyperf\Devtool\Generator\RequestCommand;
+use LaravelHyperf\Devtool\Generator\RuleCommand;
+use LaravelHyperf\Devtool\Generator\SeederCommand;
+use LaravelHyperf\Devtool\Generator\SessionTableCommand;
+use LaravelHyperf\Devtool\Generator\TestCommand;
 
 class ConfigProvider
 {

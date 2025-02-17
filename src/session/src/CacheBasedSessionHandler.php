@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
+use LaravelHyperf\Cache\Contracts\Factory as CacheContract;
+use LaravelHyperf\Cache\Contracts\Repository as RepositoryContract;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheContract;
-use SwooleTW\Hyperf\Cache\Contracts\Repository as RepositoryContract;
 
 class CacheBasedSessionHandler implements SessionHandlerInterface
 {

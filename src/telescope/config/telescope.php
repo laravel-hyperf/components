@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use SwooleTW\Hyperf\Telescope\Aspects;
-use SwooleTW\Hyperf\Telescope\Http\Middleware\Authorize;
-use SwooleTW\Hyperf\Telescope\Watchers;
+use LaravelHyperf\Telescope\Aspects;
+use LaravelHyperf\Telescope\Http\Middleware\Authorize;
+use LaravelHyperf\Telescope\Watchers;
 
 use function Hyperf\Support\env;
 

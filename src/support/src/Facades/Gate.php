@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Closure;
-use SwooleTW\Hyperf\Auth\Access\Gate as AuthGate;
-use SwooleTW\Hyperf\Auth\Access\Response;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\Gate as GateContract;
+use LaravelHyperf\Auth\Access\Gate as AuthGate;
+use LaravelHyperf\Auth\Access\Response;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Gate as GateContract;
 
 /**
  * @method static bool has(string|array $ability)

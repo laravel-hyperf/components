@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
-use SwooleTW\Hyperf\Cache\Contracts\LockProvider;
+use LaravelHyperf\Cache\Contracts\LockProvider;
 
 class NullStore extends TaggableStore implements LockProvider
 {

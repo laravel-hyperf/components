@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Failed;
+namespace LaravelHyperf\Queue\Failed;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Database\ConnectionResolverInterface;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactoryContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactoryContract;
 
 class FailedJobProviderFactory
 {

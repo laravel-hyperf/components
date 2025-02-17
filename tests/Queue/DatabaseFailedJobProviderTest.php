@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Exception;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Foundation\Testing\RefreshDatabase;
+use LaravelHyperf\Queue\Failed\DatabaseFailedJobProvider;
+use LaravelHyperf\Support\Carbon;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 use RuntimeException;
-use SwooleTW\Hyperf\Foundation\Testing\RefreshDatabase;
-use SwooleTW\Hyperf\Queue\Failed\DatabaseFailedJobProvider;
-use SwooleTW\Hyperf\Support\Carbon;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

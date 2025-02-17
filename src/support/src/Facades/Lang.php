@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Hyperf\Contract\TranslatorLoaderInterface;
 use Hyperf\Translation\MessageSelector;

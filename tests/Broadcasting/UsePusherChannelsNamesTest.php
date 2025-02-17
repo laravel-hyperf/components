@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Broadcasting;
+namespace LaravelHyperf\Tests\Broadcasting;
 
 use Hyperf\HttpServer\Contract\RequestInterface;
+use LaravelHyperf\Broadcasting\Broadcasters\Broadcaster;
+use LaravelHyperf\Broadcasting\Broadcasters\UsePusherChannelConventions;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\Broadcaster;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\UsePusherChannelConventions;
 
 /**
  * @internal

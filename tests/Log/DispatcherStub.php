@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Log;
+namespace LaravelHyperf\Tests\Log;
 
 use Closure;
 use Psr\EventDispatcher\EventDispatcherInterface;

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
+use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Notifications\AnonymousNotifiable;
+use LaravelHyperf\Notifications\ChannelManager;
+use LaravelHyperf\Notifications\Notifiable;
+use LaravelHyperf\Notifications\Notification;
+use LaravelHyperf\Notifications\NotificationSender;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface as EventDispatcher;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Notifications\AnonymousNotifiable;
-use SwooleTW\Hyperf\Notifications\ChannelManager;
-use SwooleTW\Hyperf\Notifications\Notifiable;
-use SwooleTW\Hyperf\Notifications\Notification;
-use SwooleTW\Hyperf\Notifications\NotificationSender;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
 
 /**
  * @internal

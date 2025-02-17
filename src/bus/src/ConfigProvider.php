@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher as DispatcherContract;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Bus\Contracts\Dispatcher as DispatcherContract;
 
 class ConfigProvider
 {

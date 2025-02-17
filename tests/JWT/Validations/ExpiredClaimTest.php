@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Validations;
+namespace LaravelHyperf\Tests\JWT\Validations;
 
 use Carbon\Carbon;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenExpiredException;
-use SwooleTW\Hyperf\JWT\Validations\ExpiredClaim;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\JWT\Exceptions\TokenExpiredException;
+use LaravelHyperf\JWT\Validations\ExpiredClaim;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

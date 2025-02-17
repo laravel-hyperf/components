@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Http;
+namespace LaravelHyperf\Tests\Http;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Context\Context;
@@ -11,14 +11,14 @@ use Hyperf\Contract\Jsonable;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Response as HyperfResponse;
 use Hyperf\View\RenderInterface;
+use LaravelHyperf\Http\Response;
+use LaravelHyperf\HttpMessage\Exceptions\RangeNotSatisfiableHttpException;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Http\Response;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\RangeNotSatisfiableHttpException;
 use Swow\Psr7\Message\ResponsePlusInterface;
 use Swow\Psr7\Message\ServerRequestPlusInterface;
 
@@ -142,7 +142,7 @@ class ResponseTest extends TestCase
             ->andReturnTrue();
         Context::set(ResponseInterface::class, $psrResponse);
 
-        $response = new \SwooleTW\Hyperf\Http\Response();
+        $response = new \LaravelHyperf\Http\Response();
         $stream = new SwooleStream($content);
         $result = $response->stream(
             fn () => $stream->eof() ? false : $stream->read(1024),
@@ -165,7 +165,7 @@ class ResponseTest extends TestCase
             ->andReturnTrue();
         Context::set(ResponseInterface::class, $psrResponse);
 
-        $response = new \SwooleTW\Hyperf\Http\Response();
+        $response = new \LaravelHyperf\Http\Response();
         $result = $response->stream(
             fn () => $content,
             ['X-Download' => 'Yes']
@@ -186,7 +186,7 @@ class ResponseTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('The response is not a chunkable response.');
 
-        (new \SwooleTW\Hyperf\Http\Response())
+        (new \LaravelHyperf\Http\Response())
             ->stream(fn () => 'test');
     }
 
@@ -199,7 +199,7 @@ class ResponseTest extends TestCase
             ->andReturnTrue();
         Context::set(ResponseInterface::class, $psrResponse);
 
-        $response = new \SwooleTW\Hyperf\Http\Response();
+        $response = new \LaravelHyperf\Http\Response();
         $stream = new SwooleStream($content);
         $result = $response->streamDownload(
             fn () => $stream->eof() ? false : $stream->read(1024),
@@ -230,7 +230,7 @@ class ResponseTest extends TestCase
             'Range' => ['bytes=0-1023'],
         ]);
 
-        $response = new \SwooleTW\Hyperf\Http\Response();
+        $response = new \LaravelHyperf\Http\Response();
         $stream = new SwooleStream($content);
         $result = $response->withRangeHeaders(8888)
             ->streamDownload(
@@ -266,7 +266,7 @@ class ResponseTest extends TestCase
             'Range' => ['bytes=1024-2047'],
         ]);
 
-        $response = new \SwooleTW\Hyperf\Http\Response();
+        $response = new \LaravelHyperf\Http\Response();
         $stream = new SwooleStream($content);
         $result = $response->withRangeHeaders()
             ->streamDownload(
@@ -300,7 +300,7 @@ class ResponseTest extends TestCase
 
         $this->expectException(RangeNotSatisfiableHttpException::class);
 
-        $response = new \SwooleTW\Hyperf\Http\Response();
+        $response = new \LaravelHyperf\Http\Response();
         $stream = new SwooleStream('File content');
         $response->withRangeHeaders(8888)
             ->streamDownload(

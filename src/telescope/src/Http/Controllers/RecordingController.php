@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
 
 class RecordingController
 {

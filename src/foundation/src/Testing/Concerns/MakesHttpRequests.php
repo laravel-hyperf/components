@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Concerns;
+namespace LaravelHyperf\Foundation\Testing\Concerns;
 
-use SwooleTW\Hyperf\Foundation\Testing\Http\TestClient;
-use SwooleTW\Hyperf\Foundation\Testing\Http\TestResponse;
-use SwooleTW\Hyperf\Foundation\Testing\Stubs\FakeMiddleware;
+use LaravelHyperf\Foundation\Testing\Http\TestClient;
+use LaravelHyperf\Foundation\Testing\Http\TestResponse;
+use LaravelHyperf\Foundation\Testing\Stubs\FakeMiddleware;
 
 trait MakesHttpRequests
 {

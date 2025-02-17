@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Bootstrap;
+namespace LaravelHyperf\Foundation\Bootstrap;
 
 use Hyperf\Contract\ConfigInterface;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Support\Facades\Facade;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Support\Facades\Facade;
 
 class RegisterFacades
 {

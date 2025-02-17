@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use Carbon\CarbonImmutable;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Stringable\Str;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Support\Testing\Fakes\BatchFake;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Support\Testing\Fakes\BatchFake;
 
 trait Batchable
 {

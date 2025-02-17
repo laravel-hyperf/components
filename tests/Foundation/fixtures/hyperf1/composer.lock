@@ -6,7 +6,7 @@
             "extra": {
                 "hyperf": {
                     "providers": [
-                        "SwooleTW\\Hyperf\\Tests\\Foundation\\Bootstrap\\TestOneServiceProvider"
+                        "LaravelHyperf\\Tests\\Foundation\\Bootstrap\\TestOneServiceProvider"
                     ],
                     "dont-discover": [
                         "package-three"
@@ -23,7 +23,7 @@
             "extra": {
                 "hyperf": {
                     "providers": [
-                        "SwooleTW\\Hyperf\\Tests\\Foundation\\Bootstrap\\TestThreeServiceProvider"
+                        "LaravelHyperf\\Tests\\Foundation\\Bootstrap\\TestThreeServiceProvider"
                     ]
                 }
             },

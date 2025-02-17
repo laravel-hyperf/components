@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications;
+namespace LaravelHyperf\Notifications;
 
 use DateTime;
 use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Collection as EloquentCollection;
 use Hyperf\Database\Model\Model;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldBeEncrypted;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueueAfterCommit;
-use SwooleTW\Hyperf\Queue\InteractsWithQueue;
-use SwooleTW\Hyperf\Queue\SerializesModels;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Queue\Contracts\ShouldBeEncrypted;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\Contracts\ShouldQueueAfterCommit;
+use LaravelHyperf\Queue\InteractsWithQueue;
+use LaravelHyperf\Queue\SerializesModels;
 use Throwable;
 
 class SendQueuedNotifications implements ShouldQueue

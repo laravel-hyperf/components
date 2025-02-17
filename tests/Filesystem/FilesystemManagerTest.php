@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Filesystem;
+namespace LaravelHyperf\Tests\Filesystem;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\ApplicationContext;
@@ -11,11 +11,11 @@ use Hyperf\Contract\ContainerInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use InvalidArgumentException;
+use LaravelHyperf\Filesystem\Contracts\Filesystem;
+use LaravelHyperf\Filesystem\FilesystemManager;
+use LaravelHyperf\Filesystem\FilesystemPoolProxy;
 use PHPUnit\Framework\Attributes\RequiresOperatingSystem;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Filesystem\Contracts\Filesystem;
-use SwooleTW\Hyperf\Filesystem\FilesystemManager;
-use SwooleTW\Hyperf\Filesystem\FilesystemPoolProxy;
 
 /**
  * @internal

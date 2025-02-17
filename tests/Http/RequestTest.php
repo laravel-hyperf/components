@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Http;
+namespace LaravelHyperf\Tests\Http;
 
 use Carbon\Carbon;
 use Hyperf\Collection\Collection;
@@ -12,12 +12,12 @@ use Hyperf\HttpMessage\Upload\UploadedFile;
 use Hyperf\HttpMessage\Uri\Uri;
 use Hyperf\Stringable\Stringable;
 use Hyperf\Validation\ValidatorFactory;
+use LaravelHyperf\Http\Request;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use SwooleTW\Hyperf\Http\Request;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
 use Swow\Psr7\Message\ServerRequestPlusInterface;
 
 /**

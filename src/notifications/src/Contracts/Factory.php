@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Contracts;
+namespace LaravelHyperf\Notifications\Contracts;
 
 use Hyperf\Collection\Collection;
 

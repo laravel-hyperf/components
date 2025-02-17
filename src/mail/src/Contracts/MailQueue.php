@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail\Contracts;
+namespace LaravelHyperf\Mail\Contracts;
 
 use DateInterval;
 use DateTimeInterface;
-use SwooleTW\Hyperf\Mail\Contracts\Mailable as MailableContract;
+use LaravelHyperf\Mail\Contracts\Mailable as MailableContract;
 
 interface MailQueue
 {

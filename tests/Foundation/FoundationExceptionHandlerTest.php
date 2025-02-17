@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation;
+namespace LaravelHyperf\Tests\Foundation;
 
 use Exception;
 use Hyperf\Context\Context;
@@ -22,6 +22,17 @@ use Hyperf\View\RenderInterface;
 use Hyperf\ViewEngine\Contract\FactoryInterface;
 use Hyperf\ViewEngine\ViewErrorBag;
 use InvalidArgumentException;
+use LaravelHyperf\Config\Repository;
+use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Foundation\Exceptions\Handler;
+use LaravelHyperf\Http\Contracts\ResponseContract;
+use LaravelHyperf\Http\Request;
+use LaravelHyperf\Http\Response;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
+use LaravelHyperf\Support\Contracts\Responsable;
+use LaravelHyperf\Support\Facades\View;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use OutOfRangeException;
 use Psr\Http\Message\ResponseInterface;
@@ -30,17 +41,6 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use RuntimeException;
 use stdClass;
-use SwooleTW\Hyperf\Config\Repository;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
-use SwooleTW\Hyperf\Foundation\Exceptions\Handler;
-use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
-use SwooleTW\Hyperf\Http\Request;
-use SwooleTW\Hyperf\Http\Response;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
-use SwooleTW\Hyperf\Support\Contracts\Responsable;
-use SwooleTW\Hyperf\Support\Facades\View;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
-use SwooleTW\Hyperf\Tests\TestCase;
 use Throwable;
 
 /**

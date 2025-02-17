@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Mail;
+namespace LaravelHyperf\Tests\Mail;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\ApplicationContext;
@@ -11,11 +11,11 @@ use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use Hyperf\ViewEngine\Contract\FactoryInterface as ViewFactory;
 use InvalidArgumentException;
+use LaravelHyperf\Mail\MailManager;
+use LaravelHyperf\Mail\TransportPoolProxy;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Mail\MailManager;
-use SwooleTW\Hyperf\Mail\TransportPoolProxy;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
 /**

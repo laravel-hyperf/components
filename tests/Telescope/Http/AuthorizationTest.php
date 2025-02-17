@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Http;
+namespace LaravelHyperf\Tests\Telescope\Http;
 
-use SwooleTW\Hyperf\Auth\Access\Gate;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\Gate as GateContract;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Telescope\Telescope;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
+use LaravelHyperf\Auth\Access\Gate;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Gate as GateContract;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Telescope\Telescope;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

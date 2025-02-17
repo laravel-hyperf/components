@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Event;
+namespace LaravelHyperf\Event;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Stdlib\SplPriorityQueue;
 use Hyperf\Stringable\Str;
-use SwooleTW\Hyperf\Event\Contracts\ListenerProviderContract;
+use LaravelHyperf\Event\Contracts\ListenerProviderContract;
 
 use function Hyperf\Collection\collect;
 

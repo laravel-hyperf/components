@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus\Contracts;
+namespace LaravelHyperf\Bus\Contracts;
 
 use DateTimeInterface;
 

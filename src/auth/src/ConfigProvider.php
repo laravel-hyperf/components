@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth;
+namespace LaravelHyperf\Auth;
 
-use SwooleTW\Hyperf\Auth\Access\GateFactory;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\FactoryContract;
-use SwooleTW\Hyperf\Auth\Contracts\Gate as GateContract;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Auth\Access\GateFactory;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\FactoryContract;
+use LaravelHyperf\Auth\Contracts\Gate as GateContract;
+use LaravelHyperf\Auth\Contracts\Guard;
 
 class ConfigProvider
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Config;
+namespace LaravelHyperf\Tests\Config;
 
 use InvalidArgumentException;
+use LaravelHyperf\Config\Repository;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Config\Repository;
 
 /**
  * @internal

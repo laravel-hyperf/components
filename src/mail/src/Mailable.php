@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
 use BadMethodCallException;
 use Closure;
@@ -15,23 +15,23 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Traits\ForwardsCalls;
+use LaravelHyperf\Filesystem\Contracts\Factory as FilesystemFactory;
+use LaravelHyperf\Foundation\Testing\Constraints\SeeInOrder;
+use LaravelHyperf\Mail\Contracts\Attachable;
+use LaravelHyperf\Mail\Contracts\Factory;
+use LaravelHyperf\Mail\Contracts\Factory as MailFactory;
+use LaravelHyperf\Mail\Contracts\Mailable as MailableContract;
+use LaravelHyperf\Mail\Contracts\Mailer;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactory;
+use LaravelHyperf\Support\Contracts\Htmlable;
+use LaravelHyperf\Support\Contracts\Renderable;
+use LaravelHyperf\Support\HtmlString;
+use LaravelHyperf\Support\Traits\Localizable;
+use LaravelHyperf\Translation\Contracts\HasLocalePreference;
 use PHPUnit\Framework\Assert as PHPUnit;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionProperty;
-use SwooleTW\Hyperf\Filesystem\Contracts\Factory as FilesystemFactory;
-use SwooleTW\Hyperf\Foundation\Testing\Constraints\SeeInOrder;
-use SwooleTW\Hyperf\Mail\Contracts\Attachable;
-use SwooleTW\Hyperf\Mail\Contracts\Factory;
-use SwooleTW\Hyperf\Mail\Contracts\Factory as MailFactory;
-use SwooleTW\Hyperf\Mail\Contracts\Mailable as MailableContract;
-use SwooleTW\Hyperf\Mail\Contracts\Mailer;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactory;
-use SwooleTW\Hyperf\Support\Contracts\Htmlable;
-use SwooleTW\Hyperf\Support\Contracts\Renderable;
-use SwooleTW\Hyperf\Support\HtmlString;
-use SwooleTW\Hyperf\Support\Traits\Localizable;
-use SwooleTW\Hyperf\Translation\Contracts\HasLocalePreference;
 use Symfony\Component\Mailer\Header\MetadataHeader;
 use Symfony\Component\Mailer\Header\TagHeader;
 use Symfony\Component\Mime\Address;

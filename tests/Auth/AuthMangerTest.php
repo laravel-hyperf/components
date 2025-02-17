@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Auth;
+namespace LaravelHyperf\Tests\Auth;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\Context;
@@ -12,14 +12,14 @@ use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Auth\AuthManager;
+use LaravelHyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Auth\Contracts\UserProvider;
+use LaravelHyperf\Auth\Providers\DatabaseUserProvider;
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
+use LaravelHyperf\Hashing\Contracts\Hasher as HashContract;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Auth\AuthManager;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
-use SwooleTW\Hyperf\Auth\Contracts\UserProvider;
-use SwooleTW\Hyperf\Auth\Providers\DatabaseUserProvider;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher as HashContract;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

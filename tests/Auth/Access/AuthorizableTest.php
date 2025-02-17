@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Auth\Access;
+namespace LaravelHyperf\Tests\Auth\Access;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ContainerInterface;
+use LaravelHyperf\Auth\Contracts\Gate;
+use LaravelHyperf\Tests\Auth\Stub\AuthorizableStub;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
-use SwooleTW\Hyperf\Auth\Contracts\Gate;
-use SwooleTW\Hyperf\Tests\Auth\Stub\AuthorizableStub;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

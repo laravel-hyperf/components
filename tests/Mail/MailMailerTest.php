@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Mail;
+namespace LaravelHyperf\Tests\Mail;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use Hyperf\ViewEngine\Contract\FactoryInterface as ViewFactory;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\Auth\Contracts\FactoryContract;
+use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Mail\Events\MessageSending;
+use LaravelHyperf\Mail\Events\MessageSent;
+use LaravelHyperf\Mail\Mailable;
+use LaravelHyperf\Mail\Mailer;
+use LaravelHyperf\Mail\MailManager;
+use LaravelHyperf\Mail\Message;
+use LaravelHyperf\Mail\Transport\ArrayTransport;
+use LaravelHyperf\Support\HtmlString;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Auth\Contracts\FactoryContract;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
-use SwooleTW\Hyperf\Mail\Events\MessageSending;
-use SwooleTW\Hyperf\Mail\Events\MessageSent;
-use SwooleTW\Hyperf\Mail\Mailable;
-use SwooleTW\Hyperf\Mail\Mailer;
-use SwooleTW\Hyperf\Mail\MailManager;
-use SwooleTW\Hyperf\Mail\Message;
-use SwooleTW\Hyperf\Mail\Transport\ArrayTransport;
-use SwooleTW\Hyperf\Support\HtmlString;
 
 /**
  * @internal

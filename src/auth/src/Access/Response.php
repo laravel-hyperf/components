@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Access;
+namespace LaravelHyperf\Auth\Access;
 
 use Hyperf\Contract\Arrayable;
 use Stringable;

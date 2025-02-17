@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
 use Carbon\Carbon;
+use LaravelHyperf\Cache\ArrayStore;
+use LaravelHyperf\Cache\RedisStore;
+use LaravelHyperf\Cache\StackStore;
+use LaravelHyperf\Cache\StackStoreProxy;
+use LaravelHyperf\Cache\SwooleStore;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Mockery\MockInterface;
-use SwooleTW\Hyperf\Cache\ArrayStore;
-use SwooleTW\Hyperf\Cache\RedisStore;
-use SwooleTW\Hyperf\Cache\StackStore;
-use SwooleTW\Hyperf\Cache\StackStoreProxy;
-use SwooleTW\Hyperf\Cache\SwooleStore;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

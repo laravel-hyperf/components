@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope;
+namespace LaravelHyperf\Telescope;
 
-use SwooleTW\Hyperf\Mail\Mailable;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Mail\Mailable;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
 
 trait ExtractsMailableTags
 {

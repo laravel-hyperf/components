@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-queue",
+    "name": "laravel-hyperf/queue",
     "description": "The queue package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -10,8 +10,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -33,17 +33,17 @@
         "laravel/serializable-closure": "^1.2.2",
         "ramsey/uuid": "^4.7",
         "symfony/process": "^7.0",
-        "swooletw/hyperf-support": "~0.1.0",
-        "swooletw/hyperf-encryption": "~0.1.0"
+        "laravel-hyperf/support": "~0.1.0",
+        "laravel-hyperf/encryption": "~0.1.0"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Queue\\": "src/"
+            "LaravelHyperf\\Queue\\": "src/"
         }
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Queue\\ConfigProvider"
+            "config": "LaravelHyperf\\Queue\\ConfigProvider"
         },
         "branch-alias": {
             "dev-master": "0.1-dev"

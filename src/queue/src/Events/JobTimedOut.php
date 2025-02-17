@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Events;
+namespace LaravelHyperf\Queue\Events;
 
-use SwooleTW\Hyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Contracts\Job;
 
 class JobTimedOut
 {

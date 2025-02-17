@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Auth\Stub;
+namespace LaravelHyperf\Tests\Auth\Stub;
 
-use SwooleTW\Hyperf\Auth\Access\Response;
+use LaravelHyperf\Auth\Access\Response;
 
 class AccessGateTestPolicyWithDeniedResponseObject
 {

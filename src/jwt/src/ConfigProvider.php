@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\JWT;
+namespace LaravelHyperf\JWT;
 
-use SwooleTW\Hyperf\JWT\Contracts\BlacklistContract;
-use SwooleTW\Hyperf\JWT\Contracts\ManagerContract;
+use LaravelHyperf\JWT\Contracts\BlacklistContract;
+use LaravelHyperf\JWT\Contracts\ManagerContract;
 
 class ConfigProvider
 {

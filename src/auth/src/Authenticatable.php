@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth;
+namespace LaravelHyperf\Auth;
 
 trait Authenticatable
 {

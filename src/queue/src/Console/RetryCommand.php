@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Console;
+namespace LaravelHyperf\Queue\Console;
 
 use __PHP_Incomplete_Class;
 use DateTimeInterface;
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\Command\Command;
+use LaravelHyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactory;
+use LaravelHyperf\Queue\Events\JobRetryRequested;
+use LaravelHyperf\Queue\Failed\FailedJobProviderInterface;
+use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use RuntimeException;
 use stdClass;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactory;
-use SwooleTW\Hyperf\Queue\Events\JobRetryRequested;
-use SwooleTW\Hyperf\Queue\Failed\FailedJobProviderInterface;
-use SwooleTW\Hyperf\Support\Traits\HasLaravelStyleCommand;
 
 class RetryCommand extends Command
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Traits;
+namespace LaravelHyperf\Support\Traits;
 
 use Hyperf\Context\ApplicationContext;
 use Psr\Container\ContainerInterface;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
-use SwooleTW\Hyperf\Mail\Contracts\Mailable;
-use SwooleTW\Hyperf\Mail\PendingMail;
-use SwooleTW\Hyperf\Mail\SentMessage;
+use LaravelHyperf\Mail\Contracts\Mailable;
+use LaravelHyperf\Mail\PendingMail;
+use LaravelHyperf\Mail\SentMessage;
 
 class PendingMailFake extends PendingMail
 {

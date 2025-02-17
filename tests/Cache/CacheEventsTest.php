@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
+use LaravelHyperf\Cache\ArrayStore;
+use LaravelHyperf\Cache\Contracts\Store;
+use LaravelHyperf\Cache\Events\CacheHit;
+use LaravelHyperf\Cache\Events\CacheMissed;
+use LaravelHyperf\Cache\Events\KeyForgotten;
+use LaravelHyperf\Cache\Events\KeyWritten;
+use LaravelHyperf\Cache\Repository;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\EventDispatcher\EventDispatcherInterface as Dispatcher;
-use SwooleTW\Hyperf\Cache\ArrayStore;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
-use SwooleTW\Hyperf\Cache\Events\CacheHit;
-use SwooleTW\Hyperf\Cache\Events\CacheMissed;
-use SwooleTW\Hyperf\Cache\Events\KeyForgotten;
-use SwooleTW\Hyperf\Cache\Events\KeyWritten;
-use SwooleTW\Hyperf\Cache\Repository;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use FriendsOfHyperf\Http\Client\Factory as Accessor;
 use FriendsOfHyperf\Http\Client\PendingRequest;

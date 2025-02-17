@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Hashing;
+namespace LaravelHyperf\Hashing;
 
 use RuntimeException;
 

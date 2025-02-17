@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Database\Events\QueryExecuted;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Telescope;
+use LaravelHyperf\Telescope\Watchers\Traits\FetchesStackTrace;
 use PDO;
 use PDOException;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
-use SwooleTW\Hyperf\Telescope\Watchers\Traits\FetchesStackTrace;
 
 class QueryWatcher extends Watcher
 {

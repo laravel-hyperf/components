@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Router;
+namespace LaravelHyperf\Tests\Router;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use Hyperf\HttpServer\Router\RouteCollector as HyperfRouteCollector;
+use LaravelHyperf\Router\DispatcherFactory;
+use LaravelHyperf\Router\RouteCollector;
+use LaravelHyperf\Router\RouteFileCollector;
+use LaravelHyperf\Router\Router;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
-use SwooleTW\Hyperf\Router\DispatcherFactory;
-use SwooleTW\Hyperf\Router\RouteCollector;
-use SwooleTW\Hyperf\Router\RouteFileCollector;
-use SwooleTW\Hyperf\Router\Router;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

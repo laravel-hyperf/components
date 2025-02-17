@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing\Concerns;
+namespace LaravelHyperf\Tests\Foundation\Testing\Concerns;
 
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 use Mockery as m;
 use Mockery\MockInterface;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

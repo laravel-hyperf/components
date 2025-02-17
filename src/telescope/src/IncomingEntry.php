@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope;
+namespace LaravelHyperf\Telescope;
 
 use DateTimeInterface;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Stringable\Str;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
 
 class IncomingEntry
 {

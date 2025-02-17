@@ -2,41 +2,41 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Mail\Contracts\Factory as MailFactoryContract;
-use SwooleTW\Hyperf\Support\Testing\Fakes\MailFake;
+use LaravelHyperf\Mail\Contracts\Factory as MailFactoryContract;
+use LaravelHyperf\Support\Testing\Fakes\MailFake;
 
 /**
- * @method static \SwooleTW\Hyperf\Mail\Contracts\Mailer mailer(string|null $name = null)
- * @method static \SwooleTW\Hyperf\Mail\Mailer driver(string|null $driver = null)
- * @method static \SwooleTW\Hyperf\Mail\Mailer build(array $config)
+ * @method static \LaravelHyperf\Mail\Contracts\Mailer mailer(string|null $name = null)
+ * @method static \LaravelHyperf\Mail\Mailer driver(string|null $driver = null)
+ * @method static \LaravelHyperf\Mail\Mailer build(array $config)
  * @method static \Symfony\Component\Mailer\Transport\TransportInterface createSymfonyTransport(array $config)
  * @method static string getDefaultDriver()
  * @method static void setDefaultDriver(string $name)
  * @method static void purge(string|null $name = null)
- * @method static \SwooleTW\Hyperf\Mail\MailManager extend(string $driver, \Closure $callback)
+ * @method static \LaravelHyperf\Mail\MailManager extend(string $driver, \Closure $callback)
  * @method static \Psr\Container\ContainerInterface getApplication()
- * @method static \SwooleTW\Hyperf\Mail\MailManager setApplication(\Psr\Container\ContainerInterface $app)
- * @method static \SwooleTW\Hyperf\Mail\MailManager forgetMailers()
+ * @method static \LaravelHyperf\Mail\MailManager setApplication(\Psr\Container\ContainerInterface $app)
+ * @method static \LaravelHyperf\Mail\MailManager forgetMailers()
  * @method static void alwaysFrom(string $address, string|null $name = null)
  * @method static void alwaysReplyTo(string $address, string|null $name = null)
  * @method static void alwaysReturnPath(string $address)
  * @method static void alwaysTo(string $address, string|null $name = null)
- * @method static \SwooleTW\Hyperf\Mail\PendingMail to(mixed $users, string|null $name = null)
- * @method static \SwooleTW\Hyperf\Mail\PendingMail cc(mixed $users, string|null $name = null)
- * @method static \SwooleTW\Hyperf\Mail\PendingMail bcc(mixed $users, string|null $name = null)
- * @method static \SwooleTW\Hyperf\Mail\SentMessage|null html(string $html, mixed $callback)
- * @method static \SwooleTW\Hyperf\Mail\SentMessage|null raw(string $text, mixed $callback)
- * @method static \SwooleTW\Hyperf\Mail\SentMessage|null plain(string $view, array $data, mixed $callback)
+ * @method static \LaravelHyperf\Mail\PendingMail to(mixed $users, string|null $name = null)
+ * @method static \LaravelHyperf\Mail\PendingMail cc(mixed $users, string|null $name = null)
+ * @method static \LaravelHyperf\Mail\PendingMail bcc(mixed $users, string|null $name = null)
+ * @method static \LaravelHyperf\Mail\SentMessage|null html(string $html, mixed $callback)
+ * @method static \LaravelHyperf\Mail\SentMessage|null raw(string $text, mixed $callback)
+ * @method static \LaravelHyperf\Mail\SentMessage|null plain(string $view, array $data, mixed $callback)
  * @method static string render(string|array $view, array $data = [])
- * @method static \SwooleTW\Hyperf\Mail\SentMessage|null send(\SwooleTW\Hyperf\Mail\Contracts\Mailable|string|array $view, array $data = [], \Closure|string|null $callback = null)
- * @method static \SwooleTW\Hyperf\Mail\SentMessage|null sendNow(\SwooleTW\Hyperf\Mail\Contracts\Mailable|string|array $mailable, array $data = [], \Closure|string|null $callback = null)
- * @method static mixed queue(\SwooleTW\Hyperf\Mail\Contracts\Mailable|string|array $view, \BackedEnum|string|null $queue = null)
- * @method static mixed onQueue(\BackedEnum|string|null $queue, \SwooleTW\Hyperf\Mail\Contracts\Mailable $view)
- * @method static mixed queueOn(string $queue, \SwooleTW\Hyperf\Mail\Contracts\Mailable $view)
- * @method static mixed later(\DateTimeInterface|\DateInterval|int $delay, \SwooleTW\Hyperf\Mail\Contracts\Mailable $view, string|null $queue = null)
- * @method static mixed laterOn(string $queue, \DateTimeInterface|\DateInterval|int $delay, \SwooleTW\Hyperf\Mail\Contracts\Mailable $view)
+ * @method static \LaravelHyperf\Mail\SentMessage|null send(\LaravelHyperf\Mail\Contracts\Mailable|string|array $view, array $data = [], \Closure|string|null $callback = null)
+ * @method static \LaravelHyperf\Mail\SentMessage|null sendNow(\LaravelHyperf\Mail\Contracts\Mailable|string|array $mailable, array $data = [], \Closure|string|null $callback = null)
+ * @method static mixed queue(\LaravelHyperf\Mail\Contracts\Mailable|string|array $view, \BackedEnum|string|null $queue = null)
+ * @method static mixed onQueue(\BackedEnum|string|null $queue, \LaravelHyperf\Mail\Contracts\Mailable $view)
+ * @method static mixed queueOn(string $queue, \LaravelHyperf\Mail\Contracts\Mailable $view)
+ * @method static mixed later(\DateTimeInterface|\DateInterval|int $delay, \LaravelHyperf\Mail\Contracts\Mailable $view, string|null $queue = null)
+ * @method static mixed laterOn(string $queue, \DateTimeInterface|\DateInterval|int $delay, \LaravelHyperf\Mail\Contracts\Mailable $view)
  * @method static \Symfony\Component\Mailer\Transport\TransportInterface getSymfonyTransport()
  * @method static \Hyperf\ViewEngine\Contract\FactoryInterface getViewFactory()
  * @method static void setSymfonyTransport(\Symfony\Component\Mailer\Transport\TransportInterface $transport)
@@ -60,8 +60,8 @@ use SwooleTW\Hyperf\Support\Testing\Fakes\MailFake;
  * @method static \Hyperf\Collection\Collection queued(string|\Closure $mailable, callable|null $callback = null)
  * @method static bool hasQueued(string $mailable)
  *
- * @see \SwooleTW\Hyperf\Mail\MailManager
- * @see \SwooleTW\Hyperf\Support\Testing\Fakes\MailFake
+ * @see \LaravelHyperf\Mail\MailManager
+ * @see \LaravelHyperf\Support\Testing\Fakes\MailFake
  */
 class Mail extends Facade
 {

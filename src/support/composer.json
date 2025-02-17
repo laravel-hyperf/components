@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-support",
+    "name": "laravel-hyperf/support",
     "description": "The Support package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -10,8 +10,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Support\\": "src/"
+            "LaravelHyperf\\Support\\": "src/"
         },
         "files": [
             "src/Functions.php",

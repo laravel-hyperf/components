@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing;
+namespace LaravelHyperf\Foundation\Testing;
 
 use Hyperf\Coroutine\Coroutine;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithAuthentication;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithConsole;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithContainer;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithDatabase;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithTime;
+use LaravelHyperf\Foundation\Testing\Concerns\MakesHttpRequests;
+use LaravelHyperf\Foundation\Testing\Concerns\MocksApplicationServices;
+use LaravelHyperf\Support\Facades\Facade;
 use Mockery as m;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithAuthentication;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithConsole;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithContainer;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithDatabase;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithTime;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\MakesHttpRequests;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\MocksApplicationServices;
-use SwooleTW\Hyperf\Support\Facades\Facade;
 use Throwable;
 
 use function Hyperf\Coroutine\run;

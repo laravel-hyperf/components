@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Container;
+namespace LaravelHyperf\Container;
 
 use Closure;
 use Hyperf\Contract\NormalizerInterface;
 use Hyperf\Di\ClosureDefinitionCollectorInterface;
 use Hyperf\Di\MethodDefinitionCollectorInterface;
 use InvalidArgumentException;
+use LaravelHyperf\Container\Contracts\Container as ContainerContract;
 use ReflectionException;
-use SwooleTW\Hyperf\Container\Contracts\Container as ContainerContract;
 
 class BoundMethod
 {

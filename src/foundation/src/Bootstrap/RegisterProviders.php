@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Bootstrap;
+namespace LaravelHyperf\Foundation\Bootstrap;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Contract\ConfigInterface;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Providers\FoundationServiceProvider;
-use SwooleTW\Hyperf\Foundation\Support\Composer;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Providers\FoundationServiceProvider;
+use LaravelHyperf\Foundation\Support\Composer;
 
 class RegisterProviders
 {

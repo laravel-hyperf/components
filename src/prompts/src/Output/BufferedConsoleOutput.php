@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Output;
+namespace LaravelHyperf\Prompts\Output;
 
 use const PHP_EOL;
 

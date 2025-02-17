@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 
 /**
  * @method static bool shouldBlock()
@@ -15,11 +15,11 @@ use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
  * @method static string getDefaultDriver()
  * @method static void setDefaultDriver(string $name)
  * @method static mixed driver(string|null $driver = null)
- * @method static \SwooleTW\Hyperf\Session\SessionManager extend(string $driver, \Closure $callback)
+ * @method static \LaravelHyperf\Session\SessionManager extend(string $driver, \Closure $callback)
  * @method static array getDrivers()
  * @method static \Psr\Container\ContainerInterface getContainer()
- * @method static \SwooleTW\Hyperf\Session\SessionManager setContainer(\Psr\Container\ContainerInterface $container)
- * @method static \SwooleTW\Hyperf\Session\SessionManager forgetDrivers()
+ * @method static \LaravelHyperf\Session\SessionManager setContainer(\Psr\Container\ContainerInterface $container)
+ * @method static \LaravelHyperf\Session\SessionManager forgetDrivers()
  * @method static bool start()
  * @method static void save()
  * @method static void ageFlashData()
@@ -72,7 +72,7 @@ use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
  * @method static bool hasMacro(string $name)
  * @method static void flushMacros()
  *
- * @see \SwooleTW\Hyperf\Session\SessionManager
+ * @see \LaravelHyperf\Session\SessionManager
  */
 class Session extends Facade
 {

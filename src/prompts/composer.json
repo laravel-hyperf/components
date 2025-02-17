@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-prompts",
+    "name": "laravel-hyperf/prompts",
     "type": "library",
     "description": "Add beautiful and user-friendly forms to your command-line applications.",
     "license": "MIT",
@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Prompts\\": "src/"
+            "LaravelHyperf\\Prompts\\": "src/"
         },
         "files": [
             "src/helpers.php"

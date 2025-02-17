@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use Closure;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Redis\RedisFactory;
 use InvalidArgumentException;
+use LaravelHyperf\ObjectPool\Traits\HasPoolProxy;
+use LaravelHyperf\Queue\Connectors\BeanstalkdConnector;
+use LaravelHyperf\Queue\Connectors\ConnectorInterface;
+use LaravelHyperf\Queue\Connectors\DatabaseConnector;
+use LaravelHyperf\Queue\Connectors\DeferConnector;
+use LaravelHyperf\Queue\Connectors\NullConnector;
+use LaravelHyperf\Queue\Connectors\RedisConnector;
+use LaravelHyperf\Queue\Connectors\SqsConnector;
+use LaravelHyperf\Queue\Connectors\SyncConnector;
+use LaravelHyperf\Queue\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Queue\Contracts\Monitor as MonitorContract;
+use LaravelHyperf\Queue\Contracts\Queue;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\ObjectPool\Traits\HasPoolProxy;
-use SwooleTW\Hyperf\Queue\Connectors\BeanstalkdConnector;
-use SwooleTW\Hyperf\Queue\Connectors\ConnectorInterface;
-use SwooleTW\Hyperf\Queue\Connectors\DatabaseConnector;
-use SwooleTW\Hyperf\Queue\Connectors\DeferConnector;
-use SwooleTW\Hyperf\Queue\Connectors\NullConnector;
-use SwooleTW\Hyperf\Queue\Connectors\RedisConnector;
-use SwooleTW\Hyperf\Queue\Connectors\SqsConnector;
-use SwooleTW\Hyperf\Queue\Connectors\SyncConnector;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Queue\Contracts\Monitor as MonitorContract;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
 
 /**
- * @mixin \SwooleTW\Hyperf\Queue\Contracts\Queue
+ * @mixin \LaravelHyperf\Queue\Contracts\Queue
  */
 class QueueManager implements FactoryContract, MonitorContract
 {

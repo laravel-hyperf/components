@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Container;
+namespace LaravelHyperf\Container;
 
 use ArrayAccess;
 use Closure;
@@ -10,8 +10,8 @@ use Hyperf\Context\ApplicationContext;
 use Hyperf\Di\Container as HyperfContainer;
 use Hyperf\Di\Definition\DefinitionSource;
 use InvalidArgumentException;
+use LaravelHyperf\Container\Contracts\Container as ContainerContract;
 use LogicException;
-use SwooleTW\Hyperf\Container\Contracts\Container as ContainerContract;
 use TypeError;
 
 class Container extends HyperfContainer implements ContainerContract, ArrayAccess

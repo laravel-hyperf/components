@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Broadcasting;
+namespace LaravelHyperf\Tests\Broadcasting;
 
 use Hyperf\HttpServer\Request;
 use Hyperf\Redis\RedisFactory;
+use LaravelHyperf\Auth\AuthManager;
+use LaravelHyperf\Broadcasting\Broadcasters\RedisBroadcaster;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
+use LaravelHyperf\Support\Facades\Facade;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Auth\AuthManager;
-use SwooleTW\Hyperf\Broadcasting\Broadcasters\RedisBroadcaster;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
-use SwooleTW\Hyperf\Support\Facades\Facade;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
 
 /**
  * @internal

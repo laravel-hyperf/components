@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Dispatcher;
+namespace LaravelHyperf\Dispatcher;
 
 class ParsedMiddleware
 {

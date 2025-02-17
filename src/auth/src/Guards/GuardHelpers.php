@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Guards;
+namespace LaravelHyperf\Auth\Guards;
 
-use SwooleTW\Hyperf\Auth\AuthenticationException;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\UserProvider;
+use LaravelHyperf\Auth\AuthenticationException;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\UserProvider;
 
 /**
  * These methods are typically the same across all guards.
@@ -16,7 +16,7 @@ trait GuardHelpers
     /**
      * Determine if the current user is authenticated. If not, throw an exception.
      *
-     * @throws \SwooleTW\Hyperf\Auth\AuthenticationException
+     * @throws \LaravelHyperf\Auth\AuthenticationException
      */
     public function authenticate(): Authenticatable
     {

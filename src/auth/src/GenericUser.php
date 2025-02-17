@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth;
+namespace LaravelHyperf\Auth;
 
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
 
 class GenericUser implements Authenticatable
 {

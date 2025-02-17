@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail\Transport;
+namespace LaravelHyperf\Mail\Transport;
 
 use Hyperf\Collection\Collection;
 use Symfony\Component\Mailer\Envelope;

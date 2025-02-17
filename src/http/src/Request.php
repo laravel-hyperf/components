@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http;
+namespace LaravelHyperf\Http;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
@@ -15,11 +15,11 @@ use Hyperf\Context\RequestContext;
 use Hyperf\HttpServer\Request as HyperfRequest;
 use Hyperf\Stringable\Str;
 use Hyperf\Validation\ValidatorFactory;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Stringable;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
 
 use function Hyperf\Collection\collect;
 use function Hyperf\Collection\data_get;

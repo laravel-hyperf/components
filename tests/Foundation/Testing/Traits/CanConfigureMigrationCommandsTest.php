@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing\Traits;
+namespace LaravelHyperf\Tests\Foundation\Testing\Traits;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Foundation\Testing\Traits\CanConfigureMigrationCommands;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
-use SwooleTW\Hyperf\Foundation\Testing\Traits\CanConfigureMigrationCommands;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
 
 /**
  * @internal

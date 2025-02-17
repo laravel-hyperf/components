@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Contracts;
+namespace LaravelHyperf\Auth\Contracts;
 
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Auth\Access\AuthorizationException;
-use SwooleTW\Hyperf\Auth\Access\Response;
+use LaravelHyperf\Auth\Access\AuthorizationException;
+use LaravelHyperf\Auth\Access\Response;
 
 interface Gate
 {

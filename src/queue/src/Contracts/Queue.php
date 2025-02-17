@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Contracts;
+namespace LaravelHyperf\Queue\Contracts;
 
 use DateInterval;
 use DateTimeInterface;

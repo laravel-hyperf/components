@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Providers;
+namespace LaravelHyperf\Tests\JWT\Providers;
 
 use Carbon\Carbon;
-use SwooleTW\Hyperf\JWT\Exceptions\JWTException;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenInvalidException;
-use SwooleTW\Hyperf\JWT\Providers\Lcobucci;
-use SwooleTW\Hyperf\JWT\Providers\Provider;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\JWT\Exceptions\JWTException;
+use LaravelHyperf\JWT\Exceptions\TokenInvalidException;
+use LaravelHyperf\JWT\Providers\Lcobucci;
+use LaravelHyperf\JWT\Providers\Provider;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

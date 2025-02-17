@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session\Contracts;
+namespace LaravelHyperf\Session\Contracts;
 
 use SessionHandlerInterface;
 

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope;
+namespace LaravelHyperf\Tests\Telescope;
 
 use Hyperf\Contract\ConfigInterface;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Storage\EntryModel;
-use SwooleTW\Hyperf\Telescope\Telescope;
-use SwooleTW\Hyperf\Telescope\Watchers\QueryWatcher;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Storage\EntryModel;
+use LaravelHyperf\Telescope\Telescope;
+use LaravelHyperf\Telescope\Watchers\QueryWatcher;
 
 /**
  * @internal

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Output;
+namespace LaravelHyperf\Prompts\Output;
 
 use Symfony\Component\Console\Output\ConsoleOutput as SymfonyConsoleOutput;
 

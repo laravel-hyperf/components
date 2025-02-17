@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Router;
+namespace LaravelHyperf\Tests\Router;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\ApplicationContext;
@@ -16,15 +16,15 @@ use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Request;
 use Hyperf\HttpServer\Router\DispatcherFactory as HyperfDispatcherFactory;
 use InvalidArgumentException;
+use LaravelHyperf\Router\DispatcherFactory;
+use LaravelHyperf\Router\RouteCollector;
+use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Tests\Router\Stub\UrlRoutableStub;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use ReflectionMethod;
-use SwooleTW\Hyperf\Router\DispatcherFactory;
-use SwooleTW\Hyperf\Router\RouteCollector;
-use SwooleTW\Hyperf\Router\UrlGenerator;
-use SwooleTW\Hyperf\Tests\Router\Stub\UrlRoutableStub;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

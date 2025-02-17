@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\View\Events;
+namespace LaravelHyperf\View\Events;
 
 use Hyperf\ViewEngine\Contract\ViewInterface;
 

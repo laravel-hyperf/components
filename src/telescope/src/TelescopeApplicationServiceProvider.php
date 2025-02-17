@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope;
+namespace LaravelHyperf\Telescope;
 
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Support\Facades\Gate;
-use SwooleTW\Hyperf\Support\ServiceProvider;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Support\Facades\Gate;
+use LaravelHyperf\Support\ServiceProvider;
 
 class TelescopeApplicationServiceProvider extends ServiceProvider
 {

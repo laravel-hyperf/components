@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Hashing\Contracts;
+namespace LaravelHyperf\Hashing\Contracts;
 
 interface Hasher
 {

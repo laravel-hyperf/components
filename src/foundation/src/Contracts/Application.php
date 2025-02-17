@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Contracts;
+namespace LaravelHyperf\Foundation\Contracts;
 
+use LaravelHyperf\Container\Contracts\Container;
+use LaravelHyperf\HttpMessage\Exceptions\HttpException;
+use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
+use LaravelHyperf\Support\ServiceProvider;
 use RuntimeException;
-use SwooleTW\Hyperf\Container\Contracts\Container;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\NotFoundHttpException;
-use SwooleTW\Hyperf\Support\ServiceProvider;
 
 interface Application extends Container
 {

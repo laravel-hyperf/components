@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Exception;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Database\TransactionManager;
+use LaravelHyperf\Queue\Contracts\QueueableEntity;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\Contracts\ShouldQueueAfterCommit;
+use LaravelHyperf\Queue\InteractsWithQueue;
+use LaravelHyperf\Queue\Jobs\SyncJob;
+use LaravelHyperf\Queue\SyncQueue;
 use LogicException;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Database\TransactionManager;
-use SwooleTW\Hyperf\Queue\Contracts\QueueableEntity;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueueAfterCommit;
-use SwooleTW\Hyperf\Queue\InteractsWithQueue;
-use SwooleTW\Hyperf\Queue\Jobs\SyncJob;
-use SwooleTW\Hyperf\Queue\SyncQueue;
 
 /**
  * @internal

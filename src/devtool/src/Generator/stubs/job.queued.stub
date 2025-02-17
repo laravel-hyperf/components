@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace %NAMESPACE%;
 
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\Queueable;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\Queueable;
 
 class %CLASS% implements ShouldQueue
 {

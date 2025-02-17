@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Providers;
+namespace LaravelHyperf\Auth\Providers;
 
 use Closure;
 use Hyperf\Contract\Arrayable;
 use Hyperf\Database\Model\Builder;
 use Hyperf\Database\Model\Model;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\UserProvider;
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher as HashContract;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\UserProvider;
+use LaravelHyperf\Hashing\Contracts\Hasher as HashContract;
 
 use function Hyperf\Support\with;
 

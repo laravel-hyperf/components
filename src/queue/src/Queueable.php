@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
-use SwooleTW\Hyperf\Bus\Dispatchable;
-use SwooleTW\Hyperf\Bus\Queueable as QueueableByBus;
+use LaravelHyperf\Bus\Dispatchable;
+use LaravelHyperf\Bus\Queueable as QueueableByBus;
 
 trait Queueable
 {

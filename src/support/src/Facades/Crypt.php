@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter as EncrypterContract;
-use SwooleTW\Hyperf\Encryption\Encrypter;
+use LaravelHyperf\Encryption\Contracts\Encrypter as EncrypterContract;
+use LaravelHyperf\Encryption\Encrypter;
 
 /**
  * @method static bool supported(string $key, string $cipher)

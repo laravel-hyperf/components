@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT;
+namespace LaravelHyperf\Tests\JWT;
 
 use Carbon\Carbon;
+use LaravelHyperf\JWT\Blacklist;
+use LaravelHyperf\JWT\Contracts\StorageContract;
+use LaravelHyperf\JWT\Exceptions\TokenInvalidException;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
-use SwooleTW\Hyperf\JWT\Blacklist;
-use SwooleTW\Hyperf\JWT\Contracts\StorageContract;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenInvalidException;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

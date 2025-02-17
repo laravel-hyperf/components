@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Jobs;
+namespace LaravelHyperf\Queue\Jobs;
 
 use Hyperf\Support\Traits\InteractsWithTime;
 use stdClass;

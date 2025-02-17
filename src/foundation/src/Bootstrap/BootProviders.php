@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Bootstrap;
+namespace LaravelHyperf\Foundation\Bootstrap;
 
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
 
 class BootProviders
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache\Listeners;
+namespace LaravelHyperf\Cache\Listeners;
 
 use Hyperf\Framework\Event\OnManagerStart;
+use LaravelHyperf\Support\Facades\Cache;
 use Swoole\Timer;
-use SwooleTW\Hyperf\Support\Facades\Cache;
 
 class CreateTimer extends BaseListener
 {
@@ -21,7 +21,7 @@ class CreateTimer extends BaseListener
     {
         $this->swooleStores()->each(function (array $config, string $name) {
             Timer::tick($config['eviction_interval'] ?? 10000, function () use ($name) {
-                /** @var \SwooleTW\Hyperf\Cache\SwooleStore */
+                /** @var \LaravelHyperf\Cache\SwooleStore */
                 $store = Cache::store($name)->getStore();
 
                 $store->evictRecords();

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http\Testing;
+namespace LaravelHyperf\Http\Testing;
 
-use SwooleTW\Hyperf\Http\UploadedFile;
-use SwooleTW\Hyperf\Support\MimeTypeExtensionGuesser;
+use LaravelHyperf\Http\UploadedFile;
+use LaravelHyperf\Support\MimeTypeExtensionGuesser;
 
 class File extends UploadedFile
 {

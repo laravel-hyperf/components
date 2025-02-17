@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Aws\Result;
 use Aws\Sqs\SqsClient;
 use Hyperf\Di\Container;
+use LaravelHyperf\Queue\Jobs\SqsJob;
+use LaravelHyperf\Queue\SqsQueue;
+use LaravelHyperf\Support\Carbon;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Queue\Jobs\SqsJob;
-use SwooleTW\Hyperf\Queue\SqsQueue;
-use SwooleTW\Hyperf\Support\Carbon;
 
 /**
  * @internal

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Router\Router;
+use LaravelHyperf\Router\Router;
 
 /**
  * @method static void addRoute(array|string $httpMethod, string $route, mixed $handler, array $options = [])

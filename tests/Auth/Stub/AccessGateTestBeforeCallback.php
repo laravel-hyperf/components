@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Auth\Stub;
+namespace LaravelHyperf\Tests\Auth\Stub;
 
 class AccessGateTestBeforeCallback
 {

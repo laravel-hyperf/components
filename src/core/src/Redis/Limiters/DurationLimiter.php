@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Redis\Limiters;
+namespace LaravelHyperf\Redis\Limiters;
 
 use Hyperf\Redis\RedisFactory;
 use Hyperf\Redis\RedisProxy;

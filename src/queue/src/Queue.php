@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use Closure;
 use DateInterval;
@@ -11,15 +11,15 @@ use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Traits\InteractsWithTime;
+use LaravelHyperf\Database\TransactionManager;
+use LaravelHyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Queue\Contracts\ShouldBeEncrypted;
+use LaravelHyperf\Queue\Contracts\ShouldQueueAfterCommit;
+use LaravelHyperf\Queue\Events\JobQueued;
+use LaravelHyperf\Queue\Events\JobQueueing;
+use LaravelHyperf\Queue\Exceptions\InvalidPayloadException;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Database\TransactionManager;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldBeEncrypted;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueueAfterCommit;
-use SwooleTW\Hyperf\Queue\Events\JobQueued;
-use SwooleTW\Hyperf\Queue\Events\JobQueueing;
-use SwooleTW\Hyperf\Queue\Exceptions\InvalidPayloadException;
 
 use function Hyperf\Tappable\tap;
 

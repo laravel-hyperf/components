@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope;
+namespace LaravelHyperf\Telescope;
 
 use Closure;
 use Exception;
@@ -11,20 +11,20 @@ use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Context\Context;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Log\Events\MessageLogged;
+use LaravelHyperf\Support\Facades\Auth;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\Contracts\TerminableRepository;
+use LaravelHyperf\Telescope\Jobs\ProcessPendingUpdates;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Log\Events\MessageLogged;
-use SwooleTW\Hyperf\Support\Facades\Auth;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\Contracts\TerminableRepository;
-use SwooleTW\Hyperf\Telescope\Jobs\ProcessPendingUpdates;
 use Throwable;
 
 use function Hyperf\Coroutine\defer;
-use function SwooleTW\Hyperf\Cache\cache;
-use function SwooleTW\Hyperf\Config\config;
-use function SwooleTW\Hyperf\Event\event;
+use function LaravelHyperf\Cache\cache;
+use function LaravelHyperf\Config\config;
+use function LaravelHyperf\Event\event;
 
 class Telescope
 {

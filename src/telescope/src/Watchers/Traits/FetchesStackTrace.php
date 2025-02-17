@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers\Traits;
+namespace LaravelHyperf\Telescope\Watchers\Traits;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Stringable\Str;
@@ -34,7 +34,7 @@ trait FetchesStackTrace
         $ignoredPaths = $this->shouldIgnoredVendorPath()
             ? [
                 base_path('vendor' . DIRECTORY_SEPARATOR . 'hyperf'),
-                base_path('vendor' . DIRECTORY_SEPARATOR . 'swooletw' . DIRECTORY_SEPARATOR . 'laravel-hyperf'),
+                base_path('vendor' . DIRECTORY_SEPARATOR . 'laravel-hyperf'),
             ]
             : [];
 

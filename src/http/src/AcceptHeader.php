@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http;
+namespace LaravelHyperf\Http;
 
 /**
  * Represents an Accept-* header.

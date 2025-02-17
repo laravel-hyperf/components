@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Support\Facades\Queue;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Support\Facades\Queue;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

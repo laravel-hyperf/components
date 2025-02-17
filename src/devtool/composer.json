@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-devtool",
+    "name": "laravel-hyperf/devtool",
     "description": "The devtool package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -10,8 +10,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Devtool\\": "src/"
+            "LaravelHyperf\\Devtool\\": "src/"
         }
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Devtool\\ConfigProvider"
+            "config": "LaravelHyperf\\Devtool\\ConfigProvider"
         },
         "branch-alias": {
             "dev-master": "0.1-dev"

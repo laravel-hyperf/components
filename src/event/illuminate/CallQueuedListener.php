@@ -7,10 +7,10 @@ namespace Illuminate\Events;
 use DateInterval;
 use DateTimeInterface;
 use Hyperf\Context\ApplicationContext;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\InteractsWithQueue;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\InteractsWithQueue;
 use Throwable;
 
 class CallQueuedListener implements ShouldQueue

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications\Slack\Blocks;
+namespace LaravelHyperf\Tests\Notifications\Slack\Blocks;
 
+use LaravelHyperf\Notifications\Slack\BlockKit\Blocks\SectionBlock;
+use LaravelHyperf\Notifications\Slack\BlockKit\Elements\ImageElement;
 use LogicException;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks\SectionBlock;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Elements\ImageElement;
 
 /**
  * @internal

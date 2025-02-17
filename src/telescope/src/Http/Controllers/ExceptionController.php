@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Http\Controllers;
+namespace LaravelHyperf\Telescope\Http\Controllers;
 
-use SwooleTW\Hyperf\Http\Request;
-use SwooleTW\Hyperf\Support\Carbon;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\EntryUpdate;
-use SwooleTW\Hyperf\Telescope\Storage\EntryQueryOptions;
-use SwooleTW\Hyperf\Telescope\Watchers\ExceptionWatcher;
+use LaravelHyperf\Http\Request;
+use LaravelHyperf\Support\Carbon;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\EntryUpdate;
+use LaravelHyperf\Telescope\Storage\EntryQueryOptions;
+use LaravelHyperf\Telescope\Watchers\ExceptionWatcher;
 
 class ExceptionController extends EntryController
 {

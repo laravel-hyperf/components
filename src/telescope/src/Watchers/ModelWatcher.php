@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Context\Context;
 use Hyperf\Database\Model\Events\Event;
 use Hyperf\Database\Model\Model;
+use LaravelHyperf\Telescope\FormatModel;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Storage\EntryModel;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Telescope\FormatModel;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Storage\EntryModel;
-use SwooleTW\Hyperf\Telescope\Telescope;
 
 class ModelWatcher extends Watcher
 {

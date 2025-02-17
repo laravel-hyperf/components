@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use Carbon\CarbonInterface;
 use Closure;
@@ -12,10 +12,10 @@ use Hyperf\Collection\Enumerable;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\Arrayable;
 use JsonSerializable;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
-use SwooleTW\Hyperf\Queue\CallQueuedClosure;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactory;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
+use LaravelHyperf\Queue\CallQueuedClosure;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactory;
 use Throwable;
 
 use function Hyperf\Support\with;

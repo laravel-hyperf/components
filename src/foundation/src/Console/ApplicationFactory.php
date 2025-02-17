@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console;
+namespace LaravelHyperf\Foundation\Console;
 
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
 use Symfony\Component\Console\Application as SymfonyApplication;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Throwable;

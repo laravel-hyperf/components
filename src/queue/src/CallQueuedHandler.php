@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use __PHP_Incomplete_Class;
 use Exception;
 use Hyperf\Database\Model\ModelNotFoundException;
+use LaravelHyperf\Bus\Batchable;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Bus\UniqueLock;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Queue\Attributes\DeleteWhenMissingModels;
+use LaravelHyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Contracts\ShouldBeUnique;
+use LaravelHyperf\Queue\Contracts\ShouldBeUniqueUntilProcessing;
+use LaravelHyperf\Support\Pipeline;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use RuntimeException;
-use SwooleTW\Hyperf\Bus\Batchable;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
-use SwooleTW\Hyperf\Bus\UniqueLock;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
-use SwooleTW\Hyperf\Queue\Attributes\DeleteWhenMissingModels;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldBeUnique;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldBeUniqueUntilProcessing;
-use SwooleTW\Hyperf\Support\Pipeline;
 use Throwable;
 
 class CallQueuedHandler

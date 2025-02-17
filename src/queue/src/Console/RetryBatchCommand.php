@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Console;
+namespace LaravelHyperf\Queue\Console;
 
 use Hyperf\Command\Command;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Support\Traits\HasLaravelStyleCommand;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 
 class RetryBatchCommand extends Command
 {

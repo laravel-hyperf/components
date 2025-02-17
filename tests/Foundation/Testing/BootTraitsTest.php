@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing;
+namespace LaravelHyperf\Tests\Foundation\Testing;
 
+use LaravelHyperf\Tests\TestCase;
 use ReflectionMethod;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Concerns;
+namespace LaravelHyperf\Foundation\Testing\Concerns;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Contract\Jsonable;
 use Hyperf\Database\Events\QueryExecuted;
 use Hyperf\Database\Model\Model;
 use Hyperf\Database\Model\SoftDeletes;
+use LaravelHyperf\Foundation\Testing\Constraints\CountInDatabase;
+use LaravelHyperf\Foundation\Testing\Constraints\HasInDatabase;
+use LaravelHyperf\Foundation\Testing\Constraints\NotSoftDeletedInDatabase;
+use LaravelHyperf\Foundation\Testing\Constraints\SoftDeletedInDatabase;
+use LaravelHyperf\Support\Facades\DB;
 use PHPUnit\Framework\Constraint\LogicalNot as ReverseConstraint;
-use SwooleTW\Hyperf\Foundation\Testing\Constraints\CountInDatabase;
-use SwooleTW\Hyperf\Foundation\Testing\Constraints\HasInDatabase;
-use SwooleTW\Hyperf\Foundation\Testing\Constraints\NotSoftDeletedInDatabase;
-use SwooleTW\Hyperf\Foundation\Testing\Constraints\SoftDeletedInDatabase;
-use SwooleTW\Hyperf\Support\Facades\DB;
 
 trait InteractsWithDatabase
 {

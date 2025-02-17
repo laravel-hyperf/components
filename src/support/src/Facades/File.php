@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Filesystem\Filesystem;
+use LaravelHyperf\Filesystem\Filesystem;
 
 /**
  * @method static bool exists(string $path)
@@ -47,7 +47,7 @@ use SwooleTW\Hyperf\Filesystem\Filesystem;
  * @method static bool cleanDirectory(string $directory)
  * @method static bool windowsOs()
  *
- * @see \SwooleTW\Hyperf\Filesystem\Filesystem
+ * @see \LaravelHyperf\Filesystem\Filesystem
  */
 class File extends Facade
 {

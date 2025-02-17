@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Jobs;
+namespace LaravelHyperf\Queue\Jobs;
 
 use Hyperf\Support\Traits\InteractsWithTime;
+use LaravelHyperf\Bus\Batchable;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Queue\Contracts\Job as JobContract;
+use LaravelHyperf\Queue\Events\JobFailed;
+use LaravelHyperf\Queue\Exceptions\ManuallyFailedException;
+use LaravelHyperf\Queue\Exceptions\TimeoutExceededException;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Bus\Batchable;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Queue\Contracts\Job as JobContract;
-use SwooleTW\Hyperf\Queue\Events\JobFailed;
-use SwooleTW\Hyperf\Queue\Exceptions\ManuallyFailedException;
-use SwooleTW\Hyperf\Queue\Exceptions\TimeoutExceededException;
 use Throwable;
 
 abstract class Job implements JobContract

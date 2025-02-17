@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use Closure;
 use Hyperf\Context\ApplicationContext;
-use SwooleTW\Hyperf\Queue\CallQueuedClosure;
+use LaravelHyperf\Queue\CallQueuedClosure;
 
 trait DispatchesJobs
 {

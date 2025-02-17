@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Middleware;
+namespace LaravelHyperf\Auth\Middleware;
 
 use Hyperf\Database\Model\Model;
 use Hyperf\HttpServer\Router\Dispatched;
+use LaravelHyperf\Auth\Access\AuthorizationException;
+use LaravelHyperf\Auth\Contracts\Gate;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Auth\Access\AuthorizationException;
-use SwooleTW\Hyperf\Auth\Contracts\Gate;
 
 class Authorize implements MiddlewareInterface
 {

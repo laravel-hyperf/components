@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
 use Hyperf\Collection\Arr;
+use LaravelHyperf\Cache\Exceptions\ValueTooLargeForColumnException;
 use Swoole\Table;
-use SwooleTW\Hyperf\Cache\Exceptions\ValueTooLargeForColumnException;
 
 class SwooleTable extends Table
 {

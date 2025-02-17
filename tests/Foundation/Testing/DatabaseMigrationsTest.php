@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing;
+namespace LaravelHyperf\Tests\Foundation\Testing;
 
 use Hyperf\Config\Config;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithConsole;
+use LaravelHyperf\Foundation\Testing\DatabaseMigrations;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
 use Mockery as m;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithConsole;
-use SwooleTW\Hyperf\Foundation\Testing\DatabaseMigrations;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
 
 /**
  * @internal

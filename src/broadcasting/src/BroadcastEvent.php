@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Contract\Arrayable;
+use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastingFactory;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
 use ReflectionClass;
 use ReflectionProperty;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory as BroadcastingFactory;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
 
 class BroadcastEvent implements ShouldQueue
 {

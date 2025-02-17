@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Http;
+namespace LaravelHyperf\Tests\Telescope\Http;
 
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Database\Eloquent\Model;
+use LaravelHyperf\Telescope\Http\Middleware\Authorize;
+use LaravelHyperf\Telescope\Telescope;
+use LaravelHyperf\Telescope\Watchers\LogWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use Psr\Log\LoggerInterface;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Database\Eloquent\Model;
-use SwooleTW\Hyperf\Telescope\Http\Middleware\Authorize;
-use SwooleTW\Hyperf\Telescope\Telescope;
-use SwooleTW\Hyperf\Telescope\Watchers\LogWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

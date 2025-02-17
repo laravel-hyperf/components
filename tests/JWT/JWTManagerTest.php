@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT;
+namespace LaravelHyperf\Tests\JWT;
 
 use Carbon\Carbon;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\ContainerInterface;
+use LaravelHyperf\JWT\Contracts\BlacklistContract;
+use LaravelHyperf\JWT\Exceptions\JWTException;
+use LaravelHyperf\JWT\Exceptions\TokenBlacklistedException;
+use LaravelHyperf\JWT\JWTManager;
+use LaravelHyperf\JWT\Providers\Lcobucci;
+use LaravelHyperf\Tests\JWT\Stub\ValidationStub;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactoryInterface;
 use Ramsey\Uuid\UuidInterface;
-use SwooleTW\Hyperf\JWT\Contracts\BlacklistContract;
-use SwooleTW\Hyperf\JWT\Exceptions\JWTException;
-use SwooleTW\Hyperf\JWT\Exceptions\TokenBlacklistedException;
-use SwooleTW\Hyperf\JWT\JWTManager;
-use SwooleTW\Hyperf\JWT\Providers\Lcobucci;
-use SwooleTW\Hyperf\Tests\JWT\Stub\ValidationStub;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

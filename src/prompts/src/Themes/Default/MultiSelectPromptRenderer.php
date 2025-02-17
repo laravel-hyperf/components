@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Default;
+namespace LaravelHyperf\Prompts\Themes\Default;
 
-use SwooleTW\Hyperf\Prompts\MultiSelectPrompt;
-use SwooleTW\Hyperf\Prompts\Themes\Contracts\Scrolling;
+use LaravelHyperf\Prompts\MultiSelectPrompt;
+use LaravelHyperf\Prompts\Themes\Contracts\Scrolling;
 
 class MultiSelectPromptRenderer extends Renderer implements Scrolling
 {

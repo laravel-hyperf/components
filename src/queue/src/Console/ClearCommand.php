@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Console;
+namespace LaravelHyperf\Queue\Console;
 
 use Hyperf\Command\Command;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Foundation\Console\ConfirmableTrait;
+use LaravelHyperf\Queue\Contracts\ClearableQueue;
+use LaravelHyperf\Queue\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 use ReflectionClass;
-use SwooleTW\Hyperf\Foundation\Console\ConfirmableTrait;
-use SwooleTW\Hyperf\Queue\Contracts\ClearableQueue;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Support\Traits\HasLaravelStyleCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

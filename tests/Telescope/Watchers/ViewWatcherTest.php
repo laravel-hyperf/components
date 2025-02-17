@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\ViewWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
+use LaravelHyperf\View\Events\ViewRendered;
 use Mockery as m;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\ViewWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
-use SwooleTW\Hyperf\View\Events\ViewRendered;
 
 /**
  * @internal

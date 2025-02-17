@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Queue\BeanstalkdQueue;
+use LaravelHyperf\Queue\Jobs\BeanstalkdJob;
 use Mockery as m;
 use Pheanstalk\Contract\JobIdInterface;
 use Pheanstalk\Contract\PheanstalkManagerInterface;
@@ -20,8 +22,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidFactoryInterface;
-use SwooleTW\Hyperf\Queue\BeanstalkdQueue;
-use SwooleTW\Hyperf\Queue\Jobs\BeanstalkdJob;
 
 /**
  * @internal

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache\Listeners;
+namespace LaravelHyperf\Cache\Listeners;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Contract\ConfigInterface;

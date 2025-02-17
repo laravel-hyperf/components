@@ -2,32 +2,32 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Integration\Broadcasting;
+namespace LaravelHyperf\Tests\Integration\Broadcasting;
 
 use Hyperf\Contract\ConfigInterface;
 use InvalidArgumentException;
+use LaravelHyperf\Broadcasting\BroadcastEvent;
+use LaravelHyperf\Broadcasting\BroadcastManager;
+use LaravelHyperf\Broadcasting\Channel;
+use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastingFactoryContract;
+use LaravelHyperf\Broadcasting\Contracts\ShouldBeUnique;
+use LaravelHyperf\Broadcasting\Contracts\ShouldBroadcast;
+use LaravelHyperf\Broadcasting\Contracts\ShouldBroadcastNow;
+use LaravelHyperf\Broadcasting\UniqueBroadcastEvent;
+use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
+use LaravelHyperf\Bus\Contracts\QueueingDispatcher;
+use LaravelHyperf\Cache\Contracts\Factory as Cache;
+use LaravelHyperf\Container\DefinitionSource;
+use LaravelHyperf\Foundation\Application;
+use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactoryContract;
+use LaravelHyperf\Support\Facades\Broadcast;
+use LaravelHyperf\Support\Facades\Bus;
+use LaravelHyperf\Support\Facades\Facade;
+use LaravelHyperf\Support\Facades\Queue;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Broadcasting\BroadcastEvent;
-use SwooleTW\Hyperf\Broadcasting\BroadcastManager;
-use SwooleTW\Hyperf\Broadcasting\Channel;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory as BroadcastingFactoryContract;
-use SwooleTW\Hyperf\Broadcasting\Contracts\ShouldBeUnique;
-use SwooleTW\Hyperf\Broadcasting\Contracts\ShouldBroadcast;
-use SwooleTW\Hyperf\Broadcasting\Contracts\ShouldBroadcastNow;
-use SwooleTW\Hyperf\Broadcasting\UniqueBroadcastEvent;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
-use SwooleTW\Hyperf\Bus\Contracts\QueueingDispatcher;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as Cache;
-use SwooleTW\Hyperf\Container\DefinitionSource;
-use SwooleTW\Hyperf\Foundation\Application;
-use SwooleTW\Hyperf\Foundation\ApplicationContext;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactoryContract;
-use SwooleTW\Hyperf\Support\Facades\Broadcast;
-use SwooleTW\Hyperf\Support\Facades\Bus;
-use SwooleTW\Hyperf\Support\Facades\Facade;
-use SwooleTW\Hyperf\Support\Facades\Queue;
 
 /**
  * @internal

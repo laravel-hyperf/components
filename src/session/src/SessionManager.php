@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Session;
+namespace LaravelHyperf\Session;
 
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\HttpServer\Request;
 use Hyperf\Support\Filesystem\Filesystem;
+use LaravelHyperf\Cache\Contracts\Factory as CacheContract;
+use LaravelHyperf\Cookie\Contracts\Cookie as CookieContract;
+use LaravelHyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Session\Contracts\Factory;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Support\Manager;
 use SessionHandlerInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheContract;
-use SwooleTW\Hyperf\Cookie\Contracts\Cookie as CookieContract;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
-use SwooleTW\Hyperf\Session\Contracts\Factory;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
-use SwooleTW\Hyperf\Support\Manager;
 
 /**
- * @mixin \SwooleTW\Hyperf\Session\Store
+ * @mixin \LaravelHyperf\Session\Store
  */
 class SessionManager extends Manager implements Factory
 {

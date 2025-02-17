@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Exceptions\Handlers;
+namespace LaravelHyperf\Foundation\Exceptions\Handlers;
 
 use Hyperf\ExceptionHandler\ExceptionHandler;
+use LaravelHyperf\HttpMessage\Exceptions\HttpException;
+use LaravelHyperf\HttpMessage\Exceptions\HttpResponseException;
 use Psr\Http\Message\ResponseInterface;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpResponseException;
 use Throwable;
 
 class HttpExceptionHandler extends ExceptionHandler

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Encryption\Contracts;
+namespace LaravelHyperf\Encryption\Contracts;
 
 interface Encrypter
 {
     /**
      * Encrypt the given value.
      *
-     * @throws \SwooleTW\Hyperf\Encryption\Exceptions\EncryptException
+     * @throws \LaravelHyperf\Encryption\Exceptions\EncryptException
      */
     public function encrypt(mixed $value, bool $serialize = true): string;
 
     /**
      * Decrypt the given value.
      *
-     * @throws \SwooleTW\Hyperf\Encryption\Exceptions\DecryptException
+     * @throws \LaravelHyperf\Encryption\Exceptions\DecryptException
      */
     public function decrypt(string $payload, bool $unserialize = true): mixed;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Traits;
+namespace LaravelHyperf\Foundation\Testing\Traits;
 
 use Hyperf\Contract\ConfigInterface;
 

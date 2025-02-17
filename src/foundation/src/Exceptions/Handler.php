@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Exceptions;
+namespace LaravelHyperf\Foundation\Exceptions;
 
 use Closure;
 use Exception;
@@ -20,27 +20,27 @@ use Hyperf\Support\MessageBag;
 use Hyperf\Validation\ValidationException;
 use Hyperf\ViewEngine\ViewErrorBag;
 use InvalidArgumentException;
+use LaravelHyperf\Auth\Access\AuthorizationException;
+use LaravelHyperf\Auth\AuthenticationException;
+use LaravelHyperf\Foundation\Contracts\Application as Container;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionRenderer;
+use LaravelHyperf\Foundation\Exceptions\Contracts\ShouldntReport;
+use LaravelHyperf\Http\Contracts\ResponseContract;
+use LaravelHyperf\Http\Request;
+use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
+use LaravelHyperf\HttpMessage\Exceptions\HttpException;
+use LaravelHyperf\HttpMessage\Exceptions\HttpResponseException;
+use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
+use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Support\Contracts\Responsable;
+use LaravelHyperf\Support\Facades\Auth;
+use LaravelHyperf\Support\Reflector;
+use LaravelHyperf\Support\Traits\ReflectsClosures;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use ReflectionException;
-use SwooleTW\Hyperf\Auth\Access\AuthorizationException;
-use SwooleTW\Hyperf\Auth\AuthenticationException;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as Container;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ExceptionRenderer;
-use SwooleTW\Hyperf\Foundation\Exceptions\Contracts\ShouldntReport;
-use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
-use SwooleTW\Hyperf\Http\Request;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\HttpResponseException;
-use SwooleTW\Hyperf\HttpMessage\Exceptions\NotFoundHttpException;
-use SwooleTW\Hyperf\Router\UrlGenerator;
-use SwooleTW\Hyperf\Support\Contracts\Responsable;
-use SwooleTW\Hyperf\Support\Facades\Auth;
-use SwooleTW\Hyperf\Support\Reflector;
-use SwooleTW\Hyperf\Support\Traits\ReflectsClosures;
 use Throwable;
 
 class Handler extends ExceptionHandler implements ExceptionHandlerContract

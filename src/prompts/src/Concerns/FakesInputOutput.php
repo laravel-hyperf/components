@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Concerns;
+namespace LaravelHyperf\Prompts\Concerns;
 
+use LaravelHyperf\Prompts\Output\BufferedConsoleOutput;
+use LaravelHyperf\Prompts\Terminal;
 use Mockery;
 use PHPUnit\Framework\Assert;
 use RuntimeException;
-use SwooleTW\Hyperf\Prompts\Output\BufferedConsoleOutput;
-use SwooleTW\Hyperf\Prompts\Terminal;
 
 trait FakesInputOutput
 {

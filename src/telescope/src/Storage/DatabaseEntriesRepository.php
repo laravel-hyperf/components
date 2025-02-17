@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Storage;
+namespace LaravelHyperf\Telescope\Storage;
 
 use DateTimeInterface;
 use Hyperf\Collection\Collection;
@@ -10,17 +10,17 @@ use Hyperf\Context\Context;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Database\Exception\UniqueConstraintViolationException;
 use Hyperf\Database\Query\Builder;
-use SwooleTW\Hyperf\Telescope\Contracts\ClearableRepository;
-use SwooleTW\Hyperf\Telescope\Contracts\EntriesRepository;
-use SwooleTW\Hyperf\Telescope\Contracts\PrunableRepository;
-use SwooleTW\Hyperf\Telescope\Contracts\TerminableRepository;
-use SwooleTW\Hyperf\Telescope\EntryResult;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\EntryUpdate;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Contracts\ClearableRepository;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
+use LaravelHyperf\Telescope\Contracts\PrunableRepository;
+use LaravelHyperf\Telescope\Contracts\TerminableRepository;
+use LaravelHyperf\Telescope\EntryResult;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\EntryUpdate;
+use LaravelHyperf\Telescope\IncomingEntry;
 use Throwable;
 
-use function SwooleTW\Hyperf\Config\config;
+use function LaravelHyperf\Config\config;
 
 class DatabaseEntriesRepository implements EntriesRepository, ClearableRepository, PrunableRepository, TerminableRepository
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Router\UrlGenerator;
+use LaravelHyperf\Router\UrlGenerator;
 
 /**
  * @method static string route(string $name, array $parameters = [], string $server = 'http')

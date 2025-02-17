@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Testing\Fakes;
+namespace LaravelHyperf\Support\Testing\Fakes;
 
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Traits\ForwardsCalls;
+use LaravelHyperf\Support\Traits\ReflectsClosures;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use ReflectionFunction;
-use SwooleTW\Hyperf\Support\Traits\ReflectsClosures;
 
 class EventFake implements Fake, EventDispatcherInterface
 {

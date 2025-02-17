@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
 use ArrayIterator;
 use BadMethodCallException;
@@ -11,16 +11,16 @@ use DateInterval;
 use DateTime;
 use DateTimeImmutable;
 use Hyperf\Support\Filesystem\Filesystem;
+use LaravelHyperf\Cache\ArrayStore;
+use LaravelHyperf\Cache\Contracts\Store;
+use LaravelHyperf\Cache\FileStore;
+use LaravelHyperf\Cache\RedisStore;
+use LaravelHyperf\Cache\Repository;
+use LaravelHyperf\Cache\TaggableStore;
+use LaravelHyperf\Cache\TaggedCache;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\EventDispatcher\EventDispatcherInterface as Dispatcher;
-use SwooleTW\Hyperf\Cache\ArrayStore;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
-use SwooleTW\Hyperf\Cache\FileStore;
-use SwooleTW\Hyperf\Cache\RedisStore;
-use SwooleTW\Hyperf\Cache\Repository;
-use SwooleTW\Hyperf\Cache\TaggableStore;
-use SwooleTW\Hyperf\Cache\TaggedCache;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

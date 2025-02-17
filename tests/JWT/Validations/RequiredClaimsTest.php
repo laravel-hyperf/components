@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Validations;
+namespace LaravelHyperf\Tests\JWT\Validations;
 
-use SwooleTW\Hyperf\JWT\Exceptions\TokenInvalidException;
-use SwooleTW\Hyperf\JWT\Validations\RequiredClaims;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\JWT\Exceptions\TokenInvalidException;
+use LaravelHyperf\JWT\Validations\RequiredClaims;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

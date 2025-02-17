@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Support\Traits\ForwardsCalls;

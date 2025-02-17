@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
+use LaravelHyperf\Queue\Exceptions\MaxAttemptsExceededException;
+use LaravelHyperf\Queue\Exceptions\TimeoutExceededException;
+use LaravelHyperf\Queue\Jobs\RedisJob;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Queue\Exceptions\MaxAttemptsExceededException;
-use SwooleTW\Hyperf\Queue\Exceptions\TimeoutExceededException;
-use SwooleTW\Hyperf\Queue\Jobs\RedisJob;
 
 /**
  * @internal

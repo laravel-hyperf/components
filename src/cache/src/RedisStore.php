@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
 use Hyperf\Redis\RedisFactory;
 use Hyperf\Redis\RedisProxy;
-use SwooleTW\Hyperf\Cache\Contracts\LockProvider;
+use LaravelHyperf\Cache\Contracts\LockProvider;
 
 class RedisStore extends TaggableStore implements LockProvider
 {

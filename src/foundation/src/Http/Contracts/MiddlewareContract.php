@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Http\Contracts;
+namespace LaravelHyperf\Foundation\Http\Contracts;
 
 use InvalidArgumentException;
+use LaravelHyperf\Dispatcher\ParsedMiddleware;
 use Psr\Http\Message\ServerRequestInterface;
-use SwooleTW\Hyperf\Dispatcher\ParsedMiddleware;
 
 interface MiddlewareContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Access;
+namespace LaravelHyperf\Auth\Access;
 
 use Closure;
 use Exception;
@@ -11,14 +11,14 @@ use Hyperf\Contract\ContainerInterface;
 use Hyperf\Di\Exception\NotFoundException;
 use Hyperf\Stringable\Str;
 use InvalidArgumentException;
+use LaravelHyperf\Auth\Access\Events\GateEvaluated;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\Gate as GateContract;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionParameter;
-use SwooleTW\Hyperf\Auth\Access\Events\GateEvaluated;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\Gate as GateContract;
 
 class Gate implements GateContract
 {

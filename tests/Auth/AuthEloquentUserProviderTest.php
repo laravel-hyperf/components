@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Auth;
+namespace LaravelHyperf\Tests\Auth;
 
 use Hyperf\Database\Model\Builder;
 use Hyperf\Database\Model\Model;
+use LaravelHyperf\Auth\Authenticatable as AuthenticatableUser;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Providers\EloquentUserProvider;
+use LaravelHyperf\Hashing\Contracts\Hasher;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Auth\Authenticatable as AuthenticatableUser;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Providers\EloquentUserProvider;
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

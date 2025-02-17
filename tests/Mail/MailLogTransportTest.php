@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Mail;
+namespace LaravelHyperf\Tests\Mail;
 
 use Hyperf\Config\Config;
 use Hyperf\Context\ApplicationContext;
@@ -10,6 +10,11 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use Hyperf\ViewEngine\Contract\FactoryInterface as ViewInterface;
+use LaravelHyperf\Mail\Attachment;
+use LaravelHyperf\Mail\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Mail\MailManager;
+use LaravelHyperf\Mail\Message;
+use LaravelHyperf\Mail\Transport\LogTransport;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -17,11 +22,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Stringable;
-use SwooleTW\Hyperf\Mail\Attachment;
-use SwooleTW\Hyperf\Mail\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Mail\MailManager;
-use SwooleTW\Hyperf\Mail\Message;
-use SwooleTW\Hyperf\Mail\Transport\LogTransport;
 use Symfony\Component\Mime\Email;
 
 /**

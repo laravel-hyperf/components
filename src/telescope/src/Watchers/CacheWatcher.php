@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Watchers;
+namespace LaravelHyperf\Telescope\Watchers;
 
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Cache\Events\CacheHit;
+use LaravelHyperf\Cache\Events\CacheMissed;
+use LaravelHyperf\Cache\Events\KeyForgotten;
+use LaravelHyperf\Cache\Events\KeyWritten;
+use LaravelHyperf\Telescope\IncomingEntry;
+use LaravelHyperf\Telescope\Telescope;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Cache\Events\CacheHit;
-use SwooleTW\Hyperf\Cache\Events\CacheMissed;
-use SwooleTW\Hyperf\Cache\Events\KeyForgotten;
-use SwooleTW\Hyperf\Cache\Events\KeyWritten;
-use SwooleTW\Hyperf\Telescope\IncomingEntry;
-use SwooleTW\Hyperf\Telescope\Telescope;
 
 class CacheWatcher extends Watcher
 {

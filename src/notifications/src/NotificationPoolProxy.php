@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications;
+namespace LaravelHyperf\Notifications;
 
-use SwooleTW\Hyperf\ObjectPool\PoolProxy;
+use LaravelHyperf\ObjectPool\PoolProxy;
 
 class NotificationPoolProxy extends PoolProxy
 {

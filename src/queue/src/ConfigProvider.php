@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use Laravel\SerializableClosure\SerializableClosure;
+use LaravelHyperf\Queue\Console\ClearCommand;
+use LaravelHyperf\Queue\Console\FlushFailedCommand;
+use LaravelHyperf\Queue\Console\ForgetFailedCommand;
+use LaravelHyperf\Queue\Console\ListenCommand;
+use LaravelHyperf\Queue\Console\ListFailedCommand;
+use LaravelHyperf\Queue\Console\MonitorCommand;
+use LaravelHyperf\Queue\Console\PruneBatchesCommand;
+use LaravelHyperf\Queue\Console\PruneFailedJobsCommand;
+use LaravelHyperf\Queue\Console\RestartCommand;
+use LaravelHyperf\Queue\Console\RetryBatchCommand;
+use LaravelHyperf\Queue\Console\RetryCommand;
+use LaravelHyperf\Queue\Console\WorkCommand;
+use LaravelHyperf\Queue\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Queue\Contracts\Queue;
+use LaravelHyperf\Queue\Failed\FailedJobProviderFactory;
+use LaravelHyperf\Queue\Failed\FailedJobProviderInterface;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Queue\Console\ClearCommand;
-use SwooleTW\Hyperf\Queue\Console\FlushFailedCommand;
-use SwooleTW\Hyperf\Queue\Console\ForgetFailedCommand;
-use SwooleTW\Hyperf\Queue\Console\ListenCommand;
-use SwooleTW\Hyperf\Queue\Console\ListFailedCommand;
-use SwooleTW\Hyperf\Queue\Console\MonitorCommand;
-use SwooleTW\Hyperf\Queue\Console\PruneBatchesCommand;
-use SwooleTW\Hyperf\Queue\Console\PruneFailedJobsCommand;
-use SwooleTW\Hyperf\Queue\Console\RestartCommand;
-use SwooleTW\Hyperf\Queue\Console\RetryBatchCommand;
-use SwooleTW\Hyperf\Queue\Console\RetryCommand;
-use SwooleTW\Hyperf\Queue\Console\WorkCommand;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Queue\Contracts\Queue;
-use SwooleTW\Hyperf\Queue\Failed\FailedJobProviderFactory;
-use SwooleTW\Hyperf\Queue\Failed\FailedJobProviderInterface;
 
 class ConfigProvider
 {

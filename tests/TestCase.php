@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests;
+namespace LaravelHyperf\Tests;
 
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;

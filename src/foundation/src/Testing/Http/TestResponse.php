@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing\Http;
+namespace LaravelHyperf\Foundation\Testing\Http;
 
 use Carbon\Carbon;
 use Closure;
@@ -213,7 +213,7 @@ class TestResponse extends HyperfTestResponse
      * Get the given cookie from the response.
      *
      * @param string $cookieName
-     * @return null|\SwooleTW\Hyperf\Cookie\Cookie
+     * @return null|\LaravelHyperf\Cookie\Cookie
      */
     public function getCookie($cookieName)
     {

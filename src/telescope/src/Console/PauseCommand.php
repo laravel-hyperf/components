@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Console;
+namespace LaravelHyperf\Telescope\Console;
 
-use SwooleTW\Hyperf\Cache\Contracts\Factory as CacheFactory;
-use SwooleTW\Hyperf\Foundation\Console\Command;
+use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
+use LaravelHyperf\Foundation\Console\Command;
 
 class PauseCommand extends Command
 {

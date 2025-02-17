@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Telescope\Contracts;
+namespace LaravelHyperf\Telescope\Contracts;
 
 use Hyperf\Collection\Collection;
-use SwooleTW\Hyperf\Telescope\EntryResult;
-use SwooleTW\Hyperf\Telescope\Storage\EntryQueryOptions;
+use LaravelHyperf\Telescope\EntryResult;
+use LaravelHyperf\Telescope\Storage\EntryQueryOptions;
 
 interface EntriesRepository
 {

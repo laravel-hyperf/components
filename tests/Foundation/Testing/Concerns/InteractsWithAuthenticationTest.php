@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing\Concerns;
+namespace LaravelHyperf\Tests\Foundation\Testing\Concerns;
 
 use Hyperf\Context\Context;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Auth\Contracts\Authenticatable as UserContract;
+use LaravelHyperf\Auth\Contracts\FactoryContract as AuthManagerContract;
+use LaravelHyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithAuthentication;
+use LaravelHyperf\Tests\Foundation\Testing\ApplicationTestCase;
 use Mockery;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable as UserContract;
-use SwooleTW\Hyperf\Auth\Contracts\FactoryContract as AuthManagerContract;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
-use SwooleTW\Hyperf\Foundation\Testing\Concerns\InteractsWithAuthentication;
-use SwooleTW\Hyperf\Tests\Foundation\Testing\ApplicationTestCase;
 
 /**
  * @internal

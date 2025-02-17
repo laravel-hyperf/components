@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Devtool\Generator;
+namespace LaravelHyperf\Devtool\Generator;
 
 use Carbon\Carbon;
 use Hyperf\Context\ApplicationContext;

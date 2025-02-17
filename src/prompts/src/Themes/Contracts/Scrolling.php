@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Themes\Contracts;
+namespace LaravelHyperf\Prompts\Themes\Contracts;
 
 interface Scrolling
 {

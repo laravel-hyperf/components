@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Auth;
+namespace LaravelHyperf\Tests\Auth;
 
 use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\Query\Builder;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\GenericUser;
+use LaravelHyperf\Auth\Providers\DatabaseUserProvider;
+use LaravelHyperf\Hashing\Contracts\Hasher;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\GenericUser;
-use SwooleTW\Hyperf\Auth\Providers\DatabaseUserProvider;
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

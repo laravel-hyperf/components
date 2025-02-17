@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts;
+namespace LaravelHyperf\Prompts;
 
 use Closure;
-use SwooleTW\Hyperf\Prompts\Support\Utils;
+use LaravelHyperf\Prompts\Support\Utils;
 
 class TextareaPrompt extends Prompt
 {

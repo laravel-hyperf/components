@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting;
+namespace LaravelHyperf\Broadcasting;
 
+use LaravelHyperf\Broadcasting\Contracts\HasBroadcastChannel;
 use Stringable;
-use SwooleTW\Hyperf\Broadcasting\Contracts\HasBroadcastChannel;
 
 class Channel implements Stringable
 {

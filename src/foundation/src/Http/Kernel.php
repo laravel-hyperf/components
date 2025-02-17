@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Http;
+namespace LaravelHyperf\Foundation\Http;
 
 use Hyperf\Context\RequestContext;
 use Hyperf\Contract\ConfigInterface;
@@ -16,11 +16,11 @@ use Hyperf\HttpServer\Event\RequestReceived;
 use Hyperf\HttpServer\Event\RequestTerminated;
 use Hyperf\HttpServer\Server as HyperfServer;
 use Hyperf\Support\SafeCaller;
+use LaravelHyperf\Foundation\Exceptions\Handlers\HttpExceptionHandler;
+use LaravelHyperf\Foundation\Http\Contracts\MiddlewareContract;
+use LaravelHyperf\Foundation\Http\Traits\HasMiddleware;
+use LaravelHyperf\Http\UploadedFile;
 use Psr\Http\Message\ResponseInterface;
-use SwooleTW\Hyperf\Foundation\Exceptions\Handlers\HttpExceptionHandler;
-use SwooleTW\Hyperf\Foundation\Http\Contracts\MiddlewareContract;
-use SwooleTW\Hyperf\Foundation\Http\Traits\HasMiddleware;
-use SwooleTW\Hyperf\Http\UploadedFile;
 use Throwable;
 
 use function Hyperf\Coroutine\defer;

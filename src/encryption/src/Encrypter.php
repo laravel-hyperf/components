@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Encryption;
+namespace LaravelHyperf\Encryption;
 
+use LaravelHyperf\Encryption\Contracts\Encrypter as EncrypterContract;
+use LaravelHyperf\Encryption\Contracts\StringEncrypter;
+use LaravelHyperf\Encryption\Exceptions\DecryptException;
+use LaravelHyperf\Encryption\Exceptions\EncryptException;
 use RuntimeException;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter as EncrypterContract;
-use SwooleTW\Hyperf\Encryption\Contracts\StringEncrypter;
-use SwooleTW\Hyperf\Encryption\Exceptions\DecryptException;
-use SwooleTW\Hyperf\Encryption\Exceptions\EncryptException;
 
 class Encrypter implements EncrypterContract, StringEncrypter
 {
@@ -81,7 +81,7 @@ class Encrypter implements EncrypterContract, StringEncrypter
     /**
      * Encrypt the given value.
      *
-     * @throws \SwooleTW\Hyperf\Encryption\Exceptions\EncryptException
+     * @throws \LaravelHyperf\Encryption\Exceptions\EncryptException
      */
     public function encrypt(mixed $value, bool $serialize = true): string
     {
@@ -119,7 +119,7 @@ class Encrypter implements EncrypterContract, StringEncrypter
     /**
      * Encrypt a string without serialization.
      *
-     * @throws \SwooleTW\Hyperf\Encryption\Exceptions\EncryptException
+     * @throws \LaravelHyperf\Encryption\Exceptions\EncryptException
      */
     public function encryptString(string $value): string
     {
@@ -129,7 +129,7 @@ class Encrypter implements EncrypterContract, StringEncrypter
     /**
      * Decrypt the given value.
      *
-     * @throws \SwooleTW\Hyperf\Encryption\Exceptions\DecryptException
+     * @throws \LaravelHyperf\Encryption\Exceptions\DecryptException
      */
     public function decrypt(string $payload, bool $unserialize = true): mixed
     {
@@ -180,7 +180,7 @@ class Encrypter implements EncrypterContract, StringEncrypter
     /**
      * Decrypt the given string without unserialization.
      *
-     * @throws \SwooleTW\Hyperf\Encryption\Exceptions\DecryptException
+     * @throws \LaravelHyperf\Encryption\Exceptions\DecryptException
      */
     public function decryptString(string $payload): string
     {
@@ -198,7 +198,7 @@ class Encrypter implements EncrypterContract, StringEncrypter
     /**
      * Get the JSON array from the given payload.
      *
-     * @throws \SwooleTW\Hyperf\Encryption\Exceptions\DecryptException
+     * @throws \LaravelHyperf\Encryption\Exceptions\DecryptException
      */
     protected function getJsonPayload(string $payload): array
     {

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Dispatcher;
+namespace LaravelHyperf\Tests\Dispatcher;
 
 use Closure;
+use LaravelHyperf\Dispatcher\ParsedMiddleware;
+use LaravelHyperf\Dispatcher\Pipeline;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Dispatcher\ParsedMiddleware;
-use SwooleTW\Hyperf\Dispatcher\Pipeline;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

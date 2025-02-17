@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing;
+namespace LaravelHyperf\Tests\Foundation\Testing;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Coordinator\Constants;
 use Hyperf\Coordinator\CoordinatorManager;
 use Hyperf\Di\ClassLoader;
 use Hyperf\Support\Filesystem\Filesystem;
+use LaravelHyperf\Foundation\Application;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
+use LaravelHyperf\Foundation\Console\Kernel as ConsoleKernel;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Testing\TestCase;
+use LaravelHyperf\Foundation\Testing\TestScanHandler;
 use Swoole\Timer;
-use SwooleTW\Hyperf\Foundation\Application;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use SwooleTW\Hyperf\Foundation\Console\Kernel as ConsoleKernel;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Testing\TestCase;
-use SwooleTW\Hyperf\Foundation\Testing\TestScanHandler;
 
 /**
  * @internal

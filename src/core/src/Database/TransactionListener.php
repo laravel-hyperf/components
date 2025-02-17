@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Database;
+namespace LaravelHyperf\Database;
 
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Database\Events;

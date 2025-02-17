@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Router;
+namespace LaravelHyperf\Tests\Router;
 
 use FastRoute\DataGenerator\GroupCountBased as DataGenerator;
 use FastRoute\RouteParser\Std;
 use Hyperf\HttpServer\MiddlewareManager;
-use SwooleTW\Hyperf\Router\RouteCollector;
-use SwooleTW\Hyperf\Tests\Router\Stub\RouteCollectorStub;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\Router\RouteCollector;
+use LaravelHyperf\Tests\Router\Stub\RouteCollectorStub;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

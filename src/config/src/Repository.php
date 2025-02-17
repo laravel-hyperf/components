@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Config;
+namespace LaravelHyperf\Config;
 
 use ArrayAccess;
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Macroable\Macroable;
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Config\Contracts\Repository as ConfigContract;
+use LaravelHyperf\Config\Contracts\Repository as ConfigContract;
 
 class Repository implements ArrayAccess, ConfigContract
 {

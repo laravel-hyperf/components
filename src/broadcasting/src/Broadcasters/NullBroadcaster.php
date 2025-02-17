@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting\Broadcasters;
+namespace LaravelHyperf\Broadcasting\Broadcasters;
 
 use Hyperf\HttpServer\Contract\RequestInterface;
 

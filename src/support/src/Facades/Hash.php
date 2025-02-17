@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher;
-use SwooleTW\Hyperf\Hashing\HashManager;
+use LaravelHyperf\Hashing\Contracts\Hasher;
+use LaravelHyperf\Hashing\HashManager;
 
 /**
  * @method static array info(string $hashedValue)

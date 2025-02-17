@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cache;
+namespace LaravelHyperf\Cache;
 
 use DateInterval;
 use DateTimeInterface;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
+use LaravelHyperf\Cache\Contracts\Store;
 
 class TaggedCache extends Repository
 {

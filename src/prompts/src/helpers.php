@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts;
+namespace LaravelHyperf\Prompts;
 
 use Closure;
 use Hyperf\Collection\Collection;
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\text')) {
+if (! function_exists('\LaravelHyperf\Prompts\text')) {
     /**
      * Prompt the user for text input.
      */
@@ -17,7 +17,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\text')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\textarea')) {
+if (! function_exists('\LaravelHyperf\Prompts\textarea')) {
     /**
      * Prompt the user for multiline text input.
      */
@@ -27,7 +27,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\textarea')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\password')) {
+if (! function_exists('\LaravelHyperf\Prompts\password')) {
     /**
      * Prompt the user for input, hiding the value.
      */
@@ -37,7 +37,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\password')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\select')) {
+if (! function_exists('\LaravelHyperf\Prompts\select')) {
     /**
      * Prompt the user to select an option.
      *
@@ -50,7 +50,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\select')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\multiselect')) {
+if (! function_exists('\LaravelHyperf\Prompts\multiselect')) {
     /**
      * Prompt the user to select multiple options.
      *
@@ -64,7 +64,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\multiselect')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\confirm')) {
+if (! function_exists('\LaravelHyperf\Prompts\confirm')) {
     /**
      * Prompt the user to confirm an action.
      */
@@ -74,7 +74,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\confirm')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\pause')) {
+if (! function_exists('\LaravelHyperf\Prompts\pause')) {
     /**
      * Prompt the user to continue or cancel after pausing.
      */
@@ -84,7 +84,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\pause')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\clear')) {
+if (! function_exists('\LaravelHyperf\Prompts\clear')) {
     /**
      * Clear the terminal.
      */
@@ -94,7 +94,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\clear')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\suggest')) {
+if (! function_exists('\LaravelHyperf\Prompts\suggest')) {
     /**
      * Prompt the user for text input with auto-completion.
      *
@@ -106,7 +106,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\suggest')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\search')) {
+if (! function_exists('\LaravelHyperf\Prompts\search')) {
     /**
      * Allow the user to search for an option.
      *
@@ -119,7 +119,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\search')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\multisearch')) {
+if (! function_exists('\LaravelHyperf\Prompts\multisearch')) {
     /**
      * Allow the user to search for multiple option.
      *
@@ -132,7 +132,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\multisearch')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\spin')) {
+if (! function_exists('\LaravelHyperf\Prompts\spin')) {
     /**
      * Render a spinner while the given callback is executing.
      *
@@ -147,7 +147,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\spin')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\note')) {
+if (! function_exists('\LaravelHyperf\Prompts\note')) {
     /**
      * Display a note.
      */
@@ -157,7 +157,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\note')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\error')) {
+if (! function_exists('\LaravelHyperf\Prompts\error')) {
     /**
      * Display an error.
      */
@@ -167,7 +167,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\error')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\warning')) {
+if (! function_exists('\LaravelHyperf\Prompts\warning')) {
     /**
      * Display a warning.
      */
@@ -177,7 +177,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\warning')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\alert')) {
+if (! function_exists('\LaravelHyperf\Prompts\alert')) {
     /**
      * Display an alert.
      */
@@ -187,7 +187,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\alert')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\info')) {
+if (! function_exists('\LaravelHyperf\Prompts\info')) {
     /**
      * Display an informational message.
      */
@@ -197,7 +197,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\info')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\intro')) {
+if (! function_exists('\LaravelHyperf\Prompts\intro')) {
     /**
      * Display an introduction.
      */
@@ -207,7 +207,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\intro')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\outro')) {
+if (! function_exists('\LaravelHyperf\Prompts\outro')) {
     /**
      * Display a closing message.
      */
@@ -217,7 +217,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\outro')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\table')) {
+if (! function_exists('\LaravelHyperf\Prompts\table')) {
     /**
      * Display a table.
      *
@@ -230,7 +230,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\table')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\progress')) {
+if (! function_exists('\LaravelHyperf\Prompts\progress')) {
     /**
      * Display a progress bar.
      *
@@ -253,7 +253,7 @@ if (! function_exists('\SwooleTW\Hyperf\Prompts\progress')) {
     }
 }
 
-if (! function_exists('\SwooleTW\Hyperf\Prompts\form')) {
+if (! function_exists('\LaravelHyperf\Prompts\form')) {
     function form(): FormBuilder
     {
         return new FormBuilder();

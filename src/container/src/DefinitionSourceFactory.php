@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Container;
+namespace LaravelHyperf\Container;
 
 use Hyperf\Di\Exception\Exception;
-use SwooleTW\Hyperf\Config\ProviderConfig;
+use LaravelHyperf\Config\ProviderConfig;
 
 class DefinitionSourceFactory
 {

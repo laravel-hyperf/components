@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
 use Closure;
 use Exception;
 use Hyperf\Coroutine\Coroutine;
 use Hyperf\Coroutine\Locker;
-use SwooleTW\Hyperf\Filesystem\Exceptions\LockTimeoutException;
+use LaravelHyperf\Filesystem\Exceptions\LockTimeoutException;
 
 class LockableFile
 {

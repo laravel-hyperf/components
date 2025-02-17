@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Http;
+namespace LaravelHyperf\Foundation\Http;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Context\Context;
@@ -12,10 +12,10 @@ use Hyperf\Validation\Contract\ValidatesWhenResolved;
 use Hyperf\Validation\Contract\ValidatorFactoryInterface as ValidationFactory;
 use Hyperf\Validation\ValidatesWhenResolvedTrait;
 use Hyperf\Validation\ValidationException;
+use LaravelHyperf\Auth\Access\AuthorizationException;
+use LaravelHyperf\Http\Request;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
-use SwooleTW\Hyperf\Auth\Access\AuthorizationException;
-use SwooleTW\Hyperf\Http\Request;
 
 class FormRequest extends Request implements ValidatesWhenResolved
 {

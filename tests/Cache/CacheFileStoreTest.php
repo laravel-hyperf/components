@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
 use Carbon\Carbon;
 use Exception;
 use Hyperf\Support\Filesystem\FileNotFoundException;
 use Hyperf\Support\Filesystem\Filesystem;
+use LaravelHyperf\Cache\FileStore;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
-use SwooleTW\Hyperf\Cache\FileStore;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

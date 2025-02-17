@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use SwooleTW\Hyperf\Http\Request;
-use SwooleTW\Hyperf\Http\Response;
-use SwooleTW\Hyperf\Support\Facades\Route;
+use LaravelHyperf\Http\Request;
+use LaravelHyperf\Http\Response;
+use LaravelHyperf\Support\Facades\Route;
 
 Route::get('/foo', function () {
     return 'foo';

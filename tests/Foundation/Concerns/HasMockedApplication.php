@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Concerns;
+namespace LaravelHyperf\Tests\Foundation\Concerns;
 
-use SwooleTW\Hyperf\Container\DefinitionSource;
-use SwooleTW\Hyperf\Foundation\Application;
+use LaravelHyperf\Container\DefinitionSource;
+use LaravelHyperf\Foundation\Application;
 
 trait HasMockedApplication
 {

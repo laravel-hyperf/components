@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus\Contracts;
+namespace LaravelHyperf\Bus\Contracts;
 
 use Hyperf\Collection\Collection;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\PendingBatch;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\PendingBatch;
 
 interface QueueingDispatcher extends Dispatcher
 {

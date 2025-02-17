@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactoryContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactoryContract;
 
 class DispatcherFactory
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Event\Hyperf\Listener;
+namespace LaravelHyperf\Tests\Event\Hyperf\Listener;
 
 use Hyperf\Event\Contract\ListenerInterface;
-use SwooleTW\Hyperf\Tests\Event\Hyperf\Event\Alpha;
+use LaravelHyperf\Tests\Event\Hyperf\Event\Alpha;
 
 class AlphaListener implements ListenerInterface
 {

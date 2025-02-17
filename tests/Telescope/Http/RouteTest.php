@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Http;
+namespace LaravelHyperf\Tests\Telescope\Http;
 
+use LaravelHyperf\Foundation\Testing\Http\TestResponse;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Http\Middleware\Authorize;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use PHPUnit\Framework\Assert as PHPUnit;
-use SwooleTW\Hyperf\Foundation\Testing\Http\TestResponse;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Http\Middleware\Authorize;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

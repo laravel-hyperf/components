@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail\Events;
+namespace LaravelHyperf\Mail\Events;
 
 use Symfony\Component\Mime\Email;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console\Contracts;
+namespace LaravelHyperf\Foundation\Console\Contracts;
 
 use Hyperf\Crontab\Crontab;
 

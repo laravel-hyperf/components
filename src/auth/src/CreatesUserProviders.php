@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth;
+namespace LaravelHyperf\Auth;
 
 use Hyperf\Database\ConnectionResolverInterface;
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Auth\Contracts\UserProvider;
-use SwooleTW\Hyperf\Auth\Providers\DatabaseUserProvider;
-use SwooleTW\Hyperf\Auth\Providers\EloquentUserProvider;
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher as HashContract;
+use LaravelHyperf\Auth\Contracts\UserProvider;
+use LaravelHyperf\Auth\Providers\DatabaseUserProvider;
+use LaravelHyperf\Auth\Providers\EloquentUserProvider;
+use LaravelHyperf\Hashing\Contracts\Hasher as HashContract;
 
 trait CreatesUserProviders
 {

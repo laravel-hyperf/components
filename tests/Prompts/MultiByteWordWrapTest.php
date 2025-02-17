@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Prompts;
+namespace LaravelHyperf\Tests\Prompts;
 
+use LaravelHyperf\Prompts\Concerns\Truncation;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Prompts\Concerns\Truncation;
 
 /**
  * @backupStaticProperties enabled

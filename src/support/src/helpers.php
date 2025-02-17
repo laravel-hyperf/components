@@ -6,9 +6,9 @@ use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Tappable\HigherOrderTapProxy;
 use Hyperf\ViewEngine\Contract\DeferringDisplayableValue;
-use SwooleTW\Hyperf\Support\Contracts\Htmlable;
-use SwooleTW\Hyperf\Support\Environment;
-use SwooleTW\Hyperf\Support\Sleep;
+use LaravelHyperf\Support\Contracts\Htmlable;
+use LaravelHyperf\Support\Environment;
+use LaravelHyperf\Support\Sleep;
 
 if (! function_exists('value')) {
     /**

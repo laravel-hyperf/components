@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Testing;
+namespace LaravelHyperf\Foundation\Testing;
 
 use Hyperf\Di\ScanHandler\ScanHandlerInterface;
 use Hyperf\Di\ScanHandler\Scanned;

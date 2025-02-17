@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail\Mailables;
+namespace LaravelHyperf\Mail\Mailables;
 
 use Closure;
 use Hyperf\Collection\Arr;

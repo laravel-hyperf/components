@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Closure;
 use DateInterval;
 use DateTimeInterface;
+use LaravelHyperf\Cache\CacheManager;
+use LaravelHyperf\Cache\Contracts\Factory;
+use LaravelHyperf\Cache\Contracts\Lock;
+use LaravelHyperf\Cache\Contracts\Repository as RepositoryContract;
+use LaravelHyperf\Cache\Contracts\Store;
+use LaravelHyperf\Cache\Repository;
+use LaravelHyperf\Cache\TaggedCache;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Cache\CacheManager;
-use SwooleTW\Hyperf\Cache\Contracts\Factory;
-use SwooleTW\Hyperf\Cache\Contracts\Lock;
-use SwooleTW\Hyperf\Cache\Contracts\Repository as RepositoryContract;
-use SwooleTW\Hyperf\Cache\Contracts\Store;
-use SwooleTW\Hyperf\Cache\Repository;
-use SwooleTW\Hyperf\Cache\TaggedCache;
 
 /**
  * @method static RepositoryContract store(string|null $name = null)

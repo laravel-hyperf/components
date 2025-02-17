@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Filesystem;
+namespace LaravelHyperf\Filesystem;
 
 use BadMethodCallException;
 use Closure;
@@ -14,6 +14,12 @@ use Hyperf\HttpMessage\Upload\UploadedFile;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
 use InvalidArgumentException;
+use LaravelHyperf\Filesystem\Contracts\Cloud as CloudFilesystemContract;
+use LaravelHyperf\Filesystem\Contracts\Filesystem as FilesystemContract;
+use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Http\Contracts\ResponseContract;
+use LaravelHyperf\Http\HeaderUtils;
+use LaravelHyperf\Http\StreamOutput;
 use League\Flysystem\FilesystemAdapter as FlysystemAdapter;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\Ftp\FtpAdapter;
@@ -37,12 +43,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Filesystem\Contracts\Cloud as CloudFilesystemContract;
-use SwooleTW\Hyperf\Filesystem\Contracts\Filesystem as FilesystemContract;
-use SwooleTW\Hyperf\Http\Contracts\RequestContract;
-use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
-use SwooleTW\Hyperf\Http\HeaderUtils;
-use SwooleTW\Hyperf\Http\StreamOutput;
 
 /**
  * @mixin \League\Flysystem\FilesystemOperator

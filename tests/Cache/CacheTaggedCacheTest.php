@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
 use DateInterval;
 use DateTime;
-use SwooleTW\Hyperf\Cache\ArrayStore;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\Cache\ArrayStore;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Broadcasting\Contracts;
+namespace LaravelHyperf\Broadcasting\Contracts;
 
-use SwooleTW\Hyperf\Broadcasting\Channel;
+use LaravelHyperf\Broadcasting\Channel;
 
 interface ShouldBroadcast
 {

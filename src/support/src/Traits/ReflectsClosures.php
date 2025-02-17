@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Traits;
+namespace LaravelHyperf\Support\Traits;
 
 use Closure;
 use Hyperf\Collection\Collection;
+use LaravelHyperf\Support\Reflector;
 use ReflectionException;
 use ReflectionFunction;
 use RuntimeException;
-use SwooleTW\Hyperf\Support\Reflector;
 
 trait ReflectsClosures
 {

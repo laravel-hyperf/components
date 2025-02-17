@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts\Concerns;
+namespace LaravelHyperf\Prompts\Concerns;
 
-use SwooleTW\Hyperf\Prompts\Key;
+use LaravelHyperf\Prompts\Key;
 
 trait TypedValue
 {

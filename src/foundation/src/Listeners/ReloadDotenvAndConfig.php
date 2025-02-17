@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Listeners;
+namespace LaravelHyperf\Foundation\Listeners;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Event\Contract\ListenerInterface;
@@ -20,7 +20,7 @@ class ReloadDotenvAndConfig implements ListenerInterface
     {
         $this->setConfigCallback();
 
-        /** @var \SwooleTW\Hyperf\Container\Contracts\Container $container */
+        /** @var \LaravelHyperf\Container\Contracts\Container $container */
         $container->afterResolving(ConfigInterface::class, function (ConfigInterface $config) {
             if (static::$stopCallback) {
                 return;

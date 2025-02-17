@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Cookie;
+namespace LaravelHyperf\Cookie;
 
 use Hyperf\Context\Context;
 use Hyperf\Context\RequestContext;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\Support\Traits\InteractsWithTime;
-use SwooleTW\Hyperf\Cookie\Contracts\Cookie as CookieContract;
+use LaravelHyperf\Cookie\Contracts\Cookie as CookieContract;
 
 class CookieManager implements CookieContract
 {

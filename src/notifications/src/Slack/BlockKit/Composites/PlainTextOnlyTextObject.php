@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Slack\BlockKit\Composites;
+namespace LaravelHyperf\Notifications\Slack\BlockKit\Composites;
 
 use InvalidArgumentException;
-use SwooleTW\Hyperf\Notifications\Contracts\Slack\ObjectContract;
+use LaravelHyperf\Notifications\Contracts\Slack\ObjectContract;
 
 class PlainTextOnlyTextObject implements ObjectContract
 {

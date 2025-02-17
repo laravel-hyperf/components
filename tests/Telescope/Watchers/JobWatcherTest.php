@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Exception;
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Bus\Batch;
+use LaravelHyperf\Bus\Contracts\BatchRepository;
+use LaravelHyperf\Bus\Dispatchable;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\Events\JobFailed;
+use LaravelHyperf\Queue\Events\JobProcessed;
+use LaravelHyperf\Queue\Jobs\FakeJob;
+use LaravelHyperf\Support\Facades\Bus;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Jobs\ProcessPendingUpdates;
+use LaravelHyperf\Telescope\Watchers\JobWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use Mockery as m;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Bus\Batch;
-use SwooleTW\Hyperf\Bus\Contracts\BatchRepository;
-use SwooleTW\Hyperf\Bus\Dispatchable;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\Events\JobFailed;
-use SwooleTW\Hyperf\Queue\Events\JobProcessed;
-use SwooleTW\Hyperf\Queue\Jobs\FakeJob;
-use SwooleTW\Hyperf\Support\Facades\Bus;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Jobs\ProcessPendingUpdates;
-use SwooleTW\Hyperf\Telescope\Watchers\JobWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 
 /**
  * @internal

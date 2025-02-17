@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Support;
+namespace LaravelHyperf\Tests\Support;
 
+use LaravelHyperf\Foundation\Application;
+use LaravelHyperf\Support\ServiceProvider;
 use Mockery as m;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Foundation\Application;
-use SwooleTW\Hyperf\Support\ServiceProvider;
 
 /**
  * @internal

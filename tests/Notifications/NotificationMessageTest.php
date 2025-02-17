@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Notifications;
+namespace LaravelHyperf\Tests\Notifications;
 
+use LaravelHyperf\Notifications\Messages\SimpleMessage as Message;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Notifications\Messages\SimpleMessage as Message;
 
 /**
  * @internal

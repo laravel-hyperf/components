@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Log;
+namespace LaravelHyperf\Log;
 
 use Closure;
 use Hyperf\Context\Context;
 use Hyperf\Contract\Arrayable;
 use Hyperf\Contract\Jsonable;
+use LaravelHyperf\Log\Events\MessageLogged;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Stringable;
-use SwooleTW\Hyperf\Log\Events\MessageLogged;
 
 class Logger implements LoggerInterface
 {

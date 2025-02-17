@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Bus;
+namespace LaravelHyperf\Bus;
 
 use Closure;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Support\Fluent;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher;
+use LaravelHyperf\Bus\Contracts\Dispatcher;
 
 use function Hyperf\Support\value;
 

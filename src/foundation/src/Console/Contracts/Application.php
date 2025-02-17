@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console\Contracts;
+namespace LaravelHyperf\Foundation\Console\Contracts;
 
 use Closure;
 use Hyperf\Command\Command;
-use SwooleTW\Hyperf\Container\Contracts\Container as ContainerContract;
+use LaravelHyperf\Container\Contracts\Container as ContainerContract;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

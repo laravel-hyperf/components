@@ -7,7 +7,7 @@ namespace %NAMESPACE%;
 use Closure;
 use Hyperf\ViewEngine\Component\Component;
 use Hyperf\ViewEngine\Contract\ViewInterface;
-use SwooleTW\Hyperf\Support\Facades\View;
+use LaravelHyperf\Support\Facades\View;
 
 class %CLASS% extends Component
 {

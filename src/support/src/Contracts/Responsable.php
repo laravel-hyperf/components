@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Contracts;
+namespace LaravelHyperf\Support\Contracts;
 
+use LaravelHyperf\Http\Request;
 use Psr\Http\Message\ResponseInterface;
-use SwooleTW\Hyperf\Http\Request;
 
 interface Responsable
 {

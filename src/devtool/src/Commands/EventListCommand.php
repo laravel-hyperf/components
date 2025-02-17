@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Devtool\Commands;
+namespace LaravelHyperf\Devtool\Commands;
 
 use Closure;
 use Hyperf\Command\Command as HyperfCommand;
+use LaravelHyperf\Event\Contracts\EventDispatcherContract;
+use LaravelHyperf\Event\ListenerData;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Event\Contracts\EventDispatcherContract;
-use SwooleTW\Hyperf\Event\ListenerData;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputOption;

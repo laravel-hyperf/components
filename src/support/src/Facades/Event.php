@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Closure;
 use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Register;
 use Hyperf\Event\ListenerData;
+use LaravelHyperf\Event\EventDispatcher;
+use LaravelHyperf\Event\QueuedClosure;
+use LaravelHyperf\Support\Testing\Fakes\EventFake;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Event\EventDispatcher;
-use SwooleTW\Hyperf\Event\QueuedClosure;
-use SwooleTW\Hyperf\Support\Testing\Fakes\EventFake;
 
 /**
  * @method static object|string dispatch(object|string $event, mixed $payload = [], bool $halt = false)

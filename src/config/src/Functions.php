@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Config;
+namespace LaravelHyperf\Config;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ConfigInterface;
@@ -14,7 +14,7 @@ use Hyperf\Contract\ConfigInterface;
  *
  * @param null|array<string, mixed>|string $key
  * @param null|string $default
- * @return ($key is null ? \SwooleTW\Hyperf\Config\Contracts\Repository : ($key is string ? mixed : null))
+ * @return ($key is null ? \LaravelHyperf\Config\Contracts\Repository : ($key is string ? mixed : null))
  */
 function config(mixed $key = null, mixed $default = null): mixed
 {

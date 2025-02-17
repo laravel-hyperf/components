@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Http;
+namespace LaravelHyperf\Tests\Http;
 
+use LaravelHyperf\Http\Testing\FileFactory;
 use LogicException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Http\Testing\FileFactory;
 
 /**
  * @link https://www.php.net/manual/en/function.gd-info.php

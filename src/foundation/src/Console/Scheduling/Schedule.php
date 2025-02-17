@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Console\Scheduling;
+namespace LaravelHyperf\Foundation\Console\Scheduling;
 
 use Hyperf\Command\Command;
 use Hyperf\Crontab\Crontab;
 use Hyperf\Crontab\Schedule as HyperfSchedule;
+use LaravelHyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
 
 class Schedule implements ScheduleContract
 {

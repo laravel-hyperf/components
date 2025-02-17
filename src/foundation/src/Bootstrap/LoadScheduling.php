@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Bootstrap;
+namespace LaravelHyperf\Foundation\Bootstrap;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Crontab\Crontab;
 use Hyperf\Crontab\CrontabManager;
 use Hyperf\Crontab\Parser;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use SwooleTW\Hyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
+use LaravelHyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
 
 class LoadScheduling
 {

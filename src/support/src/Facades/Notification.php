@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
-use SwooleTW\Hyperf\Notifications\AnonymousNotifiable;
-use SwooleTW\Hyperf\Notifications\Contracts\Dispatcher as NotificationDispatcher;
-use SwooleTW\Hyperf\Support\Testing\Fakes\NotificationFake;
+use LaravelHyperf\Notifications\AnonymousNotifiable;
+use LaravelHyperf\Notifications\Contracts\Dispatcher as NotificationDispatcher;
+use LaravelHyperf\Support\Testing\Fakes\NotificationFake;
 
 use function Hyperf\Tappable\tap;
 
@@ -17,13 +17,13 @@ use function Hyperf\Tappable\tap;
  * @method static string getDefaultDriver()
  * @method static string deliversVia()
  * @method static void deliverVia(string $channel)
- * @method static \SwooleTW\Hyperf\Notifications\ChannelManager locale(string $locale)
+ * @method static \LaravelHyperf\Notifications\ChannelManager locale(string $locale)
  * @method static mixed driver(string|null $driver = null)
- * @method static \SwooleTW\Hyperf\Notifications\ChannelManager extend(string $driver, \Closure $callback)
+ * @method static \LaravelHyperf\Notifications\ChannelManager extend(string $driver, \Closure $callback)
  * @method static array getDrivers()
  * @method static \Psr\Container\ContainerInterface getContainer()
- * @method static \SwooleTW\Hyperf\Notifications\ChannelManager setContainer(\Psr\Container\ContainerInterface $container)
- * @method static \SwooleTW\Hyperf\Notifications\ChannelManager forgetDrivers()
+ * @method static \LaravelHyperf\Notifications\ChannelManager setContainer(\Psr\Container\ContainerInterface $container)
+ * @method static \LaravelHyperf\Notifications\ChannelManager forgetDrivers()
  * @method static void assertSentOnDemand(string|\Closure $notification, callable|null $callback = null)
  * @method static void assertSentTo(mixed $notifiable, string|\Closure $notification, callable|null $callback = null)
  * @method static void assertSentOnDemandTimes(string $notification, int $times = 1)
@@ -37,8 +37,8 @@ use function Hyperf\Tappable\tap;
  * @method static bool hasSent(mixed $notifiable, string $notification)
  * @method static array sentNotifications()
  *
- * @see \SwooleTW\Hyperf\Notifications\ChannelManager
- * @see \SwooleTW\Hyperf\Support\Testing\Fakes\NotificationFake
+ * @see \LaravelHyperf\Notifications\ChannelManager
+ * @see \LaravelHyperf\Support\Testing\Fakes\NotificationFake
  */
 class Notification extends Facade
 {

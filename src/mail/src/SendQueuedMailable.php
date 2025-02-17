@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
 use DateTime;
-use SwooleTW\Hyperf\Bus\Queueable;
-use SwooleTW\Hyperf\Mail\Contracts\Factory as MailFactory;
-use SwooleTW\Hyperf\Mail\Contracts\Mailable as MailableContract;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldBeEncrypted;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueueAfterCommit;
-use SwooleTW\Hyperf\Queue\InteractsWithQueue;
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Mail\Contracts\Factory as MailFactory;
+use LaravelHyperf\Mail\Contracts\Mailable as MailableContract;
+use LaravelHyperf\Queue\Contracts\ShouldBeEncrypted;
+use LaravelHyperf\Queue\Contracts\ShouldQueueAfterCommit;
+use LaravelHyperf\Queue\InteractsWithQueue;
 use Throwable;
 
 class SendQueuedMailable

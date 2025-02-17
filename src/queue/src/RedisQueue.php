@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use DateInterval;
 use DateTimeInterface;
 use Hyperf\Redis\RedisFactory;
 use Hyperf\Redis\RedisProxy;
 use Hyperf\Stringable\Str;
-use SwooleTW\Hyperf\Queue\Contracts\ClearableQueue;
-use SwooleTW\Hyperf\Queue\Contracts\Job as JobContract;
-use SwooleTW\Hyperf\Queue\Contracts\Queue as QueueContract;
-use SwooleTW\Hyperf\Queue\Jobs\RedisJob;
+use LaravelHyperf\Queue\Contracts\ClearableQueue;
+use LaravelHyperf\Queue\Contracts\Job as JobContract;
+use LaravelHyperf\Queue\Contracts\Queue as QueueContract;
+use LaravelHyperf\Queue\Jobs\RedisJob;
 
 class RedisQueue extends Queue implements QueueContract, ClearableQueue
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Mail;
+namespace LaravelHyperf\Mail;
 
-use SwooleTW\Hyperf\Mail\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\Mail\Contracts\Mailer as MailerContract;
+use LaravelHyperf\Mail\Contracts\Factory as FactoryContract;
+use LaravelHyperf\Mail\Contracts\Mailer as MailerContract;
 
 class ConfigProvider
 {

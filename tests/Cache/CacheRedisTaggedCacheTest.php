@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Cache;
+namespace LaravelHyperf\Tests\Cache;
 
 use Carbon\Carbon;
 use Hyperf\Redis\RedisFactory;
 use Hyperf\Redis\RedisProxy;
+use LaravelHyperf\Cache\RedisStore;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Mockery\MockInterface;
-use SwooleTW\Hyperf\Cache\RedisStore;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

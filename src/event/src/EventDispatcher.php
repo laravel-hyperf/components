@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Event;
+namespace LaravelHyperf\Event;
 
 use Closure;
 use Exception;
@@ -10,22 +10,22 @@ use Hyperf\Collection\Arr;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Stringable\Str;
 use Illuminate\Events\CallQueuedListener;
+use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastFactory;
+use LaravelHyperf\Broadcasting\Contracts\ShouldBroadcast;
+use LaravelHyperf\Database\TransactionManager;
+use LaravelHyperf\Event\Contracts\EventDispatcherContract;
+use LaravelHyperf\Event\Contracts\ListenerProviderContract;
+use LaravelHyperf\Event\Contracts\ShouldDispatchAfterCommit;
+use LaravelHyperf\Event\Contracts\ShouldHandleEventsAfterCommit;
+use LaravelHyperf\Queue\Contracts\Factory as QueueFactoryContract;
+use LaravelHyperf\Queue\Contracts\ShouldBeEncrypted;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\Contracts\ShouldQueueAfterCommit;
+use LaravelHyperf\Support\Traits\ReflectsClosures;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\StoppableEventInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory as BroadcastFactory;
-use SwooleTW\Hyperf\Broadcasting\Contracts\ShouldBroadcast;
-use SwooleTW\Hyperf\Database\TransactionManager;
-use SwooleTW\Hyperf\Event\Contracts\EventDispatcherContract;
-use SwooleTW\Hyperf\Event\Contracts\ListenerProviderContract;
-use SwooleTW\Hyperf\Event\Contracts\ShouldDispatchAfterCommit;
-use SwooleTW\Hyperf\Event\Contracts\ShouldHandleEventsAfterCommit;
-use SwooleTW\Hyperf\Queue\Contracts\Factory as QueueFactoryContract;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldBeEncrypted;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueueAfterCommit;
-use SwooleTW\Hyperf\Support\Traits\ReflectsClosures;
 
 class EventDispatcher implements EventDispatcherContract
 {

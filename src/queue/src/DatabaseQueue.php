@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue;
+namespace LaravelHyperf\Queue;
 
 use DateInterval;
 use DateTimeInterface;
@@ -11,13 +11,13 @@ use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Database\Query\Builder;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Queue\Contracts\ClearableQueue;
+use LaravelHyperf\Queue\Contracts\Job;
+use LaravelHyperf\Queue\Contracts\Queue as QueueContract;
+use LaravelHyperf\Queue\Jobs\DatabaseJob;
+use LaravelHyperf\Queue\Jobs\DatabaseJobRecord;
+use LaravelHyperf\Support\Carbon;
 use PDO;
-use SwooleTW\Hyperf\Queue\Contracts\ClearableQueue;
-use SwooleTW\Hyperf\Queue\Contracts\Job;
-use SwooleTW\Hyperf\Queue\Contracts\Queue as QueueContract;
-use SwooleTW\Hyperf\Queue\Jobs\DatabaseJob;
-use SwooleTW\Hyperf\Queue\Jobs\DatabaseJobRecord;
-use SwooleTW\Hyperf\Support\Carbon;
 use Throwable;
 
 class DatabaseQueue extends Queue implements QueueContract, ClearableQueue

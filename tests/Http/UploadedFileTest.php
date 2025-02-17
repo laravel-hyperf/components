@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Http;
+namespace LaravelHyperf\Tests\Http;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use LaravelHyperf\Http\Exceptions\CannotWriteFileException;
+use LaravelHyperf\Http\Exceptions\ExtensionFileException;
+use LaravelHyperf\Http\Exceptions\FileException;
+use LaravelHyperf\Http\Exceptions\FileNotFoundException;
+use LaravelHyperf\Http\Exceptions\FormSizeFileException;
+use LaravelHyperf\Http\Exceptions\IniSizeFileException;
+use LaravelHyperf\Http\Exceptions\NoFileException;
+use LaravelHyperf\Http\Exceptions\NoTmpDirFileException;
+use LaravelHyperf\Http\Exceptions\PartialFileException;
+use LaravelHyperf\Http\UploadedFile;
 use PHPUnit\Framework\TestCase;
-use SwooleTW\Hyperf\Http\Exceptions\CannotWriteFileException;
-use SwooleTW\Hyperf\Http\Exceptions\ExtensionFileException;
-use SwooleTW\Hyperf\Http\Exceptions\FileException;
-use SwooleTW\Hyperf\Http\Exceptions\FileNotFoundException;
-use SwooleTW\Hyperf\Http\Exceptions\FormSizeFileException;
-use SwooleTW\Hyperf\Http\Exceptions\IniSizeFileException;
-use SwooleTW\Hyperf\Http\Exceptions\NoFileException;
-use SwooleTW\Hyperf\Http\Exceptions\NoTmpDirFileException;
-use SwooleTW\Hyperf\Http\Exceptions\PartialFileException;
-use SwooleTW\Hyperf\Http\UploadedFile;
 
 /**
  * @internal

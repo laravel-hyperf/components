@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Bootstrap;
+namespace LaravelHyperf\Tests\Foundation\Bootstrap;
 
 use Hyperf\Di\MethodDefinitionCollector;
 use Hyperf\Di\MethodDefinitionCollectorInterface;
-use SwooleTW\Hyperf\Foundation\Bootstrap\BootProviders;
-use SwooleTW\Hyperf\Support\ServiceProvider;
-use SwooleTW\Hyperf\Tests\Foundation\Concerns\HasMockedApplication;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\Foundation\Bootstrap\BootProviders;
+use LaravelHyperf\Support\ServiceProvider;
+use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

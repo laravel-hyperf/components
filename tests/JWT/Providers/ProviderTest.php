@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\JWT\Providers;
+namespace LaravelHyperf\Tests\JWT\Providers;
 
-use SwooleTW\Hyperf\Tests\JWT\Stub\ProviderStub;
-use SwooleTW\Hyperf\Tests\TestCase;
+use LaravelHyperf\Tests\JWT\Stub\ProviderStub;
+use LaravelHyperf\Tests\TestCase;
 
 /**
  * @internal

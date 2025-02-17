@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 /**
- * @method static \SwooleTW\Hyperf\Cache\RateLimiter for(string $name, \Closure $callback)
+ * @method static \LaravelHyperf\Cache\RateLimiter for(string $name, \Closure $callback)
  * @method static \Closure|null limiter(string $name)
  * @method static mixed attempt(string $key, int $maxAttempts, \Closure $callback, int $decaySeconds = 60)
  * @method static bool tooManyAttempts(string $key, int $maxAttempts)
@@ -18,7 +18,7 @@ namespace SwooleTW\Hyperf\Support\Facades;
  * @method static int availableIn(string $key)
  * @method static string cleanRateLimiterKey(string $key)
  *
- * @see \SwooleTW\Hyperf\Cache\RateLimiter
+ * @see \LaravelHyperf\Cache\RateLimiter
  */
 class RateLimiter extends Facade
 {
@@ -29,6 +29,6 @@ class RateLimiter extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \SwooleTW\Hyperf\Cache\RateLimiter::class;
+        return \LaravelHyperf\Cache\RateLimiter::class;
     }
 }

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Foundation\Testing;
+namespace LaravelHyperf\Tests\Foundation\Testing;
 
-use SwooleTW\Hyperf\Foundation\Exceptions\Handler as BaseExceptionHandler;
-use SwooleTW\Hyperf\Http\Request;
+use LaravelHyperf\Foundation\Exceptions\Handler as BaseExceptionHandler;
+use LaravelHyperf\Http\Request;
 use Throwable;
 
 class ExceptionHandler extends BaseExceptionHandler

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Slack\BlockKit\Blocks;
+namespace LaravelHyperf\Notifications\Slack\BlockKit\Blocks;
 
 use Hyperf\Contract\Arrayable;
 use InvalidArgumentException;
+use LaravelHyperf\Notifications\Contracts\Slack\BlockContract;
+use LaravelHyperf\Notifications\Contracts\Slack\ElementContract;
+use LaravelHyperf\Notifications\Slack\BlockKit\Composites\TextObject;
 use LogicException;
-use SwooleTW\Hyperf\Notifications\Contracts\Slack\BlockContract;
-use SwooleTW\Hyperf\Notifications\Contracts\Slack\ElementContract;
-use SwooleTW\Hyperf\Notifications\Slack\BlockKit\Composites\TextObject;
 
 class SectionBlock implements BlockContract
 {

@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-dispatcher",
+    "name": "laravel-hyperf/dispatcher",
     "description": "The dispatcher package for Laravel Hyperf.",
     "license": "MIT",
     "keywords": [
@@ -11,8 +11,8 @@
         "laravel-hyperf"
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "authors": [
         {
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Dispatcher\\": "src/"
+            "LaravelHyperf\\Dispatcher\\": "src/"
         }
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Dispatcher\\ConfigProvider"
+            "config": "LaravelHyperf\\Dispatcher\\ConfigProvider"
         },
         "branch-alias": {
             "dev-master": "0.1-dev"

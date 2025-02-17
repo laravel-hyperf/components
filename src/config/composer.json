@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-config",
+    "name": "laravel-hyperf/config",
     "type": "library",
     "description": "The config package for Laravel Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Config\\": "src/"
+            "LaravelHyperf\\Config\\": "src/"
         },
         "files": [
             "src/Functions.php"
@@ -39,7 +39,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Config\\ConfigProvider"
+            "config": "LaravelHyperf\\Config\\ConfigProvider"
         },
         "branch-alias": {
             "dev-main": "0.1-dev"

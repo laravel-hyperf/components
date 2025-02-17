@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http\Contracts;
+namespace LaravelHyperf\Http\Contracts;
 
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
 use Closure;
 use Hyperf\Collection\Collection;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Psr\Http\Message\ServerRequestInterface;
 use Stringable;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
 
 interface RequestContract extends RequestInterface
 {

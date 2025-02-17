@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Prompts;
+namespace LaravelHyperf\Prompts;
 
 use Closure;
 use Hyperf\Collection\Collection;
-use SwooleTW\Hyperf\Prompts\Exceptions\FormRevertedException;
+use LaravelHyperf\Prompts\Exceptions\FormRevertedException;
 
 class FormBuilder
 {
     /**
      * Each step that should be executed.
      *
-     * @var array<int, \SwooleTW\Hyperf\Prompts\FormStep>
+     * @var array<int, \LaravelHyperf\Prompts\FormStep>
      */
     protected array $steps = [];
 

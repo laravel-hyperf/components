@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Http\Middleware;
+namespace LaravelHyperf\Foundation\Http\Middleware;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\HttpServer\Request;
+use LaravelHyperf\Cookie\Cookie;
+use LaravelHyperf\Encryption\Contracts\Encrypter;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Http\Middleware\Concerns\ExcludesPaths;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Session\TokenMismatchException;
+use LaravelHyperf\Support\Traits\InteractsWithTime;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use SwooleTW\Hyperf\Cookie\Cookie;
-use SwooleTW\Hyperf\Encryption\Contracts\Encrypter;
-use SwooleTW\Hyperf\Foundation\Contracts\Application as ApplicationContract;
-use SwooleTW\Hyperf\Foundation\Http\Middleware\Concerns\ExcludesPaths;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
-use SwooleTW\Hyperf\Session\TokenMismatchException;
-use SwooleTW\Hyperf\Support\Traits\InteractsWithTime;
 
 class VerifyCsrfToken implements MiddlewareInterface
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Providers;
+namespace LaravelHyperf\Foundation\Providers;
 
 use Hyperf\Validation\Contract\ValidatesWhenResolved;
-use SwooleTW\Hyperf\Support\ServiceProvider;
+use LaravelHyperf\Support\ServiceProvider;
 
 class FormRequestServiceProvider extends ServiceProvider
 {

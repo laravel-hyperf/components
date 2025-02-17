@@ -1,5 +1,5 @@
 {
-    "name": "swooletw/hyperf-hashing",
+    "name": "laravel-hyperf/hashing",
     "type": "library",
     "description": "The hashing package for Laravel Hyperf.",
     "license": "MIT",
@@ -18,12 +18,12 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/swooletw/hyperf-packages/issues",
-        "source": "https://github.com/swooletw/hyperf-packages"
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
     },
     "autoload": {
         "psr-4": {
-            "SwooleTW\\Hyperf\\Hashing\\": "src/"
+            "LaravelHyperf\\Hashing\\": "src/"
         }
     },
     "require": {
@@ -37,7 +37,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "SwooleTW\\Hyperf\\Hashing\\ConfigProvider"
+            "config": "LaravelHyperf\\Hashing\\ConfigProvider"
         },
         "branch-alias": {
             "dev-main": "0.1-dev"

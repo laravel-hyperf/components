@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Support\Facades;
+namespace LaravelHyperf\Support\Facades;
 
 use Closure;
-use SwooleTW\Hyperf\Foundation\Application;
-use SwooleTW\Hyperf\Support\ServiceProvider;
+use LaravelHyperf\Foundation\Application;
+use LaravelHyperf\Support\ServiceProvider;
 
 /**
  * @method static string version()

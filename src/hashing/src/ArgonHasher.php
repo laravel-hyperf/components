@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Hashing;
+namespace LaravelHyperf\Hashing;
 
+use LaravelHyperf\Hashing\Contracts\Hasher as HasherContract;
 use RuntimeException;
-use SwooleTW\Hyperf\Hashing\Contracts\Hasher as HasherContract;
 
 class ArgonHasher extends AbstractHasher implements HasherContract
 {

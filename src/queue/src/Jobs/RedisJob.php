@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Queue\Jobs;
+namespace LaravelHyperf\Queue\Jobs;
 
+use LaravelHyperf\Queue\RedisQueue;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Queue\RedisQueue;
 
 class RedisJob extends Job
 {

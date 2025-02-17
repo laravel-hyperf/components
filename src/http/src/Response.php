@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Http;
+namespace LaravelHyperf\Http;
 
 use DateTimeImmutable;
 use Hyperf\Codec\Json;
@@ -15,9 +15,9 @@ use Hyperf\HttpMessage\Server\Chunk\Chunkable;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Response as HyperfResponse;
 use Hyperf\View\RenderInterface;
+use LaravelHyperf\Http\Contracts\ResponseContract;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Http\Contracts\ResponseContract;
 
 class Response extends HyperfResponse implements ResponseContract
 {

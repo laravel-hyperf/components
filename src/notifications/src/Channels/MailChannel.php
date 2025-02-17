@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications\Channels;
+namespace LaravelHyperf\Notifications\Channels;
 
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Mail\Contracts\Factory as MailFactory;
+use LaravelHyperf\Mail\Contracts\Mailable;
+use LaravelHyperf\Mail\Markdown;
+use LaravelHyperf\Mail\Message;
+use LaravelHyperf\Mail\SentMessage;
+use LaravelHyperf\Notifications\Messages\MailMessage;
+use LaravelHyperf\Notifications\Notification;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
 use RuntimeException;
-use SwooleTW\Hyperf\Mail\Contracts\Factory as MailFactory;
-use SwooleTW\Hyperf\Mail\Contracts\Mailable;
-use SwooleTW\Hyperf\Mail\Markdown;
-use SwooleTW\Hyperf\Mail\Message;
-use SwooleTW\Hyperf\Mail\SentMessage;
-use SwooleTW\Hyperf\Notifications\Messages\MailMessage;
-use SwooleTW\Hyperf\Notifications\Notification;
-use SwooleTW\Hyperf\Queue\Contracts\ShouldQueue;
 use Symfony\Component\Mailer\Header\MetadataHeader;
 use Symfony\Component\Mailer\Header\TagHeader;
 

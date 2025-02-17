@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\ObjectPool;
+namespace LaravelHyperf\Tests\ObjectPool;
 
 use Hyperf\Context\ApplicationContext;
+use LaravelHyperf\ObjectPool\SimpleObjectPool;
+use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Psr\Container\ContainerInterface;
 use stdClass;
-use SwooleTW\Hyperf\ObjectPool\SimpleObjectPool;
-use SwooleTW\Hyperf\Tests\TestCase;
 
 /**
  * @internal

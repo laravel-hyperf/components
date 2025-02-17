@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Queue;
+namespace LaravelHyperf\Tests\Queue;
 
 use Aws\Sqs\SqsClient;
+use LaravelHyperf\Queue\Jobs\SqsJob;
+use LaravelHyperf\Queue\SqsQueue;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use stdClass;
-use SwooleTW\Hyperf\Queue\Jobs\SqsJob;
-use SwooleTW\Hyperf\Queue\SqsQueue;
 
 /**
  * @internal

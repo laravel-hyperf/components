@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth\Guards;
+namespace LaravelHyperf\Auth\Guards;
 
 use Hyperf\Context\Context;
 use Hyperf\Macroable\Macroable;
-use SwooleTW\Hyperf\Auth\Contracts\Authenticatable;
-use SwooleTW\Hyperf\Auth\Contracts\StatefulGuard;
-use SwooleTW\Hyperf\Auth\Contracts\UserProvider;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Auth\Contracts\StatefulGuard;
+use LaravelHyperf\Auth\Contracts\UserProvider;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Throwable;
 
 class SessionGuard implements StatefulGuard

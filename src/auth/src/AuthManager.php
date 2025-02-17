@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Auth;
+namespace LaravelHyperf\Auth;
 
 use Closure;
 use Hyperf\Context\Context;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use InvalidArgumentException;
+use LaravelHyperf\Auth\Contracts\FactoryContract;
+use LaravelHyperf\Auth\Contracts\Guard;
+use LaravelHyperf\Auth\Contracts\StatefulGuard;
+use LaravelHyperf\Auth\Guards\JwtGuard;
+use LaravelHyperf\Auth\Guards\SessionGuard;
+use LaravelHyperf\JWT\JWTManager;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Auth\Contracts\FactoryContract;
-use SwooleTW\Hyperf\Auth\Contracts\Guard;
-use SwooleTW\Hyperf\Auth\Contracts\StatefulGuard;
-use SwooleTW\Hyperf\Auth\Guards\JwtGuard;
-use SwooleTW\Hyperf\Auth\Guards\SessionGuard;
-use SwooleTW\Hyperf\JWT\JWTManager;
-use SwooleTW\Hyperf\Session\Contracts\Session as SessionContract;
 
 class AuthManager implements FactoryContract
 {

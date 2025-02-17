@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Foundation\Exceptions\Contracts;
+namespace LaravelHyperf\Foundation\Exceptions\Contracts;
 
+use LaravelHyperf\Http\Request;
 use Psr\Http\Message\ResponseInterface;
-use SwooleTW\Hyperf\Http\Request;
 use Throwable;
 
 interface ExceptionHandler

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Event;
+namespace LaravelHyperf\Tests\Event;
 
+use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastFactory;
+use LaravelHyperf\Broadcasting\Contracts\ShouldBroadcast;
+use LaravelHyperf\Event\EventDispatcher;
+use LaravelHyperf\Event\ListenerProvider;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use SwooleTW\Hyperf\Broadcasting\Contracts\Factory as BroadcastFactory;
-use SwooleTW\Hyperf\Broadcasting\Contracts\ShouldBroadcast;
-use SwooleTW\Hyperf\Event\EventDispatcher;
-use SwooleTW\Hyperf\Event\ListenerProvider;
 
 /**
  * @internal

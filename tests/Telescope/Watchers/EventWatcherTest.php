@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\Telescope\Watchers;
+namespace LaravelHyperf\Tests\Telescope\Watchers;
 
 use Hyperf\Contract\ConfigInterface;
+use LaravelHyperf\Telescope\EntryType;
+use LaravelHyperf\Telescope\Watchers\EventWatcher;
+use LaravelHyperf\Tests\Telescope\FeatureTestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use ReflectionMethod;
-use SwooleTW\Hyperf\Telescope\EntryType;
-use SwooleTW\Hyperf\Telescope\Watchers\EventWatcher;
-use SwooleTW\Hyperf\Tests\Telescope\FeatureTestCase;
 use Telescope\Dummies\DummyEvent;
 use Telescope\Dummies\DummyEventListener;
 use Telescope\Dummies\DummyEventWithObject;

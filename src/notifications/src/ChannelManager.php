@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Notifications;
+namespace LaravelHyperf\Notifications;
 
 use Closure;
 use Hyperf\Context\Context;
 use Hyperf\Stringable\Str;
 use InvalidArgumentException;
+use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
+use LaravelHyperf\Notifications\Channels\DatabaseChannel;
+use LaravelHyperf\Notifications\Channels\MailChannel;
+use LaravelHyperf\Notifications\Channels\SlackNotificationRouterChannel;
+use LaravelHyperf\Notifications\Contracts\Dispatcher as DispatcherContract;
+use LaravelHyperf\Notifications\Contracts\Factory as FactoryContract;
+use LaravelHyperf\ObjectPool\Traits\HasPoolProxy;
+use LaravelHyperf\Support\Manager;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use SwooleTW\Hyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
-use SwooleTW\Hyperf\Notifications\Channels\DatabaseChannel;
-use SwooleTW\Hyperf\Notifications\Channels\MailChannel;
-use SwooleTW\Hyperf\Notifications\Channels\SlackNotificationRouterChannel;
-use SwooleTW\Hyperf\Notifications\Contracts\Dispatcher as DispatcherContract;
-use SwooleTW\Hyperf\Notifications\Contracts\Factory as FactoryContract;
-use SwooleTW\Hyperf\ObjectPool\Traits\HasPoolProxy;
-use SwooleTW\Hyperf\Support\Manager;
 
 class ChannelManager extends Manager implements DispatcherContract, FactoryContract
 {
