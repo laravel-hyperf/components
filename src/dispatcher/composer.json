@@ -37,7 +37,7 @@
             "config": "LaravelHyperf\\Dispatcher\\ConfigProvider"
         },
         "branch-alias": {
-            "dev-master": "0.1-dev"
+            "dev-main": "0.1-dev"
         }
     },
     "config": {
