@@ -8,6 +8,8 @@ use Hyperf\Collection\Arr;
 use LaravelHyperf\Cache\Exceptions\ValueTooLargeForColumnException;
 use Swoole\Table;
 
+use function Hyperf\Collection\collect;
+
 class SwooleTable extends Table
 {
     /**
