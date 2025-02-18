@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Foundation\Console;
 
 use FriendsOfHyperf\CommandSignals\Traits\InteractsWithSignals;
+use FriendsOfHyperf\PrettyConsole\Traits\Prettyable;
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Command\Event\AfterExecute;
 use Hyperf\Command\Event\AfterHandle;
@@ -24,6 +25,7 @@ abstract class Command extends HyperfCommand
 {
     use HasLaravelStyleCommand;
     use InteractsWithSignals;
+    use Prettyable;
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {

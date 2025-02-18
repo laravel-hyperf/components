@@ -111,7 +111,8 @@
         "league/commonmark": "^2.2",
         "psr/log": "^1.0|^2.0|^3.0",
         "symfony/mailer": "^6.2",
-        "tijsverkoyen/css-to-inline-styles": "^2.2.5"
+        "tijsverkoyen/css-to-inline-styles": "^2.2.5",
+        "friendsofhyperf/pretty-console": "~3.1.0"
     },
     "replace": {
         "laravel-hyperf/auth": "self.version",
