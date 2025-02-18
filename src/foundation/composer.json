@@ -33,11 +33,13 @@
         "hyperf/context": "~3.1.0",
         "hyperf/http-server": "~3.1.0",
         "hyperf/stringable": "~3.1.0",
+        "hyperf/dispatcher": "~3.1.0",
         "hyperf/database": "~3.1.0",
         "hyperf/contract": "~3.1.0",
         "hyperf/signal": "~3.1.0",
         "hyperf/engine": "^2.1",
         "hyperf/db-connection": "~3.1.0",
+        "hyperf/framework": "~3.1.0",
         "friendsofhyperf/command-signals": "~3.1.0",
         "symfony/error-handler": "^6.3"
     },
