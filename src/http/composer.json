@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelHyperf\\Http": "src/"
+            "LaravelHyperf\\Http\\": "src/"
         }
     },
     "require": {
