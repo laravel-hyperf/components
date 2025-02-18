@@ -16,8 +16,7 @@
     "jwtors": [
         {
             "name": "Albert Chen",
-            "email": "albert@laravel-hyperf.com",
-            "homepage": "https://albert-chen.com"
+            "email": "albert@laravel-hyperf.com"
         }
     ],
     "require": {
