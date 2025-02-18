@@ -7,6 +7,7 @@ namespace LaravelHyperf\Devtool;
 use Hyperf\Devtool\Generator\GeneratorCommand;
 use LaravelHyperf\Devtool\Commands\EventListCommand;
 use LaravelHyperf\Devtool\Generator\BatchesTableCommand;
+use LaravelHyperf\Devtool\Generator\ChannelCommand;
 use LaravelHyperf\Devtool\Generator\ComponentCommand;
 use LaravelHyperf\Devtool\Generator\ConsoleCommand;
 use LaravelHyperf\Devtool\Generator\EventCommand;
@@ -52,6 +53,7 @@ class ConfigProvider
                 QueueTableCommand::class,
                 QueueFailedTableCommand::class,
                 JobCommand::class,
+                ChannelCommand::class,
             ],
         ];
     }
