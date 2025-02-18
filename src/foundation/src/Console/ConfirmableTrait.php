@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Foundation\Console;
 
 use Closure;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
 
 use function Hyperf\Support\value;

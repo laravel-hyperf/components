@@ -23,7 +23,7 @@ use Hyperf\ViewEngine\Contract\FactoryInterface;
 use Hyperf\ViewEngine\ViewErrorBag;
 use InvalidArgumentException;
 use LaravelHyperf\Config\Repository;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Foundation\Exceptions\Handler;
 use LaravelHyperf\Http\Contracts\ResponseContract;
 use LaravelHyperf\Http\Request;

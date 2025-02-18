@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelHyperf\Support;
+namespace LaravelHyperf\Context;
 
 use Hyperf\Context\Context as HyperfContext;
 use Hyperf\Engine\Coroutine;

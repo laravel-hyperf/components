@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Facades;
 
 use Closure;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Support\Testing\Fakes\Fake;
 use Mockery;
 use Mockery\LegacyMockInterface;

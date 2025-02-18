@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Queue\Contracts\Factory as FactoryContract;
 use LaravelHyperf\Queue\Worker;
 use LaravelHyperf\Support\Testing\Fakes\QueueFake;

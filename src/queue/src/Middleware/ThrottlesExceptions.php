@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Queue\Middleware;
 
 use LaravelHyperf\Cache\RateLimiter;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use Throwable;
 
 class ThrottlesExceptions

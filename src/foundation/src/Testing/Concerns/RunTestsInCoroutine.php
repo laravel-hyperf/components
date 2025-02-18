@@ -6,12 +6,12 @@ namespace LaravelHyperf\Foundation\Testing\Concerns;
 
 use Hyperf\Coordinator\Constants;
 use Hyperf\Coordinator\CoordinatorManager;
-use LaravelHyperf\Support\Context;
+use LaravelHyperf\Context\Context;
 use Swoole\Coroutine;
 use Swoole\Timer;
 use Throwable;
 
-use function Hyperf\Coroutine\run;
+use function LaravelHyperf\Coroutine\run;
 
 /**
  * @method string name()

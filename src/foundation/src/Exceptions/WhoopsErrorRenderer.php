@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Foundation\Exceptions;
 
 use Hyperf\Context\RequestContext;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionRenderer;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Throwable;

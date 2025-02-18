@@ -10,7 +10,7 @@ use Hyperf\Di\Definition\DefinitionSource;
 use Hyperf\ViewEngine\Contract\FactoryInterface as ViewFactory;
 use Hyperf\ViewEngine\Contract\ViewInterface;
 use LaravelHyperf\Auth\Contracts\FactoryContract;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Mail\Events\MessageSending;
 use LaravelHyperf\Mail\Events\MessageSent;
 use LaravelHyperf\Mail\Mailable;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelHyperf\Foundation;
+namespace LaravelHyperf\Context;
 
 use Hyperf\Context\ApplicationContext as HyperfApplicationContext;
 use LaravelHyperf\Container\Contracts\Container as ContainerContract;

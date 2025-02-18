@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelHyperf\Tests\Integration\Broadcasting;
+namespace LaravelHyperf\Tests\Broadcasting;
 
 use Hyperf\Contract\ConfigInterface;
 use InvalidArgumentException;
@@ -18,8 +18,8 @@ use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
 use LaravelHyperf\Bus\Contracts\QueueingDispatcher;
 use LaravelHyperf\Cache\Contracts\Factory as Cache;
 use LaravelHyperf\Container\DefinitionSource;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Foundation\Application;
-use LaravelHyperf\Foundation\ApplicationContext;
 use LaravelHyperf\Queue\Contracts\Factory as QueueFactoryContract;
 use LaravelHyperf\Support\Facades\Broadcast;
 use LaravelHyperf\Support\Facades\Bus;

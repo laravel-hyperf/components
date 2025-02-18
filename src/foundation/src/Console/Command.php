@@ -11,7 +11,7 @@ use Hyperf\Command\Event\AfterHandle;
 use Hyperf\Command\Event\BeforeHandle;
 use Hyperf\Command\Event\FailToHandle;
 use Hyperf\Coroutine\Coroutine;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 use Swoole\ExitException;
 use Symfony\Component\Console\Input\InputInterface;

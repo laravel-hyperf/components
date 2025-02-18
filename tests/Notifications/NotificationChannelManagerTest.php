@@ -10,7 +10,7 @@ use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
 use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
 use LaravelHyperf\Bus\Queueable;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Notifications\ChannelManager;
 use LaravelHyperf\Notifications\Channels\MailChannel;
 use LaravelHyperf\Notifications\Events\NotificationSending;

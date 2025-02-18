@@ -6,7 +6,7 @@ namespace LaravelHyperf\Support;
 
 use Hyperf\Conditionable\Conditionable;
 use Hyperf\Pipeline\Pipeline as BasePipeline;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 
 class Pipeline extends BasePipeline
 {

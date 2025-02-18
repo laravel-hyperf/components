@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Traits;
 
 use Closure;
-use LaravelHyperf\Foundation\ApplicationContext;
+use LaravelHyperf\Context\ApplicationContext;
 
 trait Localizable
 {
