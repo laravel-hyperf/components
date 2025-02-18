@@ -22,8 +22,8 @@
     "require": {
         "php": "^8.2",
         "nesbot/carbon": "^2.16",
-        "laravel-hyperf/filesystem": "dev-master",
-        "laravel-hyperf/support": "dev-master",
+        "laravel-hyperf/filesystem": "dev-main",
+        "laravel-hyperf/support": "dev-main",
         "hyperf/config": "~3.1.0",
         "hyperf/di": "~3.1.0",
         "hyperf/support": "~3.1.0",

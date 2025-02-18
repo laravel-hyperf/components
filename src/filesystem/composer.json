@@ -34,7 +34,7 @@
         "hyperf/macroable": "~3.1.0",
         "hyperf/support": "~3.1.0",
         "hyperf/conditionable": "~3.1.0",
-        "laravel-hyperf/object-pool": "dev-master"
+        "laravel-hyperf/object-pool": "dev-main"
     },
     "suggest": {
         "ext-fileinfo": "Required to use the Filesystem class.",
