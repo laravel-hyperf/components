@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelHyperf\\Broadcasting": "src/"
+            "LaravelHyperf\\Broadcasting\\": "src/"
         }
     },
     "require": {
@@ -37,7 +37,6 @@
         "laravel-hyperf/bus": "dev-main",
         "laravel-hyperf/cache": "dev-main",
         "laravel-hyperf/foundation": "dev-main",
-        "laravel-hyperf/framework": "dev-main",
         "laravel-hyperf/queue": "dev-main",
         "laravel-hyperf/router": "dev-main",
         "laravel-hyperf/support": "dev-main",

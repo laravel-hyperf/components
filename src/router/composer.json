@@ -37,7 +37,7 @@
     "suggest": {
         "laravel-hyperf/cache": "Required to use throttle requests middleware.",
         "laravel-hyperf/http-message": "Required to use throttle requests middleware.",
-        "hyperf/session": "Required to use session based `previous` function in UrlGenerator."
+        "laravel-hyperf/session": "Required to use session based `previous` function in UrlGenerator."
     },
     "config": {
         "sort-packages": true

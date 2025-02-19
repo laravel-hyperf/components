@@ -27,9 +27,8 @@
         "hyperf/collection": "~3.1.0",
         "hyperf/conditionable": "~3.1.0",
         "hyperf/coroutine": "~3.1.0",
-        "hyperf/arrayable": "~3.1.0",
         "hyperf/support": "~3.1.0",
-        "nesbot/carbon": "^3.0",
+        "nesbot/carbon": "^2.72.6",
         "laravel/serializable-closure": "^1.3",
         "laravel-hyperf/support": "~0.1.0",
         "laravel-hyperf/cache": "~0.1.0"

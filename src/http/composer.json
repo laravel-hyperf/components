@@ -33,10 +33,10 @@
         "hyperf/codec": "~3.1.0",
         "hyperf/context": "~3.1.0",
         "hyperf/contract": "~3.1.0",
-        "nesbot/carbon": "^2.0 || ^3.0"
+        "nesbot/carbon": "^2.72.6"
     },
     "suggest": {
-        "hyperf/session": "Required to `session` function in request.",
+        "laravel-hyperf/session": "Required to `session` function in request.",
         "hyperf/validation": "Required to `validate` function in request."
     },
     "config": {
