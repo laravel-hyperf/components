@@ -33,7 +33,7 @@ class CommandReplacer
         'gen:resource' => 'make:resource',
         'gen:swagger' => 'make:swagger',
         'gen:migration-from-database' => 'make:migration-from-database',
-        'gen:view-engine-cache' => 'make:view-engine-cache',
+        'gen:view-engine-cache' => 'view:cache',
         'gen:swagger-schema' => 'make:swagger-schema',
         'crontab:run' => [
             'name' => 'schedule:run',
