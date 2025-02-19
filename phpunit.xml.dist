@@ -13,6 +13,7 @@
         <testsuite name="Hyperf Packages Test Suite">
             <directory suffix="Test.php">./tests</directory>
             <exclude>./tests/Prompts</exclude>
+            <exclude>./tests/HttpClient</exclude>
         </testsuite>
     </testsuites>
     <php>

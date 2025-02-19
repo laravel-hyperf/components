@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SwooleTW\Hyperf\Tests\HttpClient;
+namespace LaravelHyperf\Tests\HttpClient;
 
 use Exception;
 use GuzzleHttp\Middleware;
@@ -18,6 +18,20 @@ use Hyperf\Stringable\Str;
 use Hyperf\Stringable\Stringable;
 use Hyperf\Support\Fluent;
 use JsonSerializable;
+use LaravelHyperf\Http\Response as HttpResponse;
+use LaravelHyperf\HttpClient\ConnectionException;
+use LaravelHyperf\HttpClient\Events\RequestSending;
+use LaravelHyperf\HttpClient\Events\ResponseReceived;
+use LaravelHyperf\HttpClient\Factory;
+use LaravelHyperf\HttpClient\PendingRequest;
+use LaravelHyperf\HttpClient\Pool;
+use LaravelHyperf\HttpClient\Request;
+use LaravelHyperf\HttpClient\RequestException;
+use LaravelHyperf\HttpClient\Response;
+use LaravelHyperf\HttpClient\ResponseSequence;
+use LaravelHyperf\Support\Carbon;
+use LaravelHyperf\Support\Sleep;
+use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use OutOfBoundsException;
 use PHPUnit\Framework\AssertionFailedError;
@@ -25,20 +39,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
-use SwooleTW\Hyperf\Http\Response as HttpResponse;
-use SwooleTW\Hyperf\HttpClient\ConnectionException;
-use SwooleTW\Hyperf\HttpClient\Events\RequestSending;
-use SwooleTW\Hyperf\HttpClient\Events\ResponseReceived;
-use SwooleTW\Hyperf\HttpClient\Factory;
-use SwooleTW\Hyperf\HttpClient\PendingRequest;
-use SwooleTW\Hyperf\HttpClient\Pool;
-use SwooleTW\Hyperf\HttpClient\Request;
-use SwooleTW\Hyperf\HttpClient\RequestException;
-use SwooleTW\Hyperf\HttpClient\Response;
-use SwooleTW\Hyperf\HttpClient\ResponseSequence;
-use SwooleTW\Hyperf\Support\Carbon;
-use SwooleTW\Hyperf\Support\Sleep;
-use SwooleTW\Hyperf\Tests\TestCase;
 use Symfony\Component\VarDumper\VarDumper;
 use Throwable;
 
