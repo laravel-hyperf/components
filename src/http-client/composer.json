@@ -1,0 +1,39 @@
+{
+    "name": "laravel-hyperf/http-client",
+    "type": "library",
+    "description": "The http client package for Laravel Hyperf.",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "hyperf",
+        "swoole",
+        "http-client",
+        "laravel-hyperf"
+    ],
+    "authors": [
+        {
+            "name": "Albert Chen",
+            "email": "albert@laravel-hyperf.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/laravel-hyperf/components/issues",
+        "source": "https://github.com/laravel-hyperf/components"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelHyperf\\HttpClient\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "hyperf/collection": "~3.1.0",
+        "hyperf/macroable": "~3.1.0",
+        "hyperf/support": "~3.1.0",
+        "guzzlehttp/guzzle": "^7.8.2",
+        "guzzlehttp/uri-template": "^1.0"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
