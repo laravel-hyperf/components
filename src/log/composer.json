@@ -32,7 +32,7 @@
         "hyperf/stringable": "~3.1.0",
         "hyperf/contract": "~3.1.0",
         "hyperf/collection": "~3.1.0",
-        "laravel-hyperf/support": "~0.1.0"
+        "laravel-hyperf/support": "^0.1"
     },
     "config": {
         "sort-packages": true

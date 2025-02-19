@@ -32,8 +32,8 @@
         "laravel/serializable-closure": "^1.2.2",
         "ramsey/uuid": "^4.7",
         "symfony/process": "^7.0",
-        "laravel-hyperf/support": "~0.1.0",
-        "laravel-hyperf/encryption": "~0.1.0"
+        "laravel-hyperf/support": "^0.1",
+        "laravel-hyperf/encryption": "^0.1"
     },
     "autoload": {
         "psr-4": {

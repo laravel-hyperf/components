@@ -27,7 +27,7 @@
         "psr/simple-cache": "^3.0",
         "hyperf/stringable": "~3.1.0",
         "ramsey/uuid": "^4.7",
-        "laravel-hyperf/cache": "~0.1.0"
+        "laravel-hyperf/cache": "^0.1"
     },
     "autoload": {
         "psr-4": {
