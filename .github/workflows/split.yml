@@ -1,0 +1,42 @@
+name: split repos
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Repo name to split, leave empty to split all'
+        required: false
+        default: ''
+
+jobs:
+  split:
+    name: Split on branch ${{ github.ref }}
+    runs-on: ubuntu-latest
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.SPLIT_PRIVATE_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup private key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Split and push
+        run: |
+          git config pull.rebase true
+          git config --global user.email "albert@laravel-hyperf.com"
+          git config --global user.name "Laravel Hyperf"
+
+          if [ -z "${{ github.event.inputs.repo }}" ]; then
+            bash ./bin/split.sh
+          else
+            bash ./bin/split.sh ${{ github.event.inputs.repo }}
+          fi
