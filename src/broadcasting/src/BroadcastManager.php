@@ -183,7 +183,7 @@ class BroadcastManager implements BroadcastingFactoryContract
         $broadcastEvent = new BroadcastEvent(clone $event);
 
         if ($event instanceof ShouldBeUnique) {
-            $broadcastEvent = new UniqueBroadcastEvent($this->app, clone $event);
+            $broadcastEvent = new UniqueBroadcastEvent(clone $event);
 
             if ($this->mustBeUniqueAndCannotAcquireLock($broadcastEvent)) {
                 return;
