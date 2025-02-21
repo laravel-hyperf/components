@@ -33,6 +33,7 @@ use LaravelHyperf\HttpMessage\Exceptions\HttpException;
 use LaravelHyperf\HttpMessage\Exceptions\HttpResponseException;
 use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
 use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use LaravelHyperf\Support\Contracts\Responsable;
 use LaravelHyperf\Support\Facades\Auth;
 use LaravelHyperf\Support\Reflector;
@@ -579,25 +580,20 @@ class Handler extends ExceptionHandler implements ExceptionHandlerContract
         }
 
         $value = $this->getMessageBag($provider);
-        $session = $this->container->get(SessionInterface::class);
+        $session = $this->container->get(SessionContract::class);
         $errors = $session->get('errors', new ViewErrorBag());
 
         if (! $errors instanceof ViewErrorBag) {
             $errors = new ViewErrorBag();
         }
+        $session->flash('errors', $errors->put($key, $value));
 
         $flashInputs = $this->removeFilesFromInput(
             Arr::except($request->all(), $this->dontFlash)
         );
-        /* @var Session $session */
-        $session->flash('errors', $errors->put($key, $value));
         if ($flashInputs) {
-            /* @var Session $session */
             $session->flashInput($flashInputs);
         }
-        // because session middleware save session before exception handler
-        // so we need to save session again to make sure flash message is saved
-        $session->save();
     }
 
     /**
