@@ -58,9 +58,8 @@ fi
 REMOTES=$(ls $BASEPATH)
 
 # Delete the old release tag.
-# git push --delete origin $VERSION
-# git push origin :refs/tags/$VERSION
-# git tag --delete $VERSION
+git push --delete origin $VERSION 2>/dev/null || true
+git tag --delete $VERSION 2>/dev/null || true
 
 # Tag Framework
 git tag $VERSION
@@ -73,7 +72,7 @@ do
     echo ""
     echo "Cloning $REMOTE";
 
-    TMP_DIR="/tmp/hyperf-packages-split"
+    TMP_DIR="/tmp/laravel-hyperf-split"
     REMOTE_URL="git@github.com:laravel-hyperf/${REMOTE}.git"
 
     rm -rf $TMP_DIR;
@@ -87,6 +86,8 @@ do
 
         if [[ $(git log --pretty="%d" -n 1 | grep tag --count) -eq 0 ]]; then
             echo "Releasing $REMOTE";
+            git push --delete origin $VERSION 2>/dev/null || true
+            git tag --delete $VERSION 2>/dev/null || true
             git tag $VERSION
             git push origin --tags
         fi
