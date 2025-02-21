@@ -16,6 +16,7 @@ use LaravelHyperf\Devtool\Generator\JobCommand;
 use LaravelHyperf\Devtool\Generator\ListenerCommand;
 use LaravelHyperf\Devtool\Generator\ModelCommand;
 use LaravelHyperf\Devtool\Generator\NotificationTableCommand;
+use LaravelHyperf\Devtool\Generator\ObserverCommand;
 use LaravelHyperf\Devtool\Generator\ProviderCommand;
 use LaravelHyperf\Devtool\Generator\QueueFailedTableCommand;
 use LaravelHyperf\Devtool\Generator\QueueTableCommand;
@@ -54,6 +55,7 @@ class ConfigProvider
                 QueueFailedTableCommand::class,
                 JobCommand::class,
                 ChannelCommand::class,
+                ObserverCommand::class,
             ],
         ];
     }
