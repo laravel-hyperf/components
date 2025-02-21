@@ -27,7 +27,7 @@ class CommandReplacer
         'gen:seeder' => null,
         'gen:nats-consumer' => 'make:nats-consumer',
         'gen:nsq-consumer' => 'make:nsq-consumer',
-        'gen:observer' => 'make:observer',
+        'gen:observer' => null,
         'gen:process' => 'make:process',
         'gen:request' => null,
         'gen:resource' => 'make:resource',
