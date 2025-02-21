@@ -29,6 +29,7 @@ use LaravelHyperf\Http\Contracts\ResponseContract;
 use LaravelHyperf\Http\Request;
 use LaravelHyperf\Http\Response;
 use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use LaravelHyperf\Support\Contracts\Responsable;
 use LaravelHyperf\Support\Facades\View;
 use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
@@ -335,13 +336,12 @@ class FoundationExceptionHandlerTest extends TestCase
         $psr7Request->shouldReceive('getUri')->andReturn(new Uri('http://localhost'));
         $this->container->instance(ServerRequestInterface::class, $psr7Request);
 
-        $session = m::mock(SessionInterface::class);
+        $session = m::mock(SessionContract::class);
         $session->shouldReceive('get')->with('errors', m::type(ViewErrorBag::class))->andReturn(new MessageBag(['error' => 'My custom validation exception']));
         $session->shouldReceive('flash')->with('errors', m::type(ViewErrorBag::class))->once();
         $session->shouldReceive('flashInput')->with(['foo' => 'bar'])->once();
-        $session->shouldReceive('save')->once();
-        $this->container->instance(SessionInterface::class, $session);
         Context::set(SessionInterface::class, $session);
+        $this->container->instance(SessionContract::class, $session);
 
         $validator = m::mock(Validator::class);
         $validator->shouldReceive('errors')->andReturn(new MessageBag(['error' => 'My custom validation exception']));
