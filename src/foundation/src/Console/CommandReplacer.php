@@ -10,7 +10,7 @@ class CommandReplacer
 {
     protected static array $commands = [
         'start' => 'serve',
-        'server:watch' => 'watch',
+        'server:watch' => null,
         'gen:amqp-consumer' => 'make:amqp-consumer',
         'gen:amqp-producer' => 'make:amqp-producer',
         'gen:aspect' => 'make:aspect',
