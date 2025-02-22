@@ -6,6 +6,7 @@ namespace LaravelHyperf\Devtool;
 
 use Hyperf\Devtool\Generator\GeneratorCommand;
 use LaravelHyperf\Devtool\Commands\EventListCommand;
+use LaravelHyperf\Devtool\Commands\WatchCommand;
 use LaravelHyperf\Devtool\Generator\BatchesTableCommand;
 use LaravelHyperf\Devtool\Generator\ChannelCommand;
 use LaravelHyperf\Devtool\Generator\ComponentCommand;
@@ -36,6 +37,7 @@ class ConfigProvider
 
         return [
             'commands' => [
+                WatchCommand::class,
                 ProviderCommand::class,
                 EventCommand::class,
                 ListenerCommand::class,
