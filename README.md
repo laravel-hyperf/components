@@ -9,6 +9,8 @@
 
 ## Introduction
 
+> Note: This repository contains the core code of the Laravel Hyperf framework. If you want to build an application using Laravel Hyperf, visit the [Laravel Hyperf repository](https://github.com/laravel-hyperf/laravel-hyperf).
+
 **Laravel Hyperf** is a Laravel-style PHP framework with native coroutine support for ultra-high performance.
 
 Laravel Hyperf ports many core components from Laravel while maintaining familiar usage patterns, making it instantly accessible to Laravel developers. The framework combines the elegant and expressive development experience of Laravel with the powerful performance benefits of coroutine-based programming. If you're a Laravel developer, you'll feel right at home with this framework, requiring minimal learning curve.
