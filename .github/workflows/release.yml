@@ -6,6 +6,10 @@ on:
       version:
         description: 'Version to release'
         required: true
+      force_delete:
+        description: 'Force delete existing tags'
+        type: boolean
+        default: false
 
 jobs:
   release:
@@ -69,7 +73,11 @@ jobs:
           git config pull.rebase true
           git config --global user.email "albert@laravel-hyperf.com"
           git config --global user.name "Laravel Hyperf"
-          bash ./bin/release.sh v${{ steps.version.outputs.version }}
+          if [ ${{ inputs.force_delete }} = true ]; then
+            bash ./bin/release.sh v${{ steps.version.outputs.version }} -f
+          else
+            bash ./bin/release.sh v${{ steps.version.outputs.version }}
+          fi
 
       - name: Create release notes
         uses: softprops/action-gh-release@v2

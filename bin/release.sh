@@ -7,20 +7,27 @@ set -e
 #
 # Example:
 # ./bin/release.sh v1.0.0
+# ./bin/release.sh v1.0.0 -f
 
 # Make sure the release tag is provided.
-if (( "$#" != 1 ))
+if (( "$#" < 1 ))
 then
     echo "Tag has to be provided."
-
     exit 1
 fi
 
+# Initialize variables
 NOW=$(date +%s)
 RELEASE_BRANCH="0.1"
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 BASEPATH=$(cd `dirname $0`; cd ../src/; pwd)
 VERSION=$1
+FORCE_DELETE=false
+
+# Check if -f flag is provided as second argument
+if [[ "$2" == "-f" ]]; then
+    FORCE_DELETE=true
+fi
 
 # Make sure current branch and release branch match.
 if [[ "$RELEASE_BRANCH" != "$CURRENT_BRANCH" ]]
@@ -57,9 +64,12 @@ fi
 
 REMOTES=$(ls $BASEPATH)
 
-# Delete the old release tag.
-git push --delete origin $VERSION 2>/dev/null || true
-git tag --delete $VERSION 2>/dev/null || true
+# Delete the old release tag only if -f flag is provided
+if [ $FORCE_DELETE = true ]; then
+    echo "Forcing delete of existing tags..."
+    git push --delete origin $VERSION 2>/dev/null || true
+    git tag --delete $VERSION 2>/dev/null || true
+fi
 
 # Tag Framework
 git tag $VERSION
@@ -84,13 +94,13 @@ do
         git clone $REMOTE_URL .
         git checkout "$RELEASE_BRANCH";
 
-        if [[ $(git log --pretty="%d" -n 1 | grep tag --count) -eq 0 ]]; then
-            echo "Releasing $REMOTE";
+        echo "Releasing $REMOTE";
+        if [ "$FORCE_DELETE" = true ]; then
             git push --delete origin $VERSION 2>/dev/null || true
             git tag --delete $VERSION 2>/dev/null || true
-            git tag $VERSION
-            git push origin --tags
         fi
+        git tag $VERSION
+        git push origin --tags
     )
 done
 
