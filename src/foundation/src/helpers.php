@@ -701,3 +701,24 @@ if (! function_exists('view')) {
         return $factory->make($view, $data, $mergeData);
     }
 }
+
+if (! function_exists('go')) {
+    function go(callable $callable): bool|int
+    {
+        return \LaravelHyperf\Coroutine\go($callable);
+    }
+}
+
+if (! function_exists('co')) {
+    function co(callable $callable): bool|int
+    {
+        return \LaravelHyperf\Coroutine\co($callable);
+    }
+}
+
+if (! function_exists('defer')) {
+    function defer(callable $callable): void
+    {
+        \LaravelHyperf\Coroutine\defer($callable);
+    }
+}
