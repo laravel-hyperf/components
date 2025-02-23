@@ -175,18 +175,6 @@ class UploadedFileTest extends TestCase
         $file->move(__DIR__ . '/fixtures/directory');
     }
 
-    public static function failedUploadedFile()
-    {
-        foreach ([UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE, UPLOAD_ERR_PARTIAL, UPLOAD_ERR_NO_FILE, UPLOAD_ERR_CANT_WRITE, UPLOAD_ERR_NO_TMP_DIR, UPLOAD_ERR_EXTENSION] as $error) {
-            yield [new UploadedFile(
-                __DIR__ . '/fixtures/test.gif',
-                'original.gif',
-                'image/gif',
-                $error
-            )];
-        }
-    }
-
     /**
      * @dataProvider failedUploadedFile
      */
@@ -206,6 +194,18 @@ class UploadedFileTest extends TestCase
         $this->expectException($exceptionClass);
 
         $file->move(__DIR__ . '/fixtures/directory');
+    }
+
+    public static function failedUploadedFile()
+    {
+        foreach ([UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE, UPLOAD_ERR_PARTIAL, UPLOAD_ERR_NO_FILE, UPLOAD_ERR_CANT_WRITE, UPLOAD_ERR_NO_TMP_DIR, UPLOAD_ERR_EXTENSION] as $error) {
+            yield [new UploadedFile(
+                __DIR__ . '/fixtures/test.gif',
+                'original.gif',
+                'image/gif',
+                $error
+            )];
+        }
     }
 
     public function testGetClientOriginalNameSanitizeFilename()
