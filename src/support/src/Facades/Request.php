@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Facades;
 
 use Carbon\Carbon;
+use Closure;
 use Hyperf\Collection\Collection;
 use LaravelHyperf\Http\Contracts\RequestContract;
 use LaravelHyperf\Http\Request as HttpRequest;
@@ -86,6 +87,13 @@ use Stringable;
  * @method static string getUri()
  * @method static string getQueryString()
  * @method static SessionInterface session()
+ * @method static Closure getUserResolver()
+ * @method static static setUserResolver(Closure $callback)
+ * @method static mixed user(?string $guard = null)
+ * @method static bool hasValidSignature(bool $absolute = true)
+ * @method static bool hasValidRelativeSignature()
+ * @method static bool hasValidSignatureWhileIgnoring(array $ignoreQuery = [], bool $absolute = true)
+ * @method static bool hasValidRelativeSignatureWhileIgnoring(array $ignoreQuery = [])
  *
  * @see \LaravelHyperf\Http\Request
  * @see \Hyperf\HttpServer\Request
