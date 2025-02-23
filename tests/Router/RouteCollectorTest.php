@@ -107,6 +107,36 @@ class RouteCollectorTest extends TestCase
         $this->assertSame(['ApiGetMiddleware', 'ApiSelfGetMiddleware'], $middle['test']['/api']['GET']);
     }
 
+    public function testAddWithoutMiddleware()
+    {
+        $parser = new Std();
+        $generator = new DataGenerator();
+        $collector = new RouteCollector($parser, $generator);
+
+        $collector->get('/', 'Handler::Get', [
+            'middleware' => ['GetMiddleware', 'PostMiddleware'],
+            'without_middleware' => ['PostMiddleware'],
+        ]);
+        $collector->addGroup('/api', function ($collector) {
+            $collector->get('/', 'Handler::ApiGet', [
+                'middleware' => ['ApiSelfGetMiddleware'],
+                'without_middleware' => ['ApiGetMiddleware'],
+            ]);
+            $collector->get('/foo', 'Handler::ApiGet', [
+                'middleware' => ['FooGetMiddleware', 'BarGetMiddleware'],
+            ]);
+        }, [
+            'middleware' => ['ApiGetMiddleware'],
+            'without_middleware' => ['FooGetMiddleware'],
+        ]);
+
+        $middleware = MiddlewareManager::$container['http'];
+
+        $this->assertSame(['GetMiddleware'], $middleware['/']['GET']);
+        $this->assertSame(['ApiSelfGetMiddleware'], $middleware['/api']['GET']);
+        $this->assertSame(['ApiGetMiddleware', 'BarGetMiddleware'], $middleware['/api/foo']['GET']);
+    }
+
     public function testRouterCollectorMergeOptions()
     {
         $parser = new Std();
