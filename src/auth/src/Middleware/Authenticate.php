@@ -33,11 +33,9 @@ class Authenticate implements MiddlewareInterface
     /**
      * Determine if the user is logged in to any of the given guards.
      *
-     * @param \Psr\Http\Server\RequestHandlerInterface $request
-     *
-     * @throws \LaravelHyperf\Auth\AuthenticationException
+     * @throws AuthenticationException
      */
-    protected function authenticate($request, array $guards): void
+    protected function authenticate(ServerRequestInterface $request, array $guards): void
     {
         if (empty($guards)) {
             $guards = [null];
@@ -56,11 +54,9 @@ class Authenticate implements MiddlewareInterface
     /**
      * Handle an unauthenticated user.
      *
-     * @param \Psr\Http\Server\RequestHandlerInterface $request
-     *
-     * @throws \LaravelHyperf\Auth\AuthenticationException
+     * @throws AuthenticationException
      */
-    protected function unauthenticated($request, array $guards): void
+    protected function unauthenticated(ServerRequestInterface $request, array $guards): void
     {
         throw new AuthenticationException(
             'Unauthenticated.',
