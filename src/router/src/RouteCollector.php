@@ -71,7 +71,12 @@ class RouteCollector extends BaseRouteCollector
                 }
             }
 
-            MiddlewareManager::addMiddlewares($this->server, $route, $method, Arr::wrap($options['middleware'] ?? []));
+            $middleware = array_diff(
+                Arr::wrap($options['middleware'] ?? []),
+                Arr::wrap($options['without_middleware'] ?? [])
+            );
+
+            MiddlewareManager::addMiddlewares($this->server, $route, $method, $middleware);
         }
     }
 
