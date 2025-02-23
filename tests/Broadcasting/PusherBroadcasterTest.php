@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Illuminate\Tests\Broadcasting;
+namespace LaravelHyperf\Tests\Broadcasting;
 
 use Hyperf\HttpServer\Request;
 use LaravelHyperf\Auth\AuthManager;
