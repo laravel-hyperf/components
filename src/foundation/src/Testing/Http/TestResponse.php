@@ -70,8 +70,8 @@ class TestResponse extends HyperfTestResponse
 
         if (trim($contentDisposition[0]) !== 'attachment') {
             PHPUnit::fail(
-                'Response does not offer a file download.' . PHP_EOL .
-                'Disposition [' . trim($contentDisposition[0]) . '] found in header, [attachment] expected.'
+                'Response does not offer a file download.' . PHP_EOL
+                . 'Disposition [' . trim($contentDisposition[0]) . '] found in header, [attachment] expected.'
             );
         }
 
@@ -79,8 +79,8 @@ class TestResponse extends HyperfTestResponse
             if (isset($contentDisposition[1])
                 && trim(explode('=', $contentDisposition[1])[0]) !== 'filename') {
                 PHPUnit::fail(
-                    'Unsupported Content-Disposition header provided.' . PHP_EOL .
-                    'Disposition [' . trim(explode('=', $contentDisposition[1])[0]) . '] found in header, [filename] expected.'
+                    'Unsupported Content-Disposition header provided.' . PHP_EOL
+                    . 'Disposition [' . trim(explode('=', $contentDisposition[1])[0]) . '] found in header, [filename] expected.'
                 );
             }
 
