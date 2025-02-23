@@ -16,6 +16,7 @@ use Hyperf\HttpServer\Request as HyperfRequest;
 use Hyperf\Stringable\Str;
 use Hyperf\Validation\ValidatorFactory;
 use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Router\UrlGenerator;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -806,6 +807,46 @@ class Request extends HyperfRequest implements RequestContract
     public function user(?string $guard = null): mixed
     {
         return call_user_func($this->getUserResolver(), $guard);
+    }
+
+    /**
+     * Check if the current request url has valid signature.
+     */
+    public function hasValidSignature(bool $absolute = true): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGenerator::class)
+            ->hasValidSignature($this, $absolute);
+    }
+
+    /**
+     * Check if the current request url has relative signature.
+     */
+    public function hasValidRelativeSignature(): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGenerator::class)
+            ->hasValidSignature($this, false);
+    }
+
+    /**
+     * Check if the current request url has valid signature wile ignoring.
+     */
+    public function hasValidSignatureWhileIgnoring(array $ignoreQuery = [], bool $absolute = true): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGenerator::class)
+            ->hasValidSignature($this, $absolute, $ignoreQuery);
+    }
+
+    /**
+     * Check if the current request url has valid relative signature wile ignoring.
+     */
+    public function hasValidRelativeSignatureWhileIgnoring(array $ignoreQuery = []): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGenerator::class)
+            ->hasValidSignature($this, false, $ignoreQuery);
     }
 
     /**
