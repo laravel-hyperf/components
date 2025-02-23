@@ -49,6 +49,15 @@ class MailManagerTest extends TestCase
             ->mailer('custom_smtp');
     }
 
+    public static function emptyTransportConfigDataProvider()
+    {
+        return [
+            [null],
+            [''],
+            [' '],
+        ];
+    }
+
     public function testMailUrlConfig()
     {
         $container = $this->getContainer();
@@ -82,15 +91,6 @@ class MailManagerTest extends TestCase
             ->getSymfonyTransport(); // @phpstan-ignore-line
 
         $this->assertInstanceOf(TransportPoolProxy::class, $transport);
-    }
-
-    public static function emptyTransportConfigDataProvider()
-    {
-        return [
-            [null],
-            [''],
-            [' '],
-        ];
     }
 
     protected function getContainer(): Container

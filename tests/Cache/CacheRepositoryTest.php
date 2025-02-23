@@ -259,19 +259,6 @@ class CacheRepositoryTest extends TestCase
         $this->assertFalse($result);
     }
 
-    public static function dataProviderTestGetSeconds()
-    {
-        Carbon::setTestNow(Carbon::parse(self::getTestDate()));
-
-        return [
-            [Carbon::parse(self::getTestDate())->addMinutes(5)],
-            [(new DateTime(self::getTestDate()))->modify('+5 minutes')],
-            [(new DateTimeImmutable(self::getTestDate()))->modify('+5 minutes')],
-            [new DateInterval('PT5M')],
-            [300],
-        ];
-    }
-
     /**
      * @dataProvider dataProviderTestGetSeconds
      * @param mixed $duration
@@ -285,6 +272,19 @@ class CacheRepositoryTest extends TestCase
         $repo->put($key, $value, $duration);
 
         $this->assertTrue(true);
+    }
+
+    public static function dataProviderTestGetSeconds()
+    {
+        Carbon::setTestNow(Carbon::parse(self::getTestDate()));
+
+        return [
+            [Carbon::parse(self::getTestDate())->addMinutes(5)],
+            [(new DateTime(self::getTestDate()))->modify('+5 minutes')],
+            [(new DateTimeImmutable(self::getTestDate()))->modify('+5 minutes')],
+            [new DateInterval('PT5M')],
+            [300],
+        ];
     }
 
     public function testRegisterMacroWithNonStaticCall()
