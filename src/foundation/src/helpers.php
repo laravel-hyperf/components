@@ -702,6 +702,16 @@ if (! function_exists('view')) {
     }
 }
 
+if (! function_exists('method_field')) {
+    /**
+     * Generate a form field to spoof the HTTP verb used by forms.
+     */
+    function method_field(string $method): HtmlString
+    {
+        return new HtmlString('<input type="hidden" name="_method" value="' . $method . '">');
+    }
+}
+
 if (! function_exists('go')) {
     function go(callable $callable): bool|int
     {

@@ -18,9 +18,11 @@ use Hyperf\Database\Commands\Seeders\SeedCommand;
 use Hyperf\Database\Migrations\Migration;
 use Hyperf\Database\Migrations\MigrationCreator as HyperfMigrationCreator;
 use Hyperf\Database\Model\Factory as HyperfDatabaseFactory;
+use Hyperf\ViewEngine\Compiler\CompilerInterface;
 use LaravelHyperf\Database\Eloquent\Factories\FactoryInvoker as DatabaseFactoryInvoker;
 use LaravelHyperf\Database\Migrations\MigrationCreator;
 use LaravelHyperf\Database\TransactionListener;
+use LaravelHyperf\View\CompilerFactory;
 
 class ConfigProvider
 {
@@ -30,6 +32,7 @@ class ConfigProvider
             'dependencies' => [
                 HyperfDatabaseFactory::class => DatabaseFactoryInvoker::class,
                 HyperfMigrationCreator::class => MigrationCreator::class,
+                CompilerInterface::class => CompilerFactory::class,
             ],
             'listeners' => [
                 TransactionListener::class,
