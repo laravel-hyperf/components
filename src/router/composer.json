@@ -36,8 +36,9 @@
     },
     "suggest": {
         "laravel-hyperf/cache": "Required to use throttle requests middleware.",
-        "laravel-hyperf/http-message": "Required to use throttle requests middleware.",
-        "laravel-hyperf/session": "Required to use session based `previous` function in UrlGenerator."
+        "laravel-hyperf/core": "Required to use throttle requests middleware.",
+        "laravel-hyperf/session": "Required to use session based `previous` function in UrlGenerator.",
+        "laravel-hyperf/http": "Required to use ValidateSignature middleware."
     },
     "config": {
         "sort-packages": true
