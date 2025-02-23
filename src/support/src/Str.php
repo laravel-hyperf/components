@@ -8,5 +8,4 @@ use Hyperf\Stringable\Str as BaseStr;
 
 class Str extends BaseStr
 {
-    //
 }

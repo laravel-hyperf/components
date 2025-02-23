@@ -8,5 +8,4 @@ use Hyperf\Collection\Arr as BaseArr;
 
 class Arr extends BaseArr
 {
-    //
 }

@@ -8,5 +8,4 @@ use Hyperf\Collection\Collection as BaseCollection;
 
 class Collection extends BaseCollection
 {
-    //
 }
