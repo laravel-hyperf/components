@@ -382,6 +382,26 @@ interface RequestContract extends RequestInterface
     public function user(?string $guard = null): mixed;
 
     /**
+     * Check if the current request url has valid signature.
+     */
+    public function hasValidSignature(bool $absolute = true): bool;
+
+    /**
+     * Check if the current request url has relative signature.
+     */
+    public function hasValidRelativeSignature(): bool;
+
+    /**
+     * Check if the current request url has valid signature wile ignoring.
+     */
+    public function hasValidSignatureWhileIgnoring(array $ignoreQuery = [], bool $absolute = true): bool;
+
+    /**
+     * Check if the current request url has valid relative signature wile ignoring.
+     */
+    public function hasValidRelativeSignatureWhileIgnoring(array $ignoreQuery = []): bool;
+
+    /**
      * Get original psr7 request instance.
      */
     public function getPsr7Request(): ServerRequestInterface;
