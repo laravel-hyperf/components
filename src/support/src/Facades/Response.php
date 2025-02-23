@@ -42,6 +42,7 @@ use Psr\Http\Message\StreamInterface;
  * @method static ResponseInterface getPsr7Response()
  * @method static ResponseInterface stream(callable $callback, array $headers = [])
  * @method static ResponseInterface streamDownload(callable $callback, ?string $filename = null, array $headers = [], string $disposition = 'attachment')
+ * @method static ResponseInterface file(string $path, array $headers = [])
  *
  * @see \LaravelHyperf\Http\Response
  */

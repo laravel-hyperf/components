@@ -34,6 +34,11 @@ interface ResponseContract extends HyperfResponseInterface
     public function json($data, int $status = 200, array $headers = []): ResponseInterface;
 
     /**
+     * Create a file response by file path.
+     */
+    public function file(string $path, array $headers = []): ResponseInterface;
+
+    /**
      * Create a streamed response.
      *
      * @param callable $callback Callback that will be handled for streaming

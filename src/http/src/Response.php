@@ -6,6 +6,7 @@ namespace LaravelHyperf\Http;
 
 use DateTimeImmutable;
 use Hyperf\Codec\Json;
+use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Context\Context;
 use Hyperf\Context\RequestContext;
@@ -14,8 +15,11 @@ use Hyperf\Contract\Jsonable;
 use Hyperf\HttpMessage\Server\Chunk\Chunkable;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Response as HyperfResponse;
+use Hyperf\Support\Filesystem\Filesystem;
 use Hyperf\View\RenderInterface;
 use LaravelHyperf\Http\Contracts\ResponseContract;
+use LaravelHyperf\Http\Exceptions\FileNotFoundException;
+use LaravelHyperf\Support\MimeTypeExtensionGuesser;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
@@ -221,6 +225,33 @@ class Response extends HyperfResponse implements ResponseContract
         }
 
         return $response->withStatus($status);
+    }
+
+    /**
+     * Create a file response by file path.
+     */
+    public function file(string $path, array $headers = []): ResponseInterface
+    {
+        $filesystem = ApplicationContext::getContainer()
+            ->get(Filesystem::class);
+        if (! $filesystem->isFile($path)) {
+            throw new FileNotFoundException($path);
+        }
+
+        $mime = Collection::make($headers)
+            ->where(function ($value, $key) {
+                return strtolower($key) === 'content-type';
+            })->first();
+        if (! $mime) {
+            $mime = ApplicationContext::getContainer()
+                ->get(MimeTypeExtensionGuesser::class)
+                ->guessMimeType(
+                    pathinfo($path, PATHINFO_EXTENSION)
+                ) ?: 'application/octet-stream';
+            $headers['Content-Type'] = $mime;
+        }
+
+        return $this->make($filesystem->get($path), 200, $headers);
     }
 
     /**

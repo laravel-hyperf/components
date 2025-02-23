@@ -10,7 +10,9 @@ use Hyperf\Contract\Arrayable;
 use Hyperf\Contract\Jsonable;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Response as HyperfResponse;
+use Hyperf\Support\Filesystem\Filesystem;
 use Hyperf\View\RenderInterface;
+use LaravelHyperf\Http\Exceptions\FileNotFoundException;
 use LaravelHyperf\Http\Response;
 use LaravelHyperf\HttpMessage\Exceptions\RangeNotSatisfiableHttpException;
 use Mockery;
@@ -131,6 +133,57 @@ class ResponseTest extends TestCase
         $response = new Response($psrResponse);
 
         $this->assertSame($psrResponse, $response->getPsr7Response());
+    }
+
+    public function testFileWithFileNotFoundException()
+    {
+        $filesystem = Mockery::mock(Filesystem::class);
+        $filesystem->shouldReceive('isFile')
+            ->with('file_path')
+            ->once()
+            ->andReturn(false);
+
+        $container = Mockery::mock(ContainerInterface::class);
+        $container->shouldReceive('get')
+            ->with(Filesystem::class)
+            ->once()
+            ->andReturn($filesystem);
+
+        ApplicationContext::setContainer($container);
+
+        $this->expectException(FileNotFoundException::class);
+
+        $psrResponse = new \Hyperf\HttpMessage\Base\Response();
+        (new Response($psrResponse))
+            ->file('file_path');
+    }
+
+    public function testFile()
+    {
+        $filesystem = Mockery::mock(Filesystem::class);
+        $filesystem->shouldReceive('isFile')
+            ->with($filePath = 'file_path')
+            ->once()
+            ->andReturn(true);
+        $filesystem->shouldReceive('get')
+            ->with($filePath)
+            ->once()
+            ->andReturn($fileContent = 'file_content');
+
+        $container = Mockery::mock(ContainerInterface::class);
+        $container->shouldReceive('get')
+            ->with(Filesystem::class)
+            ->once()
+            ->andReturn($filesystem);
+
+        ApplicationContext::setContainer($container);
+
+        $psrResponse = new \Hyperf\HttpMessage\Base\Response();
+        $response = (new Response($psrResponse))
+            ->file('file_path', ['Content-Type' => $mime = 'image/jpeg']);
+
+        $this->assertSame($mime, $response->getHeader('Content-Type')[0]);
+        $this->assertSame($fileContent, (string) $response->getBody());
     }
 
     public function testStream()
