@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace LaravelHyperf\Tests\Core;
 
 use Hyperf\Database\Model\Events\Created;
+use Hyperf\Database\Model\Events\Updated;
 use Hyperf\Database\Model\Model;
 use InvalidArgumentException;
+use LaravelHyperf\Database\Eloquent\ModelListener;
 use LaravelHyperf\Database\Eloquent\ObserverManager;
 use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
 use Psr\Container\ContainerInterface;
-use Psr\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @internal
@@ -19,15 +20,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
  */
 class ObserverManagerTest extends TestCase
 {
-    public function testRegisterWithInvalidModel()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Unable to find model class: InvalidModel');
-
-        $this->getObserverManager()
-            ->register('InvalidModel', 'Observer');
-    }
-
     public function testRegisterWithInvalidObserver()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -45,12 +37,18 @@ class ObserverManagerTest extends TestCase
             ->once()
             ->andReturn($userObserver = new UserObserver());
 
-        $dispatcher = m::mock(EventDispatcherInterface::class);
-        $dispatcher->shouldReceive('listen')
+        $listener = m::mock(ModelListener::class);
+        $listener->shouldReceive('getModelEvents')
             ->once()
-            ->with(Created::class, m::type('callable'));
+            ->andReturn([
+                'created' => Created::class,
+                'updated' => Updated::class,
+            ]);
+        $listener->shouldReceive('register')
+            ->once()
+            ->with(User::class, 'created', m::type('callable'));
 
-        $manager = $this->getObserverManager($container, $dispatcher);
+        $manager = $this->getObserverManager($container, $listener);
         $manager->register(User::class, UserObserver::class);
 
         $this->assertSame(
@@ -64,31 +62,11 @@ class ObserverManagerTest extends TestCase
         );
     }
 
-    public function testHandleEvents()
-    {
-        $container = m::mock(ContainerInterface::class);
-        $container->shouldReceive('get')
-            ->with(UserObserver::class)
-            ->once()
-            ->andReturn($userObserver = new UserObserver());
-
-        $dispatcher = m::mock(EventDispatcherInterface::class);
-        $dispatcher->shouldReceive('listen')
-            ->once()
-            ->with(Created::class, m::type('callable'));
-
-        $manager = $this->getObserverManager($container, $dispatcher);
-        $manager->register(User::class, UserObserver::class);
-        $manager->handleEvent(new Created(new User()));
-
-        $this->assertTrue($userObserver->called);
-    }
-
-    protected function getObserverManager(?ContainerInterface $container = null, ?EventDispatcherInterface $dispatcher = null): ObserverManager
+    protected function getObserverManager(?ContainerInterface $container = null, ?ModelListener $listener = null): ObserverManager
     {
         return new ObserverManager(
             $container ?? m::mock(ContainerInterface::class),
-            $dispatcher ?? m::mock(EventDispatcherInterface::class)
+            $listener ?? m::mock(ModelListener::class)
         );
     }
 }
@@ -99,10 +77,7 @@ class User extends Model
 
 class UserObserver
 {
-    public bool $called = false;
-
     public function created(User $user)
     {
-        $this->called = true;
     }
 }
