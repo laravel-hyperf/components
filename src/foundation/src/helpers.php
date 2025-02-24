@@ -16,7 +16,9 @@ use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastFactory;
 use LaravelHyperf\Broadcasting\PendingBroadcast;
 use LaravelHyperf\Bus\PendingClosureDispatch;
 use LaravelHyperf\Bus\PendingDispatch;
+use LaravelHyperf\Container\Contracts\Container;
 use LaravelHyperf\Cookie\Contracts\Cookie as CookieContract;
+use LaravelHyperf\Foundation\Application;
 use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
 use LaravelHyperf\Http\Contracts\RequestContract;
 use LaravelHyperf\Http\Contracts\ResponseContract;
@@ -28,7 +30,6 @@ use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use LaravelHyperf\Support\Contracts\Responsable;
 use LaravelHyperf\Support\HtmlString;
 use LaravelHyperf\Support\Mix;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
@@ -302,16 +303,16 @@ if (! function_exists('app')) {
     /**
      * Get the available container instance.
      *
-     * @template T
+     * @template TClass of object
      *
-     * @param class-string<T> $abstract
+     * @param null|class-string<TClass>|string $abstract
      *
-     * @return ContainerInterface|T
+     * @return ($abstract is class-string<TClass> ? TClass : ($abstract is null ? Application : mixed))
      */
     function app(?string $abstract = null, array $parameters = [])
     {
         if (ApplicationContext::hasContainer()) {
-            /** @var \Hyperf\Contract\ContainerInterface $container */
+            /** @var Container $container */
             $container = ApplicationContext::getContainer();
 
             if (is_null($abstract)) {
