@@ -487,8 +487,10 @@ if (! function_exists('request')) {
 if (! function_exists('response')) {
     /**
      * Return a new response from the application.
+     *
+     * @return ($content is null ? ResponseContract : ResponseInterface)
      */
-    function response(mixed $content = '', int $status = 200, array $headers = []): ResponseContract|ResponseInterface
+    function response(mixed $content = null, int $status = 200, array $headers = []): ResponseContract|ResponseInterface
     {
         $response = app(ResponseContract::class);
 
@@ -496,7 +498,7 @@ if (! function_exists('response')) {
             return $response;
         }
 
-        return $response->make($content, $status, $headers);
+        return $response->make($content ?? '', $status, $headers);
     }
 }
 
