@@ -42,6 +42,8 @@ use RuntimeException;
 use Symfony\Component\VarDumper\VarDumper;
 use Throwable;
 
+use function Hyperf\Collection\collect;
+
 /**
  * @internal
  * @coversNothing
