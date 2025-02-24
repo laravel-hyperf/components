@@ -11,7 +11,9 @@ use Hyperf\Stringable\Stringable;
 use Hyperf\Validation\Contract\ValidatorFactoryInterface;
 use Hyperf\ViewEngine\Contract\FactoryInterface;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\Auth\Contracts\FactoryContract as AuthFactoryContract;
 use LaravelHyperf\Auth\Contracts\Gate;
+use LaravelHyperf\Auth\Contracts\Guard;
 use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastFactory;
 use LaravelHyperf\Broadcasting\PendingBroadcast;
 use LaravelHyperf\Bus\PendingClosureDispatch;
@@ -655,7 +657,8 @@ if (! function_exists('asset')) {
 if (! function_exists('auth')) {
     /**
      * Get auth guard.
-     * @return LaravelHyperf\Auth\Contracts\FactoryContract|LaravelHyperf\Auth\Contracts\Guard
+     *
+     * @return ($guard is null ? AuthFactoryContract&Guard : Guard)
      */
     function auth(?string $guard = null): mixed
     {
