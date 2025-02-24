@@ -317,4 +317,12 @@ abstract class ServiceProvider
     {
         Artisan::addCommands($commands);
     }
+
+    /**
+     * Get the default providers for a Laravel application.
+     */
+    public static function defaultProviders(): DefaultProviders
+    {
+        return new DefaultProviders();
+    }
 }
