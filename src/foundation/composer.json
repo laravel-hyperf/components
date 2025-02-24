@@ -59,7 +59,9 @@
     },
     "extra": {
         "hyperf": {
-            "config": "LaravelHyperf\\Foundation\\ConfigProvider",
+            "config": "LaravelHyperf\\Foundation\\ConfigProvider"
+        },
+        "laravel-hyperf" : {
             "providers": [
                 "LaravelHyperf\\Foundation\\Providers\\FoundationServiceProvider"
             ]

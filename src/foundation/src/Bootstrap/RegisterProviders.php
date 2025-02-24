@@ -18,11 +18,11 @@ class RegisterProviders
     public function bootstrap(ApplicationContract $app): void
     {
         $providers = [];
-        $packagesToIgnore = Composer::getMergedExtra('hyperf')['dont-discover'] ?? [];
+        $packagesToIgnore = Composer::getMergedExtra('laravel-hyperf')['dont-discover'] ?? [];
 
         if (! in_array('*', $packagesToIgnore)) {
             $providers = array_map(
-                fn (array $package) => Arr::wrap(($package['hyperf']['providers'] ?? []) ?? []),
+                fn (array $package) => Arr::wrap(($package['laravel-hyperf']['providers'] ?? []) ?? []),
                 Composer::getMergedExtra()
             );
             $providers = array_filter(
