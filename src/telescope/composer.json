@@ -37,7 +37,9 @@
             "dev-main": "0.1-dev"
         },
         "hyperf": {
-            "config": "LaravelHyperf\\Telescope\\ConfigProvider",
+            "config": "LaravelHyperf\\Telescope\\ConfigProvider"
+        },
+        "laravel-hyperf": {
             "providers": [
                 "LaravelHyperf\\Telescope\\TelescopeServiceProvider"
             ]

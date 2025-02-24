@@ -45,7 +45,9 @@
     },
     "extra": {
         "hyperf": {
-            "config": "LaravelHyperf\\Notifications\\ConfigProvider",
+            "config": "LaravelHyperf\\Notifications\\ConfigProvider"
+        },
+        "laravel-hyperf": {
             "providers": [
                 "LaravelHyperf\\Notifications\\NotificationServiceProvider"
             ]

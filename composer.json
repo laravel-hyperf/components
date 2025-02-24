@@ -210,7 +210,9 @@
                 "LaravelHyperf\\Router\\ConfigProvider",
                 "LaravelHyperf\\Session\\ConfigProvider",
                 "LaravelHyperf\\Telescope\\ConfigProvider"
-            ],
+            ]
+        },
+        "laravel-hyperf": {
             "providers": [
                 "LaravelHyperf\\Notifications\\NotificationServiceProvider",
                 "LaravelHyperf\\Telescope\\TelescopeServiceProvider"
