@@ -5,41 +5,11 @@ declare(strict_types=1);
 namespace LaravelHyperf\Database\Eloquent;
 
 use Hyperf\Collection\Arr;
-use Hyperf\Database\Model\Events;
-use Hyperf\Database\Model\Events\Event;
-use Hyperf\Database\Model\Model;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
-use Psr\EventDispatcher\EventDispatcherInterface;
 
 class ObserverManager
 {
-    /**
-     * The model events that should be registered.
-     */
-    protected const MODEL_EVENTS = [
-        'booting' => Events\Booting::class,
-        'booted' => Events\Booted::class,
-        'retrieved' => Events\Retrieved::class,
-        'creating' => Events\Creating::class,
-        'created' => Events\Created::class,
-        'updating' => Events\Updating::class,
-        'updated' => Events\Updated::class,
-        'saving' => Events\Saving::class,
-        'saved' => Events\Saved::class,
-        'deleting' => Events\Deleting::class,
-        'deleted' => Events\Deleted::class,
-        'restoring' => Events\Restoring::class,
-        'restored' => Events\Restored::class,
-        'forceDeleting' => Events\ForceDeleting::class,
-        'forceDeleted' => Events\ForceDeleted::class,
-    ];
-
-    /**
-     * Indicates if the manager has been bootstrapped.
-     */
-    protected array $bootstrappedEvents = [];
-
     /**
      * Observers that have been registered.
      */
@@ -47,23 +17,8 @@ class ObserverManager
 
     public function __construct(
         protected ContainerInterface $container,
-        protected EventDispatcherInterface $dispatcher
+        protected ModelListener $listener
     ) {
-    }
-
-    public function bootstrapEvent(string $eventClass): void
-    {
-        if ($this->bootstrappedEvents[$eventClass] ?? false) {
-            return;
-        }
-
-        /* @phpstan-ignore-next-line */
-        $this->dispatcher->listen(
-            $eventClass,
-            [$this, 'handleEvent']
-        );
-
-        $this->bootstrappedEvents[$eventClass] = true;
     }
 
     /**
@@ -71,23 +26,23 @@ class ObserverManager
      */
     public function register(string $modelClass, object|string $observer): void
     {
-        if (! class_exists($modelClass)) {
-            throw new InvalidArgumentException('Unable to find model class: ' . $modelClass);
-        }
-
-        if (! is_subclass_of($modelClass, Model::class)) {
-            throw new InvalidArgumentException("Model class must extends `{$modelClass}`");
-        }
-
         $observerClass = $this->resolveObserverClassName($observer);
-        foreach (static::MODEL_EVENTS as $event => $eventClass) {
+        foreach ($this->listener->getModelEvents() as $event => $eventClass) {
             if (! method_exists($observer, $event)) {
                 continue;
             }
 
-            $this->bootstrapEvent($eventClass);
-            $this->observers[$modelClass][$event][$observerClass] = $this->container
-                ->get($observerClass);
+            if (isset($this->observers[$modelClass][$event][$observerClass])) {
+                throw new InvalidArgumentException("Observer [{$observerClass}] is already registered for [{$modelClass}]");
+            }
+
+            $observer = $this->container->get($observerClass);
+            $this->listener->register(
+                $modelClass,
+                $event,
+                [$observer, $event]
+            );
+            $this->observers[$modelClass][$event][$observerClass] = $observer;
         }
     }
 
@@ -101,30 +56,6 @@ class ObserverManager
         }
 
         return Arr::flatten($this->observers[$modelClass] ?? []);
-    }
-
-    /**
-     * Get the model events that should be registered.
-     */
-    public function getModelEvents(): array
-    {
-        return array_values(static::MODEL_EVENTS);
-    }
-
-    /**
-     * Execute observers from the given model event.
-     */
-    public function handleEvent(Event $event): void
-    {
-        $model = $event->getModel();
-        $observers = $this->getObservers(
-            get_class($event->getModel()),
-            $method = $event->getMethod()
-        );
-
-        foreach ($observers as $observer) {
-            $observer->{$method}($model);
-        }
     }
 
     /**
