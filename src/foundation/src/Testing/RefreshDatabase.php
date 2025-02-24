@@ -6,6 +6,7 @@ namespace LaravelHyperf\Foundation\Testing;
 
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Database\Connection as DatabaseConnection;
+use Hyperf\Database\Model\Booted;
 use Hyperf\DbConnection\Db;
 use LaravelHyperf\Foundation\Testing\Traits\CanConfigureMigrationCommands;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -28,6 +29,16 @@ trait RefreshDatabase
         $this->refreshTestDatabase();
 
         $this->afterRefreshingDatabase();
+
+        $this->refreshModelBootedStates();
+    }
+
+    /**
+     * Refresh the model booted states.
+     */
+    protected function refreshModelBootedStates(): void
+    {
+        Booted::$container = [];
     }
 
     /**
@@ -115,6 +126,20 @@ trait RefreshDatabase
                 // $connection->disconnect();
             }
         });
+    }
+
+    /**
+     * Run the given callback without firing any model events.
+     */
+    protected function withoutModelEvents(callable $callback, ?string $connection = null): void
+    {
+        $connection = $this->app->get(Db::class)
+            ->connection($connection);
+        $dispatcher = $connection->getEventDispatcher();
+
+        $callback();
+
+        $connection->setEventDispatcher($dispatcher);
     }
 
     /**

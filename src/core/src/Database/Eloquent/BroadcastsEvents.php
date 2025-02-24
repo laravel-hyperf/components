@@ -41,7 +41,7 @@ trait BroadcastsEvents
     /**
      * Broadcast that the model was created.
      */
-    public function broadcastCreated(null|array|Channel|HasBroadcastChannel $channels = null): PendingBroadcast
+    public function broadcastCreated(null|array|Channel|HasBroadcastChannel $channels = null): ?PendingBroadcast
     {
         return $this->broadcastIfBroadcastChannelsExistForEvent(
             $this->newBroadcastableModelEvent('created'),
@@ -53,7 +53,7 @@ trait BroadcastsEvents
     /**
      * Broadcast that the model was updated.
      */
-    public function broadcastUpdated(null|array|Channel|HasBroadcastChannel $channels = null): PendingBroadcast
+    public function broadcastUpdated(null|array|Channel|HasBroadcastChannel $channels = null): ?PendingBroadcast
     {
         return $this->broadcastIfBroadcastChannelsExistForEvent(
             $this->newBroadcastableModelEvent('updated'),
@@ -65,7 +65,7 @@ trait BroadcastsEvents
     /**
      * Broadcast that the model was deleted.
      */
-    public function broadcastDeleted(null|array|Channel|HasBroadcastChannel $channels = null): PendingBroadcast
+    public function broadcastDeleted(null|array|Channel|HasBroadcastChannel $channels = null): ?PendingBroadcast
     {
         return $this->broadcastIfBroadcastChannelsExistForEvent(
             $this->newBroadcastableModelEvent('deleted'),
@@ -84,10 +84,12 @@ trait BroadcastsEvents
         }
 
         if (! empty($this->broadcastOn($event)) || ! empty($channels)) {
-            ApplicationContext::getContainer()
+            return ApplicationContext::getContainer()
                 ->get(BroadcastFactory::class)
                 ->event($instance->onChannels(Arr::wrap($channels)));
         }
+
+        return null;
     }
 
     /**
