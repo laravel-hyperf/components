@@ -465,7 +465,9 @@ if (! function_exists('resolve')) {
 if (! function_exists('request')) {
     /**
      * Get an instance of the current request or an input item from the request.
-     * @return array|mixed|RequestContract
+     *
+     * @return ($key is null ? RequestContract : ($key is string ? mixed : array<string, mixed>))
+     *
      * @throws TypeError
      */
     function request(null|array|string $key = null, mixed $default = null): mixed
