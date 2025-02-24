@@ -26,7 +26,7 @@ class ProviderConfig extends HyperfProviderConfig
             return static::$providerConfigs;
         }
 
-        $packagesToIgnore = Composer::getMergedExtra('hyperf')['dont-discover'] ?? [];
+        $packagesToIgnore = Composer::getMergedExtra('laravel-hyperf')['dont-discover'] ?? [];
         if (in_array('*', $packagesToIgnore)) {
             return static::$providerConfigs = [];
         }

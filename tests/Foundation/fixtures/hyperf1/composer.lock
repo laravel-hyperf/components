@@ -4,7 +4,7 @@
             "name": "package-one",
             "version": "0.1",
             "extra": {
-                "hyperf": {
+                "laravel-hyperf": {
                     "providers": [
                         "LaravelHyperf\\Tests\\Foundation\\Bootstrap\\TestOneServiceProvider"
                     ],
@@ -21,7 +21,7 @@
             "name": "package-three",
             "version": "0.1",
             "extra": {
-                "hyperf": {
+                "laravel-hyperf": {
                     "providers": [
                         "LaravelHyperf\\Tests\\Foundation\\Bootstrap\\TestThreeServiceProvider"
                     ]
