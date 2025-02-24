@@ -26,7 +26,7 @@ class ObserverManagerTest extends TestCase
         $this->expectExceptionMessage('Unable to find observer: Observer');
 
         $this->getObserverManager()
-            ->register(User::class, 'Observer');
+            ->register(ObserverUser::class, 'Observer');
     }
 
     public function testRegister()
@@ -46,19 +46,19 @@ class ObserverManagerTest extends TestCase
             ]);
         $listener->shouldReceive('register')
             ->once()
-            ->with(User::class, 'created', m::type('callable'));
+            ->with(ObserverUser::class, 'created', m::type('callable'));
 
         $manager = $this->getObserverManager($container, $listener);
-        $manager->register(User::class, UserObserver::class);
+        $manager->register(ObserverUser::class, UserObserver::class);
 
         $this->assertSame(
             [$userObserver],
-            $manager->getObservers(User::class)
+            $manager->getObservers(ObserverUser::class)
         );
 
         $this->assertSame(
             [],
-            $manager->getObservers(User::class, 'updated')
+            $manager->getObservers(ObserverUser::class, 'updated')
         );
     }
 
@@ -71,7 +71,7 @@ class ObserverManagerTest extends TestCase
     }
 }
 
-class User extends Model
+class ObserverUser extends Model
 {
 }
 

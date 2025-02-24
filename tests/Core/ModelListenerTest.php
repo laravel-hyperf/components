@@ -33,7 +33,7 @@ class ModelListenerTest extends TestCase
         $this->expectExceptionMessage('Event [event] is not a valid Eloquent event.');
 
         $this->getModelListener()
-            ->register(new User(), 'event', fn () => true);
+            ->register(new ModelUser(), 'event', fn () => true);
     }
 
     public function testRegister()
@@ -44,7 +44,7 @@ class ModelListenerTest extends TestCase
             ->with(Created::class, m::type('callable'));
 
         $manager = $this->getModelListener($dispatcher);
-        $manager->register($user = new User(), 'created', $callback = fn () => true);
+        $manager->register($user = new ModelUser(), 'created', $callback = fn () => true);
 
         $this->assertSame(
             [$callback],
@@ -65,11 +65,11 @@ class ModelListenerTest extends TestCase
             ->with(Created::class, m::type('callable'));
 
         $manager = $this->getModelListener($dispatcher);
-        $manager->register($user = new User(), 'created', fn () => true);
+        $manager->register($user = new ModelUser(), 'created', fn () => true);
 
         $manager->clear($user);
 
-        $this->assertSame([], $manager->getCallbacks(new User()));
+        $this->assertSame([], $manager->getCallbacks(new ModelUser()));
     }
 
     public function testHandleEvents()
@@ -81,7 +81,7 @@ class ModelListenerTest extends TestCase
 
         $callbackUser = null;
         $manager = $this->getModelListener($dispatcher);
-        $manager->register($user = new User(), 'created', function ($user) use (&$callbackUser) {
+        $manager->register($user = new ModelUser(), 'created', function ($user) use (&$callbackUser) {
             $callbackUser = $user;
         });
         $manager->handleEvent(new Created($user));
@@ -97,6 +97,6 @@ class ModelListenerTest extends TestCase
     }
 }
 
-class User extends Model
+class ModelUser extends Model
 {
 }
