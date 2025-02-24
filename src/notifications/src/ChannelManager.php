@@ -9,6 +9,7 @@ use Hyperf\Context\Context;
 use Hyperf\Stringable\Str;
 use InvalidArgumentException;
 use LaravelHyperf\Bus\Contracts\Dispatcher as BusDispatcherContract;
+use LaravelHyperf\Notifications\Channels\BroadcastChannel;
 use LaravelHyperf\Notifications\Channels\DatabaseChannel;
 use LaravelHyperf\Notifications\Channels\MailChannel;
 use LaravelHyperf\Notifications\Channels\SlackNotificationRouterChannel;
@@ -87,6 +88,14 @@ class ChannelManager extends Manager implements DispatcherContract, FactoryContr
     protected function createDatabaseDriver(): DatabaseChannel
     {
         return $this->container->get(DatabaseChannel::class);
+    }
+
+    /**
+     * Create an instance of the broadcast driver.
+     */
+    protected function createBroadcastDriver(): BroadcastChannel
+    {
+        return $this->container->get(BroadcastChannel::class);
     }
 
     /**
