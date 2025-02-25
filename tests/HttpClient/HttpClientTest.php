@@ -42,6 +42,8 @@ use RuntimeException;
 use Symfony\Component\VarDumper\VarDumper;
 use Throwable;
 
+use function LaravelHyperf\Coroutine\parallel;
+
 /**
  * @internal
  * @coversNothing
@@ -3538,6 +3540,21 @@ class HttpClientTest extends TestCase
         $factory = new Factory();
 
         $this->assertInstanceOf(PendingRequest::class, $factory->createPendingRequest());
+    }
+
+    public function testRunConcurrentInCoroutine()
+    {
+        $this->factory->fake([
+            'vapor.laravel.com' => $this->factory::response('foo', HttpResponse::HTTP_OK),
+            'forge.laravel.com' => $this->factory::response('bar', HttpResponse::HTTP_OK),
+        ]);
+        $response = parallel([
+            fn () => $this->factory->get('vapor.laravel.com'),
+            fn () => $this->factory->get('forge.laravel.com'),
+        ]);
+
+        $this->assertTrue($response[0]->body() === 'foo');
+        $this->assertTrue($response[1]->body() === 'bar');
     }
 }
 
