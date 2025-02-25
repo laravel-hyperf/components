@@ -8,6 +8,7 @@ use Closure;
 use DateInterval;
 use DateTimeInterface;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Router\UrlGenerator;
 
 /**
@@ -41,6 +42,6 @@ class URL extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return UrlGenerator::class;
+        return UrlGeneratorContract::class;
     }
 }

@@ -505,7 +505,10 @@ class Application extends Container implements ApplicationContract
             ],
             \Hyperf\Redis\Redis::class => ['redis'],
             \LaravelHyperf\Router\Router::class => ['router'],
-            \LaravelHyperf\Router\UrlGenerator::class => ['url'],
+            \LaravelHyperf\Router\Contracts\UrlGenerator::class => [
+                'url',
+                \LaravelHyperf\Router\UrlGenerator::class,
+            ],
             \Hyperf\ViewEngine\Contract\FactoryInterface::class => ['view'],
             \Hyperf\ViewEngine\Compiler\CompilerInterface::class => ['blade.compiler'],
             \LaravelHyperf\Session\Contracts\Factory::class => ['session'],
