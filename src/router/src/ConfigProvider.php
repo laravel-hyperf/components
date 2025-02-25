@@ -10,6 +10,7 @@ use FastRoute\RouteParser as RouteParserContract;
 use FastRoute\RouteParser\Std as RouterParser;
 use Hyperf\HttpServer\Router\DispatcherFactory as HyperfDispatcherFactory;
 use Hyperf\HttpServer\Router\RouteCollector as HyperfRouteCollector;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 
 class ConfigProvider
 {
@@ -21,6 +22,7 @@ class ConfigProvider
                 RouteParserContract::class => RouterParser::class,
                 DataGeneratorContract::class => DataGenerator::class,
                 HyperfRouteCollector::class => RouteCollector::class,
+                UrlGeneratorContract::class => UrlGenerator::class,
             ],
         ];
     }

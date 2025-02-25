@@ -6,7 +6,7 @@ namespace LaravelHyperf\Tests\Router;
 
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\ContainerInterface;
-use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Tests\TestCase;
 use Mockery;
 use Mockery\MockInterface;
@@ -62,14 +62,14 @@ class FunctionsTest extends TestCase
     /**
      * @return MockInterface|UrlGenerator
      */
-    private function mockUrlGenerator(): UrlGenerator
+    private function mockUrlGenerator(): UrlGeneratorContract
     {
         /** @var ContainerInterface|MockInterface */
         $container = Mockery::mock(ContainerInterface::class);
-        $urlGenerator = Mockery::mock(UrlGenerator::class);
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
 
         $container->shouldReceive('get')
-            ->with(UrlGenerator::class)
+            ->with(UrlGeneratorContract::class)
             ->andReturn($urlGenerator);
 
         ApplicationContext::setContainer($container);

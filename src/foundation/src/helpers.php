@@ -27,7 +27,7 @@ use LaravelHyperf\Http\Contracts\ResponseContract;
 use LaravelHyperf\HttpMessage\Exceptions\HttpException;
 use LaravelHyperf\HttpMessage\Exceptions\HttpResponseException;
 use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
-use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use LaravelHyperf\Support\Contracts\Responsable;
 use LaravelHyperf\Support\HtmlString;
@@ -632,7 +632,7 @@ if (! function_exists('url')) {
     /**
      * Generate a url for the application.
      */
-    function url(?string $path = null, array $extra = [], ?bool $secure = null): string|UrlGenerator
+    function url(?string $path = null, array $extra = [], ?bool $secure = null): string|UrlGeneratorContract
     {
         return \LaravelHyperf\Router\url($path, $extra, $secure);
     }

@@ -22,9 +22,10 @@ use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Traits\InteractsWithTime;
 use InvalidArgumentException;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Router\Contracts\UrlRoutable;
 
-class UrlGenerator
+class UrlGenerator implements UrlGeneratorContract
 {
     use InteractsWithTime;
     use Macroable;
@@ -351,6 +352,9 @@ class UrlGenerator
         return trim($root . $path, '/');
     }
 
+    /**
+     * Determine if the given path is a valid URL.
+     */
     public function isValidUrl(string $path): bool
     {
         foreach (['#', '//', 'mailto:', 'tel:', 'sms:', 'http://', 'https://'] as $value) {

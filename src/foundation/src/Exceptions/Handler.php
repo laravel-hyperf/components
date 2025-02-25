@@ -32,7 +32,7 @@ use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 use LaravelHyperf\HttpMessage\Exceptions\HttpException;
 use LaravelHyperf\HttpMessage\Exceptions\HttpResponseException;
 use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
-use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use LaravelHyperf\Support\Contracts\Responsable;
 use LaravelHyperf\Support\Facades\Auth;
@@ -562,7 +562,7 @@ class Handler extends ExceptionHandler implements ExceptionHandlerContract
     {
         $this->withErrors($request, $exception->errors(), $exception->errorBag);
 
-        $urlGenerator = $this->container->get(UrlGenerator::class);
+        $urlGenerator = $this->container->get(UrlGeneratorContract::class);
         $redirectUrl = $exception->redirectTo
             ? $urlGenerator->to($exception->redirectTo)
             : $urlGenerator->previous();

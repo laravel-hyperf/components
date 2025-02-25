@@ -13,7 +13,7 @@ use Hyperf\HttpMessage\Uri\Uri;
 use Hyperf\Stringable\Stringable;
 use Hyperf\Validation\ValidatorFactory;
 use LaravelHyperf\Http\Request;
-use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Mockery;
 use PHPUnit\Framework\TestCase;
@@ -731,7 +731,7 @@ class RequestTest extends TestCase
     {
         $request = new Request();
 
-        $urlGenerator = Mockery::mock(UrlGenerator::class);
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
         $urlGenerator->shouldReceive('hasValidSignature')
             ->once()
             ->with($request, true)
@@ -739,7 +739,7 @@ class RequestTest extends TestCase
 
         $container = Mockery::mock(ContainerInterface::class);
         $container->shouldReceive('get')
-            ->with(UrlGenerator::class)
+            ->with(UrlGeneratorContract::class)
             ->once()
             ->andReturn($urlGenerator);
         ApplicationContext::setContainer($container);
@@ -751,7 +751,7 @@ class RequestTest extends TestCase
     {
         $request = new Request();
 
-        $urlGenerator = Mockery::mock(UrlGenerator::class);
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
         $urlGenerator->shouldReceive('hasValidSignature')
             ->once()
             ->with($request, false)
@@ -759,7 +759,7 @@ class RequestTest extends TestCase
 
         $container = Mockery::mock(ContainerInterface::class);
         $container->shouldReceive('get')
-            ->with(UrlGenerator::class)
+            ->with(UrlGeneratorContract::class)
             ->once()
             ->andReturn($urlGenerator);
         ApplicationContext::setContainer($container);
@@ -771,7 +771,7 @@ class RequestTest extends TestCase
     {
         $request = new Request();
 
-        $urlGenerator = Mockery::mock(UrlGenerator::class);
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
         $urlGenerator->shouldReceive('hasValidSignature')
             ->once()
             ->with($request, true, [])
@@ -779,7 +779,7 @@ class RequestTest extends TestCase
 
         $container = Mockery::mock(ContainerInterface::class);
         $container->shouldReceive('get')
-            ->with(UrlGenerator::class)
+            ->with(UrlGeneratorContract::class)
             ->once()
             ->andReturn($urlGenerator);
         ApplicationContext::setContainer($container);
@@ -791,7 +791,7 @@ class RequestTest extends TestCase
     {
         $request = new Request();
 
-        $urlGenerator = Mockery::mock(UrlGenerator::class);
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
         $urlGenerator->shouldReceive('hasValidSignature')
             ->once()
             ->with($request, false, [])
@@ -799,7 +799,7 @@ class RequestTest extends TestCase
 
         $container = Mockery::mock(ContainerInterface::class);
         $container->shouldReceive('get')
-            ->with(UrlGenerator::class)
+            ->with(UrlGeneratorContract::class)
             ->once()
             ->andReturn($urlGenerator);
         ApplicationContext::setContainer($container);
