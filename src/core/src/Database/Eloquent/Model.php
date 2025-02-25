@@ -25,6 +25,14 @@ abstract class Model extends BaseModel implements UrlRoutable, HasBroadcastChann
     }
 
     /**
+     * Create a new Model Collection instance.
+     */
+    public function newCollection(array $models = [])
+    {
+        return new Collection($models);
+    }
+
+    /**
      * Get the broadcast channel route definition that is associated with the given entity.
      */
     public function broadcastChannelRoute(): string
