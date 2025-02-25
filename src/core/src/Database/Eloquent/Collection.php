@@ -6,4 +6,6 @@ namespace LaravelHyperf\Database\Eloquent;
 
 use Hyperf\Database\Model\Collection as BaseCollection;
 
-class Collection extends BaseCollection {}
+class Collection extends BaseCollection
+{
+}
