@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Facades;
 
 use LaravelHyperf\Encryption\Contracts\Encrypter as EncrypterContract;
-use LaravelHyperf\Encryption\Encrypter;
 
 /**
  * @method static bool supported(string $key, string $cipher)
@@ -15,8 +14,11 @@ use LaravelHyperf\Encryption\Encrypter;
  * @method static mixed decrypt(string $payload, bool $unserialize = true)
  * @method static string decryptString(string $payload)
  * @method static string getKey()
+ * @method static array getAllKeys()
+ * @method static array getPreviousKeys()
+ * @method static \LaravelHyperf\Encryption\Encrypter previousKeys(array $keys)
  *
- * @see Encrypter
+ * @see LaravelHyperf\Encryption\Encrypter
  */
 class Crypt extends Facade
 {
