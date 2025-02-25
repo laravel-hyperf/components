@@ -16,7 +16,7 @@ use Hyperf\HttpServer\Request as HyperfRequest;
 use Hyperf\Stringable\Str;
 use Hyperf\Validation\ValidatorFactory;
 use LaravelHyperf\Http\Contracts\RequestContract;
-use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -815,7 +815,7 @@ class Request extends HyperfRequest implements RequestContract
     public function hasValidSignature(bool $absolute = true): bool
     {
         return ApplicationContext::getContainer()
-            ->get(UrlGenerator::class)
+            ->get(UrlGeneratorContract::class)
             ->hasValidSignature($this, $absolute);
     }
 
@@ -825,7 +825,7 @@ class Request extends HyperfRequest implements RequestContract
     public function hasValidRelativeSignature(): bool
     {
         return ApplicationContext::getContainer()
-            ->get(UrlGenerator::class)
+            ->get(UrlGeneratorContract::class)
             ->hasValidSignature($this, false);
     }
 
@@ -835,7 +835,7 @@ class Request extends HyperfRequest implements RequestContract
     public function hasValidSignatureWhileIgnoring(array $ignoreQuery = [], bool $absolute = true): bool
     {
         return ApplicationContext::getContainer()
-            ->get(UrlGenerator::class)
+            ->get(UrlGeneratorContract::class)
             ->hasValidSignature($this, $absolute, $ignoreQuery);
     }
 
@@ -845,7 +845,7 @@ class Request extends HyperfRequest implements RequestContract
     public function hasValidRelativeSignatureWhileIgnoring(array $ignoreQuery = []): bool
     {
         return ApplicationContext::getContainer()
-            ->get(UrlGenerator::class)
+            ->get(UrlGeneratorContract::class)
             ->hasValidSignature($this, false, $ignoreQuery);
     }
 

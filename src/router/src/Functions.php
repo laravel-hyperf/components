@@ -6,6 +6,7 @@ namespace LaravelHyperf\Router;
 
 use Hyperf\Context\ApplicationContext;
 use InvalidArgumentException;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 
 /**
  * Get the URL to a named route.
@@ -14,20 +15,20 @@ use InvalidArgumentException;
  */
 function route(string $name, array $parameters = [], bool $absolute = true, string $server = 'http'): string
 {
-    return ApplicationContext::getContainer()->get(UrlGenerator::class)->route($name, $parameters, $absolute, $server);
+    return ApplicationContext::getContainer()->get(UrlGeneratorContract::class)->route($name, $parameters, $absolute, $server);
 }
 
 /**
  * Generate a url for the application.
  */
-function url(?string $path = null, array $extra = [], ?bool $secure = null): string|UrlGenerator
+function url(?string $path = null, array $extra = [], ?bool $secure = null): string|UrlGeneratorContract
 {
-    $urlGenerator = ApplicationContext::getContainer()->get(UrlGenerator::class);
+    $UrlGeneratorContract = ApplicationContext::getContainer()->get(UrlGeneratorContract::class);
     if (is_null($path)) {
-        return $urlGenerator;
+        return $UrlGeneratorContract;
     }
 
-    return $urlGenerator->to($path, $extra, $secure);
+    return $UrlGeneratorContract->to($path, $extra, $secure);
 }
 
 /**
@@ -35,7 +36,7 @@ function url(?string $path = null, array $extra = [], ?bool $secure = null): str
  */
 function secure_url(string $path, array $extra = []): string
 {
-    return ApplicationContext::getContainer()->get(UrlGenerator::class)->secure($path, $extra);
+    return ApplicationContext::getContainer()->get(UrlGeneratorContract::class)->secure($path, $extra);
 }
 
 /**
@@ -43,5 +44,5 @@ function secure_url(string $path, array $extra = []): string
  */
 function asset(string $path, ?bool $secure = null): string
 {
-    return ApplicationContext::getContainer()->get(UrlGenerator::class)->asset($path, $secure);
+    return ApplicationContext::getContainer()->get(UrlGeneratorContract::class)->asset($path, $secure);
 }
