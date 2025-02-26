@@ -32,7 +32,10 @@ class ProviderConfig extends HyperfProviderConfig
         }
 
         $providers = array_map(
-            fn (array $package) => Arr::wrap(($package['hyperf']['config'] ?? []) ?? []),
+            fn (array $package) => array_merge(
+                Arr::wrap(($package['hyperf']['config'] ?? []) ?? []),
+                Arr::wrap(($package['laravel-hyperf']['config'] ?? []) ?? []),
+            ),
             Composer::getMergedExtra()
         );
         $providers = array_filter(
