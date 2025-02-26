@@ -45,12 +45,10 @@ function csrf_token(): ?string
         ->token();
 }
 
-if (! function_exists('csrf_field')) {
-    /**
-     * Generate a CSRF token form field.
-     */
-    function csrf_field(): HtmlString
-    {
-        return new HtmlString('<input type="hidden" name="_token" value="' . csrf_token() . '" autocomplete="off">');
-    }
+/**
+ * Generate a CSRF token form field.
+ */
+function csrf_field(): HtmlString
+{
+    return new HtmlString('<input type="hidden" name="_token" value="' . csrf_token() . '" autocomplete="off">');
 }

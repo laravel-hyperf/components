@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
 use Closure;
 use Hyperf\Collection\Arr;
-use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Context\Context;
 use Hyperf\Context\RequestContext;
@@ -16,12 +15,13 @@ use Hyperf\HttpServer\Request as HyperfRequest;
 use Hyperf\Stringable\Str;
 use Hyperf\Validation\ValidatorFactory;
 use LaravelHyperf\Http\Contracts\RequestContract;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Stringable;
 
-use function Hyperf\Collection\collect;
 use function Hyperf\Collection\data_get;
 
 class Request extends HyperfRequest implements RequestContract
@@ -81,10 +81,10 @@ class Request extends HyperfRequest implements RequestContract
     public function collect(null|array|string $key = null): Collection
     {
         if (is_null($key)) {
-            return collect($this->all());
+            return Collection::make($this->all());
         }
 
-        return collect(
+        return Collection::make(
             is_array($key) ? $this->only($key) : $this->input($key)
         );
     }
@@ -365,7 +365,7 @@ class Request extends HyperfRequest implements RequestContract
     public function mergeIfMissing(array $input): static
     {
         return $this->merge(
-            collect($input)
+            Collection::make($input)
                 ->filter(fn ($value, $key) => $this->missing($key))
                 ->toArray()
         );
@@ -806,6 +806,46 @@ class Request extends HyperfRequest implements RequestContract
     public function user(?string $guard = null): mixed
     {
         return call_user_func($this->getUserResolver(), $guard);
+    }
+
+    /**
+     * Check if the current request url has valid signature.
+     */
+    public function hasValidSignature(bool $absolute = true): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGeneratorContract::class)
+            ->hasValidSignature($this, $absolute);
+    }
+
+    /**
+     * Check if the current request url has relative signature.
+     */
+    public function hasValidRelativeSignature(): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGeneratorContract::class)
+            ->hasValidSignature($this, false);
+    }
+
+    /**
+     * Check if the current request url has valid signature wile ignoring.
+     */
+    public function hasValidSignatureWhileIgnoring(array $ignoreQuery = [], bool $absolute = true): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGeneratorContract::class)
+            ->hasValidSignature($this, $absolute, $ignoreQuery);
+    }
+
+    /**
+     * Check if the current request url has valid relative signature wile ignoring.
+     */
+    public function hasValidRelativeSignatureWhileIgnoring(array $ignoreQuery = []): bool
+    {
+        return ApplicationContext::getContainer()
+            ->get(UrlGeneratorContract::class)
+            ->hasValidSignature($this, false, $ignoreQuery);
     }
 
     /**

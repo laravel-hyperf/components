@@ -118,9 +118,9 @@ class BusFake implements Fake, QueueingDispatcher
             [$command, $callback] = [$this->firstClosureParameterType($command), $command];
         }
 
-        $count = $this->dispatched($command, $callback)->count() +
-            $this->dispatchedAfterResponse($command, $callback)->count() +
-            $this->dispatchedSync($command, $callback)->count();
+        $count = $this->dispatched($command, $callback)->count()
+            + $this->dispatchedAfterResponse($command, $callback)->count()
+            + $this->dispatchedSync($command, $callback)->count();
 
         PHPUnit::assertSame(
             $times,

@@ -10,7 +10,7 @@ class CommandReplacer
 {
     protected static array $commands = [
         'start' => 'serve',
-        'server:watch' => 'watch',
+        'server:watch' => null,
         'gen:amqp-consumer' => 'make:amqp-consumer',
         'gen:amqp-producer' => 'make:amqp-producer',
         'gen:aspect' => 'make:aspect',
@@ -27,13 +27,13 @@ class CommandReplacer
         'gen:seeder' => null,
         'gen:nats-consumer' => 'make:nats-consumer',
         'gen:nsq-consumer' => 'make:nsq-consumer',
-        'gen:observer' => 'make:observer',
+        'gen:observer' => null,
         'gen:process' => 'make:process',
         'gen:request' => null,
         'gen:resource' => 'make:resource',
         'gen:swagger' => 'make:swagger',
         'gen:migration-from-database' => 'make:migration-from-database',
-        'gen:view-engine-cache' => 'make:view-engine-cache',
+        'gen:view-engine-cache' => 'view:cache',
         'gen:swagger-schema' => 'make:swagger-schema',
         'crontab:run' => [
             'name' => 'schedule:run',

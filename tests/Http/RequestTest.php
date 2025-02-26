@@ -13,6 +13,7 @@ use Hyperf\HttpMessage\Uri\Uri;
 use Hyperf\Stringable\Stringable;
 use Hyperf\Validation\ValidatorFactory;
 use LaravelHyperf\Http\Request;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use Mockery;
 use PHPUnit\Framework\TestCase;
@@ -724,6 +725,86 @@ class RequestTest extends TestCase
         });
 
         $this->assertSame('user', $request->user());
+    }
+
+    public function testHasValidSignature()
+    {
+        $request = new Request();
+
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
+        $urlGenerator->shouldReceive('hasValidSignature')
+            ->once()
+            ->with($request, true)
+            ->andReturn(true);
+
+        $container = Mockery::mock(ContainerInterface::class);
+        $container->shouldReceive('get')
+            ->with(UrlGeneratorContract::class)
+            ->once()
+            ->andReturn($urlGenerator);
+        ApplicationContext::setContainer($container);
+
+        $this->assertTrue($request->hasValidSignature());
+    }
+
+    public function testHasValidRelativeSignature()
+    {
+        $request = new Request();
+
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
+        $urlGenerator->shouldReceive('hasValidSignature')
+            ->once()
+            ->with($request, false)
+            ->andReturn(true);
+
+        $container = Mockery::mock(ContainerInterface::class);
+        $container->shouldReceive('get')
+            ->with(UrlGeneratorContract::class)
+            ->once()
+            ->andReturn($urlGenerator);
+        ApplicationContext::setContainer($container);
+
+        $this->assertTrue($request->hasValidRelativeSignature());
+    }
+
+    public function testHasValidSignatureWhileIgnoring()
+    {
+        $request = new Request();
+
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
+        $urlGenerator->shouldReceive('hasValidSignature')
+            ->once()
+            ->with($request, true, [])
+            ->andReturn(true);
+
+        $container = Mockery::mock(ContainerInterface::class);
+        $container->shouldReceive('get')
+            ->with(UrlGeneratorContract::class)
+            ->once()
+            ->andReturn($urlGenerator);
+        ApplicationContext::setContainer($container);
+
+        $this->assertTrue($request->hasValidSignatureWhileIgnoring());
+    }
+
+    public function testHasValidRelativeSignatureWhileIgnoring()
+    {
+        $request = new Request();
+
+        $urlGenerator = Mockery::mock(UrlGeneratorContract::class);
+        $urlGenerator->shouldReceive('hasValidSignature')
+            ->once()
+            ->with($request, false, [])
+            ->andReturn(true);
+
+        $container = Mockery::mock(ContainerInterface::class);
+        $container->shouldReceive('get')
+            ->with(UrlGeneratorContract::class)
+            ->once()
+            ->andReturn($urlGenerator);
+        ApplicationContext::setContainer($container);
+
+        $this->assertTrue($request->hasValidRelativeSignatureWhileIgnoring());
     }
 }
 

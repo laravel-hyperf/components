@@ -4,39 +4,35 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
-use Closure;
-use LaravelHyperf\Auth\Access\Gate as AuthGate;
-use LaravelHyperf\Auth\Access\Response;
-use LaravelHyperf\Auth\Contracts\Authenticatable;
 use LaravelHyperf\Auth\Contracts\Gate as GateContract;
 
 /**
- * @method static bool has(string|array $ability)
- * @method static Response allowIf(Response|Closure|bool $condition, ?string $message = null, ?string $code = null)
- * @method static Response denyIf(Response|Closure|bool $condition, ?string $message = null, ?string $code = null)
- * @method static AuthGate define(string $ability, array|callable|string $callback)
- * @method static AuthGate resource(string $name, string $class, ?array $abilities = null)
- * @method static AuthGate policy(string $class, string $policy)
- * @method static AuthGate before(callable $callback)
- * @method static AuthGate after(callable $callback)
+ * @method static bool has(array|string $ability)
+ * @method static \LaravelHyperf\Auth\Access\Response allowIf(\Closure|\LaravelHyperf\Auth\Access\Response|bool $condition, string|null $message = null, string|null $code = null)
+ * @method static \LaravelHyperf\Auth\Access\Response denyIf(\Closure|\LaravelHyperf\Auth\Access\Response|bool $condition, string|null $message = null, string|null $code = null)
+ * @method static \LaravelHyperf\Auth\Access\Gate define(string $ability, callable|array|string $callback)
+ * @method static \LaravelHyperf\Auth\Access\Gate resource(string $name, string $class, array|null $abilities = null)
+ * @method static \LaravelHyperf\Auth\Access\Gate policy(string $class, string $policy)
+ * @method static \LaravelHyperf\Auth\Access\Gate before(callable $callback)
+ * @method static \LaravelHyperf\Auth\Access\Gate after(callable $callback)
  * @method static bool allows(string $ability, mixed $arguments = [])
  * @method static bool denies(string $ability, mixed $arguments = [])
- * @method static bool check(iterable|string $abilities, mixed $arguments = [])
- * @method static bool any(iterable|string $abilities, mixed $arguments = [])
- * @method static bool none(iterable|string $abilities, mixed $arguments = [])
- * @method static Response authorize(string $ability, mixed $arguments = [])
- * @method static Response inspect(string $ability, mixed $arguments = [])
+ * @method static bool check(\Traversable|array|string $abilities, mixed $arguments = [])
+ * @method static bool any(\Traversable|array|string $abilities, mixed $arguments = [])
+ * @method static bool none(\Traversable|array|string $abilities, mixed $arguments = [])
+ * @method static \LaravelHyperf\Auth\Access\Response authorize(string $ability, mixed $arguments = [])
+ * @method static \LaravelHyperf\Auth\Access\Response inspect(string $ability, mixed $arguments = [])
  * @method static mixed raw(string $ability, mixed $arguments = [])
  * @method static mixed|void getPolicyFor(object|string $class)
  * @method static mixed resolvePolicy(string $class)
- * @method static AuthGate forUser(?Authenticatable $user)
+ * @method static \LaravelHyperf\Auth\Access\Gate forUser(\LaravelHyperf\Auth\Contracts\Authenticatable|null $user)
  * @method static array abilities()
  * @method static array policies()
- * @method static AuthGate defaultDenialResponse(Response $response)
- * @method static Response denyWithStatus(int $status, ?string $message = null, int|string|null $code = null)
- * @method static Response denyAsNotFound(?string $message = null, int|string|null $code = null)
+ * @method static \LaravelHyperf\Auth\Access\Gate defaultDenialResponse(\LaravelHyperf\Auth\Access\Response $response)
+ * @method static \LaravelHyperf\Auth\Access\Response denyWithStatus(int $status, string|null $message = null, string|int|null $code = null)
+ * @method static \LaravelHyperf\Auth\Access\Response denyAsNotFound(string|null $message = null, string|int|null $code = null)
  *
- * @see AuthGate
+ * @see \LaravelHyperf\Auth\Access\Gate
  */
 class Gate extends Facade
 {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Auth\Middleware;
 
+use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Model;
 use Hyperf\HttpServer\Router\Dispatched;
 use LaravelHyperf\Auth\Access\AuthorizationException;
@@ -55,7 +56,7 @@ class Authorize implements MiddlewareInterface
             return [];
         }
 
-        return collect($models)->map(function ($model) use ($request) {
+        return Collection::make($models)->map(function ($model) use ($request) {
             return $model instanceof Model ? $model : $this->getModel($request, $model);
         })->all();
     }

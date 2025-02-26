@@ -48,20 +48,6 @@ class LogWatcherTest extends FeatureTestCase
         $this->startTelescope();
     }
 
-    public static function logLevelProvider()
-    {
-        return [
-            [LogLevel::EMERGENCY],
-            [LogLevel::ALERT],
-            [LogLevel::CRITICAL],
-            [LogLevel::ERROR],
-            [LogLevel::WARNING],
-            [LogLevel::NOTICE],
-            [LogLevel::INFO],
-            [LogLevel::DEBUG],
-        ];
-    }
-
     /**
      * @dataProvider logLevelProvider
      */
@@ -161,6 +147,20 @@ class LogWatcherTest extends FeatureTestCase
         $entry = $this->loadTelescopeEntries()->first();
 
         $this->assertNull($entry);
+    }
+
+    public static function logLevelProvider()
+    {
+        return [
+            [LogLevel::EMERGENCY],
+            [LogLevel::ALERT],
+            [LogLevel::CRITICAL],
+            [LogLevel::ERROR],
+            [LogLevel::WARNING],
+            [LogLevel::NOTICE],
+            [LogLevel::INFO],
+            [LogLevel::DEBUG],
+        ];
     }
 
     public function testLogWatcherRegistersRetryWithExceptionKey()

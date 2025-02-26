@@ -407,10 +407,10 @@ class HttpClientTest extends TestCase
         $response = $this->factory->get('http://foo.com/api');
 
         $this->assertInstanceOf(Collection::class, $response->collect());
-        $this->assertEquals(collect(['result' => ['foo' => 'bar']]), $response->collect());
-        $this->assertEquals(collect(['foo' => 'bar']), $response->collect('result'));
-        $this->assertEquals(collect(['bar']), $response->collect('result.foo'));
-        $this->assertEquals(collect(), $response->collect('missing_key'));
+        $this->assertEquals(Collection::make(['result' => ['foo' => 'bar']]), $response->collect());
+        $this->assertEquals(Collection::make(['foo' => 'bar']), $response->collect('result'));
+        $this->assertEquals(Collection::make(['bar']), $response->collect('result.foo'));
+        $this->assertEquals(Collection::make(), $response->collect('missing_key'));
     }
 
     public function testResponseCanBeReturnedAsFluent()

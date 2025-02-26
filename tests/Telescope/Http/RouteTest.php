@@ -26,27 +26,6 @@ class RouteTest extends FeatureTestCase
         $this->registerAssertJsonExactFragmentMacro();
     }
 
-    public static function telescopeIndexRoutesProvider()
-    {
-        return [
-            'Mail' => ['/telescope/telescope-api/mail', EntryType::MAIL],
-            'Exceptions' => ['/telescope/telescope-api/exceptions', EntryType::EXCEPTION],
-            'Dumps' => ['/telescope/telescope-api/dumps', EntryType::DUMP],
-            'Logs' => ['/telescope/telescope-api/logs', EntryType::LOG],
-            'Notifications' => ['/telescope/telescope-api/notifications', EntryType::NOTIFICATION],
-            'Jobs' => ['/telescope/telescope-api/jobs', EntryType::JOB],
-            'Events' => ['/telescope/telescope-api/events', EntryType::EVENT],
-            'Cache' => ['/telescope/telescope-api/cache', EntryType::CACHE],
-            'Queries' => ['/telescope/telescope-api/queries', EntryType::QUERY],
-            'Models' => ['/telescope/telescope-api/models', EntryType::MODEL],
-            'Request' => ['/telescope/telescope-api/requests', EntryType::REQUEST],
-            'Commands' => ['/telescope/telescope-api/commands', EntryType::COMMAND],
-            'Schedule' => ['/telescope/telescope-api/schedule', EntryType::SCHEDULED_TASK],
-            'Redis' => ['/telescope/telescope-api/redis', EntryType::REDIS],
-            'Client Requests' => ['/telescope/telescope-api/client-requests', EntryType::CLIENT_REQUEST],
-        ];
-    }
-
     /**
      * @dataProvider telescopeIndexRoutesProvider
      */
@@ -72,6 +51,27 @@ class RouteTest extends FeatureTestCase
             ->assertJsonExactFragment($entry->batch_id, 'entries.0.batch_id');
     }
 
+    public static function telescopeIndexRoutesProvider()
+    {
+        return [
+            'Mail' => ['/telescope/telescope-api/mail', EntryType::MAIL],
+            'Exceptions' => ['/telescope/telescope-api/exceptions', EntryType::EXCEPTION],
+            'Dumps' => ['/telescope/telescope-api/dumps', EntryType::DUMP],
+            'Logs' => ['/telescope/telescope-api/logs', EntryType::LOG],
+            'Notifications' => ['/telescope/telescope-api/notifications', EntryType::NOTIFICATION],
+            'Jobs' => ['/telescope/telescope-api/jobs', EntryType::JOB],
+            'Events' => ['/telescope/telescope-api/events', EntryType::EVENT],
+            'Cache' => ['/telescope/telescope-api/cache', EntryType::CACHE],
+            'Queries' => ['/telescope/telescope-api/queries', EntryType::QUERY],
+            'Models' => ['/telescope/telescope-api/models', EntryType::MODEL],
+            'Request' => ['/telescope/telescope-api/requests', EntryType::REQUEST],
+            'Commands' => ['/telescope/telescope-api/commands', EntryType::COMMAND],
+            'Schedule' => ['/telescope/telescope-api/schedule', EntryType::SCHEDULED_TASK],
+            'Redis' => ['/telescope/telescope-api/redis', EntryType::REDIS],
+            'Client Requests' => ['/telescope/telescope-api/client-requests', EntryType::CLIENT_REQUEST],
+        ];
+    }
+
     private function registerAssertJsonExactFragmentMacro()
     {
         $assertion = function ($expected, $key) {
@@ -80,8 +80,8 @@ class RouteTest extends FeatureTestCase
             PHPUnit::assertEquals(
                 $expected,
                 $actualValue = data_get($jsonResponse, $key),
-                "Failed asserting that [{$actualValue}] matches expected [{$expected}]." . PHP_EOL . PHP_EOL .
-                    json_encode($jsonResponse)
+                "Failed asserting that [{$actualValue}] matches expected [{$expected}]." . PHP_EOL . PHP_EOL
+                    . json_encode($jsonResponse)
             );
 
             return $this;

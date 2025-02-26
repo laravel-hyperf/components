@@ -11,24 +11,27 @@ use Hyperf\Stringable\Stringable;
 use Hyperf\Validation\Contract\ValidatorFactoryInterface;
 use Hyperf\ViewEngine\Contract\FactoryInterface;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\Auth\Contracts\FactoryContract as AuthFactoryContract;
 use LaravelHyperf\Auth\Contracts\Gate;
+use LaravelHyperf\Auth\Contracts\Guard;
 use LaravelHyperf\Broadcasting\Contracts\Factory as BroadcastFactory;
 use LaravelHyperf\Broadcasting\PendingBroadcast;
 use LaravelHyperf\Bus\PendingClosureDispatch;
 use LaravelHyperf\Bus\PendingDispatch;
+use LaravelHyperf\Container\Contracts\Container;
 use LaravelHyperf\Cookie\Contracts\Cookie as CookieContract;
+use LaravelHyperf\Foundation\Application;
 use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
 use LaravelHyperf\Http\Contracts\RequestContract;
 use LaravelHyperf\Http\Contracts\ResponseContract;
 use LaravelHyperf\HttpMessage\Exceptions\HttpException;
 use LaravelHyperf\HttpMessage\Exceptions\HttpResponseException;
 use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
-use LaravelHyperf\Router\UrlGenerator;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use LaravelHyperf\Support\Contracts\Responsable;
 use LaravelHyperf\Support\HtmlString;
 use LaravelHyperf\Support\Mix;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
@@ -302,16 +305,16 @@ if (! function_exists('app')) {
     /**
      * Get the available container instance.
      *
-     * @template T
+     * @template TClass of object
      *
-     * @param class-string<T> $abstract
+     * @param null|class-string<TClass>|string $abstract
      *
-     * @return ContainerInterface|T
+     * @return ($abstract is class-string<TClass> ? TClass : ($abstract is null ? Application : mixed))
      */
     function app(?string $abstract = null, array $parameters = [])
     {
         if (ApplicationContext::hasContainer()) {
-            /** @var \Hyperf\Contract\ContainerInterface $container */
+            /** @var Container $container */
             $container = ApplicationContext::getContainer();
 
             if (is_null($abstract)) {
@@ -462,7 +465,9 @@ if (! function_exists('resolve')) {
 if (! function_exists('request')) {
     /**
      * Get an instance of the current request or an input item from the request.
-     * @return array|mixed|RequestContract
+     *
+     * @return ($key is null ? RequestContract : ($key is string ? mixed : array<string, mixed>))
+     *
      * @throws TypeError
      */
     function request(null|array|string $key = null, mixed $default = null): mixed
@@ -484,8 +489,10 @@ if (! function_exists('request')) {
 if (! function_exists('response')) {
     /**
      * Return a new response from the application.
+     *
+     * @return ($content is null ? ResponseContract : ResponseInterface)
      */
-    function response(mixed $content = '', int $status = 200, array $headers = []): ResponseContract|ResponseInterface
+    function response(mixed $content = null, int $status = 200, array $headers = []): ResponseContract|ResponseInterface
     {
         $response = app(ResponseContract::class);
 
@@ -493,7 +500,7 @@ if (! function_exists('response')) {
             return $response;
         }
 
-        return $response->make($content, $status, $headers);
+        return $response->make($content ?? '', $status, $headers);
     }
 }
 
@@ -625,7 +632,7 @@ if (! function_exists('url')) {
     /**
      * Generate a url for the application.
      */
-    function url(?string $path = null, array $extra = [], ?bool $secure = null): string|UrlGenerator
+    function url(?string $path = null, array $extra = [], ?bool $secure = null): string|UrlGeneratorContract
     {
         return \LaravelHyperf\Router\url($path, $extra, $secure);
     }
@@ -654,7 +661,8 @@ if (! function_exists('asset')) {
 if (! function_exists('auth')) {
     /**
      * Get auth guard.
-     * @return LaravelHyperf\Auth\Contracts\FactoryContract|LaravelHyperf\Auth\Contracts\Guard
+     *
+     * @return ($guard is null ? AuthFactoryContract&Guard : Guard)
      */
     function auth(?string $guard = null): mixed
     {
@@ -699,5 +707,36 @@ if (! function_exists('view')) {
         }
 
         return $factory->make($view, $data, $mergeData);
+    }
+}
+
+if (! function_exists('method_field')) {
+    /**
+     * Generate a form field to spoof the HTTP verb used by forms.
+     */
+    function method_field(string $method): HtmlString
+    {
+        return new HtmlString('<input type="hidden" name="_method" value="' . $method . '">');
+    }
+}
+
+if (! function_exists('go')) {
+    function go(callable $callable): bool|int
+    {
+        return \LaravelHyperf\Coroutine\go($callable);
+    }
+}
+
+if (! function_exists('co')) {
+    function co(callable $callable): bool|int
+    {
+        return \LaravelHyperf\Coroutine\co($callable);
+    }
+}
+
+if (! function_exists('defer')) {
+    function defer(callable $callable): void
+    {
+        \LaravelHyperf\Coroutine\defer($callable);
     }
 }

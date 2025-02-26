@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
-use Hyperf\Tappable\HigherOrderTapProxy;
 use Hyperf\ViewEngine\Contract\DeferringDisplayableValue;
+use LaravelHyperf\Support\Collection;
 use LaravelHyperf\Support\Contracts\Htmlable;
 use LaravelHyperf\Support\Environment;
+use LaravelHyperf\Support\HigherOrderTapProxy;
 use LaravelHyperf\Support\Sleep;
 
 if (! function_exists('value')) {

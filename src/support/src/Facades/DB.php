@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
+use Closure;
 use Hyperf\DbConnection\Db as HyperfDb;
 
 /**
+ * @method static void beforeExecuting(\Closure $closure)
  * @method static Builder table(Expression|string $table)
  * @method static Expression raw($value)
  * @method static mixed selectOne(string $query, array $bindings = [], bool $useReadPdo = true)
@@ -27,7 +29,7 @@ use Hyperf\DbConnection\Db as HyperfDb;
  * @method static array pretend(Closure $callback)
  * @method static ConnectionInterface connection(?string $pool = null)
  *
- * @see HyperfDb
+ * @see \Hyperf\DbConnection\Db
  */
 class DB extends Facade
 {

@@ -4,68 +4,49 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
-use Closure;
-use DateInterval;
-use DateTimeInterface;
-use LaravelHyperf\Cache\CacheManager;
 use LaravelHyperf\Cache\Contracts\Factory;
-use LaravelHyperf\Cache\Contracts\Lock;
-use LaravelHyperf\Cache\Contracts\Repository as RepositoryContract;
 use LaravelHyperf\Cache\Contracts\Store;
 use LaravelHyperf\Cache\Repository;
-use LaravelHyperf\Cache\TaggedCache;
-use Psr\EventDispatcher\EventDispatcherInterface;
 
 /**
- * @method static RepositoryContract store(string|null $name = null)
- * @method static RepositoryContract driver(string|null $driver = null)
- * @method static Repository repository(Store $store)
+ * @method static \LaravelHyperf\Cache\Contracts\Repository store(string|null $name = null)
+ * @method static \LaravelHyperf\Cache\Contracts\Repository driver(string|null $driver = null)
+ * @method static \LaravelHyperf\Cache\Repository repository(\LaravelHyperf\Cache\Contracts\Store $store)
  * @method static void refreshEventDispatcher()
  * @method static string getDefaultDriver()
  * @method static void setDefaultDriver(string $name)
- * @method static CacheManager forgetDriver(array|string|null $name = null)
+ * @method static \LaravelHyperf\Cache\CacheManager forgetDriver(array|string|null $name = null)
  * @method static void purge(string|null $name = null)
- * @method static CacheManager extend(string $driver, Closure $callback)
- * @method static bool has(string $key)
- * @method static bool missing(string $key)
- * @method static mixed get(array|string $key, mixed $default = null)
- * @method static array many(array $keys)
- * @method static iterable getMultiple(iterable $keys, mixed $default = null)
- * @method static mixed pull(string $key, mixed $default = null)
- * @method static bool put(array|string $key, mixed $value, DateTimeInterface|DateInterval|int|null $ttl = null)
- * @method static bool set(string $key, mixed $value, null|int|DateInterval $ttl = null)
- * @method static bool putMany(array $values, DateTimeInterface|DateInterval|int|null $ttl = null)
- * @method static bool setMultiple(iterable $values, null|int|DateInterval $ttl = null)
- * @method static bool add(string $key, mixed $value, DateTimeInterface|DateInterval|int|null $ttl = null)
- * @method static int|bool increment(string $key, mixed $value = 1)
- * @method static int|bool decrement(string $key, mixed $value = 1)
+ * @method static \LaravelHyperf\Cache\CacheManager extend(string $driver, \Closure $callback)
+ * @method static \LaravelHyperf\Cache\CacheManager setApplication(\Psr\Container\ContainerInterface $app)
+ * @method static mixed pull(string $key, \Closure|mixed $default = null)
+ * @method static bool put(array|string $key, mixed $value, \DateInterval|\DateTimeInterface|int|null $ttl = null)
+ * @method static bool add(string $key, mixed $value, \DateInterval|\DateTimeInterface|int|null $ttl = null)
+ * @method static int|bool increment(string $key, int $value = 1)
+ * @method static int|bool decrement(string $key, int $value = 1)
  * @method static bool forever(string $key, mixed $value)
- * @method static mixed remember(string $key, Closure|DateTimeInterface|DateInterval|int|null $ttl, Closure $callback)
- * @method static mixed sear(string $key, Closure $callback)
- * @method static mixed rememberForever(string $key, Closure $callback)
+ * @method static mixed remember(string $key, \DateInterval|\DateTimeInterface|int|null $ttl, \Closure $callback)
+ * @method static mixed sear(string $key, \Closure $callback)
+ * @method static mixed rememberForever(string $key, \Closure $callback)
  * @method static bool forget(string $key)
+ * @method static \LaravelHyperf\Cache\Contracts\Store getStore()
+ * @method static mixed get(string $key, mixed $default = null)
+ * @method static bool set(string $key, mixed $value, null|int|\DateInterval $ttl = null)
  * @method static bool delete(string $key)
- * @method static bool deleteMultiple(iterable $keys)
  * @method static bool clear()
- * @method static TaggedCache tags(array|mixed $names)
- * @method static bool supportsTags()
- * @method static int|null getDefaultCacheTime()
- * @method static Repository setDefaultCacheTime(int|null $seconds)
- * @method static Store getStore()
- * @method static EventDispatcherInterface getEventDispatcher()
- * @method static void setEventDispatcher(EventDispatcherInterface $events)
- * @method static void macro(string $name, object|callable $macro)
- * @method static void mixin(object $mixin, bool $replace = true)
- * @method static bool hasMacro(string $name)
- * @method static void flushMacros()
- * @method static mixed macroCall(string $method, array $parameters)
+ * @method static iterable getMultiple(iterable $keys, mixed $default = null)
+ * @method static bool setMultiple(iterable $values, null|int|\DateInterval $ttl = null)
+ * @method static bool deleteMultiple(iterable $keys)
+ * @method static bool has(string $key)
+ * @method static \LaravelHyperf\Cache\TaggedCache tags(mixed $names)
+ * @method static array many(array $keys)
+ * @method static bool putMany(array $values, int $seconds)
  * @method static bool flush()
  * @method static string getPrefix()
- * @method static Lock lock(string $name, int $seconds = 0, string|null $owner = null)
- * @method static Lock restoreLock(string $name, string $owner)
  *
- * @see CacheManager
- * @mixin Repository
+ * @see \LaravelHyperf\Cache\CacheManager
+ *
+ * @mixin \LaravelHyperf\Cache\Repository
  */
 class Cache extends Facade
 {

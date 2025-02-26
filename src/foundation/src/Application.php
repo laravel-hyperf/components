@@ -31,7 +31,7 @@ class Application extends Container implements ApplicationContract
      *
      * @var string
      */
-    public const VERSION = '0.1.0';
+    public const VERSION = '0.1.3';
 
     /**
      * The base path for the Laravel Hyperf installation.
@@ -406,7 +406,15 @@ class Application extends Container implements ApplicationContract
      */
     public function getLocale(): string
     {
-        return $this['config']->get('app.locale');
+        return $this['translator']->getLocale();
+    }
+
+    /**
+     * Determine if the application locale is the given locale.
+     */
+    public function isLocale(string $locale): bool
+    {
+        return $this['translator']->getLocale() === $locale;
     }
 
     /**
@@ -430,8 +438,6 @@ class Application extends Container implements ApplicationContract
      */
     public function setLocale(string $locale): void
     {
-        $this['config']->set('app.locale', $locale);
-
         $this['translator']->setLocale($locale);
 
         $this['events']->dispatch(new LocaleUpdated($locale));
@@ -505,7 +511,10 @@ class Application extends Container implements ApplicationContract
             ],
             \Hyperf\Redis\Redis::class => ['redis'],
             \LaravelHyperf\Router\Router::class => ['router'],
-            \LaravelHyperf\Router\UrlGenerator::class => ['url'],
+            \LaravelHyperf\Router\Contracts\UrlGenerator::class => [
+                'url',
+                \LaravelHyperf\Router\UrlGenerator::class,
+            ],
             \Hyperf\ViewEngine\Contract\FactoryInterface::class => ['view'],
             \Hyperf\ViewEngine\Compiler\CompilerInterface::class => ['blade.compiler'],
             \LaravelHyperf\Session\Contracts\Factory::class => ['session'],

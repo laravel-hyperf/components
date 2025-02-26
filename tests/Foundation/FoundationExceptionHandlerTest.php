@@ -6,6 +6,7 @@ namespace LaravelHyperf\Tests\Foundation;
 
 use Exception;
 use Hyperf\Context\Context;
+use Hyperf\Context\RequestContext;
 use Hyperf\Context\ResponseContext;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\SessionInterface;
@@ -29,6 +30,8 @@ use LaravelHyperf\Http\Contracts\ResponseContract;
 use LaravelHyperf\Http\Request;
 use LaravelHyperf\Http\Response;
 use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
+use LaravelHyperf\Router\Contracts\UrlGenerator as UrlGeneratorContract;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
 use LaravelHyperf\Support\Contracts\Responsable;
 use LaravelHyperf\Support\Facades\View;
 use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
@@ -41,6 +44,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use RuntimeException;
 use stdClass;
+use Swow\Psr7\Message\ServerRequestPlusInterface;
 use Throwable;
 
 /**
@@ -331,17 +335,24 @@ class FoundationExceptionHandlerTest extends TestCase
         $this->request->shouldReceive('expectsJson')->once()->andReturn(false);
         $this->request->shouldReceive('all')->once()->andReturn(['foo' => 'bar']);
 
-        $psr7Request = m::mock(ServerRequestInterface::class);
+        $psr7Request = m::mock(ServerRequestPlusInterface::class);
         $psr7Request->shouldReceive('getUri')->andReturn(new Uri('http://localhost'));
         $this->container->instance(ServerRequestInterface::class, $psr7Request);
+        RequestContext::set($psr7Request);
 
-        $session = m::mock(SessionInterface::class);
+        $session = m::mock(SessionContract::class);
         $session->shouldReceive('get')->with('errors', m::type(ViewErrorBag::class))->andReturn(new MessageBag(['error' => 'My custom validation exception']));
         $session->shouldReceive('flash')->with('errors', m::type(ViewErrorBag::class))->once();
         $session->shouldReceive('flashInput')->with(['foo' => 'bar'])->once();
-        $session->shouldReceive('save')->once();
-        $this->container->instance(SessionInterface::class, $session);
         Context::set(SessionInterface::class, $session);
+        $this->container->instance(SessionContract::class, $session);
+
+        $urlGenerator = m::mock(UrlGeneratorContract::class);
+        $urlGenerator->shouldReceive('to')
+            ->with('redirectTo')
+            ->once()
+            ->andReturn($redirectTo = 'http://localhost/redirectTo');
+        $this->container->instance(UrlGeneratorContract::class, $urlGenerator);
 
         $validator = m::mock(Validator::class);
         $validator->shouldReceive('errors')->andReturn(new MessageBag(['error' => 'My custom validation exception']));
@@ -352,7 +363,7 @@ class FoundationExceptionHandlerTest extends TestCase
         $response = $this->handler->render($this->request, $validationException);
 
         $this->assertSame(302, $response->getStatusCode());
-        $this->assertSame('http://localhost/redirectTo', $response->getHeaderLine('Location'));
+        $this->assertSame($redirectTo, $response->getHeaderLine('Location'));
     }
 
     public function testModelNotFoundReturns404WithoutReporting()

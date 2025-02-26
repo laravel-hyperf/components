@@ -6,6 +6,7 @@ namespace LaravelHyperf\Devtool;
 
 use Hyperf\Devtool\Generator\GeneratorCommand;
 use LaravelHyperf\Devtool\Commands\EventListCommand;
+use LaravelHyperf\Devtool\Commands\WatchCommand;
 use LaravelHyperf\Devtool\Generator\BatchesTableCommand;
 use LaravelHyperf\Devtool\Generator\ChannelCommand;
 use LaravelHyperf\Devtool\Generator\ComponentCommand;
@@ -16,6 +17,7 @@ use LaravelHyperf\Devtool\Generator\JobCommand;
 use LaravelHyperf\Devtool\Generator\ListenerCommand;
 use LaravelHyperf\Devtool\Generator\ModelCommand;
 use LaravelHyperf\Devtool\Generator\NotificationTableCommand;
+use LaravelHyperf\Devtool\Generator\ObserverCommand;
 use LaravelHyperf\Devtool\Generator\ProviderCommand;
 use LaravelHyperf\Devtool\Generator\QueueFailedTableCommand;
 use LaravelHyperf\Devtool\Generator\QueueTableCommand;
@@ -35,6 +37,7 @@ class ConfigProvider
 
         return [
             'commands' => [
+                WatchCommand::class,
                 ProviderCommand::class,
                 EventCommand::class,
                 ListenerCommand::class,
@@ -54,6 +57,7 @@ class ConfigProvider
                 QueueFailedTableCommand::class,
                 JobCommand::class,
                 ChannelCommand::class,
+                ObserverCommand::class,
             ],
         ];
     }

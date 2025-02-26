@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Broadcasting;
 
+use Hyperf\Context\ApplicationContext;
 use LaravelHyperf\Cache\Contracts\Factory as Cache;
 use LaravelHyperf\Queue\Contracts\ShouldBeUnique;
-use Psr\Container\ContainerInterface;
 
 class UniqueBroadcastEvent extends BroadcastEvent implements ShouldBeUnique
 {
-    /**
-     * The container instance.
-     */
-    public ContainerInterface $container;
-
     /**
      * The unique lock identifier.
      */
@@ -28,10 +23,8 @@ class UniqueBroadcastEvent extends BroadcastEvent implements ShouldBeUnique
     /**
      * Create a new event instance.
      */
-    public function __construct(ContainerInterface $container, mixed $event)
+    public function __construct(mixed $event)
     {
-        $this->container = $container;
-
         $this->uniqueId = get_class($event);
 
         if (method_exists($event, 'uniqueId')) {
@@ -56,6 +49,6 @@ class UniqueBroadcastEvent extends BroadcastEvent implements ShouldBeUnique
     {
         return method_exists($this->event, 'uniqueVia')
             ? $this->event->uniqueVia()
-            : $this->container->get(Cache::class);
+            : ApplicationContext::getContainer()->get(Cache::class);
     }
 }

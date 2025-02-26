@@ -27,20 +27,18 @@
     },
     "require": {
         "php": "^8.2",
-        "hyperf/collection": "~3.1.0",
         "hyperf/contract": "~3.1.0",
         "hyperf/http-server": "~3.1.0",
         "hyperf/pool": "~3.1.0",
         "hyperf/redis": "~3.1.0",
-        "hyperf/stringable": "~3.1.0",
-        "laravel-hyperf/auth": "dev-main",
-        "laravel-hyperf/bus": "dev-main",
-        "laravel-hyperf/cache": "dev-main",
-        "laravel-hyperf/foundation": "dev-main",
-        "laravel-hyperf/queue": "dev-main",
-        "laravel-hyperf/router": "dev-main",
-        "laravel-hyperf/support": "dev-main",
-        "laravel-hyperf/object-pool": "dev-main"
+        "laravel-hyperf/auth": "^0.1",
+        "laravel-hyperf/bus": "^0.1",
+        "laravel-hyperf/cache": "^0.1",
+        "laravel-hyperf/foundation": "^0.1",
+        "laravel-hyperf/queue": "^0.1",
+        "laravel-hyperf/router": "^0.1",
+        "laravel-hyperf/support": "^0.1",
+        "laravel-hyperf/object-pool": "^0.1"
     },
     "suggest": {
         "ext-hash": "Required to use the Ably and Pusher broadcast drivers.",
@@ -56,7 +54,7 @@
             "config": "LaravelHyperf\\Broadcasting\\ConfigProvider"
         },
         "branch-alias": {
-            "dev-main": "3.1-dev"
+            "dev-main": "0.1-dev"
         }
     }
 }

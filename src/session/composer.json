@@ -30,6 +30,7 @@
     },
     "require": {
         "php": "^8.2",
+        "ext-session": "*",
         "hyperf/context": "~3.1.0",
         "hyperf/collection": "~3.1.0",
         "hyperf/support": "~3.1.0",
@@ -37,9 +38,9 @@
         "hyperf/macroable": "~3.1.0",
         "hyperf/tappable": "~3.1.0",
         "hyperf/view-engine": "~3.1.0",
-        "laravel-hyperf/cache": "~0.1.0",
-        "laravel-hyperf/cookie": "~0.1.0",
-        "laravel-hyperf/support": "~0.1.0"
+        "laravel-hyperf/cache": "^0.1",
+        "laravel-hyperf/cookie": "^0.1",
+        "laravel-hyperf/support": "^0.1"
     },
     "config": {
         "sort-packages": true
