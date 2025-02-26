@@ -406,7 +406,15 @@ class Application extends Container implements ApplicationContract
      */
     public function getLocale(): string
     {
-        return $this['config']->get('app.locale');
+        return $this['translator']->getLocale();
+    }
+
+    /**
+     * Determine if the application locale is the given locale.
+     */
+    public function isLocale(string $locale): bool
+    {
+        return $this['translator']->getLocale() === $locale;
     }
 
     /**
@@ -430,8 +438,6 @@ class Application extends Container implements ApplicationContract
      */
     public function setLocale(string $locale): void
     {
-        $this['config']->set('app.locale', $locale);
-
         $this['translator']->setLocale($locale);
 
         $this['events']->dispatch(new LocaleUpdated($locale));
