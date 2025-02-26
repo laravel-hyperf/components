@@ -7,6 +7,7 @@ namespace LaravelHyperf\Config;
 use Hyperf\Collection\Arr;
 use Hyperf\Config\ProviderConfig as HyperfProviderConfig;
 use Hyperf\Support\Composer;
+use Throwable;
 
 /**
  * Provider config allow the components set the configs to application.
@@ -26,7 +27,7 @@ class ProviderConfig extends HyperfProviderConfig
             return static::$providerConfigs;
         }
 
-        $packagesToIgnore = Composer::getMergedExtra('laravel-hyperf')['dont-discover'] ?? [];
+        $packagesToIgnore = static::packagesToIgnore();
         if (in_array('*', $packagesToIgnore)) {
             return static::$providerConfigs = [];
         }
@@ -47,5 +48,18 @@ class ProviderConfig extends HyperfProviderConfig
         return static::$providerConfigs = static::loadProviders(
             Arr::flatten($providers)
         );
+    }
+
+    protected static function packagesToIgnore(): array
+    {
+        $packages = Composer::getMergedExtra('laravel-hyperf')['dont-discover'] ?? [];
+
+        try {
+            $project = Composer::getJsonContent()['extra']['laravel-hyperf']['dont-discover'] ?? [];
+        } catch (Throwable) {
+            $project = [];
+        }
+
+        return array_merge($packages, $project);
     }
 }
