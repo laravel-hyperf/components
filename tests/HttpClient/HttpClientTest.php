@@ -20,7 +20,6 @@ use Hyperf\Stringable\Str;
 use Hyperf\Stringable\Stringable;
 use InvalidArgumentException;
 use JsonSerializable;
-use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
 use LaravelHyperf\Http\Response as HttpResponse;
 use LaravelHyperf\HttpClient\ConnectionException;
 use LaravelHyperf\HttpClient\Events\RequestSending;
