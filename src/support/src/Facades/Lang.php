@@ -7,7 +7,6 @@ namespace LaravelHyperf\Support\Facades;
 use Hyperf\Contract\TranslatorInterface;
 use Hyperf\Contract\TranslatorLoaderInterface;
 use Hyperf\Translation\MessageSelector;
-use Hyperf\Translation\Translator;
 
 /**
  * @method static string trans(string $key, array $replace = [], ?string $locale = null)
