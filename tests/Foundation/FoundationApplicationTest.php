@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Tests\Foundation;
 
-use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\TranslatorInterface;
 use LaravelHyperf\Event\EventDispatcher;
 use LaravelHyperf\Event\ListenerProvider;
