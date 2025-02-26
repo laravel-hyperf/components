@@ -30,10 +30,6 @@ class FoundationApplicationTest extends TestCase
 
     public function testSetLocaleSetsLocaleAndFiresLocaleChangedEvent()
     {
-        $config = m::mock(stdClass::class);
-        $config->shouldReceive('set')
-            ->with('app.locale', 'foo')
-            ->once();
         $trans = m::mock(stdClass::class);
         $trans->shouldReceive('setLocale')
             ->with('foo')
@@ -44,14 +40,11 @@ class FoundationApplicationTest extends TestCase
             ->once();
 
         $app = $this->getApplication([
-            ConfigInterface::class => fn () => $config,
             TranslatorInterface::class => fn () => $trans,
             EventDispatcherInterface::class => fn () => $events,
         ]);
 
         $app->setLocale('foo');
-
-        $this->assertExpectationCount(3);
     }
 
     public function testServiceProvidersAreCorrectlyRegistered()
