@@ -695,24 +695,6 @@ class PendingRequest
     }
 
     /**
-     * Send a pool of asynchronous requests concurrently.
-     *
-     * @return array<array-key, Response>
-     */
-    public function pool(callable $callback): array
-    {
-        $results = [];
-
-        $requests = tap(new Pool($this->factory), $callback)->getRequests();
-
-        foreach ($requests as $key => $item) {
-            $results[$key] = $item instanceof static ? $item->getPromise()->wait() : $item->wait();
-        }
-
-        return $results;
-    }
-
-    /**
      * Send the request to the given URL.
      *
      * @throws Exception

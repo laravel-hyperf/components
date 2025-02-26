@@ -7,7 +7,6 @@ namespace LaravelHyperf\Tests\HttpClient;
 use Exception;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\PromiseInterface;
-use GuzzleHttp\Promise\RejectedPromise;
 use GuzzleHttp\Psr7\Response as Psr7Response;
 use GuzzleHttp\Psr7\Utils;
 use GuzzleHttp\TransferStats;
@@ -24,7 +23,6 @@ use LaravelHyperf\HttpClient\Events\RequestSending;
 use LaravelHyperf\HttpClient\Events\ResponseReceived;
 use LaravelHyperf\HttpClient\Factory;
 use LaravelHyperf\HttpClient\PendingRequest;
-use LaravelHyperf\HttpClient\Pool;
 use LaravelHyperf\HttpClient\Request;
 use LaravelHyperf\HttpClient\RequestException;
 use LaravelHyperf\HttpClient\Response;
@@ -1729,76 +1727,6 @@ class HttpClientTest extends TestCase
         );
     }
 
-    public function testMultipleRequestsAreSentInThePool()
-    {
-        $this->factory->fake([
-            '200.com' => $this->factory::response('', 200),
-            '400.com' => $this->factory::response('', 400),
-            '500.com' => $this->factory::response('', 500),
-        ]);
-
-        $responses = $this->factory->pool(function (Pool $pool) {
-            return [
-                $pool->get('200.com'),
-                $pool->get('400.com'),
-                $pool->get('500.com'),
-            ];
-        });
-
-        $this->assertSame(200, $responses[0]->status());
-        $this->assertSame(400, $responses[1]->status());
-        $this->assertSame(500, $responses[2]->status());
-    }
-
-    public function testMultipleRequestsAreSentInThePoolWithKeys()
-    {
-        $this->factory->fake([
-            '200.com' => $this->factory::response('', 200),
-            '400.com' => $this->factory::response('', 400),
-            '500.com' => $this->factory::response('', 500),
-        ]);
-
-        $responses = $this->factory->pool(function (Pool $pool) {
-            return [
-                $pool->as('test200')->get('200.com'),
-                $pool->as('test400')->get('400.com'),
-                $pool->as('test500')->get('500.com'),
-            ];
-        });
-
-        $this->assertSame(200, $responses['test200']->status());
-        $this->assertSame(400, $responses['test400']->status());
-        $this->assertSame(500, $responses['test500']->status());
-    }
-
-    public function testMiddlewareRunsInPool()
-    {
-        $this->factory->fake(function (Request $request) {
-            return $this->factory->response('Fake');
-        });
-
-        $history = [];
-
-        $middleware = Middleware::history($history);
-
-        $responses = $this->factory->pool(fn (Pool $pool) => [
-            $pool->withMiddleware($middleware)->post('https://example.com', ['hyped-for' => 'laravel-movie']),
-        ]);
-
-        $response = $responses[0];
-
-        $this->assertSame('Fake', $response->body());
-
-        $this->assertCount(1, $history);
-
-        $this->assertSame('Fake', tap($history[0]['response']->getBody())->rewind()->getContents());
-
-        $this->assertSame(
-            ['hyped-for' => 'laravel-movie'],
-            json_decode(tap($history[0]['request']->getBody())->rewind()->getContents(), true)
-        );
-    }
-
     public function testTheRequestSendingAndResponseReceivedEventsAreFiredWhenARequestIsSent()
     {
         $events = m::mock(EventDispatcherInterface::class);
@@ -1813,25 +1741,6 @@ class HttpClientTest extends TestCase
         $factory->post('https://example.com');
         $factory->patch('https://example.com');
         $factory->delete('https://example.com');
-    }
-
-    public function testTheRequestSendingAndResponseReceivedEventsAreFiredWhenARequestIsSentAsync()
-    {
-        $events = m::mock(EventDispatcherInterface::class);
-        $events->shouldReceive('dispatch')->times(5)->with(m::type(RequestSending::class));
-        $events->shouldReceive('dispatch')->times(5)->with(m::type(ResponseReceived::class));
-
-        $factory = new Factory($events);
-        $factory->fake();
-        $factory->pool(function (Pool $pool) {
-            return [
-                $pool->get('https://example.com'),
-                $pool->head('https://example.com'),
-                $pool->post('https://example.com'),
-                $pool->patch('https://example.com'),
-                $pool->delete('https://example.com'),
-            ];
-        });
     }
 
     public function testTheRequestSendingAndResponseReceivedEventsAreFiredForEveryRetry()
@@ -2316,45 +2225,6 @@ class HttpClientTest extends TestCase
         $this->factory->assertSent(function (Request $request) {
             return $request->hasHeader('Foo') && $request->header('Foo') === ['Bar'];
         });
-    }
-
-    public function testHandleRequestExeptionWithNoResponseInPoolConsideredConnectionException()
-    {
-        $requestException = new \GuzzleHttp\Exception\RequestException(
-            'Error',
-            new \GuzzleHttp\Psr7\Request('GET', '/')
-        );
-        $this->factory->fake([
-            'noresponse.com' => new RejectedPromise($requestException),
-        ]);
-
-        $responses = $this->factory->pool(function (Pool $pool) {
-            return [
-                $pool->get('noresponse.com'),
-            ];
-        });
-
-        self::assertInstanceOf(ConnectionException::class, $responses[0]);
-        self::assertSame($requestException, $responses[0]->getPrevious());
-    }
-
-    public function testExceptionThrownInRetryCallbackIsReturnedWithoutRetryingInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 500),
-        ]);
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(2, 1000, function ($exception) {
-                throw new Exception('Foo bar');
-            }, false)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(Exception::class, $exception);
-        $this->assertEquals('Foo bar', $exception->getMessage());
-
-        $this->factory->assertSentCount(1);
     }
 
     public function testRequestsWillBeWaitingSleepMillisecondsReceivedInBackoffArray()
