@@ -12,11 +12,9 @@ use GuzzleHttp\Psr7\Response as Psr7Response;
 use GuzzleHttp\Psr7\Utils;
 use GuzzleHttp\TransferStats;
 use Hyperf\Collection\Arr;
-use Hyperf\Collection\Collection;
 use Hyperf\Contract\Arrayable;
 use Hyperf\Stringable\Str;
 use Hyperf\Stringable\Stringable;
-use Hyperf\Support\Fluent;
 use JsonSerializable;
 use LaravelHyperf\Http\Response as HttpResponse;
 use LaravelHyperf\HttpClient\ConnectionException;
@@ -30,6 +28,8 @@ use LaravelHyperf\HttpClient\RequestException;
 use LaravelHyperf\HttpClient\Response;
 use LaravelHyperf\HttpClient\ResponseSequence;
 use LaravelHyperf\Support\Carbon;
+use LaravelHyperf\Support\Collection;
+use LaravelHyperf\Support\Fluent;
 use LaravelHyperf\Support\Sleep;
 use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
@@ -41,8 +41,6 @@ use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 use Symfony\Component\VarDumper\VarDumper;
 use Throwable;
-
-use function Hyperf\Collection\collect;
 
 /**
  * @internal
@@ -403,10 +401,10 @@ class HttpClientTest extends TestCase
         $response = $this->factory->get('http://foo.com/api');
 
         $this->assertInstanceOf(Collection::class, $response->collect());
-        $this->assertEquals(collect(['result' => ['foo' => 'bar']]), $response->collect());
-        $this->assertEquals(collect(['foo' => 'bar']), $response->collect('result'));
-        $this->assertEquals(collect(['bar']), $response->collect('result.foo'));
-        $this->assertEquals(collect(), $response->collect('missing_key'));
+        $this->assertEquals(Collection::make(['result' => ['foo' => 'bar']]), $response->collect());
+        $this->assertEquals(Collection::make(['foo' => 'bar']), $response->collect('result'));
+        $this->assertEquals(Collection::make(['bar']), $response->collect('result.foo'));
+        $this->assertEquals(Collection::make(), $response->collect('missing_key'));
     }
 
     public function testResponseCanBeReturnedAsFluent()
