@@ -33,7 +33,7 @@ use Psr\Log\LoggerInterface;
 use Pusher\Pusher;
 
 /**
- * @mixin Broadcaster
+ * @mixin \LaravelHyperf\Broadcasting\Contracts\Broadcaster
  */
 class BroadcastManager implements BroadcastingFactoryContract
 {

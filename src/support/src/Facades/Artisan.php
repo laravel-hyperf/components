@@ -4,32 +4,27 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
-use Closure;
-use Hyperf\Command\ClosureCommand;
-use LaravelHyperf\Foundation\Console\Contracts\Application as ApplicationContract;
-use LaravelHyperf\Foundation\Console\Contracts\Kernel;
 use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
 use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @method static void bootstrap()
- * @method static void schedule(Schedule $schedule)
+ * @method static void schedule(\LaravelHyperf\Foundation\Console\Scheduling\Schedule $schedule)
  * @method static void commands()
- * @method static ClosureCommand command(string $signature, Closure $callback)
+ * @method static \Hyperf\Command\ClosureCommand command(string $signature, \Closure $callback)
  * @method static void load(array|string $paths)
- * @method static static addCommands(array $commands)
- * @method static static addCommandPaths(array $paths)
- * @method static static addCommandRoutePaths(array $paths)
+ * @method static \LaravelHyperf\Foundation\Console\Contracts\Kernel addCommands(array $commands)
+ * @method static \LaravelHyperf\Foundation\Console\Contracts\Kernel addCommandPaths(array $paths)
+ * @method static \LaravelHyperf\Foundation\Console\Contracts\Kernel addCommandRoutePaths(array $paths)
  * @method static array getLoadedPaths()
  * @method static void registerCommand(string $command)
- * @method static int call(string $command, array $parameters = [], ?OutputInterface $outputBuffer = null)
+ * @method static void call(string $command, array $parameters = [], \Symfony\Component\Console\Output\OutputInterface|null $outputBuffer = null)
  * @method static array all()
  * @method static string output()
- * @method static void setArtisan(ApplicationContract $artisan)
- * @method static ApplicationContract getArtisan()
+ * @method static void setArtisan(\LaravelHyperf\Foundation\Console\Contracts\Application $artisan)
+ * @method static \LaravelHyperf\Foundation\Console\Contracts\Application getArtisan()
  *
- * @see Kernel
+ * @see \LaravelHyperf\Foundation\Console\Contracts\Kernel
  */
 class Artisan extends Facade
 {

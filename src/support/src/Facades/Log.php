@@ -5,29 +5,39 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Facades;
 
 use LaravelHyperf\Log\LogManager;
-use Psr\Log\LoggerInterface;
 
 /**
- * @method static LoggerInterface build(array $config)
- * @method static LoggerInterface stack(array $channels, ?string $channel = null)
- * @method static LoggerInterface channel(?string $channel = null)
- * @method static LoggerInterface driver(?string $driver = null)
- * @method static ?string getDefaultDriver()
+ * @method static \Psr\Log\LoggerInterface build(array $config)
+ * @method static \Psr\Log\LoggerInterface stack(array $channels, string|null $channel = null)
+ * @method static \Psr\Log\LoggerInterface channel(string|null $channel = null)
+ * @method static \Psr\Log\LoggerInterface driver(string|null $driver = null)
+ * @method static \LaravelHyperf\Log\LogManager shareContext(array $context)
+ * @method static array sharedContext()
+ * @method static \LaravelHyperf\Log\LogManager withoutContext()
+ * @method static \LaravelHyperf\Log\LogManager flushSharedContext()
+ * @method static string|null getDefaultDriver()
  * @method static void setDefaultDriver(string $name)
- * @method static LogManager extend(string $driver, \Closure $callback)
- * @method static void forgetChannel(?string $driver = null)
+ * @method static \LaravelHyperf\Log\LogManager extend(string $driver, \Closure $callback)
+ * @method static void forgetChannel(string|null $driver = null)
  * @method static array getChannels()
- * @method static void emergency(string|\Stringable $message, array $context = [])
- * @method static void alert(string|\Stringable $message, array $context = [])
- * @method static void critical(string|\Stringable $message, array $context = [])
- * @method static void error(string|\Stringable $message, array $context = [])
- * @method static void warning(string|\Stringable $message, array $context = [])
- * @method static void notice(string|\Stringable $message, array $context = [])
- * @method static void info(string|\Stringable $message, array $context = [])
- * @method static void debug(string|\Stringable $message, array $context = [])
- * @method static void log($level, string|\Stringable $message, array $context = [])
+ * @method static void emergency(string $message, mixed[] $context = [])
+ * @method static void alert(string $message, mixed[] $context = [])
+ * @method static void critical(string $message, mixed[] $context = [])
+ * @method static void error(string $message, mixed[] $context = [])
+ * @method static void warning(string $message, mixed[] $context = [])
+ * @method static void notice(string $message, mixed[] $context = [])
+ * @method static void info(string $message, mixed[] $context = [])
+ * @method static void debug(string $message, mixed[] $context = [])
+ * @method static void log(mixed $level, string $message, mixed[] $context = [])
+ * @method static void write(string $level, string $message, array $context = [])
+ * @method static \LaravelHyperf\Log\Logger withContext(array $context = [])
+ * @method static array getContext()
+ * @method static void listen(\Closure $callback)
+ * @method static \Psr\Log\LoggerInterface getLogger()
+ * @method static \Psr\EventDispatcher\EventDispatcherInterface getEventDispatcher()
+ * @method static \LaravelHyperf\Log\Logger setEventDispatcher(\Psr\EventDispatcher\EventDispatcherInterface $dispatcher)
  *
- * @see LogManager
+ * @see \LaravelHyperf\Log\LogManager
  */
 class Log extends Facade
 {

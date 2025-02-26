@@ -4,39 +4,37 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
-use Closure;
-use Hyperf\Collection\Collection;
 use Hyperf\Database\Model\Register;
-use Hyperf\Event\ListenerData;
-use LaravelHyperf\Event\EventDispatcher;
-use LaravelHyperf\Event\QueuedClosure;
 use LaravelHyperf\Support\Testing\Fakes\EventFake;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @method static object|string dispatch(object|string $event, mixed $payload = [], bool $halt = false)
- * @method static void listen(array|Closure|QueuedClosure|string $events, null|array|Closure|QueuedClosure|string|int $listener = null, int $priority = ListenerData::DEFAULT_PRIORITY)
+ * @method static void listen(\Closure|\LaravelHyperf\Event\QueuedClosure|array|string $events, \Closure|\LaravelHyperf\Event\QueuedClosure|array|string|int|null $listener = null, int $priority = 0)
  * @method static object|string until(object|string $event, mixed $payload = [])
  * @method static iterable getListeners(object|string $eventName)
  * @method static void push(string $event, mixed $payload = [])
  * @method static void flush(string $event)
  * @method static void forgetPushed()
- * @method static void forget(object|string $event)
- * @method static bool hasListeners(object|string $eventName)
+ * @method static void forget(string $event)
+ * @method static bool hasListeners(string $eventName)
  * @method static bool hasWildcardListeners(string $eventName)
- * @method static EventDispatcher setQueueResolver(callable $resolver)
+ * @method static \LaravelHyperf\Event\EventDispatcher setQueueResolver(callable $resolver)
+ * @method static \LaravelHyperf\Event\EventDispatcher setTransactionManagerResolver(callable $resolver)
  * @method static void subscribe(object|string $subscriber)
- * @method static EventFake except(array|string $eventsToDispatch)
- * @method static void assertListening(string $expectedEvent, string|array $expectedListener)
- * @method static void assertDispatched(string|\Closure $event, callable|int|null $callback = null)
+ * @method static array getRawListeners()
+ * @method static \LaravelHyperf\Support\Testing\Fakes\EventFake except(array|string $eventsToDispatch)
+ * @method static void assertListening(string $expectedEvent, string $expectedListener)
+ * @method static void assertDispatched(\Closure|string $event, callable|int|null $callback = null)
  * @method static void assertDispatchedTimes(string $event, int $times = 1)
- * @method static void assertNotDispatched(string|\Closure $event, callable|null $callback = null)
+ * @method static void assertNotDispatched(\Closure|string $event, callable|null $callback = null)
  * @method static void assertNothingDispatched()
- * @method static Collection dispatched(string $event, callable|null $callback = null)
+ * @method static \Hyperf\Collection\Collection dispatched(string $event, callable|null $callback = null)
  * @method static bool hasDispatched(string $event)
+ * @method static array dispatchedEvents()
  *
- * @see EventDispatcher
- * @see EventFake
+ * @see \LaravelHyperf\Event\EventDispatcher
+ * @see \LaravelHyperf\Support\Testing\Fakes\EventFake
  */
 class Event extends Facade
 {
