@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Facades;
 
 use Closure;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Promise\PromiseInterface;
 use LaravelHyperf\HttpClient\Factory;
 use LaravelHyperf\HttpClient\PendingRequest;
@@ -45,6 +47,7 @@ use Psr\Http\Message\StreamInterface;
  * @method static PendingRequest throw(?callable $callback = null)
  * @method static PendingRequest throwIf(bool|callable $condition)
  * @method static PendingRequest throwUnless(bool|callable $condition)
+ * @method static PendingRequest connection(string $connection, ?array $config = [])
  * @method static array pool(callable $callback)
  * @method static Response delete(string $url, array $data = [])
  * @method static Response get(string $url, null|array|string $query = null)
@@ -53,6 +56,13 @@ use Psr\Http\Message\StreamInterface;
  * @method static Response post(string $url, array $data = [])
  * @method static Response put(string $url, array $data = [])
  * @method static PromiseInterface|Response send(string $method, string $url, array $options = [])
+ * @method static ClientInterface getClient(?string $connection, HandlerStack $handlerStack, ?array $config = null)
+ * @method static ClientInterface createClient(HandlerStack $handlerStack)
+ * @method static Factory registerConnection(string $name)
+ * @method static Factory setConnectionConfig(string $name, array $config)
+ * @method static array getConfig(string $name)
+ * @method static array getConnectionConfigs()
+ * @method static array getConnectionConfig(string $name)
  *
  * @see Factory
  */

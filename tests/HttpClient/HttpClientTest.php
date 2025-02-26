@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Tests\HttpClient;
 
 use Exception;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response as Psr7Response;
@@ -12,10 +13,15 @@ use GuzzleHttp\Psr7\Utils;
 use GuzzleHttp\TransferStats;
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
+use Hyperf\Config\Config;
+use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\Arrayable;
+use Hyperf\Contract\ConfigInterface;
+use Hyperf\Contract\ContainerInterface;
 use Hyperf\Stringable\Str;
 use Hyperf\Stringable\Stringable;
 use Hyperf\Support\Fluent;
+use InvalidArgumentException;
 use JsonSerializable;
 use LaravelHyperf\Http\Response as HttpResponse;
 use LaravelHyperf\HttpClient\ConnectionException;
@@ -54,7 +60,7 @@ class HttpClientTest extends TestCase
     {
         parent::setUp();
 
-        $this->factory = new Factory();
+        $this->factory = new Factory($this->getContainer());
 
         RequestException::truncate();
     }
@@ -1733,7 +1739,7 @@ class HttpClientTest extends TestCase
         $events->shouldReceive('dispatch')->times(5)->with(m::type(RequestSending::class));
         $events->shouldReceive('dispatch')->times(5)->with(m::type(ResponseReceived::class));
 
-        $factory = new Factory($events);
+        $factory = new Factory($this->getContainer(), $events);
         $factory->fake();
 
         $factory->get('https://example.com');
@@ -1750,7 +1756,7 @@ class HttpClientTest extends TestCase
         $events->shouldReceive('dispatch')->times(2)->with(m::type(RequestSending::class));
         $events->shouldReceive('dispatch')->times(2)->with(m::type(ResponseReceived::class));
 
-        $factory = new Factory($events);
+        $factory = new Factory($this->getContainer(), $events);
         $factory->fake([
             '*' => $factory->response(['error'], 403),
         ]);
@@ -1788,7 +1794,7 @@ class HttpClientTest extends TestCase
         $events->shouldReceive('dispatch')->once()->with(m::type(RequestSending::class));
         $events->shouldReceive('dispatch')->once()->with(m::type(ResponseReceived::class));
 
-        $factory = new Factory($events);
+        $factory = new Factory($this->getContainer(), $events);
         $factory->fake(['example.com' => $factory->response('foo', 200)]);
 
         $client = $factory->timeout(10);
@@ -3328,7 +3334,7 @@ class HttpClientTest extends TestCase
 
     public function testItCanReturnCustomResponseClass(): void
     {
-        $factory = new CustomFactory();
+        $factory = new CustomFactory($this->getContainer());
 
         $factory->fake([
             '*' => $factory::response('expected content'),
@@ -3342,19 +3348,18 @@ class HttpClientTest extends TestCase
 
     public function testItCanHaveGlobalDefaultValues()
     {
-        $factory = new Factory();
         $timeout = null;
         $allowRedirects = null;
         $headers = null;
-        $factory->fake(function ($request, $options) use (&$timeout, &$allowRedirects, &$headers, $factory) {
+        $this->factory->fake(function ($request, $options) use (&$timeout, &$allowRedirects, &$headers) {
             $timeout = $options['timeout'];
             $allowRedirects = $options['allow_redirects'];
             $headers = $request->headers();
 
-            return $factory->response('');
+            return $this->factory->response('');
         });
 
-        $factory->get('https://laravel.com');
+        $this->factory->get('https://laravel.com');
         $this->assertSame(30, $timeout);
         $this->assertSame(
             [
@@ -3368,7 +3373,7 @@ class HttpClientTest extends TestCase
         );
         $this->assertNull($headers['X-Foo'] ?? null);
 
-        $factory->globalOptions([
+        $this->factory->globalOptions([
             'timeout' => 5,
             'allow_redirects' => false,
             'headers' => [
@@ -3376,12 +3381,12 @@ class HttpClientTest extends TestCase
             ],
         ]);
 
-        $factory->get('https://laravel.com');
+        $this->factory->get('https://laravel.com');
         $this->assertSame(5, $timeout);
         $this->assertFalse($allowRedirects);
         $this->assertSame(['true'], $headers['X-Foo']);
 
-        $factory->globalOptions(fn () => [
+        $this->factory->globalOptions(fn () => [
             'timeout' => 10,
             'headers' => [
                 'X-Foo' => 'false',
@@ -3389,7 +3394,7 @@ class HttpClientTest extends TestCase
             ],
         ]);
 
-        $factory->get('https://laravel.com');
+        $this->factory->get('https://laravel.com');
         $this->assertSame(10, $timeout);
         $this->assertSame(
             [
@@ -3407,9 +3412,7 @@ class HttpClientTest extends TestCase
 
     public function testItCanCreatePendingRequest()
     {
-        $factory = new Factory();
-
-        $this->assertInstanceOf(PendingRequest::class, $factory->createPendingRequest());
+        $this->assertInstanceOf(PendingRequest::class, $this->factory->createPendingRequest());
     }
 
     public function testRunConcurrentInCoroutine()
@@ -3426,18 +3429,76 @@ class HttpClientTest extends TestCase
         $this->assertTrue($response[0]->body() === 'foo');
         $this->assertTrue($response[1]->body() === 'bar');
     }
+
+    public function testPoolableClient()
+    {
+        $container = $this->getContainer();
+
+        ApplicationContext::setContainer($container);
+
+        $this->factory->registerConnection('vapor');
+        $client = $this->factory->getClient('vapor', (new PendingRequest($this->factory))->buildHandlerStack());
+        $this->assertInstanceOf(ClientInterface::class, $client);
+    }
+
+    public function testGetConnectionConfigReturnsConfigForRegisteredConnection()
+    {
+        $factory = new Factory($this->getContainer());
+        $factory->registerConnection('connection1');
+        $factory->setConnectionConfig('connection1', ['key' => 'value']);
+
+        $this->assertEquals(['key' => 'value'], $factory->getConnectionConfig('connection1'));
+    }
+
+    public function testGetConnectionConfigThrowsExceptionForUnregisteredConnection()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Connection [connection2] not registered.');
+
+        $containerMock = m::mock(ContainerInterface::class);
+        $factory = new Factory($containerMock);
+
+        $factory->getConnectionConfig('connection2');
+    }
+
+    public function testGetConnectionConfigReturnsDefaultConfigWhenNotSet()
+    {
+        $configMock = m::mock(ConfigInterface::class);
+        $configMock->shouldReceive('get')->with('http_client.connection.pool', [])->andReturn(['default_key' => 'default_value']);
+        $containerMock = m::mock(ContainerInterface::class);
+        $containerMock->shouldReceive('get')->with(ConfigInterface::class)->andReturn($configMock);
+
+        $factory = new Factory($containerMock);
+        $factory->registerConnection('connection3');
+
+        $this->assertEquals(['default_key' => 'default_value'], $factory->getConnectionConfig('connection3'));
+    }
+
+    protected function getContainer(array $config = []): ContainerInterface
+    {
+        $config = new Config(['http_client' => $config]);
+
+        return new \Hyperf\Di\Container(
+            new \Hyperf\Di\Definition\DefinitionSource([
+                ConfigInterface::class => fn () => $config,
+            ])
+        );
+    }
 }
 
 class CustomFactory extends Factory
 {
     protected function newPendingRequest(): PendingRequest
     {
-        return new class extends PendingRequest {
-            protected function newResponse($response): Response
-            {
-                return new TestResponse($response);
-            }
-        };
+        return new TestPendingRequest($this);
+    }
+}
+
+class TestPendingRequest extends PendingRequest
+{
+    protected function newResponse($response): Response
+    {
+        return new TestResponse($response);
     }
 }
 

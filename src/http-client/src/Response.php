@@ -36,7 +36,7 @@ class Response implements ArrayAccess, Stringable
     /**
      * The request cookies.
      */
-    public CookieJar $cookies;
+    public ?CookieJar $cookies = null;
 
     /**
      * The transfer stats for the request.

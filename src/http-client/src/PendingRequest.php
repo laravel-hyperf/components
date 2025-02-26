@@ -7,6 +7,7 @@ namespace LaravelHyperf\HttpClient;
 use Closure;
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
@@ -43,7 +44,7 @@ class PendingRequest
     /**
      * The Guzzle client instance.
      */
-    protected ?Client $client = null;
+    protected ?ClientInterface $client = null;
 
     /**
      * The Guzzle HTTP handler.
@@ -80,7 +81,7 @@ class PendingRequest
     /**
      * The request cookies.
      */
-    protected CookieJar $cookies;
+    protected ?CookieJar $cookies = null;
 
     /**
      * The transfer stats for the request.
@@ -158,6 +159,16 @@ class PendingRequest
      * The sent request object, if a request has been made.
      */
     protected ?Request $request;
+
+    /**
+     * The current connection name for the pending request.
+     */
+    protected ?string $connection = null;
+
+    /**
+     * The current connection configuration for the pending request.
+     */
+    protected ?array $connectionConfig = null;
 
     /**
      * The Guzzle request options that are mergeable via array_merge_recursive.
@@ -1022,9 +1033,9 @@ class PendingRequest
     /**
      * Build the Guzzle client.
      */
-    public function buildClient(): Client
+    public function buildClient(): ClientInterface
     {
-        return $this->client ?? $this->createClient($this->buildHandlerStack());
+        return $this->client ?? $this->factory->getClient($this->getConnection(), $this->buildHandlerStack(), $this->getConnectionConfig());
     }
 
     /**
@@ -1038,20 +1049,9 @@ class PendingRequest
     /**
      * Retrieve a reusable Guzzle client.
      */
-    protected function getReusableClient(): Client
+    protected function getReusableClient(): ClientInterface
     {
-        return $this->client ??= $this->createClient($this->buildHandlerStack());
-    }
-
-    /**
-     * Create new Guzzle client.
-     */
-    public function createClient(HandlerStack $handlerStack): Client
-    {
-        return new Client([
-            'handler' => $handlerStack,
-            'cookies' => true,
-        ]);
+        return $this->client ??= $this->factory->getClient($this->getConnection(), $this->buildHandlerStack(), $this->getConnectionConfig());
     }
 
     /**
@@ -1308,5 +1308,31 @@ class PendingRequest
     public function getOptions(): array
     {
         return $this->options;
+    }
+
+    /**
+     * Set the pending request connection.
+     */
+    public function connection(string $connection, ?array $config = null): static
+    {
+        $this->connection = $connection;
+        if ($config) {
+            $this->connectionConfig = $config;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the pending request connection.
+     */
+    public function getConnection(): ?string
+    {
+        return $this->connection;
+    }
+
+    public function getConnectionConfig(): ?array
+    {
+        return $this->connectionConfig;
     }
 }
