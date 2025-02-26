@@ -10,17 +10,7 @@ use Hyperf\HttpServer\Router\DispatcherFactory;
 use RuntimeException;
 
 /**
- * @method static void addRoute(array|string $httpMethod, string $route, mixed $handler, array $options = [])
- * @method static void group($prefix, string|callable $source, $callback, array $options = [])
- * @method static void match($methods, $route, $handler, array $options = [])
- * @method static void any($route, $handler, array $options = [])
- * @method static void get($route, $handler, array $options = [])
- * @method static void post($route, $handler, array $options = [])
- * @method static void put($route, $handler, array $options = [])
- * @method static void delete($route, $handler, array $options = [])
- * @method static void patch($route, $handler, array $options = [])
- * @method static void head($route, $handler, array $options = [])
- * @method static void options($route, $handler, array $options = [])
+ * @mixin \Hyperf\HttpServer\Router\RouteCollector
  */
 class Router
 {

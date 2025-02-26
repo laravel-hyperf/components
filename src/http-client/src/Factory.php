@@ -20,7 +20,7 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use function Hyperf\Tappable\tap;
 
 /**
- * @mixin PendingRequest
+ * @mixin \LaravelHyperf\HttpClient\PendingRequest
  */
 class Factory
 {

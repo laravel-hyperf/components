@@ -39,7 +39,7 @@ use Symfony\Component\Mailer\Transport\TransportInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
- * @mixin Mailer
+ * @mixin \LaravelHyperf\Mail\Contracts\Mailer
  */
 class MailManager implements FactoryContract
 {

@@ -19,7 +19,7 @@ use function Hyperf\Tappable\tap;
 
 /**
  * @mixin \LaravelHyperf\Cache\Contracts\Repository
- * @mixin TaggableStore
+ * @mixin \LaravelHyperf\Cache\TaggableStore
  */
 class CacheManager implements FactoryContract
 {
