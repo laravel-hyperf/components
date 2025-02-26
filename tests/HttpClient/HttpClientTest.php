@@ -20,6 +20,7 @@ use Hyperf\Stringable\Str;
 use Hyperf\Stringable\Stringable;
 use InvalidArgumentException;
 use JsonSerializable;
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
 use LaravelHyperf\Http\Response as HttpResponse;
 use LaravelHyperf\HttpClient\ConnectionException;
 use LaravelHyperf\HttpClient\Events\RequestSending;
@@ -47,6 +48,7 @@ use Symfony\Component\VarDumper\VarDumper;
 use Throwable;
 
 use function LaravelHyperf\Coroutine\parallel;
+use function LaravelHyperf\Coroutine\run;
 
 /**
  * @internal
@@ -3170,10 +3172,15 @@ class HttpClientTest extends TestCase
             'vapor.laravel.com' => $this->factory::response('foo', HttpResponse::HTTP_OK),
             'forge.laravel.com' => $this->factory::response('bar', HttpResponse::HTTP_OK),
         ]);
-        $response = parallel([
-            fn () => $this->factory->get('vapor.laravel.com'),
-            fn () => $this->factory->get('forge.laravel.com'),
-        ]);
+
+        $response = null;
+        run(function () use (&$response) {
+            $response = parallel([
+                fn () => $this->factory->get('vapor.laravel.com'),
+                fn () => $this->factory->get('forge.laravel.com'),
+            ]);
+
+        });
 
         $this->assertTrue($response[0]->body() === 'foo');
         $this->assertTrue($response[1]->body() === 'bar');
