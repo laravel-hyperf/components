@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
-use GuzzleHttp\HandlerStack;
 use LaravelHyperf\HttpClient\Factory;
 
 /**
