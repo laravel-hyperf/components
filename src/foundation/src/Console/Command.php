@@ -50,7 +50,8 @@ abstract class Command extends HyperfCommand
                     throw $exception;
                 }
 
-                $this->getApplication()?->renderThrowable($exception, $this->output);
+                (new ErrorRenderer($this->input, $this->output))
+                    ->render($exception);
 
                 $this->exitCode = self::FAILURE;
 

@@ -176,6 +176,7 @@
         "league/flysystem-path-prefixing": "^3.3",
         "league/flysystem-read-only": "^3.3",
         "mockery/mockery": "^1.5.1",
+        "nunomaduro/collision": "^8.5",
         "pda/pheanstalk": "v5.0.9",
         "phpstan/phpstan": "^1.11.5",
         "phpunit/phpunit": "^10.0.7",
