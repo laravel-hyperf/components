@@ -11,9 +11,9 @@ use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response as Psr7Response;
 use GuzzleHttp\TransferStats;
-use Hyperf\Collection\Collection;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Support\Collection;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Psr\EventDispatcher\EventDispatcherInterface;
 

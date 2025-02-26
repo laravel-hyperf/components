@@ -6,7 +6,6 @@ namespace LaravelHyperf\Http;
 
 use DateTimeImmutable;
 use Hyperf\Codec\Json;
-use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Context\Context;
 use Hyperf\Context\RequestContext;
@@ -19,6 +18,7 @@ use Hyperf\Support\Filesystem\Filesystem;
 use Hyperf\View\RenderInterface;
 use LaravelHyperf\Http\Contracts\ResponseContract;
 use LaravelHyperf\Http\Exceptions\FileNotFoundException;
+use LaravelHyperf\Support\Collection;
 use LaravelHyperf\Support\MimeTypeExtensionGuesser;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;

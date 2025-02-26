@@ -7,9 +7,9 @@ namespace LaravelHyperf\Http\Contracts;
 use Carbon\Carbon;
 use Carbon\Exceptions\InvalidFormatException;
 use Closure;
-use Hyperf\Collection\Collection;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 use Stringable;
 
