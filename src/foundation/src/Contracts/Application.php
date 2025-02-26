@@ -144,6 +144,11 @@ interface Application extends Container
     public function getLocale(): string;
 
     /**
+     * Determine if the application locale is the given locale.
+     */
+    public function isLocale(string $locale): bool;
+
+    /**
      * Get the current application locale.
      */
     public function currentLocale(): string;
