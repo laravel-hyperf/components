@@ -6,7 +6,6 @@ namespace LaravelHyperf\HttpClient;
 
 use Closure;
 use Exception;
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
@@ -17,7 +16,6 @@ use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\TransferStats;
 use GuzzleHttp\UriTemplate\UriTemplate;
-use Hyperf\Collection\Arr;
 use Hyperf\Conditionable\Conditionable;
 use Hyperf\Contract\Arrayable;
 use Hyperf\Macroable\Macroable;
@@ -27,6 +25,7 @@ use JsonSerializable;
 use LaravelHyperf\HttpClient\Events\ConnectionFailed;
 use LaravelHyperf\HttpClient\Events\RequestSending;
 use LaravelHyperf\HttpClient\Events\ResponseReceived;
+use LaravelHyperf\Support\Arr;
 use LaravelHyperf\Support\Collection;
 use OutOfBoundsException;
 use Psr\Http\Message\RequestInterface;
@@ -1285,7 +1284,7 @@ class PendingRequest
     /**
      * Set the client instance.
      */
-    public function setClient(Client $client): static
+    public function setClient(ClientInterface $client): static
     {
         $this->client = $client;
 
