@@ -7,13 +7,13 @@ namespace LaravelHyperf\Broadcasting\Broadcasters;
 use Closure;
 use Exception;
 use Hyperf\Collection\Arr;
-use Hyperf\Collection\Collection;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use LaravelHyperf\Auth\AuthManager;
 use LaravelHyperf\Broadcasting\Contracts\Broadcaster as BroadcasterContract;
 use LaravelHyperf\Broadcasting\Contracts\HasBroadcastChannel;
 use LaravelHyperf\HttpMessage\Exceptions\AccessDeniedHttpException;
 use LaravelHyperf\Router\Contracts\UrlRoutable;
+use LaravelHyperf\Support\Collection;
 use LaravelHyperf\Support\Reflector;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
@@ -290,6 +290,6 @@ abstract class Broadcaster implements BroadcasterContract
      */
     public function getChannels(): Collection
     {
-        return collect($this->channels);
+        return Collection::make($this->channels);
     }
 }

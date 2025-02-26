@@ -27,12 +27,10 @@
     },
     "require": {
         "php": "^8.2",
-        "hyperf/collection": "~3.1.0",
         "hyperf/contract": "~3.1.0",
         "hyperf/http-server": "~3.1.0",
         "hyperf/pool": "~3.1.0",
         "hyperf/redis": "~3.1.0",
-        "hyperf/stringable": "~3.1.0",
         "laravel-hyperf/auth": "^0.1",
         "laravel-hyperf/bus": "^0.1",
         "laravel-hyperf/cache": "^0.1",

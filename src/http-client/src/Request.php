@@ -6,8 +6,8 @@ namespace LaravelHyperf\HttpClient;
 
 use ArrayAccess;
 use Hyperf\Collection\Arr;
-use Hyperf\Collection\Collection;
 use Hyperf\Macroable\Macroable;
+use LaravelHyperf\Support\Collection;
 use LogicException;
 use Psr\Http\Message\RequestInterface;
 
