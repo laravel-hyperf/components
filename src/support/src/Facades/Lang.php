@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
+use Hyperf\Contract\TranslatorInterface;
 use Hyperf\Contract\TranslatorLoaderInterface;
 use Hyperf\Translation\MessageSelector;
 use Hyperf\Translation\Translator;
@@ -34,6 +35,6 @@ class Lang extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return Translator::class;
+        return TranslatorInterface::class;
     }
 }
