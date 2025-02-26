@@ -31,9 +31,9 @@ class ErrorRenderer
 
     protected function setVerbosity(InputInterface $input, OutputInterface $output): void
     {
-        if (true === $input->hasParameterOption(['--silent'], true)) {
+        if ($input->hasParameterOption(['--silent'], true) === true) {
             $output->setVerbosity(OutputInterface::VERBOSITY_SILENT);
-        } elseif (true === $input->hasParameterOption(['--quiet', '-q'], true)) {
+        } elseif ($input->hasParameterOption(['--quiet', '-q'], true) === true) {
             $output->setVerbosity(OutputInterface::VERBOSITY_QUIET);
         } elseif ($input->hasParameterOption('-vvv', true) || $input->hasParameterOption('--verbose=3', true) || $input->getParameterOption('--verbose', false, true) === 3) {
             $output->setVerbosity(OutputInterface::VERBOSITY_DEBUG);

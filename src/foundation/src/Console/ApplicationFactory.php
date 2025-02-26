@@ -16,7 +16,7 @@ class ApplicationFactory
             return $container->get(KernelContract::class)
                 ->getArtisan();
         } catch (Throwable $throwable) {
-            (new ErrorRenderer)
+            (new ErrorRenderer())
                 ->render($throwable);
         }
 
