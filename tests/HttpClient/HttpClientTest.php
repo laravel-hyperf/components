@@ -3179,7 +3179,6 @@ class HttpClientTest extends TestCase
                 fn () => $this->factory->get('vapor.laravel.com'),
                 fn () => $this->factory->get('forge.laravel.com'),
             ]);
-
         });
 
         $this->assertTrue($response[0]->body() === 'foo');
