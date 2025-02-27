@@ -11,6 +11,7 @@ use Hyperf\DbConnection\Db;
 use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
 use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithConsole;
 use LaravelHyperf\Foundation\Testing\RefreshDatabase;
+use LaravelHyperf\Foundation\Testing\RefreshDatabaseState;
 use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
 use Mockery as m;
 use PDO;
@@ -39,7 +40,15 @@ class RefreshDatabaseTest extends ApplicationTestCase
         $this->dropViews = false;
         $this->seed = false;
         $this->seeder = null;
+
+        RefreshDatabaseState::$migrated = false;
+
         parent::tearDown();
+    }
+
+    protected function setUpTraits(): array
+    {
+        return [];
     }
 
     public function testRefreshTestDatabaseDefault()
@@ -52,10 +61,6 @@ class RefreshDatabaseTest extends ApplicationTestCase
                 '--database' => 'default',
                 '--seed' => false,
             ])->andReturn(0);
-        $kernel->shouldReceive('call')
-            ->once()
-            ->with('migrate:rollback', [])
-            ->andReturn(0);
 
         $this->app = $this->getApplication([
             ConfigInterface::class => fn () => $this->getConfig(),
@@ -78,10 +83,6 @@ class RefreshDatabaseTest extends ApplicationTestCase
                 '--database' => 'default',
                 '--seed' => false,
             ])->andReturn(0);
-        $kernel->shouldReceive('call')
-            ->once()
-            ->with('migrate:rollback', [])
-            ->andReturn(0);
         $this->app = $this->getApplication([
             ConfigInterface::class => fn () => $this->getConfig(),
             KernelContract::class => fn () => $kernel,
@@ -103,10 +104,6 @@ class RefreshDatabaseTest extends ApplicationTestCase
                 '--database' => 'default',
                 '--seed' => true,
             ])->andReturn(0);
-        $kernel->shouldReceive('call')
-            ->once()
-            ->with('migrate:rollback', [])
-            ->andReturn(0);
         $this->app = $this->getApplication([
             ConfigInterface::class => fn () => $this->getConfig(),
             KernelContract::class => fn () => $kernel,
@@ -128,10 +125,6 @@ class RefreshDatabaseTest extends ApplicationTestCase
                 '--database' => 'default',
                 '--seeder' => 'seeder',
             ])->andReturn(0);
-        $kernel->shouldReceive('call')
-            ->once()
-            ->with('migrate:rollback', [])
-            ->andReturn(0);
         $this->app = $this->getApplication([
             ConfigInterface::class => fn () => $this->getConfig(),
             KernelContract::class => fn () => $kernel,

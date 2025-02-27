@@ -32,7 +32,7 @@ class InteractsWithAuthenticationTest extends ApplicationTestCase
     {
         $guard = Mockery::mock(Guard::class);
         $guard->shouldReceive('check')
-            ->once()
+            ->twice()
             ->andReturn(false);
 
         $this->app->get(AuthManagerContract::class)

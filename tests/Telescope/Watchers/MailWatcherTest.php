@@ -65,19 +65,15 @@ class MailWatcherTest extends FeatureTestCase
     protected function mockSentMessage(array $data): SentMessage
     {
         $originalMessage = m::mock('originalMessage');
-
         foreach ($data as $key => $value) {
             $originalMessage->shouldReceive($key)
-                ->once()
                 ->andReturn($value);
         }
 
         $message = m::mock(SentMessage::class);
         $message->shouldReceive('getOriginalMessage')
-            ->once()
             ->andReturn($originalMessage);
         $message->shouldReceive('getBody')
-            ->once()
             ->andReturn('body');
 
         return $message;

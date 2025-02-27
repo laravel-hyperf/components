@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Foundation\Testing;
 
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Hyperf\Coroutine\Coroutine;
 use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithAuthentication;
 use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithConsole;
@@ -13,7 +15,7 @@ use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithTime;
 use LaravelHyperf\Foundation\Testing\Concerns\MakesHttpRequests;
 use LaravelHyperf\Foundation\Testing\Concerns\MocksApplicationServices;
 use LaravelHyperf\Support\Facades\Facade;
-use Mockery as m;
+use Mockery;
 use Throwable;
 
 use function Hyperf\Coroutine\run;
@@ -130,12 +132,20 @@ class TestCase extends \PHPUnit\Framework\TestCase
             throw $this->callbackException;
         }
 
-        try {
-            if ($container = m::getContainer()) {
+        if (class_exists('Mockery')) {
+            if ($container = Mockery::getContainer()) {
                 $this->addToAssertionCount($container->mockery_getExpectationCount());
             }
-            m::close();
-        } catch (Throwable) {
+
+            Mockery::close();
+        }
+
+        if (class_exists(Carbon::class)) {
+            Carbon::setTestNow();
+        }
+
+        if (class_exists(CarbonImmutable::class)) {
+            CarbonImmutable::setTestNow();
         }
 
         $this->setUpHasRun = false;
