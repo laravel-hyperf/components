@@ -8,7 +8,10 @@
         "laravel-hyperf": {
             "dont-discover": [
                 "package-four"
-            ]
+            ],
+            "aliases": {
+                "TestAlias": "TestClass"
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ namespace LaravelHyperf\Tests\Foundation\Bootstrap;
 
 use Hyperf\Contract\ConfigInterface;
 use LaravelHyperf\Foundation\Bootstrap\RegisterFacades;
+use LaravelHyperf\Foundation\Support\Composer;
 use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
 use LaravelHyperf\Tests\TestCase;
 use Mockery as m;
@@ -34,11 +35,17 @@ class RegisterFacadesTest extends TestCase
 
         $bootstrapper = $this->createPartialMock(
             RegisterFacades::class,
-            ['registerAlias']
+            ['registerAliases']
         );
+
         $bootstrapper->expects($this->once())
-            ->method('registerAlias')
-            ->with('FooClass', 'FooAlias');
+            ->method('registerAliases')
+            ->with([
+                'FooAlias' => 'FooClass',
+                'TestAlias' => 'TestClass',
+            ]);
+
+        Composer::setBasePath(dirname(__DIR__) . '/fixtures/hyperf1');
 
         $bootstrapper->bootstrap($app);
     }
