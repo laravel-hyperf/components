@@ -36,6 +36,11 @@ class DatabaseMigrationsTest extends ApplicationTestCase
         parent::tearDown();
     }
 
+    protected function setUpTraits(): array
+    {
+        return [];
+    }
+
     public function testRefreshTestDatabaseDefault()
     {
         $kernel = m::mock(KernelContract::class);

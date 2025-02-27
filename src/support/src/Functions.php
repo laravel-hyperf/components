@@ -5,8 +5,22 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support;
 
 use BackedEnum;
+use Closure;
 use Symfony\Component\Process\PhpExecutableFinder;
 use UnitEnum;
+
+/**
+ * Return the default value of the given value.
+ * @template TValue
+ * @template TReturn
+ *
+ * @param (Closure(TValue):TReturn)|TValue $value
+ * @return ($value is Closure ? TReturn : TValue)
+ */
+function value(mixed $value, ...$args)
+{
+    return $value instanceof Closure ? $value(...$args) : $value;
+}
 
 /**
  * Return a scalar value for the given value that might be an enum.
