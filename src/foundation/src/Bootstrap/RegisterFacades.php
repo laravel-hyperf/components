@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Foundation\Bootstrap;
 
+use Hyperf\Collection\Arr;
 use Hyperf\Contract\ConfigInterface;
 use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
+use LaravelHyperf\Foundation\Support\Composer;
 use LaravelHyperf\Support\Facades\Facade;
+use Throwable;
 
 class RegisterFacades
 {
@@ -17,20 +20,28 @@ class RegisterFacades
     {
         Facade::clearResolvedInstances();
 
-        $aliases = $app->get(ConfigInterface::class)
-            ->get('app.aliases', []);
-
-        foreach ($aliases as $alias => $class) {
-            $this->registerAlias($class, $alias);
+        $composerAliases = [];
+        try {
+            $composerAliases = Arr::wrap(Composer::getJsonContent()['extra']['laravel-hyperf']['aliases']) ?? [];
+        } catch (Throwable $e) {
+            // do nothing
         }
+
+        $configAliases = $app->get(ConfigInterface::class)
+            ->get('app.aliases', []);
+        $aliases = array_merge($composerAliases, $configAliases);
+
+        $this->registerAliases($aliases);
     }
 
-    protected function registerAlias(string $class, string $alias): void
+    protected function registerAliases(array $aliases): void
     {
-        if (class_exists($alias)) {
-            return;
-        }
+        foreach ($aliases as $alias => $class) {
+            if (class_exists($alias)) {
+                continue;
+            }
 
-        class_alias($class, $alias);
+            class_alias($class, $alias);
+        }
     }
 }
