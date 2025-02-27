@@ -3,5 +3,12 @@
         "psr-4": {
             "Hyperf\\One\\": "app/"
         }
+    },
+    "extra": {
+        "laravel-hyperf": {
+            "dont-discover": [
+                "package-four"
+            ]
+        }
     }
 }
