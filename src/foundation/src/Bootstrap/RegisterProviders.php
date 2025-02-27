@@ -9,6 +9,7 @@ use Hyperf\Contract\ConfigInterface;
 use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
 use LaravelHyperf\Foundation\Providers\FoundationServiceProvider;
 use LaravelHyperf\Foundation\Support\Composer;
+use Throwable;
 
 class RegisterProviders
 {
@@ -18,7 +19,7 @@ class RegisterProviders
     public function bootstrap(ApplicationContract $app): void
     {
         $providers = [];
-        $packagesToIgnore = Composer::getMergedExtra('laravel-hyperf')['dont-discover'] ?? [];
+        $packagesToIgnore = $this->packagesToIgnore();
 
         if (! in_array('*', $packagesToIgnore)) {
             $providers = array_map(
@@ -50,5 +51,18 @@ class RegisterProviders
         foreach ($providers as $providerClass) {
             $app->register($providerClass);
         }
+    }
+
+    protected function packagesToIgnore(): array
+    {
+        $packages = Composer::getMergedExtra('laravel-hyperf')['dont-discover'] ?? [];
+
+        try {
+            $project = Composer::getJsonContent()['extra']['laravel-hyperf']['dont-discover'] ?? [];
+        } catch (Throwable) {
+            $project = [];
+        }
+
+        return array_merge($packages, $project);
     }
 }

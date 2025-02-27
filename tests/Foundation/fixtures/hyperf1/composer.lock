@@ -30,6 +30,20 @@
             "scripts": {
                 "foo": "script-three"
             }
+        },
+        {
+            "name": "package-four",
+            "version": "0.1",
+            "extra": {
+                "laravel-hyperf": {
+                    "providers": [
+                        "LaravelHyperf\\Tests\\Foundation\\Bootstrap\\TestFourServiceProvider"
+                    ]
+                }
+            },
+            "scripts": {
+                "foo": "script-four"
+            }
         }
     ],
     "packages-dev": []
