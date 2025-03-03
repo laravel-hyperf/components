@@ -134,21 +134,30 @@ trait ListensForStorageOpportunities
     {
         $event = $app->get(EventDispatcherInterface::class);
         $event->listen(JobProcessing::class, function ($event) {
-            if ($event->connectionName !== 'sync') {
+            if (static::shouldListen() && $event->connectionName !== 'sync') {
                 static::startRecording();
                 static::addProcessingJob();
             }
         });
 
         $event->listen(JobProcessed::class, function ($event) use ($app) {
+            if (! static::shouldListen()) {
+                return;
+            }
             static::storeIfDoneProcessingJob($event, $app);
         });
 
         $event->listen(JobFailed::class, function ($event) use ($app) {
+            if (! static::shouldListen()) {
+                return;
+            }
             static::storeIfDoneProcessingJob($event, $app);
         });
 
         $event->listen(JobExceptionOccurred::class, function () {
+            if (! static::shouldListen()) {
+                return;
+            }
             static::popProcessingJob();
         });
     }
