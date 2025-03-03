@@ -40,7 +40,7 @@ trait ListensForStorageOpportunities
     /**
      * Set the callback that determines if Telescope should start recording.
      */
-    public static function shouldListenCallback(?Closure $callback): void
+    public static function shouldListenUsing(?Closure $callback): void
     {
         static::$shouldListenCallback = $callback;
     }
