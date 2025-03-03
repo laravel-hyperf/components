@@ -34,7 +34,7 @@ class Router
             ->{$name}(...$arguments);
     }
 
-    public function group($prefix, callable|string $source, array $options = []): void
+    public function group(string $prefix, callable|string $source, array $options = []): void
     {
         if (is_string($source)) {
             $source = $this->registerRouteFile($source);
@@ -45,7 +45,7 @@ class Router
             ->addGroup($prefix, $source, $options);
     }
 
-    public function addGroup($prefix, callable|string $source, array $options = []): void
+    public function addGroup(string $prefix, callable|string $source, array $options = []): void
     {
         $this->group($prefix, $source, $options);
     }

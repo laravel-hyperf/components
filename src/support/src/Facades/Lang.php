@@ -12,7 +12,7 @@ use Hyperf\Contract\TranslatorInterface;
  * @method static array|string trans(string $key, array $replace = [], string|null $locale = null)
  * @method static array|string get(string $key, array $replace = [], string|null $locale = null, bool $fallback = true)
  * @method static array|string getFromJson(string $key, array $replace = [], string|null $locale = null)
- * @method static string transChoice(string $key, array|Countable|int $number, array $replace = [], string|null $locale = null)
+ * @method static string transChoice(string $key, array|\Countable|int $number, array $replace = [], string|null $locale = null)
  * @method static string choice(string $key, \Countable|array|int $number, array $replace = [], string|null $locale = null)
  * @method static void addLines(array $lines, string $locale, string $namespace = '*')
  * @method static void load(string $namespace, string $group, string $locale)
