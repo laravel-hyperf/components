@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace LaravelHyperf\HttpClient;
 
 use Closure;
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
@@ -13,9 +16,12 @@ use GuzzleHttp\Psr7\Response as Psr7Response;
 use GuzzleHttp\TransferStats;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
+use InvalidArgumentException;
+use LaravelHyperf\ObjectPool\Traits\HasPoolProxy;
 use LaravelHyperf\Support\Collection;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Throwable;
 
 use function Hyperf\Tappable\tap;
 
@@ -24,6 +30,7 @@ use function Hyperf\Tappable\tap;
  */
 class Factory
 {
+    use HasPoolProxy;
     use Macroable {
         __call as macroCall;
     }
@@ -62,6 +69,23 @@ class Factory
      * Indicates that an exception should be thrown if any request is not faked.
      */
     protected bool $preventStrayRequests = false;
+
+    protected string $poolProxyClass = ClientPoolProxy::class;
+
+    /**
+     * The array of connections which will be wrapped as pool proxies.
+     */
+    protected array $poolables = [];
+
+    /**
+     * The array of resolved client connections.
+     */
+    protected array $connections = [];
+
+    /**
+     * The configuration for all registered connections.
+     */
+    protected array $connectionConfigs = [];
 
     /**
      * Create a new factory instance.
@@ -406,6 +430,86 @@ class Factory
     public function getGlobalMiddleware(): array
     {
         return $this->globalMiddleware;
+    }
+
+    /**
+     * Register a connection with the given name and configuration.
+     */
+    public function registerConnection(string $name, array $config = []): static
+    {
+        $this->addPoolable($name);
+        $this->setConnectionConfig($name, $config);
+
+        return $this;
+    }
+
+    /**
+     * Get the HTTP client for the specified connection.
+     *
+     * @throws Throwable
+     */
+    public function getClient(?string $connection, HandlerStack $handlerStack, ?array $config = null): ClientInterface
+    {
+        return $this->resolve($connection, $handlerStack, $config);
+    }
+
+    /**
+     * Resolve the HTTP client for the specified connection.
+     *
+     * @throws Throwable
+     */
+    protected function resolve(?string $name, HandlerStack $handlerStack, ?array $config = null): ClientInterface
+    {
+        if (is_null($name)) {
+            return $this->createClient($handlerStack);
+        }
+
+        if (! in_array($name, $this->poolables)) {
+            throw new InvalidArgumentException("Connection [{$name}] is not registered.");
+        }
+
+        return $this->connections[$name] ??= $this->createPoolProxy(
+            $name,
+            fn () => $this->createClient($handlerStack),
+            $config ?? $this->getConnectionConfig($name)
+        );
+    }
+
+    /**
+     * Create new Guzzle client.
+     */
+    public function createClient(HandlerStack $handlerStack): ClientInterface
+    {
+        return new Client([
+            'handler' => $handlerStack,
+            'cookies' => true,
+        ]);
+    }
+
+    /**
+     * Get the configuration for all connections.
+     */
+    public function getConnectionConfigs(): array
+    {
+        return $this->connectionConfigs;
+    }
+
+    /**
+     * Get the configuration for a specific connection.
+     */
+    public function getConnectionConfig(string $name): array
+    {
+        return $this->connectionConfigs[$name] ?? [];
+    }
+
+    /**
+     * Set the configuration for a specific connection.
+     */
+    public function setConnectionConfig(string $name, array $config): static
+    {
+        $this->connectionConfigs[$name] = $config;
+
+        return $this;
     }
 
     /**

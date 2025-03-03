@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace LaravelHyperf\Tests\HttpClient;
 
 use Exception;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\PromiseInterface;
-use GuzzleHttp\Promise\RejectedPromise;
 use GuzzleHttp\Psr7\Response as Psr7Response;
 use GuzzleHttp\Psr7\Utils;
 use GuzzleHttp\TransferStats;
-use Hyperf\Collection\Arr;
+use Hyperf\Config\Config;
+use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\Arrayable;
+use Hyperf\Contract\ConfigInterface;
+use Hyperf\Contract\ContainerInterface;
 use Hyperf\Stringable\Str;
 use Hyperf\Stringable\Stringable;
 use JsonSerializable;
@@ -22,11 +25,11 @@ use LaravelHyperf\HttpClient\Events\RequestSending;
 use LaravelHyperf\HttpClient\Events\ResponseReceived;
 use LaravelHyperf\HttpClient\Factory;
 use LaravelHyperf\HttpClient\PendingRequest;
-use LaravelHyperf\HttpClient\Pool;
 use LaravelHyperf\HttpClient\Request;
 use LaravelHyperf\HttpClient\RequestException;
 use LaravelHyperf\HttpClient\Response;
 use LaravelHyperf\HttpClient\ResponseSequence;
+use LaravelHyperf\Support\Arr;
 use LaravelHyperf\Support\Carbon;
 use LaravelHyperf\Support\Collection;
 use LaravelHyperf\Support\Fluent;
@@ -41,6 +44,9 @@ use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 use Symfony\Component\VarDumper\VarDumper;
 use Throwable;
+
+use function LaravelHyperf\Coroutine\parallel;
+use function LaravelHyperf\Coroutine\run;
 
 /**
  * @internal
@@ -1727,76 +1733,6 @@ class HttpClientTest extends TestCase
         );
     }
 
-    public function testMultipleRequestsAreSentInThePool()
-    {
-        $this->factory->fake([
-            '200.com' => $this->factory::response('', 200),
-            '400.com' => $this->factory::response('', 400),
-            '500.com' => $this->factory::response('', 500),
-        ]);
-
-        $responses = $this->factory->pool(function (Pool $pool) {
-            return [
-                $pool->get('200.com'),
-                $pool->get('400.com'),
-                $pool->get('500.com'),
-            ];
-        });
-
-        $this->assertSame(200, $responses[0]->status());
-        $this->assertSame(400, $responses[1]->status());
-        $this->assertSame(500, $responses[2]->status());
-    }
-
-    public function testMultipleRequestsAreSentInThePoolWithKeys()
-    {
-        $this->factory->fake([
-            '200.com' => $this->factory::response('', 200),
-            '400.com' => $this->factory::response('', 400),
-            '500.com' => $this->factory::response('', 500),
-        ]);
-
-        $responses = $this->factory->pool(function (Pool $pool) {
-            return [
-                $pool->as('test200')->get('200.com'),
-                $pool->as('test400')->get('400.com'),
-                $pool->as('test500')->get('500.com'),
-            ];
-        });
-
-        $this->assertSame(200, $responses['test200']->status());
-        $this->assertSame(400, $responses['test400']->status());
-        $this->assertSame(500, $responses['test500']->status());
-    }
-
-    public function testMiddlewareRunsInPool()
-    {
-        $this->factory->fake(function (Request $request) {
-            return $this->factory->response('Fake');
-        });
-
-        $history = [];
-
-        $middleware = Middleware::history($history);
-
-        $responses = $this->factory->pool(fn (Pool $pool) => [
-            $pool->withMiddleware($middleware)->post('https://example.com', ['hyped-for' => 'laravel-movie']),
-        ]);
-
-        $response = $responses[0];
-
-        $this->assertSame('Fake', $response->body());
-
-        $this->assertCount(1, $history);
-
-        $this->assertSame('Fake', tap($history[0]['response']->getBody())->rewind()->getContents());
-
-        $this->assertSame(
-            ['hyped-for' => 'laravel-movie'],
-            json_decode(tap($history[0]['request']->getBody())->rewind()->getContents(), true)
-        );
-    }
-
     public function testTheRequestSendingAndResponseReceivedEventsAreFiredWhenARequestIsSent()
     {
         $events = m::mock(EventDispatcherInterface::class);
@@ -1811,25 +1747,6 @@ class HttpClientTest extends TestCase
         $factory->post('https://example.com');
         $factory->patch('https://example.com');
         $factory->delete('https://example.com');
-    }
-
-    public function testTheRequestSendingAndResponseReceivedEventsAreFiredWhenARequestIsSentAsync()
-    {
-        $events = m::mock(EventDispatcherInterface::class);
-        $events->shouldReceive('dispatch')->times(5)->with(m::type(RequestSending::class));
-        $events->shouldReceive('dispatch')->times(5)->with(m::type(ResponseReceived::class));
-
-        $factory = new Factory($events);
-        $factory->fake();
-        $factory->pool(function (Pool $pool) {
-            return [
-                $pool->get('https://example.com'),
-                $pool->head('https://example.com'),
-                $pool->post('https://example.com'),
-                $pool->patch('https://example.com'),
-                $pool->delete('https://example.com'),
-            ];
-        });
     }
 
     public function testTheRequestSendingAndResponseReceivedEventsAreFiredForEveryRetry()
@@ -2209,152 +2126,6 @@ class HttpClientTest extends TestCase
         ]);
     }
 
-    public function testRequestExceptionReturnedWhenRetriesExhaustedInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(2, 1000, null, true)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(RequestException::class, $exception);
-
-        $this->factory->assertSentCount(2);
-    }
-
-    public function testRequestExceptionIsReturnedWithoutRetriesIfRetryNotNecessaryInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 500),
-        ]);
-
-        $whenAttempts = collect();
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(2, 1000, function ($exception) use ($whenAttempts) {
-                $whenAttempts->push($exception);
-
-                return $exception->response->status() === 403;
-            }, true)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(RequestException::class, $exception);
-
-        $this->assertCount(1, $whenAttempts);
-
-        $this->factory->assertSentCount(1);
-    }
-
-    public function testRequestExceptionIsNotReturnedWhenDisabledAndRetriesExhaustedInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        [$response] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(2, 1000, null, false)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($response);
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertTrue($response->failed());
-
-        $this->factory->assertSentCount(2);
-    }
-
-    public function testRequestExceptionIsNotReturnedWithoutRetriesIfRetryNotNecessaryInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 500),
-        ]);
-
-        $whenAttempts = collect();
-
-        [$response] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(2, 1000, function ($exception) use ($whenAttempts) {
-                $whenAttempts->push($exception);
-
-                return $exception->response->status() === 403;
-            }, false)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($response);
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertTrue($response->failed());
-
-        $this->assertCount(1, $whenAttempts);
-
-        $this->factory->assertSentCount(1);
-    }
-
-    public function testRequestCanBeModifiedInRetryCallbackInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->sequence()
-                ->push(['error'], 500)
-                ->push(['ok'], 200),
-        ]);
-
-        [$response] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(2, 1000, function ($exception, $request) {
-                $this->assertInstanceOf(PendingRequest::class, $request);
-
-                $request->withHeaders(['Foo' => 'Bar']);
-
-                return true;
-            }, false)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertTrue($response->successful());
-
-        $this->factory->assertSent(function (Request $request) {
-            return $request->hasHeader('Foo') && $request->header('Foo') === ['Bar'];
-        });
-    }
-
-    public function testHandleRequestExeptionWithNoResponseInPoolConsideredConnectionException()
-    {
-        $requestException = new \GuzzleHttp\Exception\RequestException(
-            'Error',
-            new \GuzzleHttp\Psr7\Request('GET', '/')
-        );
-        $this->factory->fake([
-            'noresponse.com' => new RejectedPromise($requestException),
-        ]);
-
-        $responses = $this->factory->pool(function (Pool $pool) {
-            return [
-                $pool->get('noresponse.com'),
-            ];
-        });
-
-        self::assertInstanceOf(ConnectionException::class, $responses[0]);
-        self::assertSame($requestException, $responses[0]->getPrevious());
-    }
-
-    public function testExceptionThrownInRetryCallbackIsReturnedWithoutRetryingInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 500),
-        ]);
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(2, 1000, function ($exception) {
-                throw new Exception('Foo bar');
-            }, false)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(Exception::class, $exception);
-        $this->assertEquals('Foo bar', $exception->getMessage());
-
-        $this->factory->assertSentCount(1);
-    }
-
     public function testRequestsWillBeWaitingSleepMillisecondsReceivedInBackoffArray()
     {
         Sleep::fake();
@@ -2713,150 +2484,6 @@ class HttpClientTest extends TestCase
         $response = $this->factory->get('http://foo.com/api')->throw();
 
         $this->assertSame('{"result":{"foo":"bar"}}', $response->body());
-    }
-
-    public function testRequestExceptionIsNotReturnedIfThePendingRequestIsSetToThrowOnFailureButTheResponseIsSuccessfulInPool(
-    ) {
-        $this->factory->fake([
-            '*' => $this->factory->response(['success'], 200),
-        ]);
-
-        [$response] = $this->factory->pool(fn ($pool) => [
-            $pool->throw()->get('http://foo.com/get'),
-        ]);
-
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertSame(200, $response->status());
-    }
-
-    public function testRequestExceptionIsReturnedIfThePendingRequestIsSetToThrowOnFailureInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->throw()->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(RequestException::class, $exception);
-    }
-
-    public function testRequestExceptionIsReturnedIfTheThrowIfOnThePendingRequestIsSetToTrueOnFailureInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->throwIf(true)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(RequestException::class, $exception);
-    }
-
-    public function testRequestExceptionIsNotReturnedIfTheThrowIfOnThePendingRequestIsSetToFalseOnFailureInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        [$response] = $this->factory->pool(fn ($pool) => [
-            $pool->throwIf(false)->get('http://foo.com/get'),
-        ]);
-
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertSame(403, $response->status());
-    }
-
-    public function testRequestExceptionIsReturnedIfTheThrowIfClosureOnThePendingRequestReturnsTrueInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        $hitThrowCallback = collect();
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->throwIf(function ($response) {
-                $this->assertInstanceOf(Response::class, $response);
-                $this->assertSame(403, $response->status());
-
-                return true;
-            }, function ($response, $e) use (&$hitThrowCallback) {
-                $this->assertInstanceOf(Response::class, $response);
-                $this->assertSame(403, $response->status());
-
-                $this->assertInstanceOf(RequestException::class, $e);
-
-                $hitThrowCallback->push(true);
-            })->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(RequestException::class, $exception);
-        $this->assertCount(1, $hitThrowCallback);
-    }
-
-    public function testRequestExceptionIsNotReturnedIfTheThrowIfClosureOnThePendingRequestReturnsFalseInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        $hitThrowCallback = collect();
-
-        [$response] = $this->factory->pool(fn ($pool) => [
-            $pool->throwIf(function ($response) {
-                $this->assertInstanceOf(Response::class, $response);
-                $this->assertSame(403, $response->status());
-
-                return false;
-            }, function ($response, $e) use (&$hitThrowCallback) {
-                $hitThrowCallback->push(true);
-            })->get('http://foo.com/get'),
-        ]);
-
-        $this->assertCount(0, $hitThrowCallback);
-        $this->assertSame(403, $response->status());
-    }
-
-    public function testRequestExceptionIsReturnedWithCallbackIfThePendingRequestIsSetToThrowOnFailureInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        $flag = collect();
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->throw(function ($exception) use (&$flag) {
-                $flag->push(true);
-            })->get('http://foo.com/get'),
-        ]);
-
-        $this->assertCount(1, $flag);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(RequestException::class, $exception);
-    }
-
-    public function testRequestExceptionIsReturnedAfterLastRetryInPool()
-    {
-        $this->factory->fake([
-            '*' => $this->factory->response(['error'], 403),
-        ]);
-
-        [$exception] = $this->factory->pool(fn ($pool) => [
-            $pool->retry(3)->throw()->get('http://foo.com/get'),
-        ]);
-
-        $this->assertNotNull($exception);
-        $this->assertInstanceOf(RequestException::class, $exception);
-
-        $this->factory->assertSentCount(3);
     }
 
     public function testRequestExceptionIsThrowIfConditionIsSatisfied()
@@ -3470,19 +3097,18 @@ class HttpClientTest extends TestCase
 
     public function testItCanHaveGlobalDefaultValues()
     {
-        $factory = new Factory();
         $timeout = null;
         $allowRedirects = null;
         $headers = null;
-        $factory->fake(function ($request, $options) use (&$timeout, &$allowRedirects, &$headers, $factory) {
+        $this->factory->fake(function ($request, $options) use (&$timeout, &$allowRedirects, &$headers) {
             $timeout = $options['timeout'];
             $allowRedirects = $options['allow_redirects'];
             $headers = $request->headers();
 
-            return $factory->response('');
+            return $this->factory->response('');
         });
 
-        $factory->get('https://laravel.com');
+        $this->factory->get('https://laravel.com');
         $this->assertSame(30, $timeout);
         $this->assertSame(
             [
@@ -3496,7 +3122,7 @@ class HttpClientTest extends TestCase
         );
         $this->assertNull($headers['X-Foo'] ?? null);
 
-        $factory->globalOptions([
+        $this->factory->globalOptions([
             'timeout' => 5,
             'allow_redirects' => false,
             'headers' => [
@@ -3504,12 +3130,12 @@ class HttpClientTest extends TestCase
             ],
         ]);
 
-        $factory->get('https://laravel.com');
+        $this->factory->get('https://laravel.com');
         $this->assertSame(5, $timeout);
         $this->assertFalse($allowRedirects);
         $this->assertSame(['true'], $headers['X-Foo']);
 
-        $factory->globalOptions(fn () => [
+        $this->factory->globalOptions(fn () => [
             'timeout' => 10,
             'headers' => [
                 'X-Foo' => 'false',
@@ -3517,7 +3143,7 @@ class HttpClientTest extends TestCase
             ],
         ]);
 
-        $factory->get('https://laravel.com');
+        $this->factory->get('https://laravel.com');
         $this->assertSame(10, $timeout);
         $this->assertSame(
             [
@@ -3535,9 +3161,64 @@ class HttpClientTest extends TestCase
 
     public function testItCanCreatePendingRequest()
     {
+        $this->assertInstanceOf(PendingRequest::class, $this->factory->createPendingRequest());
+    }
+
+    public function testRunConcurrentInCoroutine()
+    {
+        $this->factory->fake([
+            'vapor.laravel.com' => $this->factory::response('foo', HttpResponse::HTTP_OK),
+            'forge.laravel.com' => $this->factory::response('bar', HttpResponse::HTTP_OK),
+        ]);
+
+        $response = null;
+        run(function () use (&$response) {
+            $response = parallel([
+                fn () => $this->factory->get('vapor.laravel.com'),
+                fn () => $this->factory->get('forge.laravel.com'),
+            ]);
+        });
+
+        $this->assertTrue($response[0]->body() === 'foo');
+        $this->assertTrue($response[1]->body() === 'bar');
+    }
+
+    public function testPoolableClient()
+    {
+        $container = $this->getContainer();
+
+        ApplicationContext::setContainer($container);
+
+        $this->factory->registerConnection('vapor');
+        $client = $this->factory->getClient('vapor', (new PendingRequest($this->factory))->buildHandlerStack());
+        $this->assertInstanceOf(ClientInterface::class, $client);
+    }
+
+    public function testGetConnectionConfigReturnsConfigForRegisteredConnection()
+    {
+        $factory = new Factory();
+        $factory->registerConnection('connection1');
+        $factory->setConnectionConfig('connection1', ['key' => 'value']);
+
+        $this->assertEquals(['key' => 'value'], $factory->getConnectionConfig('connection1'));
+    }
+
+    public function testGetEmptyConfigWhenConfigNotSet()
+    {
         $factory = new Factory();
 
-        $this->assertInstanceOf(PendingRequest::class, $factory->createPendingRequest());
+        $this->assertEquals([], $factory->getConnectionConfig('connection2'));
+    }
+
+    protected function getContainer(array $config = []): ContainerInterface
+    {
+        $config = new Config(['http_client' => $config]);
+
+        return new \Hyperf\Di\Container(
+            new \Hyperf\Di\Definition\DefinitionSource([
+                ConfigInterface::class => fn () => $config,
+            ])
+        );
     }
 }
 
@@ -3545,12 +3226,15 @@ class CustomFactory extends Factory
 {
     protected function newPendingRequest(): PendingRequest
     {
-        return new class extends PendingRequest {
-            protected function newResponse($response): Response
-            {
-                return new TestResponse($response);
-            }
-        };
+        return new TestPendingRequest($this);
+    }
+}
+
+class TestPendingRequest extends PendingRequest
+{
+    protected function newResponse($response): Response
+    {
+        return new TestResponse($response);
     }
 }
 

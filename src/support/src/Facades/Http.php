@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Facades;
 
 use LaravelHyperf\HttpClient\Factory;
-use LaravelHyperf\HttpClient\Response;
 
 /**
  * @method static \LaravelHyperf\HttpClient\Factory globalMiddleware(callable $middleware)
@@ -32,6 +31,19 @@ use LaravelHyperf\HttpClient\Response;
  * @method static \LaravelHyperf\HttpClient\PendingRequest createPendingRequest()
  * @method static \Psr\EventDispatcher\EventDispatcherInterface|null getDispatcher()
  * @method static array getGlobalMiddleware()
+ * @method static \LaravelHyperf\HttpClient\Factory registerConnection(string $name, array $config = [])
+ * @method static \GuzzleHttp\ClientInterface getClient(string|null $connection, \GuzzleHttp\HandlerStack $handlerStack, array|null $config = null)
+ * @method static \GuzzleHttp\ClientInterface createClient(\GuzzleHttp\HandlerStack $handlerStack)
+ * @method static array getConfig(string $name)
+ * @method static array getConnectionConfigs()
+ * @method static array getConnectionConfig(string $name)
+ * @method static \LaravelHyperf\HttpClient\Factory setConnectionConfig(string $name, array $config)
+ * @method static \LaravelHyperf\HttpClient\Factory setReleaseCallback(string $driver, \Closure $callback)
+ * @method static \Closure|null getReleaseCallback(string $driver)
+ * @method static \LaravelHyperf\HttpClient\Factory addPoolable(string $driver)
+ * @method static \LaravelHyperf\HttpClient\Factory removePoolable(string $driver)
+ * @method static array getPoolables()
+ * @method static \LaravelHyperf\HttpClient\Factory setPoolables(array $poolables)
  * @method static mixed macroCall(string $method, array $parameters)
  * @method static void macro(string $name, callable|object $macro)
  * @method static void mixin(object $mixin, bool $replace = true)
@@ -79,10 +91,8 @@ use LaravelHyperf\HttpClient\Response;
  * @method static \GuzzleHttp\Promise\PromiseInterface|\LaravelHyperf\HttpClient\Response patch(string $url, array $data = [])
  * @method static \GuzzleHttp\Promise\PromiseInterface|\LaravelHyperf\HttpClient\Response put(string $url, array $data = [])
  * @method static \GuzzleHttp\Promise\PromiseInterface|\LaravelHyperf\HttpClient\Response delete(string $url, array $data = [])
- * @method static array pool(callable $callback)
  * @method static \GuzzleHttp\Promise\PromiseInterface|\LaravelHyperf\HttpClient\Response send(string $method, string $url, array $options = [])
- * @method static \GuzzleHttp\Client buildClient()
- * @method static \GuzzleHttp\Client createClient(\GuzzleHttp\HandlerStack $handlerStack)
+ * @method static \GuzzleHttp\ClientInterface buildClient()
  * @method static \GuzzleHttp\HandlerStack buildHandlerStack()
  * @method static \GuzzleHttp\HandlerStack pushHandlers(\GuzzleHttp\HandlerStack $handlerStack)
  * @method static \Closure buildBeforeSendingHandler()
@@ -93,9 +103,11 @@ use LaravelHyperf\HttpClient\Response;
  * @method static \LaravelHyperf\HttpClient\PendingRequest stub(\LaravelHyperf\Support\Collection|callable $callback)
  * @method static \LaravelHyperf\HttpClient\PendingRequest async(bool $async = true)
  * @method static \GuzzleHttp\Promise\PromiseInterface|null getPromise()
- * @method static \LaravelHyperf\HttpClient\PendingRequest setClient(\GuzzleHttp\Client $client)
+ * @method static \LaravelHyperf\HttpClient\PendingRequest setClient(\GuzzleHttp\ClientInterface $client)
  * @method static \LaravelHyperf\HttpClient\PendingRequest setHandler(callable $handler)
  * @method static array getOptions()
+ * @method static \LaravelHyperf\HttpClient\PendingRequest connection(string $connection, array|null $config = null)
+ * @method static string|null getConnection()
  * @method static \LaravelHyperf\HttpClient\PendingRequest|mixed when(null|\Closure|mixed $value = null, null|callable $callback = null, null|callable $default = null, null|\Closure|mixed $value = null)
  * @method static \LaravelHyperf\HttpClient\PendingRequest|mixed unless(null|\Closure|mixed $value = null, null|callable $callback = null, null|callable $default = null, null|\Closure|mixed $value = null)
  *
