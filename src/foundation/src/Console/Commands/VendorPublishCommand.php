@@ -17,6 +17,7 @@ class VendorPublishCommand extends Command
 {
     protected ?string $signature = 'vendor:publish {package?}
                                     {--force : Overwrite any existing files}
+                                    {--tag : Tag name that have assets you want to publish}
                                     {--all : Publish assets for all service providers without prompt}
     ';
 
@@ -113,7 +114,10 @@ class VendorPublishCommand extends Command
     {
         $extra = Composer::getMergedExtra();
         $packages = array_map(
-            fn (array $package) => Arr::wrap(($package['hyperf'] ?? []) ?? []),
+            fn (array $package) => array_merge(
+                Arr::wrap(($package['hyperf'] ?? []) ?? []),
+                Arr::wrap(($package['laravel-hyperf'] ?? []) ?? []),
+            ),
             $extra
         );
         $packages = array_filter($packages, fn ($provider) => count($provider));
@@ -138,7 +142,8 @@ class VendorPublishCommand extends Command
 
         $providers = ServiceProvider::publishableProviders();
         foreach ($providers as $provider) {
-            if (! $laravelPublishes = ServiceProvider::pathsToPublish($provider)) {
+            $group = $this->option('tag') ?? null;
+            if (! $laravelPublishes = ServiceProvider::pathsToPublish($provider, $group)) {
                 continue;
             }
 

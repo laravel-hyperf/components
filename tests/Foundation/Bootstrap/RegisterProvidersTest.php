@@ -50,6 +50,7 @@ class RegisterProvidersTest extends TestCase
 
         // should not register TestThreeServiceProvider because of `dont-discover`
         $this->assertFalse($app->bound('baz'));
+        $this->assertFalse($app->bound('qux'));
     }
 }
 
@@ -79,6 +80,16 @@ class TestThreeServiceProvider extends ServiceProvider
     {
         $this->app->bind('baz', function () {
             return 'baz';
+        });
+    }
+}
+
+class TestFourServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->app->bind('qux', function () {
+            return 'qux';
         });
     }
 }

@@ -65,7 +65,7 @@ class ApplicationTestCase extends TestCase
         $content = [
             'packages' => [
                 [
-                    'name' => 'hyperf-testing',
+                    'name' => 'laravel-hyperf-testing',
                     'extra' => [
                         'hyperf' => [
                             'config' => BootstrapConfigProvider::get(),

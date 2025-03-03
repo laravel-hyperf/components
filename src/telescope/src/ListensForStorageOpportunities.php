@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Telescope;
 
+use Closure;
 use Hyperf\Command\Event\AfterExecute as AfterExecuteCommand;
 use Hyperf\Command\Event\BeforeHandle as BeforeHandleCommand;
 use Hyperf\Context\Context;
@@ -22,6 +23,11 @@ trait ListensForStorageOpportunities
     public const PROCESSING_JOBS = 'telescope.processing_jobs';
 
     /**
+     * The callback that determines if Telescope should start recording.
+     */
+    protected static ?Closure $shouldListenCallback = null;
+
+    /**
      * Register listeners that store the recorded Telescope entries.
      */
     public static function listenForStorageOpportunities(ContainerInterface $app): void
@@ -32,13 +38,35 @@ trait ListensForStorageOpportunities
     }
 
     /**
+     * Set the callback that determines if Telescope should start recording.
+     */
+    public static function shouldListenUsing(?Closure $callback): void
+    {
+        static::$shouldListenCallback = $callback;
+    }
+
+    /**
+     * Determine if Telescope should start recording.
+     */
+    public static function shouldListen(): bool
+    {
+        if (is_null(static::$shouldListenCallback)) {
+            return true;
+        }
+
+        return (bool) (static::$shouldListenCallback)();
+    }
+
+    /**
      * Record the entries in queue before the request termination.
      */
     public static function recordEntriesForRequests(ContainerInterface $app): void
     {
         $app->get(EventDispatcherInterface::class)
             ->listen(RequestReceived::class, function ($event) use ($app) {
-                if (static::requestIsToApprovedUri($app->get(RequestContract::class))) {
+                if (static::shouldListen()
+                    && static::requestIsToApprovedUri($app->get(RequestContract::class))
+                ) {
                     static::startRecording();
                 }
             });
@@ -51,7 +79,9 @@ trait ListensForStorageOpportunities
     {
         $app->get(EventDispatcherInterface::class)
             ->listen(BeforeHandleCommand::class, function () {
-                if (static::runningApprovedArtisanCommand()) {
+                if (static::shouldListen()
+                    && static::runningApprovedArtisanCommand()
+                ) {
                     static::startRecording();
                 }
             });
@@ -104,21 +134,30 @@ trait ListensForStorageOpportunities
     {
         $event = $app->get(EventDispatcherInterface::class);
         $event->listen(JobProcessing::class, function ($event) {
-            if ($event->connectionName !== 'sync') {
+            if (static::shouldListen() && $event->connectionName !== 'sync') {
                 static::startRecording();
                 static::addProcessingJob();
             }
         });
 
         $event->listen(JobProcessed::class, function ($event) use ($app) {
+            if (! static::shouldListen()) {
+                return;
+            }
             static::storeIfDoneProcessingJob($event, $app);
         });
 
         $event->listen(JobFailed::class, function ($event) use ($app) {
+            if (! static::shouldListen()) {
+                return;
+            }
             static::storeIfDoneProcessingJob($event, $app);
         });
 
         $event->listen(JobExceptionOccurred::class, function () {
+            if (! static::shouldListen()) {
+                return;
+            }
             static::popProcessingJob();
         });
     }
