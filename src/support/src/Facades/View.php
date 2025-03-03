@@ -64,7 +64,7 @@ use Hyperf\ViewEngine\Contract\FactoryInterface;
  * @method static mixed getSection(string $name, null|string $default = null)
  * @method static array getSections()
  * @method static void flushSections()
- * @method static void addLoop(null|array|Countable $data)
+ * @method static void addLoop(null|array|\Countable $data)
  * @method static void incrementLoopIndices()
  * @method static void popLoop()
  * @method static null|\stdClass|void getLastLoop()

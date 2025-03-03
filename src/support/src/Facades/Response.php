@@ -20,7 +20,7 @@ use LaravelHyperf\Http\Contracts\ResponseContract;
  * @method static bool shouldAppendRangeHeaders()
  * @method static \Psr\Http\Message\ResponseInterface xml(array|\Hyperf\Contract\Arrayable|\Hyperf\Contract\Xmlable $data, string $root = 'root', string $charset = 'utf-8')
  * @method static \Psr\Http\Message\ResponseInterface html(string $html, string $charset = 'utf-8')
- * @method static \Psr\Http\Message\ResponseInterface raw(mixed|Stringable $data, string $charset = 'utf-8')
+ * @method static \Psr\Http\Message\ResponseInterface raw(mixed|\Stringable $data, string $charset = 'utf-8')
  * @method static \Psr\Http\Message\ResponseInterface redirect(string $toUrl, int $status = 302, string $schema = 'http')
  * @method static \Psr\Http\Message\ResponseInterface download(string $file, string $name = '')
  * @method static \Hyperf\HttpServer\Contract\ResponseInterface withCookie(\Hyperf\HttpMessage\Cookie\Cookie $cookie)
