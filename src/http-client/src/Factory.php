@@ -14,14 +14,12 @@ use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response as Psr7Response;
 use GuzzleHttp\TransferStats;
-use Hyperf\Contract\ConfigInterface;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Str;
 use InvalidArgumentException;
 use LaravelHyperf\ObjectPool\Traits\HasPoolProxy;
 use LaravelHyperf\Support\Collection;
 use PHPUnit\Framework\Assert as PHPUnit;
-use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Throwable;
 
@@ -84,12 +82,15 @@ class Factory
      */
     protected array $connections = [];
 
+    /**
+     * The configuration for all registered connections.
+     */
     protected array $connectionConfigs = [];
 
     /**
      * Create a new factory instance.
      */
-    public function __construct(protected ContainerInterface $app, protected ?EventDispatcherInterface $dispatcher = null)
+    public function __construct(protected ?EventDispatcherInterface $dispatcher = null)
     {
         $this->stubCallbacks = new Collection();
     }
@@ -434,9 +435,10 @@ class Factory
     /**
      * Register a connection with the given name and configuration.
      */
-    public function registerConnection(string $name): static
+    public function registerConnection(string $name, array $config = []): static
     {
         $this->addPoolable($name);
+        $this->setConnectionConfig($name, $config);
 
         return $this;
     }
@@ -453,6 +455,7 @@ class Factory
 
     /**
      * Resolve the HTTP client for the specified connection.
+     *
      * @throws Throwable
      */
     protected function resolve(?string $name, HandlerStack $handlerStack, ?array $config = null): ClientInterface
@@ -461,15 +464,14 @@ class Factory
             return $this->createClient($handlerStack);
         }
 
-        throw_if(! in_array($name, $this->poolables), new InvalidArgumentException("Connection [{$name}] not registered."));
-
-        $poolProxyConfig = $config ?? $this->getConnectionConfig($name);
-        $this->setConnectionConfig($name, $poolProxyConfig);
+        if (! in_array($name, $this->poolables)) {
+            throw new InvalidArgumentException("Connection [{$name}] is not registered.");
+        }
 
         return $this->connections[$name] ??= $this->createPoolProxy(
             $name,
             fn () => $this->createClient($handlerStack),
-            $poolProxyConfig
+            $config ?? $this->getConnectionConfig($name)
         );
     }
 
@@ -485,15 +487,6 @@ class Factory
     }
 
     /**
-     * Get the http client configuration.
-     */
-    public function getConfig(string $name): array
-    {
-        return $this->app->get(ConfigInterface::class)
-            ->get("http_client.{$name}", []);
-    }
-
-    /**
      * Get the configuration for all connections.
      */
     public function getConnectionConfigs(): array
@@ -506,9 +499,7 @@ class Factory
      */
     public function getConnectionConfig(string $name): array
     {
-        throw_if(! in_array($name, $this->poolables), new InvalidArgumentException("Connection [{$name}] not registered."));
-
-        return $this->connectionConfigs[$name] ?? $this->getConfig('connection.pool');
+        return $this->connectionConfigs[$name] ?? [];
     }
 
     /**
@@ -516,10 +507,6 @@ class Factory
      */
     public function setConnectionConfig(string $name, array $config): static
     {
-        if (isset($this->connectionConfigs[$name])) {
-            return $this;
-        }
-
         $this->connectionConfigs[$name] = $config;
 
         return $this;

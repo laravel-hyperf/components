@@ -31,7 +31,7 @@ use LaravelHyperf\HttpClient\Factory;
  * @method static \LaravelHyperf\HttpClient\PendingRequest createPendingRequest()
  * @method static \Psr\EventDispatcher\EventDispatcherInterface|null getDispatcher()
  * @method static array getGlobalMiddleware()
- * @method static \LaravelHyperf\HttpClient\Factory registerConnection(string $name)
+ * @method static \LaravelHyperf\HttpClient\Factory registerConnection(string $name, array $config = [])
  * @method static \GuzzleHttp\ClientInterface getClient(string|null $connection, \GuzzleHttp\HandlerStack $handlerStack, array|null $config = null)
  * @method static \GuzzleHttp\ClientInterface createClient(\GuzzleHttp\HandlerStack $handlerStack)
  * @method static array getConfig(string $name)

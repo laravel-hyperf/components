@@ -18,7 +18,6 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\ContainerInterface;
 use Hyperf\Stringable\Str;
 use Hyperf\Stringable\Stringable;
-use InvalidArgumentException;
 use JsonSerializable;
 use LaravelHyperf\Http\Response as HttpResponse;
 use LaravelHyperf\HttpClient\ConnectionException;
@@ -61,7 +60,7 @@ class HttpClientTest extends TestCase
     {
         parent::setUp();
 
-        $this->factory = new Factory($this->getContainer());
+        $this->factory = new Factory();
 
         RequestException::truncate();
     }
@@ -1740,7 +1739,7 @@ class HttpClientTest extends TestCase
         $events->shouldReceive('dispatch')->times(5)->with(m::type(RequestSending::class));
         $events->shouldReceive('dispatch')->times(5)->with(m::type(ResponseReceived::class));
 
-        $factory = new Factory($this->getContainer(), $events);
+        $factory = new Factory($events);
         $factory->fake();
 
         $factory->get('https://example.com');
@@ -1757,7 +1756,7 @@ class HttpClientTest extends TestCase
         $events->shouldReceive('dispatch')->times(2)->with(m::type(RequestSending::class));
         $events->shouldReceive('dispatch')->times(2)->with(m::type(ResponseReceived::class));
 
-        $factory = new Factory($this->getContainer(), $events);
+        $factory = new Factory($events);
         $factory->fake([
             '*' => $factory->response(['error'], 403),
         ]);
@@ -1795,7 +1794,7 @@ class HttpClientTest extends TestCase
         $events->shouldReceive('dispatch')->once()->with(m::type(RequestSending::class));
         $events->shouldReceive('dispatch')->once()->with(m::type(ResponseReceived::class));
 
-        $factory = new Factory($this->getContainer(), $events);
+        $factory = new Factory($events);
         $factory->fake(['example.com' => $factory->response('foo', 200)]);
 
         $client = $factory->timeout(10);
@@ -3084,7 +3083,7 @@ class HttpClientTest extends TestCase
 
     public function testItCanReturnCustomResponseClass(): void
     {
-        $factory = new CustomFactory($this->getContainer());
+        $factory = new CustomFactory();
 
         $factory->fake([
             '*' => $factory::response('expected content'),
@@ -3197,35 +3196,18 @@ class HttpClientTest extends TestCase
 
     public function testGetConnectionConfigReturnsConfigForRegisteredConnection()
     {
-        $factory = new Factory($this->getContainer());
+        $factory = new Factory();
         $factory->registerConnection('connection1');
         $factory->setConnectionConfig('connection1', ['key' => 'value']);
 
         $this->assertEquals(['key' => 'value'], $factory->getConnectionConfig('connection1'));
     }
 
-    public function testGetConnectionConfigThrowsExceptionForUnregisteredConnection()
+    public function testGetEmptyConfigWhenConfigNotSet()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Connection [connection2] not registered.');
+        $factory = new Factory();
 
-        $containerMock = m::mock(ContainerInterface::class);
-        $factory = new Factory($containerMock);
-
-        $factory->getConnectionConfig('connection2');
-    }
-
-    public function testGetConnectionConfigReturnsDefaultConfigWhenNotSet()
-    {
-        $configMock = m::mock(ConfigInterface::class);
-        $configMock->shouldReceive('get')->with('http_client.connection.pool', [])->andReturn(['default_key' => 'default_value']);
-        $containerMock = m::mock(ContainerInterface::class);
-        $containerMock->shouldReceive('get')->with(ConfigInterface::class)->andReturn($configMock);
-
-        $factory = new Factory($containerMock);
-        $factory->registerConnection('connection3');
-
-        $this->assertEquals(['default_key' => 'default_value'], $factory->getConnectionConfig('connection3'));
+        $this->assertEquals([], $factory->getConnectionConfig('connection2'));
     }
 
     protected function getContainer(array $config = []): ContainerInterface
