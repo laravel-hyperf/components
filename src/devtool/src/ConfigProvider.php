@@ -15,7 +15,9 @@ use LaravelHyperf\Devtool\Generator\EventCommand;
 use LaravelHyperf\Devtool\Generator\FactoryCommand;
 use LaravelHyperf\Devtool\Generator\JobCommand;
 use LaravelHyperf\Devtool\Generator\ListenerCommand;
+use LaravelHyperf\Devtool\Generator\MailCommand;
 use LaravelHyperf\Devtool\Generator\ModelCommand;
+use LaravelHyperf\Devtool\Generator\NotificationCommand;
 use LaravelHyperf\Devtool\Generator\NotificationTableCommand;
 use LaravelHyperf\Devtool\Generator\ObserverCommand;
 use LaravelHyperf\Devtool\Generator\ProviderCommand;
@@ -58,6 +60,8 @@ class ConfigProvider
                 JobCommand::class,
                 ChannelCommand::class,
                 ObserverCommand::class,
+                NotificationCommand::class,
+                MailCommand::class,
             ],
         ];
     }
