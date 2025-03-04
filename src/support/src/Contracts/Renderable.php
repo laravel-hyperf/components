@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Contracts;
 
-interface Renderable
+use Hyperf\ViewEngine\Contract\Renderable as BaseRenderable;
+
+interface Renderable extends BaseRenderable
 {
     /**
      * Get the evaluated contents of the object.

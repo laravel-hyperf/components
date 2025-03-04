@@ -15,6 +15,7 @@ use Hyperf\HttpServer\CoreMiddleware as HyperfCoreMiddleware;
 use Hyperf\HttpServer\Router\Dispatched;
 use Hyperf\Server\Exception\ServerException;
 use Hyperf\View\RenderInterface;
+use Hyperf\ViewEngine\Contract\Renderable;
 use Hyperf\ViewEngine\Contract\ViewInterface;
 use LaravelHyperf\HttpMessage\Exceptions\ServerErrorHttpException;
 use LaravelHyperf\View\Events\ViewRendered;
@@ -29,19 +30,21 @@ class CoreMiddleware extends HyperfCoreMiddleware
     /**
      * Transfer the non-standard response content to a standard response object.
      *
-     * @param null|array|Arrayable|Jsonable|ResponseInterface|string $response
+     * @param null|array|Arrayable|Jsonable|Renderable|ResponseInterface|string|ViewInterface $response
      */
     protected function transferToResponse($response, ServerRequestInterface $request): ResponsePlusInterface
     {
-        if ($response instanceof ViewInterface) {
-            if ($this->container->get(ConfigInterface::class)->get('view.event.enable', false)) {
-                $this->container->get(EventDispatcherInterface::class)
-                    ->dispatch(new ViewRendered($response));
+        if ($response instanceof Renderable) {
+            if ($response instanceof ViewInterface) {
+                if ($this->container->get(ConfigInterface::class)->get('view.event.enable', false)) {
+                    $this->container->get(EventDispatcherInterface::class)
+                        ->dispatch(new ViewRendered($response));
+                }
             }
 
             return $this->response()
                 ->setHeader('Content-Type', $this->container->get(RenderInterface::class)->getContentType())
-                ->setBody(new SwooleStream((string) $response));
+                ->setBody(new SwooleStream($response->render()));
         }
 
         return parent::transferToResponse($response, $request);
