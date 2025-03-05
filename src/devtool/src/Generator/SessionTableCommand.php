@@ -72,10 +72,9 @@ class SessionTableCommand extends GeneratorCommand
 
     protected function getOptions(): array
     {
-        return [
-            ['force', 'f', InputOption::VALUE_NONE, 'Whether force to rewrite.'],
+        return array_merge(parent::getOptions(), [
             ['path', 'p', InputOption::VALUE_OPTIONAL, 'The path of the sessions table migration.'],
-        ];
+        ]);
     }
 
     protected function getDefaultNamespace(): string
