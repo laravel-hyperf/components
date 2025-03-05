@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Tests\Foundation\Testing\Concerns;
 
-use Hyperf\HttpMessage\Server\Response;
 use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
+use LaravelHyperf\Foundation\Testing\Http\ServerResponse;
 use LaravelHyperf\Foundation\Testing\Http\TestResponse;
 use LaravelHyperf\Foundation\Testing\Stubs\FakeMiddleware;
 use LaravelHyperf\Router\RouteFileCollector;
@@ -117,7 +117,7 @@ class MakesHttpRequestsTest extends ApplicationTestCase
         $this->app->get(RouteFileCollector::class)
             ->addRouteFile(BASE_PATH . '/routes/test-api.php');
 
-        $response = (new Response())
+        $response = (new ServerResponse())
             ->withStatus(301)
             ->withHeader('Location', 'http://localhost/foo');
 
@@ -164,6 +164,16 @@ class MakesHttpRequestsTest extends ApplicationTestCase
                 'request_uri' => 'server-params',
                 'query_string' => 'foo=bar',
             ]);
+    }
+
+    public function testGetStreamedContent()
+    {
+        $this->app->get(RouteFileCollector::class)
+            ->addRouteFile(BASE_PATH . '/routes/test-api.php');
+
+        $this->get('/stream')
+            ->assertSuccessFul()
+            ->assertStreamedContent('stream');
     }
 }
 

@@ -15,3 +15,9 @@ Route::get('/server-params', function (Request $request, Response $response) {
         $request->getServerParams()
     );
 });
+
+Route::get('/stream', function (Request $request, Response $response) {
+    return $response->stream(function () {
+        return 'stream';
+    });
+});
