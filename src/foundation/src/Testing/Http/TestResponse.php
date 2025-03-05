@@ -11,10 +11,17 @@ use Hyperf\Context\ApplicationContext;
 use Hyperf\Contract\SessionInterface;
 use Hyperf\Testing\Http\TestResponse as HyperfTestResponse;
 use PHPUnit\Framework\Assert as PHPUnit;
+use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
 class TestResponse extends HyperfTestResponse
 {
+    public function __construct(protected ResponseInterface $response)
+    {
+        /** @var \LaravelHyperf\Foundation\Testing\Http\ServerResponse $response */
+        $this->streamedContent = $response->getStreamedContent();
+    }
+
     /**
      * Asserts that the response contains the given header and equals the optional value.
      *

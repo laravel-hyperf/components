@@ -10,7 +10,6 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Dispatcher\HttpDispatcher;
 use Hyperf\ExceptionHandler\ExceptionHandlerDispatcher;
 use Hyperf\HttpMessage\Server\Request as Psr7Request;
-use Hyperf\HttpMessage\Server\Response as Psr7Response;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpMessage\Uri\Uri;
 use Hyperf\HttpServer\Event\RequestHandled;
@@ -212,7 +211,7 @@ class TestClient extends HttpKernel
 
     protected function execute(ServerRequestInterface $psr7Request): ResponseInterface
     {
-        $this->persistToContext($psr7Request, $psr7Response = new Psr7Response());
+        $this->persistToContext($psr7Request, $psr7Response = new ServerResponse());
 
         $this->event?->dispatch(new RequestReceived(
             request: $psr7Request,
