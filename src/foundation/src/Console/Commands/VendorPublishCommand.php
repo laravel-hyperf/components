@@ -17,7 +17,7 @@ class VendorPublishCommand extends Command
 {
     protected ?string $signature = 'vendor:publish {package?}
                                     {--force : Overwrite any existing files}
-                                    {--tag : Tag name that have assets you want to publish}
+                                    {--tag= : Tag name that have assets you want to publish}
                                     {--all : Publish assets for all service providers without prompt}
     ';
 
