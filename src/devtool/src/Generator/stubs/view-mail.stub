@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+
+namespace %NAMESPACE%;
+
+use LaravelHyperf\Bus\Queueable;
+use LaravelHyperf\Mail\Mailable;
+use LaravelHyperf\Mail\Mailables\Content;
+use LaravelHyperf\Mail\Mailables\Envelope;
+use LaravelHyperf\Queue\Contracts\ShouldQueue;
+use LaravelHyperf\Queue\SerializesModels;
+
+class %CLASS% extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * Create a new message instance.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            subject: '%SUBJECT%',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            view: '%VIEW%',
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, \LaravelHyperf\Mail\Mailables\Attachment>
+     */
+    public function attachments(): array
+    {
+        return [];
+    }
+}
