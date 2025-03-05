@@ -25,6 +25,7 @@
         "laravel-hyperf/core": "^0.1",
         "laravel-hyperf/filesystem": "^0.1",
         "laravel-hyperf/support": "^0.1",
+        "laravel-hyperf/http": "^0.1",
         "hyperf/config": "~3.1.0",
         "hyperf/di": "~3.1.0",
         "hyperf/support": "~3.1.0",

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Foundation\Providers;
 
 use Hyperf\Validation\Contract\ValidatesWhenResolved;
+use LaravelHyperf\Http\RouteDependency;
 use LaravelHyperf\Support\ServiceProvider;
 
 class FormRequestServiceProvider extends ServiceProvider
@@ -14,8 +15,9 @@ class FormRequestServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app->resolving(ValidatesWhenResolved::class, function (ValidatesWhenResolved $request) {
-            $request->validateResolved();
-        });
+        $this->app->get(RouteDependency::class)
+            ->afterResolving(ValidatesWhenResolved::class, function (ValidatesWhenResolved $request) {
+                $request->validateResolved();
+            });
     }
 }
