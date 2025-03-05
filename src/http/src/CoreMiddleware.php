@@ -6,26 +6,46 @@ namespace LaravelHyperf\Http;
 
 use Closure;
 use FastRoute\Dispatcher;
+use Hyperf\Codec\Json;
 use Hyperf\Context\RequestContext;
 use Hyperf\Contract\Arrayable;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\Jsonable;
+use Hyperf\HttpMessage\Server\ResponsePlusProxy;
 use Hyperf\HttpMessage\Stream\SwooleStream;
-use Hyperf\HttpServer\CoreMiddleware as HyperfCoreMiddleware;
+use Hyperf\HttpServer\Contract\CoreMiddlewareInterface;
 use Hyperf\HttpServer\Router\Dispatched;
+use Hyperf\HttpServer\Router\DispatcherFactory;
 use Hyperf\Server\Exception\ServerException;
 use Hyperf\View\RenderInterface;
 use Hyperf\ViewEngine\Contract\ViewInterface;
+use LaravelHyperf\Context\ResponseContext;
+use LaravelHyperf\HttpMessage\Exceptions\MethodNotAllowedHttpException;
+use LaravelHyperf\HttpMessage\Exceptions\NotFoundHttpException;
 use LaravelHyperf\HttpMessage\Exceptions\ServerErrorHttpException;
 use LaravelHyperf\View\Events\ViewRendered;
+use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 use Swow\Psr7\Message\ResponsePlusInterface;
 
-class CoreMiddleware extends HyperfCoreMiddleware
+class CoreMiddleware implements CoreMiddlewareInterface
 {
+    protected Dispatcher $dispatcher;
+
+    protected RouteDependency $routeDependency;
+
+    public function __construct(
+        protected ContainerInterface $container,
+        protected string $serverName
+    ) {
+        $this->dispatcher = $this->createDispatcher($serverName);
+        $this->routeDependency = $container->get(RouteDependency::class);
+    }
+
     /**
      * Transfer the non-standard response content to a standard response object.
      *
@@ -44,7 +64,56 @@ class CoreMiddleware extends HyperfCoreMiddleware
                 ->setBody(new SwooleStream((string) $response));
         }
 
-        return parent::transferToResponse($response, $request);
+        if (is_string($response)) {
+            return $this->response()->addHeader('content-type', 'text/plain')->setBody(new SwooleStream($response));
+        }
+
+        if ($response instanceof ResponseInterface) {
+            return new ResponsePlusProxy($response);
+        }
+
+        if (is_array($response) || $response instanceof Arrayable) {
+            return $this->response()
+                ->addHeader('content-type', 'application/json')
+                ->setBody(new SwooleStream(Json::encode($response)));
+        }
+
+        if ($response instanceof Jsonable) {
+            return $this->response()
+                ->addHeader('content-type', 'application/json')
+                ->setBody(new SwooleStream((string) $response));
+        }
+
+        if ($this->response()->hasHeader('content-type')) {
+            return $this->response()->setBody(new SwooleStream((string) $response));
+        }
+
+        return $this->response()
+            ->addHeader('content-type', 'text/plain')
+            ->setBody(new SwooleStream((string) $response));
+    }
+
+    /**
+     * Get response instance from context.
+     */
+    protected function response(): ResponsePlusInterface
+    {
+        return ResponseContext::get();
+    }
+
+    protected function createDispatcher(string $serverName): Dispatcher
+    {
+        return $this->container->get(DispatcherFactory::class)
+            ->getDispatcher($serverName);
+    }
+
+    public function dispatch(ServerRequestInterface $request): ServerRequestInterface
+    {
+        $routes = $this->dispatcher->dispatch($request->getMethod(), $request->getUri()->getPath());
+
+        $dispatched = new Dispatched($routes, $this->serverName);
+
+        return RequestContext::set($request)->setAttribute(Dispatched::class, $dispatched);
     }
 
     /**
@@ -55,10 +124,11 @@ class CoreMiddleware extends HyperfCoreMiddleware
     protected function handleFound(Dispatched $dispatched, ServerRequestInterface $request): mixed
     {
         if ($dispatched->handler->callback instanceof Closure) {
-            $parameters = $this->parseClosureParameters($dispatched->handler->callback, $dispatched->params);
-            $callback = $dispatched->handler->callback;
+            if ($parameters = $this->routeDependency->getClosureParameters($dispatched->handler->callback, $dispatched->params)) {
+                $this->routeDependency->fireAfterResolvingCallbacks($parameters, $dispatched);
+            }
 
-            return $callback(...$parameters);
+            return ($dispatched->handler->callback)(...$parameters);
         }
 
         [$controller, $action] = $this->prepareHandler($dispatched->handler->callback);
@@ -67,7 +137,10 @@ class CoreMiddleware extends HyperfCoreMiddleware
             throw new ServerErrorHttpException("{$controller}@{$action} does not exist.");
         }
 
-        $parameters = $this->parseMethodParameters($controller, $action, $dispatched->params);
+        if ($parameters = $this->routeDependency->getMethodParameters($controller, $action, $dispatched->params)) {
+            $this->routeDependency->fireAfterResolvingCallbacks($parameters, $dispatched);
+        }
+
         if (method_exists($controllerInstance, 'callAction')) {
             return $controllerInstance->callAction($action, $parameters);
         }
@@ -102,5 +175,38 @@ class CoreMiddleware extends HyperfCoreMiddleware
         }
 
         return $response->addHeader('Server', 'Laravel Hyperf');
+    }
+
+    /**
+     * Handle the response when cannot found any routes.
+     */
+    protected function handleNotFound(ServerRequestInterface $request): mixed
+    {
+        throw new NotFoundHttpException();
+    }
+
+    /**
+     * Handle the response when the routes found but doesn't match any available methods.
+     */
+    protected function handleMethodNotAllowed(array $methods, ServerRequestInterface $request): mixed
+    {
+        throw new MethodNotAllowedHttpException('Allow: ' . implode(', ', $methods));
+    }
+
+    protected function prepareHandler(array|string $handler): array
+    {
+        if (is_string($handler)) {
+            if (str_contains($handler, '@')) {
+                return explode('@', $handler);
+            }
+            if (str_contains($handler, '::')) {
+                return explode('::', $handler);
+            }
+            return [$handler, '__invoke'];
+        }
+        if (is_array($handler) && isset($handler[0], $handler[1])) {
+            return $handler;
+        }
+        throw new RuntimeException("Route handler doesn't exist.");
     }
 }
