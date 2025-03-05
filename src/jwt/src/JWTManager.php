@@ -14,6 +14,7 @@ use LaravelHyperf\JWT\Exceptions\TokenBlacklistedException;
 use LaravelHyperf\JWT\Providers\Lcobucci;
 use LaravelHyperf\Support\Manager;
 use Psr\Container\ContainerInterface;
+use RuntimeException;
 
 class JWTManager extends Manager implements ManagerContract
 {
@@ -39,7 +40,13 @@ class JWTManager extends Manager implements ManagerContract
      */
     public function createLcobucciDriver(): Lcobucci
     {
-        return new Lcobucci(
+        $class = $this->config->get('jwt.providers.jwt', Lcobucci::class);
+
+        if (! is_subclass_of($class, Lcobucci::class)) {
+            throw new RuntimeException('JWT provider must be an instance of ' . Lcobucci::class);
+        }
+
+        return new $class(
             (string) $this->config->get('jwt.secret'),
             (string) $this->config->get('jwt.algo'),
             (array) $this->config->get('jwt.keys'),
