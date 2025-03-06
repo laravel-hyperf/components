@@ -42,7 +42,7 @@ class JWTManager extends Manager implements ManagerContract
     {
         $class = $this->config->get('jwt.providers.jwt', Lcobucci::class);
 
-        if (! is_subclass_of($class, Lcobucci::class)) {
+        if (! is_a($class, Lcobucci::class, true)) {
             throw new RuntimeException('JWT provider must be an instance of ' . Lcobucci::class);
         }
 

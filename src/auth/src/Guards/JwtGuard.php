@@ -74,7 +74,7 @@ class JwtGuard implements Guard
         $token = $this->jwtManager->encode(array_merge([
             'sub' => $user->getAuthIdentifier(),
             'iat' => $now->copy()->timestamp,
-            'exp' => $now->copy()->addSeconds($this->ttl)->timestamp,
+            'exp' => $now->copy()->addMinutes($this->ttl)->timestamp,
         ], $claims));
 
         // if there's no token, then set cache key to `default`
