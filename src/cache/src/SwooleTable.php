@@ -52,9 +52,11 @@ class SwooleTable extends Table
 
             if ($type == Table::TYPE_STRING && strlen($value) > $size) {
                 throw new ValueTooLargeForColumnException(sprintf(
-                    'Value [%s...] is too large for [%s] column.',
+                    'Value [%s...] is too large for [%s] column. Should be less than %d characters but got %d characters.',
                     substr($value, 0, 20),
                     $column,
+                    $size,
+                    strlen($value)
                 ));
             }
         };
