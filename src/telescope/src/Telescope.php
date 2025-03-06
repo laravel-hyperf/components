@@ -39,6 +39,8 @@ class Telescope
 
     public const SHOULD_RECORD = 'telescope.should_record';
 
+    public const IS_RECORDING = 'telescope.is_recording';
+
     /**
      * The callbacks that filter the entries that should be recorded.
      */
@@ -267,6 +269,12 @@ class Telescope
             return;
         }
 
+        if (Context::get(static::IS_RECORDING, false)) {
+            return;
+        }
+
+        Context::set(static::IS_RECORDING, true);
+
         try {
             if (Auth::hasUser()) {
                 $entry->user(Auth::user());
@@ -290,6 +298,8 @@ class Telescope
                 call_user_func(static::$afterRecordingHook, new static(), $entry);
             }
         });
+
+        Context::set(static::IS_RECORDING, false);
     }
 
     /**
