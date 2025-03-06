@@ -95,7 +95,7 @@ class Kernel extends HyperfServer implements MiddlewareContract
         }
     }
 
-    protected function dispatchRequestReceivedEvent(Request $request, Response $response): void
+    protected function dispatchRequestReceivedEvent(Request $request, ResponseInterface $response): void
     {
         if (! $this->option?->isEnableRequestLifecycle()) {
             return;
@@ -108,7 +108,7 @@ class Kernel extends HyperfServer implements MiddlewareContract
         ));
     }
 
-    protected function dispatchRequestHandledEvents(Request $request, Response $response, ?Throwable $throwable = null): void
+    protected function dispatchRequestHandledEvents(Request $request, ResponseInterface $response, ?Throwable $throwable = null): void
     {
         if (! $this->option?->isEnableRequestLifecycle()) {
             return;
