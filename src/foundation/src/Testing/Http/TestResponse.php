@@ -18,8 +18,10 @@ class TestResponse extends HyperfTestResponse
 {
     public function __construct(protected ResponseInterface $response)
     {
-        /** @var \LaravelHyperf\Foundation\Testing\Http\ServerResponse $response */
-        $this->streamedContent = $response->getStreamedContent();
+        if (method_exists($response, 'getStreamedContent')) {
+            /** @var \LaravelHyperf\Foundation\Testing\Http\ServerResponse $response */
+            $this->streamedContent = $response->getStreamedContent();
+        }
     }
 
     /**

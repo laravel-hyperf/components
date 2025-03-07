@@ -235,7 +235,6 @@ if (! function_exists('config')) {
      * If an array is passed as the key, we will assume you want to set an array of values.
      *
      * @param null|array<string, mixed>|string $key
-     * @param null|string $default
      * @return ($key is null ? \LaravelHyperf\Config\Contracts\Repository : ($key is string ? mixed : null))
      */
     function config(mixed $key = null, mixed $default = null): mixed
