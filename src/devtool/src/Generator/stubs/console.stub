@@ -10,15 +10,11 @@ class %CLASS% extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var null|string
      */
     protected ?string $signature = '%COMMAND%';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
     protected string $description = 'Command description';
 
