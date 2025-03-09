@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Foundation;
 
 use Hyperf\Di\Annotation\ScanConfig;
+use Hyperf\Di\Annotation\Scanner as AnnotationScanner;
 use Hyperf\Di\LazyLoader\LazyLoader;
 use Hyperf\Di\ScanHandler\PcntlScanHandler;
 use Hyperf\Di\ScanHandler\ScanHandlerInterface;
@@ -44,7 +45,7 @@ class ClassLoader
     protected static function setParameters(?string $proxyFileDirPath = null, ?string $configDir = null, ?ScanHandlerInterface $handler = null): void
     {
         static::$proxyFileDirPath = $proxyFileDirPath
-            ?? BASE_PATH . '/storage/framework/container/proxy/';
+            ?? BASE_PATH . '/runtime/container/proxy/';
 
         static::$configDir = $configDir ?? BASE_PATH . '/config/';
 
