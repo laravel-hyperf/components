@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Cache;
 
+use LaravelHyperf\Cache\Console\ClearCommand;
 use LaravelHyperf\Cache\Contracts\Factory;
 use LaravelHyperf\Cache\Contracts\Store;
 use LaravelHyperf\Cache\Listeners\CreateSwooleTable;
@@ -21,6 +22,9 @@ class ConfigProvider
             'listeners' => [
                 CreateSwooleTable::class,
                 CreateTimer::class,
+            ],
+            'commands' => [
+                ClearCommand::class,
             ],
             'publish' => [
                 [
