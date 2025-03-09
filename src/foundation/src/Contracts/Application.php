@@ -35,7 +35,7 @@ interface Application extends Container
     public function setBasePath(string $basePath): static;
 
     /**
-     * Get the base path of the Laravel installation.
+     * Get the base path of the Laravel Hyperf installation.
      */
     public function basePath(string $path = ''): string;
 
