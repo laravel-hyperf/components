@@ -159,7 +159,7 @@ class Application extends Container implements ApplicationContract
     }
 
     /**
-     * Get the base path of the Laravel installation.
+     * Get the base path of the Laravel Hyperf installation.
      */
     public function basePath(string $path = ''): string
     {
