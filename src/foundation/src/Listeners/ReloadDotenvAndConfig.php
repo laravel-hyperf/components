@@ -48,7 +48,6 @@ class ReloadDotenvAndConfig implements ListenerInterface
 
     protected function reloadConfig(): void
     {
-        /* @phpstan-ignore-next-line */
         $this->container->unbind(ConfigInterface::class);
     }
 
