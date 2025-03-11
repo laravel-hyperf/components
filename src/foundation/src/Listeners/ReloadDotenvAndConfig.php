@@ -8,7 +8,7 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Event\Contract\ListenerInterface;
 use Hyperf\Framework\Event\BeforeWorkerStart;
 use Hyperf\Support\DotenvManager;
-use Psr\Container\ContainerInterface;
+use LaravelHyperf\Foundation\Contracts\Application as ApplicationContract;
 
 class ReloadDotenvAndConfig implements ListenerInterface
 {
@@ -16,11 +16,10 @@ class ReloadDotenvAndConfig implements ListenerInterface
 
     protected static bool $stopCallback = false;
 
-    public function __construct(protected ContainerInterface $container)
+    public function __construct(protected ApplicationContract $container)
     {
         $this->setConfigCallback();
 
-        /** @var \LaravelHyperf\Container\Contracts\Container $container */
         $container->afterResolving(ConfigInterface::class, function (ConfigInterface $config) {
             if (static::$stopCallback) {
                 return;
@@ -49,15 +48,16 @@ class ReloadDotenvAndConfig implements ListenerInterface
 
     protected function reloadConfig(): void
     {
-        /* @phpstan-ignore-next-line */
         $this->container->unbind(ConfigInterface::class);
     }
 
     protected function reloadDotenv(): void
     {
-        if (file_exists(BASE_PATH . '/.env')) {
-            DotenvManager::reload([BASE_PATH]);
+        if (! file_exists($basePath = $this->container->basePath())) {
+            return;
         }
+
+        DotenvManager::reload([$basePath]);
     }
 
     protected function setConfigCallback(): void

@@ -25,6 +25,11 @@ class RouteDependency
      */
     protected array $resolvedCallbacks = [];
 
+    /**
+     * Indicates if the resolvingCallbacks has been registered.
+     */
+    protected bool $resolvingCallbacksRegistered = false;
+
     public function __construct(
         protected ContainerInterface $container,
         protected NormalizerInterface $normalizer,
@@ -42,6 +47,10 @@ class RouteDependency
             throw new InvalidArgumentException("Class '{$class}' does not exist");
         }
 
+        if (! $this->resolvingCallbacksRegistered) {
+            $this->resolvingCallbacksRegistered = true;
+        }
+
         $this->afterResolvingCallbacks[$class][] = $callback;
     }
 
@@ -50,6 +59,10 @@ class RouteDependency
      */
     public function fireAfterResolvingCallbacks(array $dependencies, Dispatched $dispatched): void
     {
+        if (! $this->resolvingCallbacksRegistered) {
+            return;
+        }
+
         foreach ($dependencies as $dependency) {
             if (! is_object($dependency)) {
                 continue;
