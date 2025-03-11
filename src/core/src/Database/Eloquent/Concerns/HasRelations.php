@@ -13,6 +13,7 @@ trait HasRelations
     {
         $model = clone $this;
 
+        /* @phpstan-ignore-next-line */
         return $model->unsetRelations();
     }
 }
