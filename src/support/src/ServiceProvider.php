@@ -118,16 +118,11 @@ abstract class ServiceProvider
     protected function loadViewsFrom(array|string $path, string $namespace): void
     {
         $this->callAfterResolving(ViewFactoryContract::class, function ($view) use ($path, $namespace) {
-            $viewPaths = $this->app->get(ConfigInterface::class)
+            $viewPath = $this->app->get(ConfigInterface::class)
                 ->get('view.config.view_path', null);
-            if (! is_array($viewPaths)) {
-                return;
-            }
 
-            foreach ($viewPaths as $viewPath) {
-                if (is_dir($appPath = $viewPath . '/vendor/' . $namespace)) {
-                    $view->addNamespace($namespace, $appPath);
-                }
+            if (is_dir($appPath = $viewPath . '/vendor/' . $namespace)) {
+                $view->addNamespace($namespace, $appPath);
             }
 
             $view->addNamespace($namespace, $path);
