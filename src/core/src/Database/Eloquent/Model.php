@@ -9,11 +9,13 @@ use Hyperf\Stringable\Str;
 use LaravelHyperf\Broadcasting\Contracts\HasBroadcastChannel;
 use LaravelHyperf\Database\Eloquent\Concerns\HasCallbacks;
 use LaravelHyperf\Database\Eloquent\Concerns\HasObservers;
+use LaravelHyperf\Database\Eloquent\Concerns\HasRelations;
 use LaravelHyperf\Router\Contracts\UrlRoutable;
 
 abstract class Model extends BaseModel implements UrlRoutable, HasBroadcastChannel
 {
     use HasCallbacks;
+    use HasRelations;
     use HasObservers;
 
     protected ?string $connection = null;
