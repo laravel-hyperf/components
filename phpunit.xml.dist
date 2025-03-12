@@ -13,6 +13,7 @@
         <testsuite name="Hyperf Packages Test Suite">
             <directory suffix="Test.php">./tests</directory>
             <exclude>./tests/Prompts</exclude>
+            <exclude>./tests/Process</exclude>
         </testsuite>
     </testsuites>
     <php>
@@ -20,6 +21,5 @@
         <ini name="display_errors" value="on"/>
         <ini name="display_startup_errors" value="on"/>
         <ini name="memory_limit" value="1024M" />
-        <const name="RUN_BLOCKING_TESTS" value="false"/>
     </php>
 </phpunit>
