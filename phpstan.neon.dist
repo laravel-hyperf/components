@@ -40,3 +40,5 @@ parameters:
     - '#Access to an undefined property LaravelHyperf\\Queue\\Contracts\\Job::\$.*#'
     - '#Call to an undefined method Hyperf\\Database\\Query\\Builder::where[a-zA-Z0-9\\\\_]+#'
     - '#Call to an undefined method Hyperf\\Database\\Query\\Builder::firstOrFail\(\)#'
+    - '#Access to an undefined property Hyperf\\Collection\\HigherOrderCollectionProxy#'
+    - '#Call to an undefined method Hyperf\\Tappable\\HigherOrderTapProxy#'
