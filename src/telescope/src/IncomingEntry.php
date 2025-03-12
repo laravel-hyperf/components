@@ -8,6 +8,7 @@ use DateTimeInterface;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Stringable\Str;
 use LaravelHyperf\Auth\Contracts\Authenticatable;
+use LaravelHyperf\Telescope\Contracts\EntriesRepository;
 
 class IncomingEntry
 {
