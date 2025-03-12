@@ -640,11 +640,6 @@ class ProcessTest extends TestCase
     #[RequiresOperatingSystem('Linux|DAR')]
     public function testRealProcessesCanTimeout()
     {
-        /* @phpstan-ignore-next-line */
-        if (! defined('RUN_BLOCKING_TESTS') || ! RUN_BLOCKING_TESTS) {
-            $this->markTestSkipped('Skip blocking tests');
-        }
-
         $this->expectException(ProcessTimedOutException::class);
         $this->expectExceptionMessage(
             'The process "sleep 2; exit 1;" exceeded the timeout of 1 seconds.'
