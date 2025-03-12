@@ -20,5 +20,6 @@
         <ini name="display_errors" value="on"/>
         <ini name="display_startup_errors" value="on"/>
         <ini name="memory_limit" value="1024M" />
+        <const name="RUN_BLOCKING_TESTS" value="false"/>
     </php>
 </phpunit>

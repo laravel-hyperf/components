@@ -47,6 +47,7 @@
             "LaravelHyperf\\Mail\\": "src/mail/src/",
             "LaravelHyperf\\Notifications\\": "src/notifications/src/",
             "LaravelHyperf\\ObjectPool\\": "src/object-pool/src/",
+            "LaravelHyperf\\Process\\": "src/process/src/",
             "LaravelHyperf\\Prompts\\": "src/prompts/src/",
             "LaravelHyperf\\Queue\\": "src/queue/src/",
             "LaravelHyperf\\Router\\": "src/router/src/",
@@ -116,7 +117,8 @@
         "ramsey/uuid": "^4.7",
         "symfony/error-handler": "^6.3",
         "symfony/mailer": "^6.2",
-        "tijsverkoyen/css-to-inline-styles": "^2.2.5"
+        "tijsverkoyen/css-to-inline-styles": "^2.2.5",
+        "symfony/process": "^6.2"
     },
     "replace": {
         "laravel-hyperf/auth": "self.version",
@@ -142,6 +144,7 @@
         "laravel-hyperf/mail": "self.version",
         "laravel-hyperf/notifications": "self.version",
         "laravel-hyperf/object-pool": "self.version",
+        "laravel-hyperf/process": "self.version",
         "laravel-hyperf/prompts": "self.version",
         "laravel-hyperf/queue": "self.version",
         "laravel-hyperf/router": "self.version",
