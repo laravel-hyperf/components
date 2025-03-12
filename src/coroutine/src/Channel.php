@@ -6,4 +6,6 @@ namespace LaravelHyperf\Coroutine;
 
 use Hyperf\Engine\Channel as BaseChannel;
 
-class Channel extends BaseChannel {}
+class Channel extends BaseChannel
+{
+}
