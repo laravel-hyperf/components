@@ -16,11 +16,6 @@ use Psr\Container\ContainerInterface;
 class RouteDependency
 {
     /**
-     * All of the resolved dependencies by dispatched routes.
-     */
-    protected array $resolvedDependencies = [];
-
-    /**
      * All of the after resolving callbacks by class type.
      */
     protected array $afterResolvingCallbacks = [];
@@ -29,6 +24,11 @@ class RouteDependency
      * All of the resolved callbacks by class type.
      */
     protected array $resolvedCallbacks = [];
+
+    /**
+     * Indicates if the resolvingCallbacks has been registered.
+     */
+    protected bool $resolvingCallbacksRegistered = false;
 
     public function __construct(
         protected ContainerInterface $container,
@@ -47,6 +47,10 @@ class RouteDependency
             throw new InvalidArgumentException("Class '{$class}' does not exist");
         }
 
+        if (! $this->resolvingCallbacksRegistered) {
+            $this->resolvingCallbacksRegistered = true;
+        }
+
         $this->afterResolvingCallbacks[$class][] = $callback;
     }
 
@@ -55,6 +59,10 @@ class RouteDependency
      */
     public function fireAfterResolvingCallbacks(array $dependencies, Dispatched $dispatched): void
     {
+        if (! $this->resolvingCallbacksRegistered) {
+            return;
+        }
+
         foreach ($dependencies as $dependency) {
             if (! is_object($dependency)) {
                 continue;
@@ -92,12 +100,7 @@ class RouteDependency
      */
     public function getMethodParameters(string $controller, string $action, array $arguments): array
     {
-        $signature = "{$controller}::{$action}";
-        if (isset($this->resolvedDependencies[$signature])) {
-            return $this->resolvedDependencies[$signature];
-        }
-
-        return $this->resolvedDependencies[$signature] = $this->getDependencies(
+        return $this->getDependencies(
             $this->methodDefinitionCollector->getParameters($controller, $action),
             "{$controller}::{$action}",
             $arguments
@@ -111,12 +114,7 @@ class RouteDependency
      */
     public function getClosureParameters(Closure $closure, array $arguments): array
     {
-        $signature = spl_object_hash($closure);
-        if (isset($this->resolvedDependencies[$signature])) {
-            return $this->resolvedDependencies[$signature];
-        }
-
-        return $this->resolvedDependencies[$signature] = $this->getDependencies(
+        return $this->getDependencies(
             $this->closureDefinitionCollector->getParameters($closure),
             'Closure',
             $arguments

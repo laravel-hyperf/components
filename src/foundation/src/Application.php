@@ -31,7 +31,7 @@ class Application extends Container implements ApplicationContract
      *
      * @var string
      */
-    public const VERSION = '0.1.9';
+    public const VERSION = '0.1.13';
 
     /**
      * The base path for the Laravel Hyperf installation.
@@ -159,7 +159,7 @@ class Application extends Container implements ApplicationContract
     }
 
     /**
-     * Get the base path of the Laravel installation.
+     * Get the base path of the Laravel Hyperf installation.
      */
     public function basePath(string $path = ''): string
     {
