@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelHyperf\Tests\Http;
+namespace LaravelHyperf\Tests\Http\Resource;
 
 use LaravelHyperf\Http\Resources\Json\ResourceCollection;
 use PHPUnit\Framework\TestCase;

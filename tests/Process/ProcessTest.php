@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelHyperf\Tests\ObjectPool;
+namespace LaravelHyperf\Tests\Process;
 
 use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
 use LaravelHyperf\Process\Contracts\ProcessResult;
