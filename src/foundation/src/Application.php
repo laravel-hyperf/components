@@ -31,7 +31,7 @@ class Application extends Container implements ApplicationContract
      *
      * @var string
      */
-    public const VERSION = '0.1.15';
+    public const VERSION = '0.1.16';
 
     /**
      * The base path for the Laravel Hyperf installation.
