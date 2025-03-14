@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Telescope\Watchers;
 
-use Hyperf\Crontab\Event;
+use LaravelHyperf\Scheduling\CallbackEvent;
+use LaravelHyperf\Scheduling\Events;
 use LaravelHyperf\Telescope\Contracts\EntriesRepository;
 use LaravelHyperf\Telescope\IncomingEntry;
 use LaravelHyperf\Telescope\Telescope;
@@ -19,6 +20,11 @@ class ScheduleWatcher extends Watcher
     protected ?EntriesRepository $entriesRepository = null;
 
     /**
+     * The application instance.
+     */
+    protected ?ContainerInterface $app = null;
+
+    /**
      * Register the watcher.
      */
     public function register(ContainerInterface $app): void
@@ -27,24 +33,26 @@ class ScheduleWatcher extends Watcher
             return;
         }
 
+        $this->app = $app;
+
         $this->entriesRepository = $app->get(EntriesRepository::class);
 
         Telescope::startRecording();
 
         $app->get(EventDispatcherInterface::class)
             ->listen([
-                Event\BeforeExecute::class,
-                Event\AfterExecute::class,
-                Event\FailToExecute::class,
+                Events\ScheduledTaskStarting::class,
+                Events\ScheduledTaskFinished::class,
+                Events\ScheduledTaskFailed::class,
             ], [$this, 'recordCommand']);
     }
 
     /**
      * Record a scheduled command was executed.
      */
-    public function recordCommand(Event\Event $event): void
+    public function recordCommand(object $event): void
     {
-        if ($event instanceof Event\BeforeExecute) {
+        if ($event instanceof Events\ScheduledTaskStarting) {
             Telescope::startRecording();
             return;
         }
@@ -53,32 +61,17 @@ class ScheduleWatcher extends Watcher
             return;
         }
 
+        $task = $event->task;
+
         Telescope::recordScheduledCommand(IncomingEntry::make([
-            'command' => in_array($event->crontab->getType(), ['closure', 'callback'])
-                ? 'Closure'
-                : $event->crontab->getName(),
-            'description' => $event->crontab->getMemo(),
-            'expression' => $event->crontab->getRule(),
-            'timezone' => $event->crontab->getTimezone(),
-            'user' => '',
-            'output' => $this->getEventOutput($event),
+            'command' => $task instanceof CallbackEvent ? 'Closure' : $task->command,
+            'description' => $task->description,
+            'expression' => $task->expression,
+            'timezone' => $task->timezone,
+            'user' => $task->user,
+            'output' => $task->getOutput($this->app),
         ]));
 
         Telescope::store($this->entriesRepository);
-    }
-
-    /**
-     * Get the output for the scheduled event.
-     */
-    protected function getEventOutput(Event\Event $event): ?string
-    {
-        if ($event instanceof Event\AfterExecute) {
-            return 'success';
-        }
-        if ($event instanceof Event\FailToExecute) {
-            return '[fail]' . (string) $event->getThrowable();
-        }
-
-        return null;
     }
 }

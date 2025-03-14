@@ -9,9 +9,8 @@ use Hyperf\Coordinator\Listener\ResumeExitCoordinatorListener;
 use Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler;
 use LaravelHyperf\Foundation\Console\ApplicationFactory;
 use LaravelHyperf\Foundation\Console\Commands\ServerReloadCommand;
+use LaravelHyperf\Foundation\Console\Commands\ServerRestartCommand;
 use LaravelHyperf\Foundation\Console\Commands\VendorPublishCommand;
-use LaravelHyperf\Foundation\Console\Contracts\Schedule as ScheduleContract;
-use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
 use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler as ExceptionHandlerContract;
 use LaravelHyperf\Foundation\Exceptions\Handler as ExceptionHandler;
 use LaravelHyperf\Foundation\Listeners\ReloadDotenvAndConfig;
@@ -23,7 +22,6 @@ class ConfigProvider
         return [
             'dependencies' => [
                 ApplicationInterface::class => ApplicationFactory::class,
-                ScheduleContract::class => Schedule::class,
                 ExceptionHandlerContract::class => ExceptionHandler::class,
             ],
             'listeners' => [
@@ -33,6 +31,7 @@ class ConfigProvider
             ],
             'commands' => [
                 ServerReloadCommand::class,
+                ServerRestartCommand::class,
                 VendorPublishCommand::class,
             ],
             'publish' => [

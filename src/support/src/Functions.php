@@ -51,3 +51,11 @@ function php_binary(): string
 {
     return (new PhpExecutableFinder())->find(false) ?: 'php';
 }
+
+/**
+ * Gets the value of an environment variable.
+ */
+function env(string $key, mixed $default = null): mixed
+{
+    return \Hyperf\Support\env($key, $default);
+}

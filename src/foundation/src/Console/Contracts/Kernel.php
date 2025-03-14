@@ -7,7 +7,7 @@ namespace LaravelHyperf\Foundation\Console\Contracts;
 use Closure;
 use Hyperf\Command\ClosureCommand;
 use LaravelHyperf\Foundation\Console\Contracts\Application as ApplicationContract;
-use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
+use LaravelHyperf\Scheduling\Schedule;
 use Symfony\Component\Console\Output\OutputInterface;
 
 interface Kernel
