@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Tests\Telescope\Watchers;
 
-use Exception;
 use Hyperf\Contract\ConfigInterface;
-use Hyperf\Crontab\Crontab;
-use Hyperf\Crontab\Event\AfterExecute;
-use Hyperf\Crontab\Event\BeforeExecute;
-use Hyperf\Crontab\Event\FailToExecute;
+use LaravelHyperf\Scheduling\Event;
+use LaravelHyperf\Scheduling\Events\ScheduledTaskFinished;
+use LaravelHyperf\Scheduling\Events\ScheduledTaskStarting;
 use LaravelHyperf\Telescope\EntryType;
 use LaravelHyperf\Telescope\Watchers\ScheduleWatcher;
 use LaravelHyperf\Tests\Telescope\FeatureTestCase;
@@ -43,79 +41,34 @@ class ScheduleWatcherTest extends FeatureTestCase
         parent::tearDown();
     }
 
-    public function testScheduleRegistersEntryWithSuccessfulTask()
+    public function testScheduleRegistersEntry()
     {
         $this->app->get(EventDispatcherInterface::class)
-            ->dispatch(new BeforeExecute(
-                m::mock(Crontab::class)
+            ->dispatch(new ScheduledTaskStarting(
+                m::mock(Event::class)
             ));
 
-        $crontab = m::mock(Crontab::class);
-        $crontab->shouldReceive('getType')
+        $task = m::mock(Event::class);
+        $task->command = $command = 'command';
+        $task->description = $description = 'description';
+        $task->expression = $expression = '* * * * *';
+        $task->timezone = $timezone = 'UTC';
+        $task->user = $user = 'user';
+        $task->shouldReceive('getOutput')
             ->once()
-            ->andReturn('closure');
-        $crontab->shouldReceive('getMemo')
-            ->once()
-            ->andReturn('test schedule');
-        $crontab->shouldReceive('getRule')
-            ->once()
-            ->andReturn('* * * * *');
-        $crontab->shouldReceive('getTimezone')
-            ->once()
-            ->andReturn('UTC');
+            ->andReturn($output = 'success');
 
         $this->app->get(EventDispatcherInterface::class)
-            ->dispatch(new AfterExecute($crontab));
+            ->dispatch(new ScheduledTaskFinished($task, 0.1));
 
         $entry = $this->loadTelescopeEntries()->first();
 
         $this->assertSame(EntryType::SCHEDULED_TASK, $entry->type);
-        $this->assertSame('Closure', $entry->content['command']);
-        $this->assertSame('test schedule', $entry->content['description']);
-        $this->assertSame('* * * * *', $entry->content['expression']);
-        $this->assertSame('UTC', $entry->content['timezone']);
-        $this->assertSame('', $entry->content['user']);
-        $this->assertSame('success', $entry->content['output']);
-    }
-
-    public function testScheduleRegistersEntryWithFailedTask()
-    {
-        $this->app->get(EventDispatcherInterface::class)
-            ->dispatch(new BeforeExecute(
-                m::mock(Crontab::class)
-            ));
-
-        $crontab = m::mock(Crontab::class);
-        $crontab->shouldReceive('getType')
-            ->once()
-            ->andReturn('command');
-        $crontab->shouldReceive('getName')
-            ->once()
-            ->andReturn('command');
-        $crontab->shouldReceive('getMemo')
-            ->once()
-            ->andReturn('test schedule');
-        $crontab->shouldReceive('getRule')
-            ->once()
-            ->andReturn('* * * * *');
-        $crontab->shouldReceive('getTimezone')
-            ->once()
-            ->andReturn('UTC');
-
-        $this->app->get(EventDispatcherInterface::class)
-            ->dispatch(new FailToExecute(
-                $crontab,
-                new Exception('test')
-            ));
-
-        $entry = $this->loadTelescopeEntries()->first();
-
-        $this->assertSame(EntryType::SCHEDULED_TASK, $entry->type);
-        $this->assertSame('command', $entry->content['command']);
-        $this->assertSame('test schedule', $entry->content['description']);
-        $this->assertSame('* * * * *', $entry->content['expression']);
-        $this->assertSame('UTC', $entry->content['timezone']);
-        $this->assertSame('', $entry->content['user']);
-        $this->assertTrue(str_starts_with($entry->content['output'], '[fail]'));
+        $this->assertSame($command, $entry->content['command']);
+        $this->assertSame($description, $entry->content['description']);
+        $this->assertSame($expression, $entry->content['expression']);
+        $this->assertSame($timezone, $entry->content['timezone']);
+        $this->assertSame($user, $entry->content['user']);
+        $this->assertSame($output, $entry->content['output']);
     }
 }

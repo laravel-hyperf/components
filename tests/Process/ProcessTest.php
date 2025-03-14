@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Tests\ObjectPool;
 
+use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
 use LaravelHyperf\Process\Contracts\ProcessResult;
 use LaravelHyperf\Process\Exceptions\ProcessFailedException;
 use LaravelHyperf\Process\Exceptions\ProcessTimedOutException;
@@ -19,6 +20,8 @@ use RuntimeException;
  */
 class ProcessTest extends TestCase
 {
+    use RunTestsInCoroutine;
+
     public function testSuccessfulProcess()
     {
         $factory = new Factory();
@@ -90,6 +93,8 @@ class ProcessTest extends TestCase
                 $pool->path(__DIR__)->command($this->ls()),
             ];
         })->start();
+
+        $pool->wait();
 
         $this->assertCount(2, $pool);
     }
@@ -640,6 +645,10 @@ class ProcessTest extends TestCase
     #[RequiresOperatingSystem('Linux|DAR')]
     public function testRealProcessesCanTimeout()
     {
+        if (! env('RUN_BLOCKING_TESTS', false)) {
+            $this->markTestSkipped('Skip blocking tests');
+        }
+
         $this->expectException(ProcessTimedOutException::class);
         $this->expectExceptionMessage(
             'The process "sleep 2; exit 1;" exceeded the timeout of 1 seconds.'

@@ -9,7 +9,10 @@ use Symfony\Component\Console\Command\Command;
 class CommandReplacer
 {
     protected static array $commands = [
-        'start' => 'serve',
+        'start' => [
+            'name' => 'serve',
+            'description' => 'Start Laravel Hyperf servers',
+        ],
         'server:watch' => null,
         'gen:amqp-consumer' => 'make:amqp-consumer',
         'gen:amqp-producer' => 'make:amqp-producer',
@@ -35,10 +38,6 @@ class CommandReplacer
         'gen:migration-from-database' => 'make:migration-from-database',
         'gen:view-engine-cache' => 'view:cache',
         'gen:swagger-schema' => 'make:swagger-schema',
-        'crontab:run' => [
-            'name' => 'schedule:run',
-            'description' => 'Run the scheduled commands',
-        ],
         'describe:routes' => [
             'name' => 'route:list',
             'description' => 'List all registered routes',
