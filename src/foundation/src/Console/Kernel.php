@@ -18,12 +18,15 @@ use Hyperf\Stringable\Str;
 use LaravelHyperf\Foundation\Console\Application as ConsoleApplication;
 use LaravelHyperf\Foundation\Console\Contracts\Application as ApplicationContract;
 use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
 use LaravelHyperf\Foundation\Contracts\Application as ContainerContract;
+use LaravelHyperf\Scheduling\Schedule;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
+use function Hyperf\Tappable\tap;
+use function LaravelHyperf\Support\env;
 
 class Kernel implements KernelContract
 {
@@ -71,13 +74,6 @@ class Kernel implements KernelContract
         \LaravelHyperf\Foundation\Bootstrap\BootProviders::class,
     ];
 
-    /**
-     * Bootstrappers that being bootstrapped after commands being loaded.
-     */
-    protected array $afterBootstrappers = [
-        \LaravelHyperf\Foundation\Bootstrap\LoadScheduling::class,
-    ];
-
     public function __construct(
         protected ContainerContract $app,
         protected EventDispatcherInterface $events
@@ -87,6 +83,10 @@ class Kernel implements KernelContract
         }
 
         $events->dispatch(new BootApplication());
+
+        $this->app->booted(function () {
+            $this->defineConsoleSchedule();
+        });
     }
 
     /**
@@ -114,9 +114,6 @@ class Kernel implements KernelContract
             }
 
             $this->loadCommands();
-
-            // bootstrap after loading commands
-            $this->app->bootstrapWith($this->afterBootstrappers());
 
             $this->commandsLoaded = true;
         }
@@ -256,6 +253,46 @@ class Kernel implements KernelContract
     }
 
     /**
+     * Resolve a console schedule instance.
+     */
+    public function resolveConsoleSchedule(): Schedule
+    {
+        return tap(new Schedule($this->scheduleTimezone()), function ($schedule) {
+            $this->schedule($schedule->useCache($this->scheduleCache()));
+        });
+    }
+
+    /**
+     * Define the application's command schedule.
+     */
+    protected function defineConsoleSchedule(): void
+    {
+        $this->app->bind(Schedule::class, function ($app) {
+            return tap(new Schedule($this->scheduleTimezone()), function ($schedule) {
+                $this->schedule($schedule->useCache($this->scheduleCache()));
+            });
+        });
+    }
+
+    /**
+     * Get the timezone that should be used by default for scheduled events.
+     */
+    protected function scheduleTimezone(): ?string
+    {
+        $config = $this->app['config'];
+
+        return $config->get('app.schedule_timezone', $config->get('app.timezone'));
+    }
+
+    /**
+     * Get the name of the cache store that should manage scheduling mutexes.
+     */
+    protected function scheduleCache(): ?string
+    {
+        return $this->app['config']->get('cache.schedule_store', env('SCHEDULE_CACHE_DRIVER'));
+    }
+
+    /**
      * Register the commands for the application.
      */
     public function commands(): void
@@ -350,14 +387,6 @@ class Kernel implements KernelContract
     protected function bootstrappers(): array
     {
         return $this->bootstrappers;
-    }
-
-    /**
-     * Get the after bootstrap classes for the application.
-     */
-    protected function afterBootstrappers(): array
-    {
-        return $this->afterBootstrappers;
     }
 
     /**

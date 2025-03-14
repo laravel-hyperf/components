@@ -119,6 +119,16 @@ interface Application extends Container
     public function boot(): void;
 
     /**
+     * Register a new boot listener.
+     */
+    public function booting(callable $callback): void;
+
+    /**
+     * Register a new "booted" listener.
+     */
+    public function booted(callable $callback): void;
+
+    /**
      * Throw an HttpException with the given data.
      *
      * @throws HttpException

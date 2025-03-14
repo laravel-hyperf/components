@@ -16,7 +16,7 @@ if (! function_exists('value')) {
      */
     function value(mixed $value, mixed ...$args)
     {
-        return \Hyperf\Support\value($value, ...$args);
+        return \LaravelHyperf\Support\value($value, ...$args);
     }
 }
 
@@ -26,7 +26,7 @@ if (! function_exists('env')) {
      */
     function env(string $key, mixed $default = null): mixed
     {
-        return \Hyperf\Support\env($key, $default);
+        return \LaravelHyperf\Support\env($key, $default);
     }
 }
 

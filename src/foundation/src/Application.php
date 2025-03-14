@@ -49,6 +49,20 @@ class Application extends Container implements ApplicationContract
     protected bool $booted = false;
 
     /**
+     * The array of booting callbacks.
+     *
+     * @var callable[]
+     */
+    protected array $bootingCallbacks = [];
+
+    /**
+     * The array of booted callbacks.
+     *
+     * @var callable[]
+     */
+    protected array $bootedCallbacks = [];
+
+    /**
      * All of the registered service providers.
      *
      * @var array<string, ServiceProvider>
@@ -347,11 +361,18 @@ class Application extends Container implements ApplicationContract
             return;
         }
 
+        // Once the application has booted we will also fire some "booted" callbacks
+        // for any listeners that need to do work after this initial booting gets
+        // finished. This is useful when ordering the boot-up processes we run.
+        $this->fireAppCallbacks($this->bootingCallbacks);
+
         array_walk($this->serviceProviders, function ($p) {
             $this->bootProvider($p);
         });
 
         $this->booted = true;
+
+        $this->fireAppCallbacks($this->bootedCallbacks);
     }
 
     /**
@@ -366,6 +387,42 @@ class Application extends Container implements ApplicationContract
         }
 
         $provider->callBootedCallbacks();
+    }
+
+    /**
+     * Register a new boot listener.
+     */
+    public function booting(callable $callback): void
+    {
+        $this->bootingCallbacks[] = $callback;
+    }
+
+    /**
+     * Register a new "booted" listener.
+     */
+    public function booted(callable $callback): void
+    {
+        $this->bootedCallbacks[] = $callback;
+
+        if ($this->isBooted()) {
+            $callback($this);
+        }
+    }
+
+    /**
+     * Call the booting callbacks for the application.
+     *
+     * @param callable[] $callbacks
+     */
+    protected function fireAppCallbacks(array &$callbacks): void
+    {
+        $index = 0;
+
+        while ($index < count($callbacks)) {
+            $callbacks[$index]($this);
+
+            ++$index;
+        }
     }
 
     /**
