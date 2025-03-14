@@ -8,7 +8,6 @@ class BootstrapConfigProvider
 {
     protected static $configProviders = [
         \Hyperf\Command\ConfigProvider::class,
-        \Hyperf\Crontab\ConfigProvider::class,
         \Hyperf\Database\SQLite\ConfigProvider::class,
         \Hyperf\DbConnection\ConfigProvider::class,
         \Hyperf\Di\ConfigProvider::class,
@@ -49,6 +48,7 @@ class BootstrapConfigProvider
         \LaravelHyperf\Notifications\ConfigProvider::class,
         \LaravelHyperf\Queue\ConfigProvider::class,
         \LaravelHyperf\Router\ConfigProvider::class,
+        \LaravelHyperf\Scheduling\ConfigProvider::class,
         \LaravelHyperf\Session\ConfigProvider::class,
     ];
 
