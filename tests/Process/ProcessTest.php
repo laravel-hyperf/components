@@ -94,6 +94,8 @@ class ProcessTest extends TestCase
             ];
         })->start();
 
+        $pool->wait();
+
         $this->assertCount(2, $pool);
     }
 

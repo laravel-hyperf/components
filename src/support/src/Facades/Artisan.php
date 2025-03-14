@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace LaravelHyperf\Support\Facades;
 
 use LaravelHyperf\Foundation\Console\Contracts\Kernel as KernelContract;
-use LaravelHyperf\Foundation\Console\Scheduling\Schedule;
+use LaravelHyperf\Scheduling\Schedule;
 
 /**
  * @method static void bootstrap()
- * @method static void schedule(\LaravelHyperf\Foundation\Console\Scheduling\Schedule $schedule)
+ * @method static void schedule(\LaravelHyperf\Scheduling\Schedule $schedule)
  * @method static void commands()
  * @method static \Hyperf\Command\ClosureCommand command(string $signature, \Closure $callback)
  * @method static void load(array|string $paths)
