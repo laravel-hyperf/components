@@ -68,7 +68,6 @@ class Kernel implements KernelContract
      * The console application bootstrappers.
      */
     protected array $bootstrappers = [
-        \LaravelHyperf\Foundation\Bootstrap\LoadEnvironmentVariables::class,
         \LaravelHyperf\Foundation\Bootstrap\RegisterFacades::class,
         \LaravelHyperf\Foundation\Bootstrap\RegisterProviders::class,
         \LaravelHyperf\Foundation\Bootstrap\BootProviders::class,
