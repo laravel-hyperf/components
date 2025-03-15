@@ -20,6 +20,7 @@ use LaravelHyperf\Devtool\Generator\ModelCommand;
 use LaravelHyperf\Devtool\Generator\NotificationCommand;
 use LaravelHyperf\Devtool\Generator\NotificationTableCommand;
 use LaravelHyperf\Devtool\Generator\ObserverCommand;
+use LaravelHyperf\Devtool\Generator\PolicyCommand;
 use LaravelHyperf\Devtool\Generator\ProviderCommand;
 use LaravelHyperf\Devtool\Generator\QueueFailedTableCommand;
 use LaravelHyperf\Devtool\Generator\QueueTableCommand;
@@ -62,6 +63,7 @@ class ConfigProvider
                 ObserverCommand::class,
                 NotificationCommand::class,
                 MailCommand::class,
+                PolicyCommand::class,
             ],
         ];
     }
