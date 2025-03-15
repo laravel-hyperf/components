@@ -98,16 +98,16 @@ class JwtGuard implements Guard
     public function user(): ?Authenticatable
     {
         $token = $this->parseToken();
-        $contextKey = $this->getContextKey($token);
         // cache user in context
-        if ($user = Context::get($contextKey)) {
-            return $user;
+        if (Context::has($contextKey = $this->getContextKey($token))) {
+            return Context::get($contextKey);
         }
 
         if (! $token) {
             return null;
         }
 
+        $user = null;
         try {
             $payload = $this->jwtManager->decode($token);
             $sub = $payload['sub'] ?? null;

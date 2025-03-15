@@ -85,7 +85,7 @@ trait GuardHelpers
     public function loginUsingId(mixed $id): Authenticatable|bool
     {
         if (! is_null($user = $this->provider->retrieveById($id))) {
-            $this->login($user);
+            $this->login($user); /* @phpstan-ignore-line */
 
             return $user;
         }
