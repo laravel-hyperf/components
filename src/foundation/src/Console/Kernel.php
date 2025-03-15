@@ -68,7 +68,6 @@ class Kernel implements KernelContract
      * The console application bootstrappers.
      */
     protected array $bootstrappers = [
-        \LaravelHyperf\Foundation\Bootstrap\LoadEnvironmentVariables::class,
         \LaravelHyperf\Foundation\Bootstrap\RegisterFacades::class,
         \LaravelHyperf\Foundation\Bootstrap\RegisterProviders::class,
         \LaravelHyperf\Foundation\Bootstrap\BootProviders::class,
@@ -313,10 +312,8 @@ class Kernel implements KernelContract
 
     /**
      * Add loadedPaths in the given directory.
-     *
-     * @param array|string $paths
      */
-    public function load($paths): void
+    public function load(array|string $paths): void
     {
         $paths = array_unique(Arr::wrap($paths));
 

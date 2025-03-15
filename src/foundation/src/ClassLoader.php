@@ -9,6 +9,7 @@ use Hyperf\Di\Annotation\Scanner as AnnotationScanner;
 use Hyperf\Di\LazyLoader\LazyLoader;
 use Hyperf\Di\ScanHandler\PcntlScanHandler;
 use Hyperf\Di\ScanHandler\ScanHandlerInterface;
+use Hyperf\Support\DotenvManager;
 use LaravelHyperf\Foundation\Support\Composer;
 
 class ClassLoader
@@ -22,6 +23,8 @@ class ClassLoader
     public static function init(?string $proxyFileDirPath = null, ?string $configDir = null, ?ScanHandlerInterface $handler = null): void
     {
         static::setParameters($proxyFileDirPath, $configDir, $handler);
+
+        static::loadEnv();
 
         static::loadClassMap();
 
@@ -40,6 +43,16 @@ class ClassLoader
         $composerLoader->addClassMap(
             $scanner->scan($composerLoader->getClassMap(), static::$proxyFileDirPath)
         );
+    }
+
+    protected static function loadEnv(): void
+    {
+        // Hyperf doesn't support customizing the .env file path.
+        if (! file_exists(BASE_PATH . '/.env')) {
+            return;
+        }
+
+        DotenvManager::load([BASE_PATH]);
     }
 
     protected static function setParameters(?string $proxyFileDirPath = null, ?string $configDir = null, ?ScanHandlerInterface $handler = null): void
