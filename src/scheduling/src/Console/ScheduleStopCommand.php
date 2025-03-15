@@ -9,21 +9,21 @@ use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
 use LaravelHyperf\Support\Facades\Date;
 use LaravelHyperf\Support\Traits\HasLaravelStyleCommand;
 
-class ScheduleInterruptCommand extends Command
+class ScheduleStopCommand extends Command
 {
     use HasLaravelStyleCommand;
 
     /**
      * The console signature name.
      */
-    protected ?string $signature = 'schedule:interrupt
-        {--minutes : Time in minutes to interrupt the schedule (default: 60)}
+    protected ?string $signature = 'schedule:stop
+        {--minutes=1 : Ttl in minutes for the stop signal}
     ';
 
     /**
      * The console command description.
      */
-    protected string $description = 'Interrupt the current schedule run';
+    protected string $description = 'Stop the current schedule workers';
 
     /**
      * Create a new schedule interrupt command.
@@ -43,11 +43,11 @@ class ScheduleInterruptCommand extends Command
     {
         /* @phpstan-ignore-next-line */
         $this->cache->put(
-            'illuminate:schedule:interrupt',
+            'laravel-hyperf:schedule:stop',
             true,
-            Date::now()->addMinutes($this->option('minutes') ?? 60)
+            Date::now()->addMinutes((int) $this->option('minutes'))
         );
 
-        $this->info('Broadcasting schedule interrupt signal.');
+        $this->info('Broadcasting schedule stop signal.');
     }
 }

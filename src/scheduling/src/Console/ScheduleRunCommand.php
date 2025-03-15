@@ -6,7 +6,7 @@ namespace LaravelHyperf\Scheduling\Console;
 
 use Hyperf\Collection\Collection;
 use Hyperf\Command\Command;
-use Hyperf\Coroutine\Coroutine;
+use Hyperf\Coroutine\Concurrent;
 use Hyperf\Coroutine\Waiter;
 use LaravelHyperf\Cache\Contracts\Factory as CacheFactory;
 use LaravelHyperf\Container\Contracts\Container;
@@ -34,7 +34,7 @@ class ScheduleRunCommand extends Command
      */
     protected ?string $signature = 'schedule:run
         {--once : Run only once without looping}
-        {--force : Run with no interruption constraints}
+        {--concurrency=60 : The number of background tasks to process at once}
     ';
 
     /**
@@ -48,9 +48,19 @@ class ScheduleRunCommand extends Command
     protected bool $eventsRan = false;
 
     /**
-     * Check if events has been interrupted.
+     * Check if scheduler should stop.
      */
-    protected bool $hasInterrupted = false;
+    protected bool $shouldStop = false;
+
+    /**
+     * Last time the stopped state was checked.
+     */
+    protected ?Carbon $lastChecked = null;
+
+    /**
+     * The concurrent instance.
+     */
+    protected ?Concurrent $concurrent = null;
 
     /**
      * Create a new command instance.
@@ -71,6 +81,10 @@ class ScheduleRunCommand extends Command
      */
     public function handle()
     {
+        $this->concurrent = new Concurrent(
+            (int) $this->option('concurrency')
+        );
+
         $this->newLine();
 
         if ($this->option('once') ?: false) {
@@ -78,20 +92,10 @@ class ScheduleRunCommand extends Command
             return;
         }
 
+        $this->clearShouldStop();
+
         $noEventsAlerted = false;
-        while (true) {
-            if ($this->shouldInterrupt()) {
-                if (! $this->hasInterrupted) {
-                    $this->info('Scheduling is now interrupted.');
-                    $this->hasInterrupted = true;
-                }
-
-                Sleep::usleep(500000);
-                continue;
-            }
-
-            $this->hasInterrupted = false;
-
+        while (! $this->shouldStop()) {
             $this->runEvents(
                 $this->schedule->dueEvents($this->app),
                 Date::now()
@@ -104,15 +108,26 @@ class ScheduleRunCommand extends Command
 
             Sleep::usleep(100000);
         }
+
+        $this->stop();
+    }
+
+    protected function stop(): void
+    {
+        $this->info('Stopping the scheduling...');
+
+        while (true) {
+            if ($this->concurrent->isEmpty()) {
+                $this->info('Done.');
+                break;
+            }
+
+            Sleep::usleep(100000);
+        }
     }
 
     protected function runOnce(): void
     {
-        if ($this->shouldInterrupt()) {
-            $this->info('Scheduling is now interrupted.');
-            return;
-        }
-
         (new Waiter(-1))->wait(
             fn () => $this->runEvents(
                 $this->schedule->dueEvents($this->app),
@@ -143,7 +158,7 @@ class ScheduleRunCommand extends Command
                 : $this->runEvent($event);
 
             if ($event->runInBackground) {
-                Coroutine::create($runEvent);
+                $this->concurrent->create($runEvent);
                 continue;
             }
 
@@ -219,13 +234,30 @@ class ScheduleRunCommand extends Command
     /**
      * Determine if the schedule run should be interrupted.
      */
-    protected function shouldInterrupt(): bool
+    protected function shouldStop(): bool
     {
-        if ($this->option('force')) {
-            return false;
+        if (! $this->lastChecked) {
+            $this->lastChecked = Date::now();
         }
 
+        if ($this->shouldStop || $this->lastChecked->diffInSeconds() < 1) {
+            return $this->shouldStop;
+        }
+
+        $this->lastChecked = Date::now();
+
         /* @phpstan-ignore-next-line */
-        return $this->cache->get('illuminate:schedule:interrupt', false);
+        return $this->shouldStop = $this->cache->get('laravel-hyperf:schedule:stop', false);
+    }
+
+    /**
+     * Clear the stop cache.
+     */
+    protected function clearShouldStop(): void
+    {
+        /* @phpstan-ignore-next-line */
+        $this->cache->delete('laravel-hyperf:schedule:stop');
+
+        $this->shouldStop = false;
     }
 }
