@@ -107,6 +107,7 @@ class JwtGuard implements Guard
             return null;
         }
 
+        $user = null;
         try {
             $payload = $this->jwtManager->decode($token);
             $sub = $payload['sub'] ?? null;

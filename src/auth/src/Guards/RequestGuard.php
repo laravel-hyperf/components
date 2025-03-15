@@ -44,6 +44,7 @@ class RequestGuard implements Guard
             return Context::get($contextKey);
         }
 
+        $user = null;
         try {
             $user = call_user_func($this->callback, $this->getProvider());
             Context::set($contextKey, $user ?? null);

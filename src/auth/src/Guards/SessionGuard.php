@@ -89,6 +89,7 @@ class SessionGuard implements StatefulGuard
             return Context::get($contextKey);
         }
 
+        $user = null;
         try {
             if ($id = $this->session->get($this->sessionKey())) {
                 $user = $this->provider->retrieveById($id);
