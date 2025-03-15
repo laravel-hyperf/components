@@ -14,6 +14,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\ClientInterface as HttpClientInterface;
 use GuzzleHttp\Exception\TransferException;
 use Hyperf\Collection\Arr;
+use Hyperf\Context\Context;
 use Hyperf\Macroable\Macroable;
 use Hyperf\Stringable\Stringable;
 use Hyperf\Support\Filesystem\Filesystem;
@@ -28,6 +29,7 @@ use LaravelHyperf\Support\Facades\Date;
 use LaravelHyperf\Support\Traits\ReflectsClosures;
 use LogicException;
 use Psr\Http\Client\ClientExceptionInterface;
+use Symfony\Component\Process\Process;
 use Throwable;
 
 class Event
@@ -76,6 +78,11 @@ class Event
     public ?int $exitCode = null;
 
     /**
+     * Determines if the event is system command.
+     */
+    public bool $isSystem = false;
+
+    /**
      * Determines if output should be captured.
      */
     protected bool $ensureOutputIsBeingCaptured = false;
@@ -89,9 +96,11 @@ class Event
     public function __construct(
         public EventMutex $mutex,
         public ?string $command,
-        null|DateTimeZone|string $timezone = null
+        null|DateTimeZone|string $timezone = null,
+        bool $isSystem = false
     ) {
         $this->timezone = $timezone;
+        $this->isSystem = $isSystem;
     }
 
     /**
@@ -163,8 +172,40 @@ class Event
      */
     protected function execute(Container $container): int
     {
+        if ($this->isSystem) {
+            return $this->runProcess($container);
+        }
+
         return $container->get(KernelContract::class)
             ->call($this->command);
+    }
+
+    /**
+     * Run the system command process.
+     */
+    protected function runProcess(Container $container): int
+    {
+        /** @var \LaravelHyperf\Foundation\Contracts\Application $container */
+        $process = Process::fromShellCommandline(
+            $this->command,
+            $container->basePath()
+        );
+
+        Context::set("scheduling_process:{$this->mutexName()}", $process);
+
+        return $process->run();
+    }
+
+    /**
+     * Get the output of the system command process.
+     */
+    protected function getProcessOutput(): ?string
+    {
+        if (! $process = Context::get("scheduling_process:{$this->mutexName()}")) {
+            return null;
+        }
+
+        return $process->getOutput();
     }
 
     /**
@@ -297,7 +338,7 @@ class Event
     {
         $filesystem = $container->get(Filesystem::class);
         if (! $this->ensureOutputIsBeingCaptured
-            && (! $this->output || ! $filesystem->isFile($this->output))
+            && (! $this->output || (! $this->isSystem && ! $filesystem->isFile($this->output)))
         ) {
             return;
         }
@@ -314,6 +355,10 @@ class Event
      */
     public function getOutput(Container $container): ?string
     {
+        if ($this->isSystem) {
+            return $this->getProcessOutput();
+        }
+
         return $container->get(KernelContract::class)->output();
     }
 

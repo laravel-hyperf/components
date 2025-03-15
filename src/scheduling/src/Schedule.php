@@ -145,10 +145,11 @@ class Schedule
             return $this->exec(
                 $command->getName(),
                 $parameters,
+                false,
             )->description($command->getDescription());
         }
 
-        return $this->exec($command, $parameters);
+        return $this->exec($command, $parameters, false);
     }
 
     /**
@@ -235,13 +236,13 @@ class Schedule
     /**
      * Add a new command event to the schedule.
      */
-    public function exec(string $command, array $parameters = []): Event
+    public function exec(string $command, array $parameters = [], bool $isSystem = true): Event
     {
         if (count($parameters)) {
             $command .= ' ' . $this->compileParameters($parameters);
         }
 
-        $this->events[] = $event = new Event($this->eventMutex, $command, $this->timezone);
+        $this->events[] = $event = (new Event($this->eventMutex, $command, $this->timezone, $isSystem));
 
         $this->mergePendingAttributes($event);
 
