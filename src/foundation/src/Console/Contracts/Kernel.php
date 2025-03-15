@@ -34,10 +34,8 @@ interface Kernel
 
     /**
      * Add loadPaths in the given directory.
-     *
-     * @param array|string $paths
      */
-    public function load($paths): void;
+    public function load(array|string $paths): void;
 
     /**
      * Set the Artisan commands provided by the application.

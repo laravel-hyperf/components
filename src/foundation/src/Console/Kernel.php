@@ -312,10 +312,8 @@ class Kernel implements KernelContract
 
     /**
      * Add loadedPaths in the given directory.
-     *
-     * @param array|string $paths
      */
-    public function load($paths): void
+    public function load(array|string $paths): void
     {
         $paths = array_unique(Arr::wrap($paths));
 
