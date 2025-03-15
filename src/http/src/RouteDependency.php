@@ -16,6 +16,11 @@ use Psr\Container\ContainerInterface;
 class RouteDependency
 {
     /**
+     * All of the resolved dependencies by dispatched routes.
+     */
+    protected array $resolvedDependencies = [];
+
+    /**
      * All of the after resolving callbacks by class type.
      */
     protected array $afterResolvingCallbacks = [];
@@ -100,11 +105,21 @@ class RouteDependency
      */
     public function getMethodParameters(string $controller, string $action, array $arguments): array
     {
-        return $this->getDependencies(
+        if (! $arguments && isset($this->resolvedDependencies[$signature = "{$controller}::{$action}"])) {
+            return $this->resolvedDependencies[$signature];
+        }
+
+        $dependencies = $this->getDependencies(
             $this->methodDefinitionCollector->getParameters($controller, $action),
             "{$controller}::{$action}",
             $arguments
         );
+
+        if (! $arguments) {
+            $this->resolvedDependencies[$signature] = $dependencies;
+        }
+
+        return $dependencies;
     }
 
     /**
@@ -114,11 +129,21 @@ class RouteDependency
      */
     public function getClosureParameters(Closure $closure, array $arguments): array
     {
-        return $this->getDependencies(
+        if (! $arguments && isset($this->resolvedDependencies[$signature = spl_object_hash($closure)])) {
+            return $this->resolvedDependencies[$signature];
+        }
+
+        $dependencies = $this->getDependencies(
             $this->closureDefinitionCollector->getParameters($closure),
             'Closure',
             $arguments
         );
+
+        if (! $arguments) {
+            $this->resolvedDependencies[$signature] = $dependencies;
+        }
+
+        return $dependencies;
     }
 
     /**
