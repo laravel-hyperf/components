@@ -13,6 +13,7 @@ use LaravelHyperf\Auth\Contracts\FactoryContract;
 use LaravelHyperf\Auth\Contracts\Guard;
 use LaravelHyperf\Auth\Contracts\StatefulGuard;
 use LaravelHyperf\Auth\Guards\JwtGuard;
+use LaravelHyperf\Auth\Guards\RequestGuard;
 use LaravelHyperf\Auth\Guards\SessionGuard;
 use LaravelHyperf\JWT\JWTManager;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
@@ -179,6 +180,16 @@ class AuthManager implements FactoryContract
     public function setDefaultDriver(string $name): void
     {
         Context::set('__auth.defaults.guard', $name);
+    }
+
+    /**
+     * Register a new callback based request guard.
+     */
+    public function viaRequest(string $driver, callable $callback): static
+    {
+        return $this->extend($driver, function () use ($callback) {
+            return new RequestGuard($this->createUserProvider(), $callback);
+        });
     }
 
     /**

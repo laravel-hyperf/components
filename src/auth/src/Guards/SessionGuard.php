@@ -85,14 +85,14 @@ class SessionGuard implements StatefulGuard
     public function user(): ?Authenticatable
     {
         // cache user in context
-        if ($user = Context::get($contextKey = $this->getContextKey())) {
-            return $user;
+        if (Context::has($contextKey = $this->getContextKey())) {
+            return Context::get($contextKey);
         }
 
         try {
             if ($id = $this->session->get($this->sessionKey())) {
                 $user = $this->provider->retrieveById($id);
-                Context::set($contextKey, $user ?: null);
+                Context::set($contextKey, $user ?? null);
             }
         } catch (Throwable $exception) {
             Context::set($contextKey, null);
@@ -114,6 +114,6 @@ class SessionGuard implements StatefulGuard
 
     protected function sessionKey(): string
     {
-        return 'auth_' . $this->name;
+        return 'auth.guards.session.' . $this->name;
     }
 }

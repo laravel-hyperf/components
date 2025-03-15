@@ -12,10 +12,14 @@ use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\ConnectionResolverInterface;
 use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use Hyperf\HttpServer\Contract\RequestInterface;
 use LaravelHyperf\Auth\AuthManager;
+use LaravelHyperf\Auth\Contracts\Authenticatable;
 use LaravelHyperf\Auth\Contracts\Guard;
 use LaravelHyperf\Auth\Contracts\UserProvider;
+use LaravelHyperf\Auth\Guards\RequestGuard;
 use LaravelHyperf\Auth\Providers\DatabaseUserProvider;
+use LaravelHyperf\Context\ApplicationContext;
 use LaravelHyperf\Foundation\Testing\Concerns\RunTestsInCoroutine;
 use LaravelHyperf\Hashing\Contracts\Hasher as HashContract;
 use LaravelHyperf\Tests\TestCase;
@@ -137,6 +141,34 @@ class AuthMangerTest extends TestCase
         });
 
         $this->assertSame('foo', $manager->userResolver()());
+    }
+
+    public function testViaRequest()
+    {
+        $manager = new AuthManager($container = $this->getContainer());
+        $container->set(RequestInterface::class, m::mock(RequestInterface::class));
+
+        ApplicationContext::setContainer($container);
+
+        $container->get(ConfigInterface::class)
+            ->set('auth.providers.foo', [
+                'driver' => 'foo',
+            ]);
+        $container->get(ConfigInterface::class)
+            ->set('auth.guards.foo', [
+                'driver' => 'custom',
+            ]);
+        $container->get(ConfigInterface::class)
+            ->set('auth.defaults.provider', 'foo');
+
+        $provider = m::mock(UserProvider::class);
+        $manager->provider('foo', fn () => $provider);
+
+        $user = m::mock(Authenticatable::class);
+        $manager->viaRequest('custom', fn () => $user);
+
+        $this->assertInstanceOf(RequestGuard::class, $guard = $manager->guard('foo'));
+        $this->assertSame($user, $guard->user());
     }
 
     protected function getContainer(array $authConfig = [])
