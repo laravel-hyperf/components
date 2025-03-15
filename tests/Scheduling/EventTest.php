@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelHyperf\Tests\Scheduling;
 
 use Hyperf\Context\ApplicationContext;
+use Hyperf\Context\Context;
 use Hyperf\Stringable\Str;
 use Hyperf\Support\Filesystem\Filesystem;
 use LaravelHyperf\Container\Contracts\Container;
@@ -14,6 +15,7 @@ use LaravelHyperf\Scheduling\Event;
 use LaravelHyperf\Tests\Foundation\Concerns\HasMockedApplication;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Process\Process;
 
 /**
  * @internal
@@ -80,6 +82,31 @@ class EventTest extends TestCase
         $this->container->set(Filesystem::class, $filesystem);
 
         $event->writeOutput($this->container);
+    }
+
+    public function testSendOutputToWithSystemProcess()
+    {
+        $event = new Event(m::mock(EventMutex::class), 'php -v');
+        $event->isSystem = true;
+
+        $event->sendOutputTo($output = 'test.log');
+
+        $process = m::mock(Process::class);
+        $process->shouldReceive('getOutput')
+            ->once()
+            ->andReturn($result = 'PHP 8.3.17 (cli) (built: Feb 11 2025 22:03:03) (NTS)');
+        Context::set($key = "scheduling_process:{$event->mutexName()}", $process);
+
+        $filesystem = m::mock(Filesystem::class);
+        $filesystem->shouldReceive('put')
+            ->once()
+            ->with($output, $result);
+
+        $this->container->set(Filesystem::class, $filesystem);
+
+        $event->writeOutput($this->container);
+
+        Context::destroy($key);
     }
 
     public function testAppendOutput()
