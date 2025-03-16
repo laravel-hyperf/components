@@ -7,7 +7,7 @@ namespace LaravelHyperf\Support\Facades;
 use LaravelHyperf\Redis\Redis as RedisClient;
 
 /**
- * @method static \Hyperf\Redis\RedisProxy connection(string $name = 'default)
+ * @method static \Hyperf\Redis\RedisProxy connection(string $name = 'default')
  * @method static void scan(void $cursor, void ...$arguments)
  * @method static void hScan(void $key, void $cursor, void ...$arguments)
  * @method static void zScan(void $key, void $cursor, void ...$arguments)
