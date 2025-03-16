@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace LaravelHyperf\Support\Facades;
 
-use Hyperf\Redis\Redis as RedisClient;
+use LaravelHyperf\Redis\Redis as RedisClient;
 
 /**
+ * @method static \Hyperf\Redis\RedisProxy connection(string $name = 'default)
  * @method static void scan(void $cursor, void ...$arguments)
  * @method static void hScan(void $key, void $cursor, void ...$arguments)
  * @method static void zScan(void $key, void $cursor, void ...$arguments)
@@ -249,7 +250,7 @@ use Hyperf\Redis\Redis as RedisClient;
  * @method static \Redis|array|false zunion(array $keys, array|null $weights = null, array|null $options = null)
  * @method static \Redis|int|false zunionstore(string $dst, array $keys, array|null $weights = null, string|null $aggregate = null)
  *
- * @see \Hyperf\Redis\Redis
+ * @see \LaravelHyperf\Redis\Redis
  */
 class Redis extends Facade
 {
