@@ -105,7 +105,8 @@ class RouteDependency
      */
     public function getMethodParameters(string $controller, string $action, array $arguments): array
     {
-        if (! $arguments && isset($this->resolvedDependencies[$signature = "{$controller}::{$action}"])) {
+        $signature = "{$controller}::{$action}";
+        if (! $arguments && isset($this->resolvedDependencies[$signature])) {
             return $this->resolvedDependencies[$signature];
         }
 
@@ -129,7 +130,8 @@ class RouteDependency
      */
     public function getClosureParameters(Closure $closure, array $arguments): array
     {
-        if (! $arguments && isset($this->resolvedDependencies[$signature = spl_object_hash($closure)])) {
+        $signature = spl_object_hash($closure);
+        if (! $arguments && isset($this->resolvedDependencies[$signature])) {
             return $this->resolvedDependencies[$signature];
         }
 
