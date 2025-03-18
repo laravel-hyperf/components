@@ -7,7 +7,7 @@ namespace LaravelHyperf\Context;
 use Closure;
 use LaravelHyperf\Coroutine\Coroutine;
 
-class CoroutineContext
+class ParentContext
 {
     public static function set(string $id, mixed $value): mixed
     {

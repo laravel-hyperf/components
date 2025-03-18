@@ -9,8 +9,8 @@ use Exception;
 use Hyperf\Collection\Arr;
 use Hyperf\Collection\Collection;
 use Hyperf\Context\ApplicationContext;
-use Hyperf\Context\Context as CoroutineContext;
 use Hyperf\Stringable\Str;
+use LaravelHyperf\Context\ParentContext;
 use LaravelHyperf\Foundation\Exceptions\Contracts\ExceptionHandler;
 use LaravelHyperf\Http\Contracts\RequestContract;
 use LaravelHyperf\Log\Events\MessageLogged;
@@ -208,7 +208,7 @@ class Telescope
      */
     public static function startRecording(): void
     {
-        if (CoroutineContext::get(static::SHOULD_RECORD, null)) {
+        if (ParentContext::get(static::SHOULD_RECORD, null)) {
             return;
         }
 
@@ -221,7 +221,7 @@ class Telescope
         } catch (Exception) {
         }
 
-        CoroutineContext::set(static::SHOULD_RECORD, ! $recordingPaused);
+        ParentContext::set(static::SHOULD_RECORD, ! $recordingPaused);
     }
 
     /**
@@ -229,7 +229,7 @@ class Telescope
      */
     public static function stopRecording(): void
     {
-        CoroutineContext::set(static::SHOULD_RECORD, false);
+        ParentContext::set(static::SHOULD_RECORD, false);
     }
 
     /**
@@ -244,7 +244,7 @@ class Telescope
         try {
             return call_user_func($callback);
         } finally {
-            CoroutineContext::set(static::SHOULD_RECORD, $shouldRecord);
+            ParentContext::set(static::SHOULD_RECORD, $shouldRecord);
         }
     }
 
@@ -257,7 +257,7 @@ class Telescope
             return false;
         }
 
-        return CoroutineContext::get(static::SHOULD_RECORD, false);
+        return ParentContext::get(static::SHOULD_RECORD, false);
     }
 
     /**
@@ -269,11 +269,11 @@ class Telescope
             return;
         }
 
-        if (CoroutineContext::get(static::IS_RECORDING, false)) {
+        if (ParentContext::get(static::IS_RECORDING, false)) {
             return;
         }
 
-        CoroutineContext::set(static::IS_RECORDING, true);
+        ParentContext::set(static::IS_RECORDING, true);
 
         try {
             if (Auth::hasUser()) {
@@ -289,7 +289,7 @@ class Telescope
 
         static::withoutRecording(function () use ($entry) {
             if (Collection::make(static::$filterUsing)->every->__invoke($entry)) {
-                CoroutineContext::override(static::ENTRIES_QUEUE, function ($entries) use ($entry) {
+                ParentContext::override(static::ENTRIES_QUEUE, function ($entries) use ($entry) {
                     return array_merge($entries ?? [], [$entry]);
                 });
             }
@@ -299,7 +299,7 @@ class Telescope
             }
         });
 
-        CoroutineContext::set(static::IS_RECORDING, false);
+        ParentContext::set(static::IS_RECORDING, false);
     }
 
     /**
@@ -307,7 +307,7 @@ class Telescope
      */
     public static function getEntriesQueue(): array
     {
-        return CoroutineContext::get(static::ENTRIES_QUEUE, []);
+        return ParentContext::get(static::ENTRIES_QUEUE, []);
     }
 
     /**
@@ -315,7 +315,7 @@ class Telescope
      */
     public static function getUpdatesQueue(): array
     {
-        return CoroutineContext::get(static::UPDATES_QUEUE, []);
+        return ParentContext::get(static::UPDATES_QUEUE, []);
     }
 
     /**
@@ -327,7 +327,7 @@ class Telescope
             return;
         }
 
-        CoroutineContext::override(static::UPDATES_QUEUE, function ($updates) use ($update) {
+        ParentContext::override(static::UPDATES_QUEUE, function ($updates) use ($update) {
             return array_merge($updates ?? [], [$update]);
         });
     }
@@ -481,7 +481,7 @@ class Telescope
      */
     public static function flushEntries(): static
     {
-        CoroutineContext::set(static::ENTRIES_QUEUE, []);
+        ParentContext::set(static::ENTRIES_QUEUE, []);
 
         return new static();
     }
@@ -491,7 +491,7 @@ class Telescope
      */
     public static function flushUpdates(): static
     {
-        CoroutineContext::set(static::UPDATES_QUEUE, []);
+        ParentContext::set(static::UPDATES_QUEUE, []);
 
         return new static();
     }
