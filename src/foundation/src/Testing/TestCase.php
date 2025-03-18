@@ -11,6 +11,7 @@ use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithAuthentication;
 use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithConsole;
 use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithContainer;
 use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithDatabase;
+use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithSession;
 use LaravelHyperf\Foundation\Testing\Concerns\InteractsWithTime;
 use LaravelHyperf\Foundation\Testing\Concerns\MakesHttpRequests;
 use LaravelHyperf\Foundation\Testing\Concerns\MocksApplicationServices;
@@ -31,6 +32,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     use InteractsWithAuthentication;
     use InteractsWithConsole;
     use InteractsWithDatabase;
+    use InteractsWithSession;
     use InteractsWithTime;
     use MocksApplicationServices;
 
