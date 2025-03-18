@@ -49,7 +49,7 @@ class Context extends HyperfContext
         }
 
         foreach ($contextKeys as $key) {
-            HyperfContext::destroy($key, $coroutineId);
+            static::destroy($key, $coroutineId);
         }
     }
 }
