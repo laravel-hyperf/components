@@ -647,6 +647,14 @@ class Request extends HyperfRequest implements RequestContract
     }
 
     /**
+     * Get the request headers.
+     */
+    public function headers(): array
+    {
+        return $this->getHeaders();
+    }
+
+    /**
      * Get the bearer token from the request headers.
      */
     public function bearerToken(): ?string
