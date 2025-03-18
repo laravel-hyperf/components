@@ -294,6 +294,11 @@ interface RequestContract extends RequestInterface
     public function method(): string;
 
     /**
+     * Get the request headers.
+     */
+    public function headers(): array;
+
+    /**
      * Get the bearer token from the request headers.
      */
     public function bearerToken(): ?string;
