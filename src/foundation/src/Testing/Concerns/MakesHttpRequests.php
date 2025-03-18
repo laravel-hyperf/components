@@ -151,8 +151,6 @@ trait MakesHttpRequests
 
     /**
      * Define additional headers to be sent with the request.
-     *
-     * @return $this
      */
     public function withHeaders(array $headers): static
     {
@@ -163,8 +161,6 @@ trait MakesHttpRequests
 
     /**
      * Add a header to be sent with the request.
-     *
-     * @return $this
      */
     public function withHeader(string $name, string $value): static
     {
@@ -175,8 +171,6 @@ trait MakesHttpRequests
 
     /**
      * Remove a header from the request.
-     *
-     * @return $this
      */
     public function withoutHeader(string $name): static
     {
@@ -187,8 +181,6 @@ trait MakesHttpRequests
 
     /**
      * Remove headers from the request.
-     *
-     * @return $this
      */
     public function withoutHeaders(array $headers): static
     {
@@ -201,8 +193,6 @@ trait MakesHttpRequests
 
     /**
      * Add an authorization token for the request.
-     *
-     * @return $this
      */
     public function withToken(string $token, string $type = 'Bearer'): static
     {
@@ -211,8 +201,6 @@ trait MakesHttpRequests
 
     /**
      * Add a basic authentication header to the request with the given credentials.
-     *
-     * @return $this
      */
     public function withBasicAuth(string $username, string $password): static
     {
@@ -221,8 +209,6 @@ trait MakesHttpRequests
 
     /**
      * Remove the authorization token from the request.
-     *
-     * @return $this
      */
     public function withoutToken(): static
     {
@@ -231,8 +217,6 @@ trait MakesHttpRequests
 
     /**
      * Flush all the configured states.
-     *
-     * @return $this
      */
     public function flushRequestStates(): static
     {
@@ -246,8 +230,6 @@ trait MakesHttpRequests
 
     /**
      * Define a set of server variables to be sent with the requests.
-     *
-     * @return $this
      */
     public function withServerVariables(array $server): static
     {
@@ -260,7 +242,6 @@ trait MakesHttpRequests
      * Disable middleware for the test.
      *
      * @param null|array|string $middleware
-     * @return $this
      */
     protected function withoutMiddleware($middleware = null): static
     {
@@ -280,7 +261,6 @@ trait MakesHttpRequests
      * Enable the given middleware for the test.
      *
      * @param null|array|string $middleware
-     * @return $this
      */
     public function withMiddleware($middleware = null): static
     {
@@ -300,8 +280,6 @@ trait MakesHttpRequests
 
     /**
      * Define additional cookies to be sent with the request.
-     *
-     * @return $this
      */
     public function withCookies(array $cookies): static
     {
@@ -312,8 +290,6 @@ trait MakesHttpRequests
 
     /**
      * Add a cookie to be sent with the request.
-     *
-     * @return $this
      */
     public function withCookie(string $name, string $value): static
     {
@@ -324,8 +300,6 @@ trait MakesHttpRequests
 
     /**
      * Automatically follow any redirects returned from the response.
-     *
-     * @return $this
      */
     public function followingRedirects(): static
     {
@@ -336,10 +310,8 @@ trait MakesHttpRequests
 
     /**
      * Include cookies and authorization headers for JSON requests.
-     *
-     * @return $this
      */
-    public function withCredentials()
+    public function withCredentials(): static
     {
         $this->withCredentials = true;
 

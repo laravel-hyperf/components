@@ -8,9 +8,12 @@ use Carbon\Carbon;
 use Closure;
 use Hyperf\Collection\Arr;
 use Hyperf\Context\ApplicationContext;
-use Hyperf\Contract\SessionInterface;
+use Hyperf\Contract\MessageBag;
 use Hyperf\Testing\Http\TestResponse as HyperfTestResponse;
-use PHPUnit\Framework\Assert as PHPUnit;
+use Hyperf\ViewEngine\ViewErrorBag;
+use LaravelHyperf\Cookie\Cookie;
+use LaravelHyperf\Session\Contracts\Session as SessionContract;
+use LaravelHyperf\Tests\Foundation\Testing\TestResponseAssert as PHPUnit;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
@@ -26,12 +29,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Asserts that the response contains the given header and equals the optional value.
-     *
-     * @param string $headerName
-     * @param mixed $value
-     * @return $this
      */
-    public function assertHeader($headerName, $value = null)
+    public function assertHeader(string $headerName, mixed $value = null): static
     {
         PHPUnit::assertTrue(
             $this->hasHeader($headerName),
@@ -53,11 +52,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Asserts that the response does not contain the given header.
-     *
-     * @param string $headerName
-     * @return $this
      */
-    public function assertHeaderMissing($headerName)
+    public function assertHeaderMissing(string $headerName): static
     {
         PHPUnit::assertFalse(
             $this->hasHeader($headerName),
@@ -69,11 +65,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Assert that the response offers a file download.
-     *
-     * @param null|string $filename
-     * @return $this
      */
-    public function assertDownload($filename = null)
+    public function assertDownload(?string $filename = null): static
     {
         $contentDisposition = explode(';', $this->getHeader('content-disposition')[0] ?? '');
 
@@ -117,24 +110,16 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Asserts that the response contains the given cookie and equals the optional value.
-     *
-     * @param string $cookieName
-     * @param mixed $value
-     * @return $this
      */
-    public function assertPlainCookie($cookieName, $value = null)
+    public function assertPlainCookie(string $cookieName, mixed $value = null): static
     {
         return $this->assertCookie($cookieName, $value);
     }
 
     /**
      * Asserts that the response contains the given cookie and equals the optional value.
-     *
-     * @param string $cookieName
-     * @param mixed $value
-     * @return $this
      */
-    public function assertCookie($cookieName, $value = null)
+    public function assertCookie(string $cookieName, mixed $value = null): static
     {
         PHPUnit::assertNotNull(
             $cookie = $this->getCookie($cookieName),
@@ -158,11 +143,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Asserts that the response contains the given cookie and is expired.
-     *
-     * @param string $cookieName
-     * @return $this
      */
-    public function assertCookieExpired($cookieName)
+    public function assertCookieExpired(string $cookieName): static
     {
         PHPUnit::assertNotNull(
             $cookie = $this->getCookie($cookieName),
@@ -181,11 +163,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Asserts that the response contains the given cookie and is not expired.
-     *
-     * @param string $cookieName
-     * @return $this
      */
-    public function assertCookieNotExpired($cookieName)
+    public function assertCookieNotExpired(string $cookieName): static
     {
         PHPUnit::assertNotNull(
             $cookie = $this->getCookie($cookieName),
@@ -204,11 +183,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Asserts that the response does not contain the given cookie.
-     *
-     * @param string $cookieName
-     * @return $this
      */
-    public function assertCookieMissing($cookieName)
+    public function assertCookieMissing(string $cookieName): static
     {
         PHPUnit::assertNull(
             $this->getCookie($cookieName),
@@ -220,11 +196,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Get the given cookie from the response.
-     *
-     * @param string $cookieName
-     * @return null|\LaravelHyperf\Cookie\Cookie
      */
-    public function getCookie($cookieName)
+    public function getCookie(string $cookieName): ?Cookie
     {
         /* @phpstan-ignore-next-line */
         foreach (Arr::flatten($this->getCookies()) as $cookie) {
@@ -238,46 +211,34 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Assert that the given keys do not have validation errors.
-     *
-     * @param null|array|string $keys
-     * @param string $responseKey
-     * @return $this
      */
-    public function assertValid($keys = null, $responseKey = 'errors')
+    public function assertValid(null|array|string $keys = null, string $responseKey = 'errors'): static
     {
         return $this->assertJsonMissingValidationErrors($keys, $responseKey);
     }
 
     /**
      * Assert that the response has the given validation errors.
-     *
-     * @param null|array|string $errors
-     * @param string $responseKey
-     * @return $this
      */
-    public function assertInvalid($errors = null, $responseKey = 'errors')
+    public function assertInvalid(null|array|string $errors = null, string $responseKey = 'errors'): static
     {
         return $this->assertJsonValidationErrors($errors, $responseKey);
     }
 
-    protected function session()
+    protected function session(): SessionContract
     {
         $container = ApplicationContext::getContainer();
-        if (! $container->has(SessionInterface::class)) {
-            throw new RuntimeException('Package `hyperf/session` is not installed.');
+        if (! $container->has(SessionContract::class)) {
+            throw new RuntimeException('Package `laravel-hyperf/session` is not installed.');
         }
 
-        return $container->get(SessionInterface::class);
+        return $container->get(SessionContract::class);
     }
 
     /**
      * Assert that the session has a given value.
-     *
-     * @param array|string $key
-     * @param mixed $value
-     * @return $this
      */
-    public function assertSessionHas($key, $value = null)
+    public function assertSessionHas(array|string $key, mixed $value = null): static
     {
         if (is_array($key)) {
             return $this->assertSessionHasAll($key);
@@ -299,10 +260,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Assert that the session has a given list of values.
-     *
-     * @return $this
      */
-    public function assertSessionHasAll(array $bindings)
+    public function assertSessionHasAll(array $bindings): static
     {
         foreach ($bindings as $key => $value) {
             if (is_int($key)) {
@@ -316,12 +275,132 @@ class TestResponse extends HyperfTestResponse
     }
 
     /**
-     * Assert that the session does not have a given key.
-     *
-     * @param array|string $key
-     * @return $this
+     * Assert that the session has a given value in the flashed input array.
      */
-    public function assertSessionMissing($key)
+    public function assertSessionHasInput(array|string $key, mixed $value = null): static
+    {
+        if (is_array($key)) {
+            foreach ($key as $k => $v) {
+                if (is_int($k)) {
+                    $this->assertSessionHasInput($v);
+                } else {
+                    $this->assertSessionHasInput($k, $v);
+                }
+            }
+
+            return $this;
+        }
+
+        if (is_null($value)) {
+            PHPUnit::withResponse($this)->assertTrue(
+                $this->session()->hasOldInput($key), /* @phpstan-ignore-line */
+                "Session is missing expected key [{$key}]."
+            );
+        } elseif ($value instanceof Closure) {
+            /* @phpstan-ignore-next-line */
+            PHPUnit::withResponse($this)->assertTrue($value($this->session()->getOldInput($key)));
+        } else {
+            /* @phpstan-ignore-next-line */
+            PHPUnit::withResponse($this)->assertEquals($value, $this->session()->getOldInput($key));
+        }
+
+        return $this;
+    }
+
+    /**
+     * Assert that the session has the given errors.
+     */
+    public function assertSessionHasErrors(array|string $keys = [], mixed $format = null, string $errorBag = 'default'): static
+    {
+        $this->assertSessionHas('errors');
+
+        $keys = (array) $keys;
+
+        $errors = $this->session()->get('errors')->getBag($errorBag);
+
+        foreach ($keys as $key => $value) {
+            if (is_int($key)) {
+                PHPUnit::withResponse($this)->assertTrue($errors->has($value), "Session missing error: {$value}");
+            } else {
+                PHPUnit::withResponse($this)->assertContains(is_bool($value) ? (string) $value : $value, $errors->get($key, $format));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Assert that the session has the given errors.
+     */
+    public function assertSessionHasErrorsIn(string $errorBag, array $keys = [], mixed $format = null): static
+    {
+        return $this->assertSessionHasErrors($keys, $format, $errorBag);
+    }
+
+    /**
+     * Assert that the session has no errors.
+     */
+    public function assertSessionHasNoErrors(): static
+    {
+        $hasErrors = $this->session()->has('errors');
+
+        PHPUnit::withResponse($this)->assertFalse(
+            $hasErrors,
+            'Session has unexpected errors: ' . PHP_EOL . PHP_EOL
+                . json_encode((function () use ($hasErrors) {
+                    $errors = [];
+
+                    $sessionErrors = $this->session()->get('errors');
+
+                    if ($hasErrors && is_a($sessionErrors, ViewErrorBag::class)) {
+                        foreach ($sessionErrors->getBags() as $bag => $messages) {
+                            if (is_a($messages, MessageBag::class)) {
+                                $errors[$bag] = $messages->all();
+                            }
+                        }
+                    }
+
+                    return $errors;
+                })(), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+        );
+
+        return $this;
+    }
+
+    /**
+     * Assert that the session is missing the given errors.
+     */
+    public function assertSessionDoesntHaveErrors(array|string $keys = [], ?string $format = null, string $errorBag = 'default'): static
+    {
+        $keys = (array) $keys;
+
+        if (empty($keys)) {
+            return $this->assertSessionHasNoErrors();
+        }
+
+        if (is_null($this->session()->get('errors'))) {
+            PHPUnit::withResponse($this)->assertTrue(true);
+
+            return $this;
+        }
+
+        $errors = $this->session()->get('errors')->getBag($errorBag);
+
+        foreach ($keys as $key => $value) {
+            if (is_int($key)) {
+                PHPUnit::withResponse($this)->assertFalse($errors->has($value), "Session has unexpected error: {$value}");
+            } else {
+                PHPUnit::withResponse($this)->assertNotContains($value, $errors->get($key, $format));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Assert that the session does not have a given key.
+     */
+    public function assertSessionMissing(array|string $key): static
     {
         if (is_array($key)) {
             foreach ($key as $value) {
@@ -342,7 +421,7 @@ class TestResponse extends HyperfTestResponse
      *
      * @return never
      */
-    public function dd()
+    public function dd(): void
     {
         $this->dump();
 
@@ -351,10 +430,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Dump the content from the response.
-     *
-     * @return $this
      */
-    public function dump()
+    public function dump(): static
     {
         $content = $this->getContent();
 
@@ -371,10 +448,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Dump the headers from the response.
-     *
-     * @return $this
      */
-    public function dumpHeaders()
+    public function dumpHeaders(): static
     {
         dump($this->getHeaders());
 
@@ -383,10 +458,8 @@ class TestResponse extends HyperfTestResponse
 
     /**
      * Dump the session from the response.
-     *
-     * @return $this
      */
-    public function dumpSession()
+    public function dumpSession(): static
     {
         dump($this->session()->all());
 
