@@ -63,14 +63,6 @@ class TestResponseAssert
      */
     protected function injectResponseContext(ExpectationFailedException $exception): ExpectationFailedException
     {
-        if ($this->response->getStatusCode() === 301) {
-            $session = $this->response->getSession();
-
-            if (! is_null($session) && $session->has('errors')) {
-                return $this->appendErrorsToException($session->get('errors')->all(), $exception);
-            }
-        }
-
         if ($this->response->getHeader('Content-Type') === 'application/json') {
             $testJson = new AssertableJsonString($this->response->getContent());
 
