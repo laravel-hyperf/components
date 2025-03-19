@@ -6,9 +6,11 @@ namespace LaravelHyperf\Foundation\Testing\Concerns;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Contract\Jsonable;
+use Hyperf\Database\ConnectionInterface;
 use Hyperf\Database\Events\QueryExecuted;
 use Hyperf\Database\Model\Model;
 use Hyperf\Database\Model\SoftDeletes;
+use Hyperf\Database\Query\Expression;
 use LaravelHyperf\Foundation\Testing\Constraints\CountInDatabase;
 use LaravelHyperf\Foundation\Testing\Constraints\HasInDatabase;
 use LaravelHyperf\Foundation\Testing\Constraints\NotSoftDeletedInDatabase;
@@ -20,12 +22,8 @@ trait InteractsWithDatabase
 {
     /**
      * Assert that a given where condition exists in the database.
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @param null|string $connection
-     * @return $this
      */
-    protected function assertDatabaseHas($table, array $data, $connection = null)
+    protected function assertDatabaseHas(Model|string $table, array $data, ?string $connection = null): static
     {
         $this->assertThat(
             $this->getTable($table),
@@ -37,12 +35,8 @@ trait InteractsWithDatabase
 
     /**
      * Assert that a given where condition does not exist in the database.
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @param null|string $connection
-     * @return $this
      */
-    protected function assertDatabaseMissing($table, array $data, $connection = null)
+    protected function assertDatabaseMissing(Model|string $table, array $data, ?string $connection = null): static
     {
         $constraint = new ReverseConstraint(
             new HasInDatabase($this->getConnection($connection, $table), $data)
@@ -55,12 +49,8 @@ trait InteractsWithDatabase
 
     /**
      * Assert the count of table entries.
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @param null|string $connection
-     * @return $this
      */
-    protected function assertDatabaseCount($table, int $count, $connection = null)
+    protected function assertDatabaseCount(Model|string $table, int $count, ?string $connection = null): static
     {
         $this->assertThat(
             $this->getTable($table),
@@ -72,12 +62,8 @@ trait InteractsWithDatabase
 
     /**
      * Assert that the given table has no entries.
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @param null|string $connection
-     * @return $this
      */
-    protected function assertDatabaseEmpty($table, $connection = null)
+    protected function assertDatabaseEmpty(Model|string $table, ?string $connection = null): static
     {
         $this->assertThat(
             $this->getTable($table),
@@ -89,13 +75,8 @@ trait InteractsWithDatabase
 
     /**
      * Assert the given record has been "soft deleted".
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @param null|string $connection
-     * @param null|string $deletedAtColumn
-     * @return $this
      */
-    protected function assertSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at')
+    protected function assertSoftDeleted(Model|string $table, array $data = [], ?string $connection = null, string $deletedAtColumn = 'deleted_at'): static
     {
         if ($this->isSoftDeletableModel($table)) {
             return $this->assertSoftDeleted(
@@ -120,13 +101,8 @@ trait InteractsWithDatabase
 
     /**
      * Assert the given record has not been "soft deleted".
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @param null|string $connection
-     * @param null|string $deletedAtColumn
-     * @return $this
      */
-    protected function assertNotSoftDeleted($table, array $data = [], $connection = null, $deletedAtColumn = 'deleted_at')
+    protected function assertNotSoftDeleted(Model|string $table, array $data = [], ?string $connection = null, string $deletedAtColumn = 'deleted_at'): static
     {
         if ($this->isSoftDeletableModel($table)) {
             return $this->assertNotSoftDeleted(
@@ -151,11 +127,8 @@ trait InteractsWithDatabase
 
     /**
      * Assert the given model exists in the database.
-     *
-     * @param \Hyperf\Database\Model\Model $model
-     * @return $this
      */
-    protected function assertModelExists($model)
+    protected function assertModelExists(Model $model): static
     {
         return $this->assertDatabaseHas(
             $model->getTable(),
@@ -166,11 +139,8 @@ trait InteractsWithDatabase
 
     /**
      * Assert the given model does not exist in the database.
-     *
-     * @param \Hyperf\Database\Model\Model $model
-     * @return $this
      */
-    protected function assertModelMissing($model)
+    protected function assertModelMissing(Model $model): static
     {
         return $this->assertDatabaseMissing(
             $model->getTable(),
@@ -181,12 +151,8 @@ trait InteractsWithDatabase
 
     /**
      * Specify the number of database queries that should occur throughout the test.
-     *
-     * @param int $expected
-     * @param null|string $connection
-     * @return $this
      */
-    public function expectsDatabaseQueryCount($expected, $connection = null)
+    public function expectsDatabaseQueryCount(int $expected, ?string $connection = null): static
     {
         with($this->getConnection($connection), function ($connectionInstance) use ($expected, $connection) {
             $actual = 0;
@@ -211,11 +177,8 @@ trait InteractsWithDatabase
 
     /**
      * Determine if the argument is a soft deletable model.
-     *
-     * @param mixed $model
-     * @return bool
      */
-    protected function isSoftDeletableModel($model)
+    protected function isSoftDeletableModel(mixed $model): bool
     {
         return $model instanceof Model
             && in_array(SoftDeletes::class, class_uses_recursive($model));
@@ -223,11 +186,8 @@ trait InteractsWithDatabase
 
     /**
      * Cast a JSON string to a database compatible type.
-     *
-     * @param array|object|string $value
-     * @return \Hyperf\Contracts\Database\Query\Expression
      */
-    public function castAsJson($value)
+    public function castAsJson(array|object|string $value): Expression
     {
         if ($value instanceof Jsonable) {
             $value = $value->toJson();
@@ -244,68 +204,48 @@ trait InteractsWithDatabase
 
     /**
      * Get the database connection.
-     *
-     * @param null|string $connection
-     * @param null|string $table
-     * @return \Hyperf\DbConnection\Connection
      */
-    protected function getConnection($connection = null, $table = null)
+    protected function getConnection(?string $connection = null, ?string $table = null): ConnectionInterface
     {
         return DB::connection($connection);
     }
 
     /**
      * Get the table name from the given model or string.
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @return string
      */
-    protected function getTable($table)
+    protected function getTable(Model|string $table): string
     {
         return $this->newModelFor($table)?->getTable() ?: $table;
     }
 
     /**
      * Get the table connection specified in the given model.
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @return null|string
      */
-    protected function getTableConnection($table)
+    protected function getTableConnection(Model|string $table): ?string
     {
         return $this->newModelFor($table)?->getConnectionName();
     }
 
     /**
      * Get the table column name used for soft deletes.
-     *
-     * @param string $table
-     * @param string $defaultColumnName
-     * @return string
      */
-    protected function getDeletedAtColumn($table, $defaultColumnName = 'deleted_at')
+    protected function getDeletedAtColumn(string $table, string $defaultColumnName = 'deleted_at'): string
     {
         return $this->newModelFor($table)?->getDeletedAtColumn() ?: $defaultColumnName;
     }
 
     /**
      * Get the model entity from the given model or string.
-     *
-     * @param \Hyperf\Database\Model\Model|string $table
-     * @return null|\Hyperf\Database\Model\Model
      */
-    protected function newModelFor($table)
+    protected function newModelFor(Model|string $table): ?Model
     {
         return is_subclass_of($table, Model::class) ? (new $table()) : null;
     }
 
     /**
      * Seed a given database connection.
-     *
-     * @param array|string $class
-     * @return $this
      */
-    public function seed($class = 'Database\Seeders\DatabaseSeeder')
+    public function seed(array|string $class = 'Database\Seeders\DatabaseSeeder'): static
     {
         foreach (Arr::wrap($class) as $class) {
             $this->artisan('db:seed', ['--class' => $class, '--no-interaction' => true]);
