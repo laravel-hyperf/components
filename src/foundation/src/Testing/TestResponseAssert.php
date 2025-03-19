@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelHyperf\Tests\Foundation\Testing;
+namespace LaravelHyperf\Foundation\Testing;
 
 use Hyperf\Collection\Arr;
 use Hyperf\Testing\Assert;

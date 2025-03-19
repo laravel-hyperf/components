@@ -12,8 +12,8 @@ use Hyperf\Contract\MessageBag;
 use Hyperf\Testing\Http\TestResponse as HyperfTestResponse;
 use Hyperf\ViewEngine\ViewErrorBag;
 use LaravelHyperf\Cookie\Cookie;
+use LaravelHyperf\Foundation\Testing\TestResponseAssert as PHPUnit;
 use LaravelHyperf\Session\Contracts\Session as SessionContract;
-use LaravelHyperf\Tests\Foundation\Testing\TestResponseAssert as PHPUnit;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
